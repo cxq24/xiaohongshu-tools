@@ -4,7 +4,7 @@
   const STORE='apu-audio-v2', DEFAULTS={enabled:true,music:.28,effects:.65,voice:.65};
   let settings={...DEFAULTS};
   try{const raw=JSON.parse(localStorage.getItem(STORE));if(raw){for(const k of ['enabled'])if(typeof raw[k]==='boolean')settings[k]=raw[k];for(const k of ['music','effects','voice'])if(typeof raw[k]==='number'&&Number.isFinite(raw[k]))settings[k]=Math.max(0,Math.min(1,raw[k]));}}catch(_){}
-  let ctx,master,compressor,musicGain,effectGain,voiceGain,musicBuffer,musicSource=null,musicOffset=0,musicStart=0,paused=false,hidden=document.hidden;
+  let ctx,master,compressor,musicGain,effectGain,voiceGain,musicBuffer,musicSource=null,musicOffset=0,musicStart=0,paused=false,hidden=document.hidden,unlockedOnce=false,resuming=null,theme=0,lastError="",recoveryAttempts=0,needsGesture=true;
   const active=new Set(),last={},stats={events:{},musicStarts:0,voiceMode:'拟声'};
   const midi=n=>440*2**((n-69)/12);
   const tri=p=>2/Math.PI*Math.asin(Math.sin(p));
@@ -33,12 +33,13 @@
     }
     return data;
   }
-  function renderMusic(rate=32000){
+  function renderMusic(rate=32000,world=0){
     const melody=[72,76,79,76,74,77,81,77,71,74,79,74,72,76,79,84,76,79,84,79,77,81,84,81,74,79,83,79,72,76,79,72,76,79,81,79,74,77,79,77,72,76,79,76,71,74,77,79,72,79,84,83,81,79,76,74,72,76,79,76,74,71,72,72];
-    const step=.23,length=melody.length*step,output=new Float32Array(Math.ceil(length*rate));
+    const transpose=[0,2,-2,5,-5,-3,7,-2,4,0][world%10];
+    const step=.23*[1,.95,1.1,1,.85,1.05,1.1,.85,1,.95][world%10],length=melody.length*step,output=new Float32Array(Math.ceil(length*rate));
     for(let i=0;i<output.length;i++){
       const t=i/rate,k=Math.floor(t/step),local=t%step,env=Math.min(1,local/.01)*Math.exp(-local*11);
-      const bass=midi([48,53,55,48][Math.floor(k/8)%4]),lead=midi(melody[k%melody.length]);
+      const bass=midi([48,53,55,48][Math.floor(k/8)%4]+transpose),lead=midi(melody[k%melody.length]+transpose);
       const leadSignal=tri(2*Math.PI*lead*t)*env*.24;
       const bassEnv=Math.exp(-(t%(step*2))*6);
       const bassSignal=Math.sin(2*Math.PI*bass*t)*bassEnv*.18;
@@ -52,10 +53,14 @@
   function notify(){window.dispatchEvent(new Event('candy-audio-change'));}
   function save(){try{localStorage.setItem(STORE,JSON.stringify(settings));}catch(_){}notify();}
   function setup(){
-    if(ctx)return true;
+    if(ctx&&ctx.state!=='closed')return true;
+    musicSource=null;musicBuffer=null;musicOffset=0;
     try{
       const Context=window.AudioContext||window.webkitAudioContext;if(!Context)return false;
-      ctx=new Context();master=ctx.createGain();compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-10;compressor.ratio.value=5;master.connect(compressor);compressor.connect(ctx.destination);
+      try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch(_){}
+      ctx=new Context({latencyHint:'interactive'});
+      ctx.addEventListener('statechange',()=>{needsGesture=ctx.state!=='running';if(ctx.state==='running'){apply();startMusic();}else{stopMusic();}notify();});
+      master=ctx.createGain();compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-10;compressor.ratio.value=5;master.connect(compressor);compressor.connect(ctx.destination);
       musicGain=ctx.createGain();effectGain=ctx.createGain();voiceGain=ctx.createGain();musicGain.connect(master);effectGain.connect(master);voiceGain.connect(master);
       apply();return true;
     }catch(_){return false;}
@@ -64,14 +69,21 @@
   function stopMusic(){if(musicSource){musicOffset=(musicOffset+ctx.currentTime-musicStart)%musicBuffer.duration;musicSource.stop();musicSource.disconnect();musicSource=null;}}
   function startMusic(){
     if(!ctx||ctx.state!=='running'||musicSource||paused||hidden||!settings.enabled||settings.music<=0)return;
-    if(!musicBuffer){const data=renderMusic(ctx.sampleRate);musicBuffer=ctx.createBuffer(1,data.length,ctx.sampleRate);musicBuffer.copyToChannel(data,0);}
+    if(!musicBuffer){const data=renderMusic(ctx.sampleRate,theme);musicBuffer=ctx.createBuffer(1,data.length,ctx.sampleRate);musicBuffer.copyToChannel(data,0);}
     musicSource=ctx.createBufferSource();musicSource.buffer=musicBuffer;musicSource.loop=true;musicSource.connect(musicGain);musicStart=ctx.currentTime;musicSource.start(0,musicOffset);stats.musicStarts++;
   }
   function stopEffects(){for(const source of active){try{source.stop();source.disconnect();}catch(_){}}active.clear();}
   async function unlock(){
+    if(!settings.enabled)return false;
     if(!setup()){notify();return false;}
-    try{await ctx.resume();apply();startMusic();notify();return ctx.state==='running';}catch(_){notify();return false;}
+    unlockedOnce=true;recoveryAttempts++;
+    // A source is scheduled inside the gesture, not after an asynchronous callback.
+    try{const source=ctx.createBufferSource();source.buffer=ctx.createBuffer(1,1,ctx.sampleRate);source.connect(master);source.onended=()=>source.disconnect();source.start();}catch(_){}
+    if(resuming)return resuming;
+    resuming=(async()=>{try{await ctx.resume();needsGesture=ctx.state!=='running';apply();startMusic();lastError='';return !needsGesture;}catch(error){needsGesture=true;lastError=String(error.name||'audio resume failed');return false;}finally{resuming=null;notify();}})();
+    return resuming;
   }
+  function recover(){if(unlockedOnce&&settings.enabled&&!hidden){if(ctx?.state==='running'){startMusic();}else unlock();}}
   function play(name,variant=0,preview=false,bus='effects'){
     if(!ctx||ctx.state!=='running'||!settings.enabled||hidden||(!preview&&paused)||settings[bus]<=0)return false;
     const now=ctx.currentTime;
@@ -89,7 +101,9 @@
     return line;
   }
   function set(name,value){if(!(name in DEFAULTS))return;if(typeof DEFAULTS[name]==='boolean')settings[name]=Boolean(value);else settings[name]=Math.max(0,Math.min(1,Number(value)||0));apply();if(!settings.enabled){stopMusic();stopEffects();}else if(settings.music>0)startMusic();else stopMusic();save();}
-  function pause(value){paused=Boolean(value);if(paused){stopMusic();stopEffects();}else startMusic();}
-  document.addEventListener('visibilitychange',()=>{hidden=document.hidden;if(hidden){stopMusic();stopEffects();}else startMusic();});
-  window.CandyAudio={unlock,play,voice,set,pause,preview:name=>play(name,0,true),get settings(){return {...settings};},get status(){return {available:Boolean(window.AudioContext||window.webkitAudioContext),running:ctx?.state==='running',paused,active:active.size,...stats,events:{...stats.events}};},render,renderMusic};
+  function pause(value){paused=Boolean(value);if(paused){stopMusic();stopEffects();}else recover();}
+  document.addEventListener('visibilitychange',()=>{hidden=document.hidden,unlockedOnce=false,resuming=null,theme=0,lastError="",recoveryAttempts=0,needsGesture=true;if(hidden){stopMusic();stopEffects();}else recover();});
+  for(const name of ['pointerdown','touchend','keydown'])document.addEventListener(name,event=>{if(event.isTrusted&&settings.enabled&&(!ctx||ctx.state!=='running'))unlock();},{capture:true,passive:true});
+  window.addEventListener('pageshow',recover);window.addEventListener('focus',recover);
+  window.CandyAudio={unlock,play,voice,set,pause,setTheme(id){if(theme===id)return;stopMusic();theme=id;musicBuffer=null;musicOffset=0;startMusic();},preview:name=>play(name,0,true),get settings(){return {...settings};},get status(){return {available:Boolean(window.AudioContext||window.webkitAudioContext),running:ctx?.state==='running',paused,active:active.size,contextState:ctx?.state||'not-started',needsGesture,recoveryAttempts,lastError,audioSession:navigator.audioSession?.type||'unsupported',...stats,events:{...stats.events}};},render,renderMusic};
 })();

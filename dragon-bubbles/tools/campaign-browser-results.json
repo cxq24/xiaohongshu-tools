@@ -1,0 +1,12 @@
+{
+  "version": "0.3.0",
+  "audio_suspend_resume": true,
+  "maps_10x30": true,
+  "inventory_rewind": true,
+  "adjacent_purchase": true,
+  "video_missing_closed": true,
+  "video_skip_no_unlock": true,
+  "video_real_31_seconds": true,
+  "one_time_hidden_loot": true,
+  "errors": []
+}

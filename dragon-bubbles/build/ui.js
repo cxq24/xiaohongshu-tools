@@ -9,8 +9,10 @@
     document.getElementById('audio-enabled').checked=settings.enabled;
     for(const name of ['music','effects','voice'])document.getElementById('volume-'+name).value=Math.round(settings[name]*100);
     document.getElementById('sound').textContent=settings.enabled?'声音设置':'声音已关 · 设置';
-    document.getElementById('audio-status').textContent=!status.available?'此浏览器不支持音频，仍可静音游玩。':!settings.enabled?'声音已关闭，开启后可试听。':status.running?'声音已启用；可试听普通与大泡泡的区别。':'点击开启或试听以启用设备声音。';
+    document.getElementById('audio-diagnostics').textContent=`状态：${status.contextState}；音频通道：${status.audioSession}；恢复尝试：${status.recoveryAttempts}${status.lastError?'；'+status.lastError:''}`;
+    document.getElementById('audio-status').textContent=!status.available?'此浏览器不支持音频，仍可静音游玩。':!settings.enabled?'声音已关闭，开启后可试听。':status.running?'音频播放已启动；可试听不同音效。':'点击开启或试听以启用设备声音。';
   }
+  document.getElementById('rearm-audio').onclick=async()=>{await CandyAudio.unlock();update();};
   document.getElementById('sound').onclick=()=>{CandyAudio.unlock();scene()?.setPausedByUI(true);update();audio.showModal();};
   document.getElementById('close-audio').onclick=()=>audio.close();
   audio.addEventListener('close',()=>scene()?.setPausedByUI(false));

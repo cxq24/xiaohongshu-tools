@@ -34,3 +34,9 @@
 ## 技术边界
 
 这是网页引擎方案，并不自动满足小红书或 TapTap 的平台准入、SDK 或宿主要求。当前网络无法获取此前截图中的小红书官方 skill，不能声称已完成全部平台规范审核。后续平台接入应以实际审核结果和宿主测试为准。
+
+## 0.3.0 地图结构参考
+
+实际读取了 [Tiled Worlds 文档](https://github.com/mapeditor/tiled/blob/master/docs/manual/worlds.rst)、其中的像素世界分区示例，以及 [Wesnoth 大地图 POI 状态配置](https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/Heir_To_The_Throne/utils/bigmap.cfg)。参考的是区域/地点/完成状态的组织方式，没有复制这些项目的素材或代码。
+
+当前世界岛屿与章内路线采用原生 DOM/SVG，支持手机滚动与可访问按钮；战斗继续由 Phaser 驱动。全部新增主题图、敌人轮廓和机关为 `create_world_art.py` 生成的原创像素素材。没有引入新的运行库或第三方图片。
