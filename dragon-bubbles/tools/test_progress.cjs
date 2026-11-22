@@ -37,3 +37,16 @@ for(let world=0;world<10;world++){
  assert(energy/samples.length>.0001,'Every theme must contain a finite, non-silent music track');
 }
 console.log('PASS: all ten theme music arrangements render finite, non-silent PCM.');
+assert.equal(P.attackAt(0),100);assert.equal(P.attackAt(30),500);assert.equal(P.attackAt(50),1100);
+let growth=P.normalize();growth.candy=1000;assert(!P.upgrade(growth).ok);assert.equal(growth.candy,1000);growth.stars[5]=3;assert(P.upgrade(growth).ok);assert.equal(P.attack(growth),110);assert.equal(growth.candy,920);assert(!P.upgrade(growth).ok);
+const damage=P.attack(growth);P.buy(growth,'turret-candy');P.buy(growth,'bubble-star');assert.equal(P.attack(growth),damage,'Cosmetics must not change firepower');
+const migrated=P.normalize({version:3,economyVersion:1,candy:321,stars:Object.fromEntries(Array.from({length:30},(_,i)=>[i,3])),claimed:Object.fromEntries(Array.from({length:30},(_,i)=>[i,true]))});assert.equal(migrated.fireRank,5);assert.equal(P.normalize(migrated).fireRank,5);
+let budget=P.normalize();let spent=0;
+for(let i=0;i<300;i++){
+ while(P.powerInfo(budget).eligible){const cost=P.powerInfo(budget).cost;assert(budget.candy>=cost,'Normal progression must fund recommended firepower');assert(P.upgrade(budget).ok);spent+=cost;}
+ assert.equal(P.attack(budget),P.recommendedAttack(campaign.levels[i]));P.win(budget,i,1);
+}
+while(P.powerInfo(budget).eligible){spent+=P.powerInfo(budget).cost;assert(P.upgrade(budget).ok);}
+assert.equal(budget.fireRank,50);assert.equal(spent,8250);assert(budget.candy>0);
+console.log('PASS: 50 progress-gated fire upgrades, 100→1100 damage, chapter-six cap 500, cosmetic isolation, legacy migration and complete one-star income budget.');
+const questMoney=P.normalize();P.win(questMoney,0,3);P.win(questMoney,1,3);const beforeQuest=questMoney.candy;const receipt=P.win(questMoney,2,3);assert.equal(receipt.totalCurrency,questMoney.candy-beforeQuest);assert.equal(receipt.totalCurrency,105,'Reward UI must include the completed three-star mission bonus');

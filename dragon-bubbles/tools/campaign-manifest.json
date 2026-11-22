@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "worlds": [
     {
       "id": 0,
@@ -22279,7 +22279,7 @@
       "id": "h-0-0",
       "world": 0,
       "local": 25,
-      "name": "糖果森林秘境 1",
+      "name": "糖果森林限时清屏",
       "subtitle": "#8ace8d",
       "balls": 13,
       "initial": 2,
@@ -22347,16 +22347,18 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 4,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 120
     },
     {
       "id": "h-0-1",
       "world": 0,
       "local": 26,
-      "name": "糖果森林秘境 2",
+      "name": "糖果森林守护工程师",
       "subtitle": "#8ace8d",
       "balls": 13,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -22421,13 +22423,15 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 14,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-0-2",
       "world": 0,
       "local": 27,
-      "name": "糖果森林秘境 3",
+      "name": "糖果森林机关试炼",
       "subtitle": "#8ace8d",
       "balls": 13,
       "initial": 2,
@@ -22488,6 +22492,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "x": 100,
+          "y": 370,
+          "width": 38,
+          "height": 10,
+          "kind": "phase"
+        },
+        {
+          "x": 260,
+          "y": 395,
+          "width": 38,
+          "height": 10,
+          "kind": "ice"
         }
       ],
       "portals": [],
@@ -22495,13 +22513,14 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 24,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "obstacle"
     },
     {
       "id": "h-1-0",
       "world": 1,
       "local": 25,
-      "name": "泡泡海湾秘境 1",
+      "name": "泡泡海湾限时清屏",
       "subtitle": "#66c4d0",
       "balls": 13,
       "initial": 2,
@@ -22569,16 +22588,18 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 34,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 125
     },
     {
       "id": "h-1-1",
       "world": 1,
       "local": 26,
-      "name": "泡泡海湾秘境 2",
+      "name": "泡泡海湾守护工程师",
       "subtitle": "#66c4d0",
       "balls": 13,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -22643,13 +22664,15 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 44,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-1-2",
       "world": 1,
       "local": 27,
-      "name": "泡泡海湾秘境 3",
+      "name": "泡泡海湾首领讨伐",
       "subtitle": "#66c4d0",
       "balls": 13,
       "initial": 2,
@@ -22661,7 +22684,7 @@
           ".",
           ".",
           ".",
-          "K25",
+          "K40",
           ".",
           "b5",
           "p1"
@@ -22717,13 +22740,14 @@
       "armor": 0,
       "starTarget": 7,
       "trigger": 54,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "raid"
     },
     {
       "id": "h-2-0",
       "world": 2,
       "local": 25,
-      "name": "冰晶雪原秘境 1",
+      "name": "冰晶雪原限时清屏",
       "subtitle": "#99cddd",
       "balls": 14,
       "initial": 2,
@@ -22791,16 +22815,18 @@
       "armor": 1,
       "starTarget": 7,
       "trigger": 64,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 130
     },
     {
       "id": "h-2-1",
       "world": 2,
       "local": 26,
-      "name": "冰晶雪原秘境 2",
+      "name": "冰晶雪原守护工程师",
       "subtitle": "#99cddd",
       "balls": 14,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -22865,13 +22891,15 @@
       "armor": 1,
       "starTarget": 7,
       "trigger": 74,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-2-2",
       "world": 2,
       "local": 27,
-      "name": "冰晶雪原秘境 3",
+      "name": "冰晶雪原机关试炼",
       "subtitle": "#99cddd",
       "balls": 14,
       "initial": 2,
@@ -22932,6 +22960,20 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "x": 100,
+          "y": 370,
+          "width": 38,
+          "height": 10,
+          "kind": "phase"
+        },
+        {
+          "x": 260,
+          "y": 395,
+          "width": 38,
+          "height": 10,
+          "kind": "ice"
         }
       ],
       "portals": [],
@@ -22939,13 +22981,14 @@
       "armor": 1,
       "starTarget": 7,
       "trigger": 84,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "obstacle"
     },
     {
       "id": "h-3-0",
       "world": 3,
       "local": 25,
-      "name": "蘑菇秘境秘境 1",
+      "name": "蘑菇秘境限时清屏",
       "subtitle": "#d7a0b4",
       "balls": 14,
       "initial": 2,
@@ -23020,16 +23063,18 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 94,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 135
     },
     {
       "id": "h-3-1",
       "world": 3,
       "local": 26,
-      "name": "蘑菇秘境秘境 2",
+      "name": "蘑菇秘境守护工程师",
       "subtitle": "#d7a0b4",
       "balls": 14,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -23101,13 +23146,15 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 104,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-3-2",
       "world": 3,
       "local": 27,
-      "name": "蘑菇秘境秘境 3",
+      "name": "蘑菇秘境首领讨伐",
       "subtitle": "#d7a0b4",
       "balls": 14,
       "initial": 2,
@@ -23119,7 +23166,7 @@
           "p1",
           "b6",
           ".",
-          "K31",
+          "K48",
           ".",
           ".",
           "j6"
@@ -23182,13 +23229,14 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 114,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "raid"
     },
     {
       "id": "h-4-0",
       "world": 4,
       "local": 25,
-      "name": "齿轮工厂秘境 1",
+      "name": "齿轮工厂限时清屏",
       "subtitle": "#dcaf72",
       "balls": 15,
       "initial": 2,
@@ -23270,16 +23318,18 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 124,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 140
     },
     {
       "id": "h-4-1",
       "world": 4,
       "local": 26,
-      "name": "齿轮工厂秘境 2",
+      "name": "齿轮工厂守护工程师",
       "subtitle": "#dcaf72",
       "balls": 15,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -23358,13 +23408,15 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 134,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-4-2",
       "world": 4,
       "local": 27,
-      "name": "齿轮工厂秘境 3",
+      "name": "齿轮工厂机关试炼",
       "subtitle": "#dcaf72",
       "balls": 15,
       "initial": 2,
@@ -23439,6 +23491,20 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "x": 100,
+          "y": 370,
+          "width": 38,
+          "height": 10,
+          "kind": "phase"
+        },
+        {
+          "x": 260,
+          "y": 395,
+          "width": 38,
+          "height": 10,
+          "kind": "ice"
         }
       ],
       "portals": [],
@@ -23446,13 +23512,14 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 144,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "obstacle"
     },
     {
       "id": "h-5-0",
       "world": 5,
       "local": 25,
-      "name": "沙漠遗迹秘境 1",
+      "name": "沙漠遗迹限时清屏",
       "subtitle": "#d7b579",
       "balls": 15,
       "initial": 2,
@@ -23543,16 +23610,18 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 154,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 145
     },
     {
       "id": "h-5-1",
       "world": 5,
       "local": 26,
-      "name": "沙漠遗迹秘境 2",
+      "name": "沙漠遗迹守护工程师",
       "subtitle": "#d7b579",
       "balls": 15,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -23640,13 +23709,15 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 164,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-5-2",
       "world": 5,
       "local": 27,
-      "name": "沙漠遗迹秘境 3",
+      "name": "沙漠遗迹首领讨伐",
       "subtitle": "#d7b579",
       "balls": 15,
       "initial": 2,
@@ -23658,7 +23729,7 @@
           "p1",
           ".",
           ".",
-          "K37",
+          "K56",
           ".",
           ".",
           "j7"
@@ -23737,13 +23808,14 @@
       "armor": 0,
       "starTarget": 8,
       "trigger": 174,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "raid"
     },
     {
       "id": "h-6-0",
       "world": 6,
       "local": 25,
-      "name": "星光天文台秘境 1",
+      "name": "星光天文台限时清屏",
       "subtitle": "#aaa7df",
       "balls": 16,
       "initial": 2,
@@ -23836,16 +23908,18 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 184,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 150
     },
     {
       "id": "h-6-1",
       "world": 6,
       "local": 26,
-      "name": "星光天文台秘境 2",
+      "name": "星光天文台守护工程师",
       "subtitle": "#aaa7df",
       "balls": 16,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -23935,13 +24009,15 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 194,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-6-2",
       "world": 6,
       "local": 27,
-      "name": "星光天文台秘境 3",
+      "name": "星光天文台机关试炼",
       "subtitle": "#aaa7df",
       "balls": 16,
       "initial": 2,
@@ -24018,6 +24094,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "x": 100,
+          "y": 370,
+          "width": 38,
+          "height": 10,
+          "kind": "phase"
+        },
+        {
+          "x": 260,
+          "y": 395,
+          "width": 38,
+          "height": 10,
+          "kind": "ice"
         }
       ],
       "portals": [
@@ -24034,13 +24124,14 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 204,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "obstacle"
     },
     {
       "id": "h-7-0",
       "world": 7,
       "local": 25,
-      "name": "霓虹都市秘境 1",
+      "name": "霓虹都市限时清屏",
       "subtitle": "#67dcc8",
       "balls": 16,
       "initial": 2,
@@ -24131,16 +24222,18 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 214,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 155
     },
     {
       "id": "h-7-1",
       "world": 7,
       "local": 26,
-      "name": "霓虹都市秘境 2",
+      "name": "霓虹都市守护工程师",
       "subtitle": "#67dcc8",
       "balls": 16,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -24228,13 +24321,15 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 224,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-7-2",
       "world": 7,
       "local": 27,
-      "name": "霓虹都市秘境 3",
+      "name": "霓虹都市首领讨伐",
       "subtitle": "#67dcc8",
       "balls": 16,
       "initial": 2,
@@ -24246,7 +24341,7 @@
           "j8",
           "b8",
           ".",
-          "K43",
+          "K64",
           ".",
           "b8",
           "j8"
@@ -24325,13 +24420,14 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 234,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "raid"
     },
     {
       "id": "h-8-0",
       "world": 8,
       "local": 25,
-      "name": "云端群岛秘境 1",
+      "name": "云端群岛限时清屏",
       "subtitle": "#bad9e2",
       "balls": 17,
       "initial": 2,
@@ -24415,16 +24511,18 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 244,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 160
     },
     {
       "id": "h-8-1",
       "world": 8,
       "local": 26,
-      "name": "云端群岛秘境 2",
+      "name": "云端群岛守护工程师",
       "subtitle": "#bad9e2",
       "balls": 17,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -24505,13 +24603,15 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 254,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-8-2",
       "world": 8,
       "local": 27,
-      "name": "云端群岛秘境 3",
+      "name": "云端群岛机关试炼",
       "subtitle": "#bad9e2",
       "balls": 17,
       "initial": 2,
@@ -24588,6 +24688,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "x": 100,
+          "y": 370,
+          "width": 38,
+          "height": 10,
+          "kind": "phase"
+        },
+        {
+          "x": 260,
+          "y": 395,
+          "width": 38,
+          "height": 10,
+          "kind": "ice"
         }
       ],
       "portals": [],
@@ -24595,13 +24709,14 @@
       "armor": 0,
       "starTarget": 9,
       "trigger": 264,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "obstacle"
     },
     {
       "id": "h-9-0",
       "world": 9,
       "local": 25,
-      "name": "梦境城堡秘境 1",
+      "name": "梦境城堡限时清屏",
       "subtitle": "#dab4d7",
       "balls": 17,
       "initial": 2,
@@ -24701,16 +24816,18 @@
       "armor": 0,
       "starTarget": 10,
       "trigger": 274,
-      "rewardItem": "rewind"
+      "rewardItem": "rewind",
+      "mode": "timed",
+      "timeLimit": 165
     },
     {
       "id": "h-9-1",
       "world": 9,
       "local": 26,
-      "name": "梦境城堡秘境 2",
+      "name": "梦境城堡守护工程师",
       "subtitle": "#dab4d7",
       "balls": 17,
-      "initial": 2,
+      "initial": 1,
       "boss": true,
       "elite": false,
       "hidden": true,
@@ -24807,13 +24924,15 @@
       "armor": 0,
       "starTarget": 10,
       "trigger": 284,
-      "rewardItem": "nova"
+      "rewardItem": "nova",
+      "mode": "defense",
+      "baseLives": 3
     },
     {
       "id": "h-9-2",
       "world": 9,
       "local": 27,
-      "name": "梦境城堡秘境 3",
+      "name": "梦境城堡首领讨伐",
       "subtitle": "#dab4d7",
       "balls": 17,
       "initial": 2,
@@ -24825,7 +24944,7 @@
           "j9",
           "b9",
           ".",
-          "K49",
+          "K72",
           ".",
           "b9",
           "p1"
@@ -24913,7 +25032,8 @@
       "armor": 0,
       "starTarget": 10,
       "trigger": 294,
-      "rewardItem": "hammer"
+      "rewardItem": "hammer",
+      "mode": "raid"
     }
   ]
 }

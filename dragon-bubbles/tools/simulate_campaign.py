@@ -17,7 +17,7 @@ INSTALL=r'''()=>{
  const s=candyGame.scene.getScene('Adventure');candyGame.loop.sleep();CandyAudio.set('enabled',false);s.burst=()=>{};window.simTime=s.time.now;
  window.tick=()=>{const d=1000/120;simTime+=d;s.time.preUpdate(simTime,d);s.time.update(simTime,d);s.physics.world.update(simTime,d);s.physics.world.postUpdate();s.update(simTime,d);s.tweens.update();};
  window.pickAngle=(variant=0)=>{
-  const nodes=[...s.nodes.values()].map(n=>({id:n.id,x:n.sprite.x,y:n.sprite.y,w:n.sprite.body.width/2+4,h:n.sprite.body.height/2+4,hp:n.hp,kind:n.kind,monster:n.monster}));
+  const nodes=[...s.nodes.values()].map(n=>({id:n.id,x:n.sprite.x,y:n.sprite.y,w:n.sprite.body.width/2+4,h:n.sprite.body.height/2+4,hp:n.hp/s.attackDamage,kind:n.kind,monster:n.monster}));
   const walls=s.obstacles.filter(o=>o.active).map((o,i)=>({id:10000+i,x:o.x,y:o.y,w:o.body.width/2+4,h:o.body.height/2+4,hp:999,kind:o.getData('kind'),wall:true}));
   const bodies=nodes.concat(walls);let best={score:-Infinity,angle:-Math.PI/2};
   for(let degree=12+variant%3;degree<=168;degree+=3){
@@ -44,14 +44,14 @@ INSTALL=r'''()=>{
   }return best;
  };
  window.runLevel=(index,hidden=false,variant=0)=>{
-  const level=hidden?CANDY_HIDDEN[index]:CANDY_LEVELS[index];s.startLevel(hidden?level:index);s.clearModal();s.state='ready';
+  const level=hidden?CANDY_HIDDEN[index]:CANDY_LEVELS[index];if(!hidden)while(s.upgradePower().ok){}s.startLevel(hidden?level:index);if(hidden)s.attackDamage=CandyProgress.recommendedAttack(level);s.clearModal();s.state='ready';
   const angles=[];let ticks=0;
   for(let attempt=0;attempt<20&&s.state==='ready';attempt++){
    const choice=pickAngle(variant);s.angle=choice.angle;if(s.energy>=100)s.armed=true;s.fire();angles.push(choice.angle);
    let t=0;while(s.state==='shooting'&&t++<4000){tick();ticks++;}
    if(t>=4000)break;
   }
-  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,angles,ticks,variant};
+  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,mode:s.level.mode||'normal',angles,ticks,variant};
  };
 }'''
 with sync_playwright() as p:
@@ -69,7 +69,7 @@ with sync_playwright() as p:
     if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.3.0','results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.4.0','results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

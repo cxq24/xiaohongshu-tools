@@ -16,7 +16,7 @@ if html_files != ['index.html']:raise SystemExit(f'Only root index.html is allow
 for path in files:
     if path.is_symlink() or not path.resolve().is_relative_to(BUILD.resolve()):raise SystemExit(f'Unexpected link: {path}')
     if path.suffix.lower() not in ALLOWED:raise SystemExit(f'Unsupported runtime type: {path.name}')
-output=ROOT/'dragon-bubbles-0.3.0.zip'
+output=ROOT/'dragon-bubbles-0.4.0.zip'
 with ZipFile(output,'w',ZIP_DEFLATED) as archive:
     for path in files:
         info=ZipInfo(path.relative_to(BUILD).as_posix(),(2026,11,22,0,0,0))

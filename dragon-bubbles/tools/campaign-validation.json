@@ -1,9 +1,8 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main_passed": 300,
   "hidden_passed": 30,
   "items_used": 0,
-  "structural_signatures": 300,
   "main": [
     {
       "id": 0,
@@ -14,6 +13,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.8797932657906435
@@ -30,6 +32,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -2.251474735072685,
@@ -47,6 +52,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.6283185307179586,
@@ -65,6 +73,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.6806784082777885,
@@ -82,6 +93,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -0.7853981633974483,
@@ -99,6 +113,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -2.6179938779914944,
@@ -119,6 +136,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -0.7330382858376184,
         -2.6179938779914944,
@@ -136,6 +156,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -1.9896753472735356,
@@ -155,6 +178,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.3141592653589793,
@@ -174,6 +200,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.827433388230814,
@@ -192,6 +221,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -0.20943951023931953,
@@ -210,6 +242,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 110,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -2.356194490192345,
@@ -227,6 +262,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.670353755551324,
@@ -246,6 +284,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.6806784082777885,
@@ -263,6 +304,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.3141592653589793,
@@ -281,6 +325,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.5235987755982988,
@@ -298,6 +345,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.827433388230814,
@@ -315,6 +365,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -0.6806784082777885,
@@ -333,6 +386,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.3665191429188092,
@@ -352,6 +408,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -0.9948376736367678,
@@ -371,6 +430,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.20943951023931953,
@@ -389,6 +451,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -0.47123889803846897,
@@ -409,6 +474,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -1.1519173063162575,
         -2.827433388230814,
@@ -427,6 +495,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 130,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.2617993877991494,
@@ -446,6 +517,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.6283185307179586,
@@ -466,6 +540,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.2617993877991494,
@@ -485,6 +562,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -0.890117918517108,
         -2.775073510670984,
@@ -504,6 +584,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.3141592653589793,
@@ -523,6 +606,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.7853981633974483,
@@ -542,6 +628,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "normal",
       "angles": [
         -1.9896753472735356,
         -0.20943951023931953,
@@ -560,6 +649,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -0.7330382858376184,
         -0.3141592653589793,
@@ -577,6 +669,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.47123889803846897,
@@ -594,6 +689,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.9321531433504737,
@@ -611,6 +709,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.3665191429188092,
@@ -628,6 +729,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.47123889803846897,
@@ -645,6 +749,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.6179938779914944,
@@ -662,6 +769,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -2.775073510670984,
@@ -679,6 +789,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.775073510670984,
@@ -696,6 +809,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -2.775073510670984,
@@ -713,6 +829,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.4609142453120043,
@@ -731,6 +850,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -1.8849555921538759,
         -0.6283185307179586,
@@ -748,6 +870,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 160,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -0.20943951023931953,
@@ -765,6 +890,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -2.9321531433504737,
@@ -783,6 +911,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.3665191429188092,
@@ -801,6 +932,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.3141592653589793,
@@ -818,6 +952,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.6283185307179586,
@@ -838,6 +975,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.1467549799530254,
@@ -856,6 +996,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.6283185307179586,
@@ -873,6 +1016,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.41887902047863906,
@@ -893,6 +1039,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.3141592653589793,
@@ -911,6 +1060,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.775073510670984,
@@ -930,6 +1082,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -2.722713633111154,
@@ -948,6 +1103,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.3141592653589793,
@@ -967,6 +1125,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 180,
+      "mode": "normal",
       "angles": [
         -2.251474735072685,
         -2.199114857512855,
@@ -985,6 +1146,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -2.9321531433504737,
@@ -1005,6 +1169,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -0.41887902047863906,
@@ -1025,6 +1192,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.199114857512855,
@@ -1043,6 +1213,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -1.413716694115407,
@@ -1063,6 +1236,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.20943951023931953,
@@ -1082,6 +1258,9 @@
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "normal",
       "angles": [
         -2.356194490192345,
         -0.47123889803846897,
@@ -1101,6 +1280,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.20943951023931953,
@@ -1118,6 +1300,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.9948376736367678,
@@ -1136,6 +1321,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -2.356194490192345,
@@ -1155,6 +1343,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.6283185307179586,
@@ -1173,6 +1364,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.9424777960769379,
@@ -1190,6 +1384,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.20943951023931953,
@@ -1207,6 +1404,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.7853981633974483,
         -2.251474735072685,
@@ -1226,6 +1426,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.9424777960769379,
         -2.827433388230814,
@@ -1244,6 +1447,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -0.41887902047863906
@@ -1260,6 +1466,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.9948376736367678,
@@ -1277,6 +1486,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -2.9321531433504737,
@@ -1295,6 +1507,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 212,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.7853981633974483,
@@ -1315,6 +1530,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -2.722713633111154,
@@ -1334,6 +1552,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.7853981633974483,
@@ -1353,6 +1574,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -2.5132741228718345,
         -0.3665191429188092,
@@ -1372,6 +1596,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -0.5759586531581288,
         -2.356194490192345,
@@ -1390,6 +1617,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -0.41887902047863906,
@@ -1408,6 +1638,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -2.4609142453120043,
@@ -1427,6 +1660,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -2.356194490192345,
         -0.6283185307179586,
@@ -1445,6 +1681,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -2.8797932657906435,
@@ -1464,6 +1703,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.7853981633974483,
@@ -1483,6 +1725,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -0.7853981633974483,
         -2.722713633111154,
@@ -1502,6 +1747,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.6806784082777885,
@@ -1523,6 +1771,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 236,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -0.3665191429188092,
@@ -1541,6 +1792,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.775073510670984,
@@ -1561,6 +1815,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -0.5759586531581288,
         -0.2617993877991494,
@@ -1581,6 +1838,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.3665191429188092,
@@ -1603,6 +1863,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -2.8797932657906435,
@@ -1621,6 +1884,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -0.7853981633974483,
         -2.4609142453120043,
@@ -1640,6 +1906,9 @@
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.6283185307179586,
@@ -1659,6 +1928,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.41887902047863906,
@@ -1677,6 +1949,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -2.6179938779914944
@@ -1693,6 +1968,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -2.356194490192345,
@@ -1710,6 +1988,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.2617993877991494
@@ -1726,6 +2007,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -2.1467549799530254,
         -2.4085543677521746,
@@ -1743,6 +2027,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "normal",
       "angles": [
         -2.356194490192345,
         -2.8797932657906435
@@ -1759,6 +2046,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -1.0471975511965976,
@@ -1776,6 +2066,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -1.1519173063162575,
         -0.7853981633974483
@@ -1792,6 +2085,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -0.41887902047863906
@@ -1808,6 +2104,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.6283185307179586,
@@ -1826,6 +2125,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.20943951023931953,
@@ -1844,6 +2146,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 274,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -2.722713633111154,
@@ -1852,7 +2157,7 @@
         -2.199114857512855,
         -1.9896753472735356
       ],
-      "ticks": 6630,
+      "ticks": 6129,
       "variant": 0
     },
     {
@@ -1864,6 +2169,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.722713633111154,
@@ -1881,6 +2189,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.6806784082777885,
@@ -1899,6 +2210,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -0.9948376736367678,
         -2.251474735072685,
@@ -1916,6 +2230,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -1.0471975511965976,
@@ -1936,6 +2253,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -0.9424777960769379,
@@ -1955,13 +2275,16 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "normal",
       "angles": [
         -0.8377580409572781,
         -2.670353755551324,
         -0.6806784082777885,
         -2.775073510670984
       ],
-      "ticks": 5576,
+      "ticks": 5561,
       "variant": 0
     },
     {
@@ -1973,6 +2296,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.6806784082777885,
@@ -1990,6 +2316,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -2.1467549799530254,
@@ -2009,6 +2338,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.4609142453120043,
@@ -2027,6 +2359,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -2.303834612632515,
         -0.890117918517108,
@@ -2049,6 +2384,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.47123889803846897,
@@ -2068,6 +2406,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 302,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.6283185307179586,
@@ -2087,6 +2428,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.3665191429188092,
@@ -2105,6 +2449,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -0.7330382858376184,
         -2.6179938779914944,
@@ -2124,6 +2471,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.3665191429188092,
@@ -2144,6 +2494,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -2.199114857512855,
         -0.9424777960769379,
@@ -2164,6 +2517,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -0.9424777960769379,
         -0.47123889803846897,
@@ -2183,6 +2539,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.251474735072685,
@@ -2202,6 +2561,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -1.0471975511965976,
         -0.2617993877991494
@@ -2218,6 +2580,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -0.7330382858376184,
@@ -2235,6 +2600,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.4609142453120043
@@ -2251,6 +2619,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -1.361356816555577,
@@ -2268,6 +2639,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.722713633111154,
@@ -2285,6 +2659,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -2.4609142453120043
@@ -2301,6 +2678,9 @@
       "remaining": 0,
       "defeated": 9,
       "total": 9,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -0.8377580409572781,
         -0.7853981633974483,
@@ -2319,6 +2699,9 @@
       "remaining": 0,
       "defeated": 8,
       "total": 8,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -2.670353755551324
@@ -2335,11 +2718,14 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.41887902047863906
       ],
-      "ticks": 5027,
+      "ticks": 4874,
       "variant": 0
     },
     {
@@ -2351,6 +2737,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -1.0471975511965976,
         -1.0471975511965976,
@@ -2370,6 +2759,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -2.251474735072685,
         -2.1467549799530254,
@@ -2391,6 +2783,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 346,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.6806784082777885,
@@ -2410,6 +2805,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -1.2566370614359172,
@@ -2433,6 +2831,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -1.3089969389957472,
@@ -2453,6 +2854,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -2.251474735072685,
@@ -2470,6 +2874,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -2.1467549799530254,
         -0.47123889803846897,
@@ -2488,6 +2895,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -1.3089969389957472,
@@ -2505,6 +2915,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "normal",
       "angles": [
         -2.199114857512855,
         -0.20943951023931953,
@@ -2525,6 +2938,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -0.9948376736367678,
         -2.670353755551324,
@@ -2542,6 +2958,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -1.1519173063162575,
         -2.722713633111154,
@@ -2560,6 +2979,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.9948376736367678,
@@ -2581,6 +3003,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.890117918517108,
@@ -2604,6 +3029,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -0.8377580409572781,
@@ -2623,6 +3051,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 378,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.9948376736367678,
@@ -2641,6 +3072,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -2.0943951023931953,
         -0.41887902047863906,
@@ -2660,6 +3094,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.9424777960769379,
@@ -2679,6 +3116,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -2.251474735072685,
         -0.41887902047863906,
@@ -2694,23 +3134,21 @@
       "id": 147,
       "world": 4,
       "state": "won",
-      "shots": 9,
-      "hits": 84,
+      "shots": 4,
+      "hits": 76,
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.0943951023931953,
-        -2.722713633111154,
         -2.356194490192345,
-        -0.6806784082777885,
-        -2.0420352248333655,
-        -0.8377580409572781,
-        -1.5184364492350666,
-        -0.41887902047863906
+        -0.47123889803846897
       ],
-      "ticks": 8357,
+      "ticks": 6120,
       "variant": 0
     },
     {
@@ -2722,6 +3160,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.4085543677521746,
@@ -2741,6 +3182,9 @@
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "normal",
       "angles": [
         -2.199114857512855,
         -2.5656340004316647,
@@ -2759,6 +3203,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -0.6806784082777885,
@@ -2777,6 +3224,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -1.6755160819145563,
@@ -2796,6 +3246,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.251474735072685,
@@ -2813,6 +3266,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -2.722713633111154,
@@ -2831,6 +3287,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -1.6755160819145563,
         -0.47123889803846897,
@@ -2848,6 +3307,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "normal",
       "angles": [
         -2.199114857512855,
         -1.6755160819145563,
@@ -2865,6 +3327,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -1.4660765716752369,
         -1.4660765716752369,
@@ -2882,6 +3347,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -2.722713633111154,
@@ -2900,6 +3368,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -1.4660765716752369,
@@ -2918,6 +3389,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.8377580409572781,
@@ -2938,6 +3412,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -2.5132741228718345,
@@ -2956,6 +3433,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 428,
+      "mode": "normal",
       "angles": [
         -1.2042771838760873,
         -0.3665191429188092,
@@ -2975,6 +3455,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.6806784082777885,
@@ -2994,6 +3477,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.670353755551324,
@@ -3002,7 +3488,7 @@
         -2.9321531433504737,
         -2.8797932657906435
       ],
-      "ticks": 8222,
+      "ticks": 7425,
       "variant": 0
     },
     {
@@ -3014,6 +3500,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -2.0420352248333655,
@@ -3034,6 +3523,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.4609142453120043,
@@ -3054,6 +3546,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.7853981633974483,
@@ -3072,6 +3567,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -1.0995574287564276,
@@ -3091,6 +3589,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -1.6755160819145563,
         -0.7853981633974483,
@@ -3110,6 +3611,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -1.4660765716752369,
         -0.6806784082777885,
@@ -3128,6 +3632,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -1.4660765716752369,
         -2.251474735072685,
@@ -3149,6 +3656,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -1.0471975511965976,
         -0.9424777960769379,
@@ -3173,6 +3683,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -0.7853981633974483,
@@ -3193,6 +3706,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 464,
+      "mode": "normal",
       "angles": [
         -2.1467549799530254,
         -0.9948376736367678,
@@ -3213,6 +3729,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.9424777960769379,
@@ -3232,6 +3751,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.1467549799530254,
@@ -3252,6 +3774,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -0.8377580409572781,
         -2.775073510670984,
@@ -3260,7 +3785,7 @@
         -2.775073510670984,
         -0.3665191429188092
       ],
-      "ticks": 7958,
+      "ticks": 7167,
       "variant": 0
     },
     {
@@ -3272,6 +3797,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.251474735072685,
@@ -3292,6 +3820,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -0.9948376736367678,
         -1.0995574287564276,
@@ -3312,6 +3843,9 @@
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "normal",
       "angles": [
         -1.7278759594743864,
         -2.775073510670984,
@@ -3332,6 +3866,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.8797932657906435,
@@ -3350,6 +3887,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.6179938779914944,
@@ -3367,6 +3907,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -2.9321531433504737,
@@ -3385,6 +3928,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -1.9896753472735356,
         -0.7853981633974483,
@@ -3403,6 +3949,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -0.6806784082777885,
@@ -3421,6 +3970,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "normal",
       "angles": [
         -0.8377580409572781,
         -2.827433388230814,
@@ -3441,6 +3993,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -2.356194490192345,
@@ -3448,7 +4003,7 @@
         -0.3665191429188092,
         -2.775073510670984
       ],
-      "ticks": 6269,
+      "ticks": 5484,
       "variant": 0
     },
     {
@@ -3460,6 +4015,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.20943951023931953,
@@ -3478,6 +4036,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.3141592653589793,
@@ -3497,6 +4058,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -2.670353755551324,
@@ -3517,6 +4081,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -0.2617993877991494,
@@ -3535,6 +4102,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 524,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.5656340004316647,
@@ -3543,7 +4113,7 @@
         -0.20943951023931953,
         -1.6231562043547263
       ],
-      "ticks": 6207,
+      "ticks": 5515,
       "variant": 0
     },
     {
@@ -3555,6 +4125,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.9321531433504737,
@@ -3574,6 +4147,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -0.890117918517108,
         -0.9948376736367678,
@@ -3595,13 +4171,16 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -0.7330382858376184,
         -2.670353755551324,
         -2.775073510670984,
         -0.20943951023931953
       ],
-      "ticks": 5631,
+      "ticks": 5036,
       "variant": 0
     },
     {
@@ -3613,6 +4192,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -2.827433388230814,
@@ -3635,6 +4217,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -2.303834612632515,
         -2.722713633111154,
@@ -3654,6 +4239,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "normal",
       "angles": [
         -2.5132741228718345,
         -2.4609142453120043,
@@ -3673,6 +4261,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -1.0471975511965976,
@@ -3691,6 +4282,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -1.0471975511965976,
@@ -3712,6 +4306,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.356194490192345,
@@ -3722,7 +4319,7 @@
         -0.6283185307179586,
         -0.3141592653589793
       ],
-      "ticks": 8544,
+      "ticks": 7972,
       "variant": 0
     },
     {
@@ -3734,6 +4331,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.7853981633974483,
@@ -3757,6 +4357,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.3141592653589793,
@@ -3778,6 +4381,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 572,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.5132741228718345,
@@ -3798,6 +4404,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -1.1519173063162575,
         -2.827433388230814,
@@ -3819,6 +4428,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.7330382858376184,
@@ -3826,7 +4438,7 @@
         -0.47123889803846897,
         -2.9321531433504737
       ],
-      "ticks": 5857,
+      "ticks": 5164,
       "variant": 0
     },
     {
@@ -3838,6 +4450,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.199114857512855,
@@ -3860,6 +4475,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -1.0995574287564276,
@@ -3879,6 +4497,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.47123889803846897,
@@ -3899,6 +4520,9 @@
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.20943951023931953,
@@ -3918,6 +4542,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.4609142453120043,
@@ -3936,6 +4563,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -2.199114857512855,
         -2.827433388230814,
@@ -3953,6 +4583,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -0.9948376736367678,
         -2.8797932657906435,
@@ -3972,6 +4605,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -2.8797932657906435,
@@ -3990,6 +4626,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.7330382858376184,
@@ -4008,6 +4647,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.827433388230814,
@@ -4025,6 +4667,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -1.9896753472735356,
         -2.722713633111154,
@@ -4043,6 +4688,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.41887902047863906,
@@ -4063,6 +4711,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -2.4085543677521746,
         -0.890117918517108,
@@ -4083,6 +4734,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -0.6806784082777885,
@@ -4102,6 +4756,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.8797932657906435,
@@ -4121,6 +4778,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 648,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -2.6179938779914944,
@@ -4141,6 +4801,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -0.890117918517108,
@@ -4160,6 +4823,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.670353755551324,
@@ -4181,6 +4847,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -2.670353755551324,
@@ -4201,6 +4870,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.3665191429188092,
@@ -4219,6 +4891,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -0.9948376736367678,
         -2.9321531433504737,
@@ -4240,6 +4915,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "normal",
       "angles": [
         -0.7330382858376184,
         -2.4609142453120043,
@@ -4260,6 +4938,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.7853981633974483,
@@ -4279,6 +4960,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.9321531433504737,
@@ -4298,6 +4982,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -2.251474735072685,
         -0.7330382858376184,
@@ -4318,6 +5005,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -0.9424777960769379,
@@ -4338,6 +5028,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -0.3141592653589793,
@@ -4360,6 +5053,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 704,
+      "mode": "normal",
       "angles": [
         -1.1519173063162575,
         -2.356194490192345,
@@ -4380,6 +5076,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -0.7853981633974483,
         -2.670353755551324,
@@ -4401,6 +5100,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.9948376736367678,
@@ -4421,6 +5123,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -2.827433388230814,
@@ -4442,6 +5147,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -2.1467549799530254,
         -2.8797932657906435,
@@ -4456,20 +5164,22 @@
       "id": 238,
       "world": 7,
       "state": "won",
-      "shots": 6,
-      "hits": 145,
+      "shots": 5,
+      "hits": 151,
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -2.4085543677521746,
         -0.5235987755982988,
-        -2.8797932657906435,
-        -2.722713633111154,
-        -1.780235837034216
+        -2.670353755551324,
+        -2.9321531433504737
       ],
-      "ticks": 8350,
+      "ticks": 7176,
       "variant": 0
     },
     {
@@ -4481,6 +5191,9 @@
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -2.251474735072685,
@@ -4502,6 +5215,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -2.5656340004316647,
@@ -4522,6 +5238,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -2.356194490192345,
         -0.20943951023931953,
@@ -4540,6 +5259,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -0.6806784082777885,
@@ -4559,6 +5281,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -0.3141592653589793,
         -2.8797932657906435,
@@ -4577,6 +5302,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.3141592653589793,
@@ -4595,6 +5323,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "normal",
       "angles": [
         -2.8797932657906435,
         -2.4609142453120043,
@@ -4613,6 +5344,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -2.5132741228718345,
         -2.722713633111154,
@@ -4630,6 +5364,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.6283185307179586,
@@ -4649,6 +5386,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -2.0943951023931953,
@@ -4668,6 +5408,9 @@
       "remaining": 0,
       "defeated": 10,
       "total": 10,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -2.356194490192345,
         -2.303834612632515,
@@ -4681,19 +5424,21 @@
       "id": 250,
       "world": 8,
       "state": "won",
-      "shots": 5,
-      "hits": 98,
+      "shots": 4,
+      "hits": 99,
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.7853981633974483,
         -2.722713633111154,
-        -0.41887902047863906,
-        -1.6755160819145563
+        -0.41887902047863906
       ],
-      "ticks": 6123,
+      "ticks": 5667,
       "variant": 0
     },
     {
@@ -4705,6 +5450,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 792,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.20943951023931953,
@@ -4724,6 +5472,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -1.9896753472735356,
@@ -4743,6 +5494,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -1.8849555921538759,
@@ -4762,6 +5516,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -2.670353755551324,
@@ -4781,6 +5538,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -2.722713633111154,
@@ -4800,6 +5560,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.20943951023931953,
@@ -4820,6 +5583,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "normal",
       "angles": [
         -2.4609142453120043,
         -1.9373154697137058,
@@ -4838,6 +5604,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -0.20943951023931953,
@@ -4856,6 +5625,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.20943951023931953,
@@ -4876,6 +5648,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -0.6806784082777885,
         -2.4085543677521746,
@@ -4895,6 +5670,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.5235987755982988,
@@ -4905,7 +5683,7 @@
         -2.9321531433504737,
         -1.5184364492350666
       ],
-      "ticks": 9608,
+      "ticks": 9139,
       "variant": 0
     },
     {
@@ -4917,6 +5695,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -1.2042771838760873,
@@ -4936,6 +5717,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 856,
+      "mode": "normal",
       "angles": [
         -2.9321531433504737,
         -0.7330382858376184,
@@ -4955,6 +5739,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -2.722713633111154,
         -0.47123889803846897,
@@ -4976,6 +5763,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.41887902047863906,
@@ -4996,6 +5786,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -2.5656340004316647,
         -0.6806784082777885,
@@ -5016,6 +5809,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -2.0943951023931953,
@@ -5037,6 +5833,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.722713633111154,
@@ -5056,6 +5855,9 @@
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -2.8797932657906435,
@@ -5075,6 +5877,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -0.41887902047863906,
         -0.20943951023931953,
@@ -5093,6 +5898,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -0.2617993877991494,
         -1.0471975511965976,
@@ -5113,6 +5921,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.7853981633974483,
@@ -5129,19 +5940,22 @@
       "world": 9,
       "state": "won",
       "shots": 6,
-      "hits": 79,
+      "hits": 80,
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -1.6755160819145563,
         -1.0471975511965976,
         -0.7853981633974483,
         -2.4609142453120043,
-        -1.6755160819145563
+        -0.2617993877991494
       ],
-      "ticks": 6852,
+      "ticks": 5990,
       "variant": 0
     },
     {
@@ -5153,6 +5967,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -0.20943951023931953,
@@ -5171,6 +5988,9 @@
       "remaining": 0,
       "defeated": 14,
       "total": 14,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "normal",
       "angles": [
         -1.9896753472735356,
         -2.722713633111154,
@@ -5194,6 +6014,9 @@
       "remaining": 0,
       "defeated": 12,
       "total": 12,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -0.7853981633974483,
         -0.20943951023931953,
@@ -5211,6 +6034,9 @@
       "remaining": 0,
       "defeated": 11,
       "total": 11,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -2.6179938779914944,
         -2.722713633111154,
@@ -5228,6 +6054,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -0.47123889803846897,
         -2.670353755551324,
@@ -5245,6 +6074,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.6283185307179586,
@@ -5253,7 +6085,7 @@
         -2.0943951023931953,
         -2.9321531433504737
       ],
-      "ticks": 6002,
+      "ticks": 5213,
       "variant": 0
     },
     {
@@ -5265,6 +6097,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.2617993877991494,
@@ -5285,6 +6120,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 956,
+      "mode": "normal",
       "angles": [
         -0.6283185307179586,
         -2.8797932657906435,
@@ -5304,6 +6142,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -0.5235987755982988,
         -2.0943951023931953,
@@ -5322,6 +6163,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -2.670353755551324,
@@ -5341,6 +6185,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -0.5759586531581288,
@@ -5360,6 +6207,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -1.6755160819145563,
         -0.890117918517108,
@@ -5368,7 +6218,7 @@
         -1.2042771838760873,
         -2.670353755551324
       ],
-      "ticks": 6008,
+      "ticks": 5564,
       "variant": 0
     },
     {
@@ -5380,6 +6230,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -0.20943951023931953,
         -0.3141592653589793,
@@ -5399,6 +6252,9 @@
       "remaining": 0,
       "defeated": 13,
       "total": 13,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -1.7278759594743864,
@@ -5421,6 +6277,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -2.1467549799530254,
         -0.9424777960769379,
@@ -5441,6 +6300,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -2.5132741228718345,
         -0.7330382858376184,
@@ -5450,28 +6312,32 @@
         -0.20943951023931953,
         -0.9424777960769379
       ],
-      "ticks": 7522,
+      "ticks": 7716,
       "variant": 0
     },
     {
       "id": 290,
       "world": 9,
       "state": "won",
-      "shots": 7,
-      "hits": 143,
+      "shots": 8,
+      "hits": 140,
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -2.775073510670984,
         -0.47123889803846897,
         -0.2617993877991494,
         -0.47123889803846897,
-        -2.199114857512855,
+        -0.41887902047863906,
+        -0.2617993877991494,
         -0.7853981633974483,
-        -0.2617993877991494
+        -0.20943951023931953
       ],
-      "ticks": 9307,
+      "ticks": 10258,
       "variant": 0
     },
     {
@@ -5483,6 +6349,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -1.2566370614359172,
         -0.8377580409572781,
@@ -5499,21 +6368,22 @@
       "id": 292,
       "world": 9,
       "state": "won",
-      "shots": 7,
-      "hits": 90,
+      "shots": 5,
+      "hits": 86,
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -1.9896753472735356,
         -2.775073510670984,
         -0.3665191429188092,
         -2.6179938779914944,
-        -1.5184364492350666,
-        -2.670353755551324,
-        -2.775073510670984
+        -0.47123889803846897
       ],
-      "ticks": 9820,
+      "ticks": 6871,
       "variant": 0
     },
     {
@@ -5525,6 +6395,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 1028,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.251474735072685,
@@ -5541,21 +6414,25 @@
       "id": 294,
       "world": 9,
       "state": "won",
-      "shots": 7,
-      "hits": 150,
+      "shots": 8,
+      "hits": 154,
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -0.3665191429188092,
         -2.722713633111154,
-        -2.1467549799530254,
-        -2.4609142453120043,
-        -2.303834612632515,
-        -0.9424777960769379,
-        -0.20943951023931953
+        -2.0943951023931953,
+        -2.670353755551324,
+        -2.0943951023931953,
+        -2.0420352248333655,
+        -0.7853981633974483,
+        -0.9948376736367678
       ],
-      "ticks": 11028,
+      "ticks": 7486,
       "variant": 0
     },
     {
@@ -5567,6 +6444,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -2.5132741228718345,
@@ -5584,22 +6464,22 @@
       "id": 296,
       "world": 9,
       "state": "won",
-      "shots": 8,
-      "hits": 109,
+      "shots": 5,
+      "hits": 111,
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -1.780235837034216,
         -2.1467549799530254,
         -2.199114857512855,
-        -2.670353755551324,
-        -1.5184364492350666,
-        -1.6755160819145563,
-        -2.722713633111154
+        -2.775073510670984
       ],
-      "ticks": 7662,
+      "ticks": 6273,
       "variant": 0
     },
     {
@@ -5611,6 +6491,9 @@
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -2.303834612632515,
         -2.4085543677521746,
@@ -5619,7 +6502,7 @@
         -0.47123889803846897,
         -2.670353755551324
       ],
-      "ticks": 6965,
+      "ticks": 6187,
       "variant": 0
     },
     {
@@ -5631,6 +6514,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -2.827433388230814,
         -0.47123889803846897,
@@ -5650,6 +6536,9 @@
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "normal",
       "angles": [
         -2.670353755551324,
         -0.2617993877991494,
@@ -5676,6 +6565,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 100,
+      "mode": "timed",
       "angles": [
         -2.9321531433504737,
         -1.6231562043547263,
@@ -5691,18 +6583,21 @@
       "world": 0,
       "state": "won",
       "shots": 5,
-      "hits": 93,
+      "hits": 84,
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 120,
+      "mode": "defense",
       "angles": [
+        -0.9948376736367678,
         -2.827433388230814,
         -0.7853981633974483,
-        -0.20943951023931953,
-        -2.199114857512855,
-        -1.8849555921538759
+        -0.2617993877991494,
+        -2.827433388230814
       ],
-      "ticks": 3278,
+      "ticks": 3900,
       "variant": 0
     },
     {
@@ -5710,19 +6605,22 @@
       "world": 0,
       "state": "won",
       "shots": 6,
-      "hits": 97,
+      "hits": 89,
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 140,
+      "mode": "obstacle",
       "angles": [
         -2.827433388230814,
-        -2.9321531433504737,
+        -0.2617993877991494,
         -2.4085543677521746,
-        -2.4085543677521746,
-        -0.5759586531581288,
-        -2.5132741228718345
+        -2.6179938779914944,
+        -1.0471975511965976,
+        -0.20943951023931953
       ],
-      "ticks": 4656,
+      "ticks": 6160,
       "variant": 0
     },
     {
@@ -5734,6 +6632,9 @@
       "remaining": 0,
       "defeated": 21,
       "total": 21,
+      "escaped": 0,
+      "attack": 150,
+      "mode": "timed",
       "angles": [
         -2.5132741228718345,
         -0.3141592653589793,
@@ -5749,38 +6650,44 @@
       "id": "h-1-1",
       "world": 1,
       "state": "won",
-      "shots": 5,
-      "hits": 105,
+      "shots": 6,
+      "hits": 87,
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 170,
+      "mode": "defense",
       "angles": [
-        -0.5759586531581288,
         -0.20943951023931953,
-        -0.3141592653589793,
-        -0.20943951023931953,
-        -0.5235987755982988
+        -0.890117918517108,
+        -0.6283185307179586,
+        -2.0420352248333655,
+        -1.2566370614359172,
+        -0.3141592653589793
       ],
-      "ticks": 5080,
+      "ticks": 3974,
       "variant": 0
     },
     {
       "id": "h-1-2",
       "world": 1,
       "state": "won",
-      "shots": 5,
-      "hits": 79,
+      "shots": 4,
+      "hits": 97,
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 190,
+      "mode": "raid",
       "angles": [
         -0.2617993877991494,
         -1.2042771838760873,
-        -0.5235987755982988,
-        -0.7853981633974483,
-        -0.2617993877991494
+        -2.5656340004316647,
+        -0.41887902047863906
       ],
-      "ticks": 3740,
+      "ticks": 3878,
       "variant": 0
     },
     {
@@ -5792,6 +6699,9 @@
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 200,
+      "mode": "timed",
       "angles": [
         -2.722713633111154,
         -2.0943951023931953,
@@ -5809,20 +6719,23 @@
       "world": 2,
       "state": "won",
       "shots": 7,
-      "hits": 115,
+      "hits": 112,
       "remaining": 0,
       "defeated": 15,
       "total": 15,
+      "escaped": 0,
+      "attack": 224,
+      "mode": "defense",
       "angles": [
-        -2.199114857512855,
-        -0.6283185307179586,
-        -0.5235987755982988,
-        -2.722713633111154,
-        -2.251474735072685,
-        -1.5184364492350666,
-        -0.41887902047863906
+        -1.7278759594743864,
+        -0.6806784082777885,
+        -0.6806784082777885,
+        -2.827433388230814,
+        -0.7853981633974483,
+        -0.9424777960769379,
+        -2.9321531433504737
       ],
-      "ticks": 4074,
+      "ticks": 5224,
       "variant": 0
     },
     {
@@ -5830,18 +6743,21 @@
       "world": 2,
       "state": "won",
       "shots": 5,
-      "hits": 140,
+      "hits": 142,
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 248,
+      "mode": "obstacle",
       "angles": [
-        -1.8849555921538759,
-        -0.41887902047863906,
-        -0.3665191429188092,
-        -2.9321531433504737,
-        -0.20943951023931953
+        -0.47123889803846897,
+        -0.5759586531581288,
+        -2.670353755551324,
+        -0.890117918517108,
+        -0.2617993877991494
       ],
-      "ticks": 4891,
+      "ticks": 4307,
       "variant": 0
     },
     {
@@ -5853,6 +6769,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 260,
+      "mode": "timed",
       "angles": [
         -0.2617993877991494,
         -0.3665191429188092,
@@ -5867,39 +6786,45 @@
       "id": "h-3-1",
       "world": 3,
       "state": "won",
-      "shots": 5,
-      "hits": 122,
+      "shots": 6,
+      "hits": 126,
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 288,
+      "mode": "defense",
       "angles": [
-        -0.20943951023931953,
-        -2.9321531433504737,
+        -2.0943951023931953,
+        -2.8797932657906435,
+        -0.2617993877991494,
         -2.0943951023931953,
         -0.7853981633974483,
         -0.20943951023931953
       ],
-      "ticks": 6526,
+      "ticks": 7890,
       "variant": 0
     },
     {
       "id": "h-3-2",
       "world": 3,
       "state": "won",
-      "shots": 6,
-      "hits": 113,
+      "shots": 5,
+      "hits": 121,
       "remaining": 0,
       "defeated": 20,
       "total": 20,
+      "escaped": 0,
+      "attack": 316,
+      "mode": "raid",
       "angles": [
         -0.5235987755982988,
         -2.1467549799530254,
-        -2.670353755551324,
-        -0.6283185307179586,
-        -1.0471975511965976,
-        -0.8377580409572781
+        -0.8377580409572781,
+        -0.20943951023931953,
+        -2.4609142453120043
       ],
-      "ticks": 3309,
+      "ticks": 4024,
       "variant": 0
     },
     {
@@ -5911,6 +6836,9 @@
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 330,
+      "mode": "timed",
       "angles": [
         -2.4609142453120043,
         -0.3141592653589793,
@@ -5928,22 +6856,22 @@
       "id": "h-4-1",
       "world": 4,
       "state": "won",
-      "shots": 8,
-      "hits": 121,
+      "shots": 5,
+      "hits": 108,
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 362,
+      "mode": "defense",
       "angles": [
-        -0.7853981633974483,
-        -0.6283185307179586,
-        -1.0471975511965976,
-        -2.9321531433504737,
-        -0.41887902047863906,
-        -2.827433388230814,
+        -0.6806784082777885,
         -0.47123889803846897,
+        -2.303834612632515,
+        -2.356194490192345,
         -2.775073510670984
       ],
-      "ticks": 8492,
+      "ticks": 3885,
       "variant": 0
     },
     {
@@ -5951,18 +6879,21 @@
       "world": 4,
       "state": "won",
       "shots": 5,
-      "hits": 115,
+      "hits": 113,
       "remaining": 0,
       "defeated": 16,
       "total": 16,
+      "escaped": 0,
+      "attack": 394,
+      "mode": "obstacle",
       "angles": [
-        -2.303834612632515,
         -0.890117918517108,
-        -2.8797932657906435,
-        -2.1467549799530254,
-        -2.1467549799530254
+        -0.20943951023931953,
+        -2.199114857512855,
+        -0.3665191429188092,
+        -2.356194490192345
       ],
-      "ticks": 4624,
+      "ticks": 7643,
       "variant": 0
     },
     {
@@ -5974,6 +6905,9 @@
       "remaining": 0,
       "defeated": 18,
       "total": 18,
+      "escaped": 0,
+      "attack": 410,
+      "mode": "timed",
       "angles": [
         -0.6283185307179586,
         -2.670353755551324,
@@ -5989,20 +6923,24 @@
       "id": "h-5-1",
       "world": 5,
       "state": "won",
-      "shots": 6,
-      "hits": 151,
+      "shots": 7,
+      "hits": 166,
       "remaining": 0,
       "defeated": 24,
       "total": 24,
+      "escaped": 0,
+      "attack": 446,
+      "mode": "defense",
       "angles": [
-        -2.199114857512855,
-        -2.0420352248333655,
-        -0.3665191429188092,
+        -1.9896753472735356,
+        -2.722713633111154,
+        -0.47123889803846897,
+        -2.670353755551324,
         -2.775073510670984,
         -0.7853981633974483,
         -0.3665191429188092
       ],
-      "ticks": 4912,
+      "ticks": 5824,
       "variant": 0
     },
     {
@@ -6010,19 +6948,22 @@
       "world": 5,
       "state": "won",
       "shots": 6,
-      "hits": 158,
+      "hits": 177,
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 482,
+      "mode": "raid",
       "angles": [
         -0.6806784082777885,
         -2.8797932657906435,
-        -2.356194490192345,
+        -1.9896753472735356,
         -2.5132741228718345,
         -0.5235987755982988,
         -2.356194490192345
       ],
-      "ticks": 5963,
+      "ticks": 6243,
       "variant": 0
     },
     {
@@ -6034,6 +6975,9 @@
       "remaining": 0,
       "defeated": 22,
       "total": 22,
+      "escaped": 0,
+      "attack": 500,
+      "mode": "timed",
       "angles": [
         -1.8849555921538759,
         -2.9321531433504737,
@@ -6045,27 +6989,33 @@
         -0.2617993877991494,
         -0.7853981633974483
       ],
-      "ticks": 8891,
+      "ticks": 8108,
       "variant": 0
     },
     {
       "id": "h-6-1",
       "world": 6,
       "state": "won",
-      "shots": 6,
-      "hits": 173,
+      "shots": 9,
+      "hits": 167,
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 548,
+      "mode": "defense",
       "angles": [
-        -0.6806784082777885,
-        -1.9896753472735356,
-        -0.6806784082777885,
-        -0.2617993877991494,
+        -0.5235987755982988,
+        -2.8797932657906435,
+        -2.4609142453120043,
+        -0.3665191429188092,
+        -2.827433388230814,
+        -2.303834612632515,
+        -1.5184364492350666,
         -2.5132741228718345,
-        -0.2617993877991494
+        -1.4660765716752369
       ],
-      "ticks": 4247,
+      "ticks": 7635,
       "variant": 0
     },
     {
@@ -6073,10 +7023,13 @@
       "world": 6,
       "state": "won",
       "shots": 8,
-      "hits": 139,
+      "hits": 141,
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 596,
+      "mode": "obstacle",
       "angles": [
         -0.6806784082777885,
         -0.9424777960769379,
@@ -6087,7 +7040,7 @@
         -1.5184364492350666,
         -0.8377580409572781
       ],
-      "ticks": 4807,
+      "ticks": 4924,
       "variant": 0
     },
     {
@@ -6099,6 +7052,9 @@
       "remaining": 0,
       "defeated": 21,
       "total": 21,
+      "escaped": 0,
+      "attack": 620,
+      "mode": "timed",
       "angles": [
         -0.2617993877991494,
         -1.0995574287564276,
@@ -6115,19 +7071,23 @@
       "id": "h-7-1",
       "world": 7,
       "state": "won",
-      "shots": 5,
-      "hits": 144,
+      "shots": 6,
+      "hits": 108,
       "remaining": 0,
       "defeated": 17,
       "total": 17,
+      "escaped": 0,
+      "attack": 676,
+      "mode": "defense",
       "angles": [
-        -1.1519173063162575,
-        -2.8797932657906435,
-        -2.1467549799530254,
-        -0.3141592653589793,
+        -1.413716694115407,
+        -2.9321531433504737,
+        -2.199114857512855,
+        -0.5235987755982988,
+        -2.0943951023931953,
         -2.6179938779914944
       ],
-      "ticks": 4110,
+      "ticks": 4591,
       "variant": 0
     },
     {
@@ -6135,18 +7095,21 @@
       "world": 7,
       "state": "won",
       "shots": 5,
-      "hits": 184,
+      "hits": 199,
       "remaining": 0,
       "defeated": 25,
       "total": 25,
+      "escaped": 0,
+      "attack": 732,
+      "mode": "raid",
       "angles": [
         -2.9321531433504737,
         -0.6806784082777885,
-        -0.6806784082777885,
-        -2.8797932657906435,
-        -0.5235987755982988
+        -0.6283185307179586,
+        -0.9424777960769379,
+        -0.5759586531581288
       ],
-      "ticks": 4929,
+      "ticks": 6626,
       "variant": 0
     },
     {
@@ -6158,6 +7121,9 @@
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 760,
+      "mode": "timed",
       "angles": [
         -0.41887902047863906,
         -2.4609142453120043,
@@ -6175,20 +7141,24 @@
       "id": "h-8-1",
       "world": 8,
       "state": "won",
-      "shots": 6,
-      "hits": 179,
+      "shots": 7,
+      "hits": 202,
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 824,
+      "mode": "defense",
       "angles": [
-        -0.2617993877991494,
-        -0.9424777960769379,
-        -0.6806784082777885,
-        -0.5235987755982988,
-        -0.6806784082777885,
-        -0.47123889803846897
+        -2.670353755551324,
+        -0.3665191429188092,
+        -2.5132741228718345,
+        -2.775073510670984,
+        -2.722713633111154,
+        -2.775073510670984,
+        -0.2617993877991494
       ],
-      "ticks": 4666,
+      "ticks": 9881,
       "variant": 0
     },
     {
@@ -6196,20 +7166,23 @@
       "world": 8,
       "state": "won",
       "shots": 7,
-      "hits": 195,
+      "hits": 185,
       "remaining": 0,
       "defeated": 23,
       "total": 23,
+      "escaped": 0,
+      "attack": 888,
+      "mode": "obstacle",
       "angles": [
-        -1.2042771838760873,
-        -0.2617993877991494,
-        -2.303834612632515,
-        -2.9321531433504737,
-        -2.303834612632515,
-        -2.6179938779914944,
+        -0.20943951023931953,
+        -0.3141592653589793,
+        -2.4609142453120043,
+        -0.41887902047863906,
+        -0.41887902047863906,
+        -2.251474735072685,
         -0.47123889803846897
       ],
-      "ticks": 5719,
+      "ticks": 7157,
       "variant": 0
     },
     {
@@ -6221,6 +7194,9 @@
       "remaining": 0,
       "defeated": 24,
       "total": 24,
+      "escaped": 0,
+      "attack": 920,
+      "mode": "timed",
       "angles": [
         -2.827433388230814,
         -2.5132741228718345,
@@ -6236,19 +7212,23 @@
       "id": "h-9-1",
       "world": 9,
       "state": "won",
-      "shots": 5,
-      "hits": 154,
+      "shots": 6,
+      "hits": 170,
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 992,
+      "mode": "defense",
       "angles": [
-        -1.1519173063162575,
-        -2.1467549799530254,
-        -0.2617993877991494,
-        -2.303834612632515,
-        -2.251474735072685
+        -0.6283185307179586,
+        -1.413716694115407,
+        -0.5235987755982988,
+        -1.0471975511965976,
+        -0.9424777960769379,
+        -2.775073510670984
       ],
-      "ticks": 4394,
+      "ticks": 7841,
       "variant": 0
     },
     {
@@ -6256,19 +7236,22 @@
       "world": 9,
       "state": "won",
       "shots": 6,
-      "hits": 169,
+      "hits": 184,
       "remaining": 0,
       "defeated": 19,
       "total": 19,
+      "escaped": 0,
+      "attack": 1064,
+      "mode": "raid",
       "angles": [
         -2.5132741228718345,
         -1.6755160819145563,
-        -2.5132741228718345,
-        -2.5132741228718345,
+        -1.1519173063162575,
         -1.6755160819145563,
-        -0.20943951023931953
+        -2.356194490192345,
+        -2.670353755551324
       ],
-      "ticks": 7308,
+      "ticks": 7063,
       "variant": 0
     }
   ]
