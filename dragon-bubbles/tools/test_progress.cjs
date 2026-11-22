@@ -1,0 +1,18 @@
+const assert=require('node:assert/strict');
+const P=require('../build/progress.js');
+let p=P.normalize();
+assert.equal(p.candy,0);
+let reward=P.win(p,0,1);assert.equal(reward.amount,35);assert.equal(p.unlocked,1);
+assert.equal(P.buy(p,'dragon-berry').ok,false);assert.equal(p.candy,35);
+reward=P.win(p,0,3);assert.equal(reward.amount,15);assert.equal(p.candy,50);
+assert.equal(P.buy(p,'dragon-berry').ok,true);assert.equal(p.candy,10);assert.equal(p.equipped.dragon,'dragon-berry');
+P.buy(p,'dragon-berry');assert.equal(p.candy,10,'Equipping owned items must not charge again');
+P.win(p,0,1);assert.equal(p.candy,15);assert.equal(p.stars[0],3,'Replay must preserve best stars');
+const restored=P.normalize(JSON.parse(JSON.stringify(p)));assert.deepEqual(restored,p);
+const legacy=P.normalize({unlocked:3,current:2,stars:{0:3,1:2,2:1}});
+assert.equal(legacy.candy,120);assert.deepEqual(P.normalize(JSON.parse(JSON.stringify(legacy))),legacy,'Migration must credit old wins only once');
+assert.equal(P.win(legacy,0,3).amount,5,'Migrated victories are not new first clears');
+assert.equal(P.normalize({economyVersion:1,candy:-100,owned:['unknown'],equipped:{dragon:'unknown'}}).candy,0);
+assert.equal(P.normalize({economyVersion:1,candy:NaN}).candy,0);
+assert.throws(()=>P.win(p,6,3));assert.throws(()=>P.win(p,1,4));
+console.log('PASS: first clears, replay/improvement rewards, prices, insufficient balance, free re-equip, save roundtrip and one-time legacy migration.');

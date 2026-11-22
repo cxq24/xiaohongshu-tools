@@ -5,18 +5,11 @@
   const COLORS={ink:0x244e49,cream:0xffefc2,green:0x477d60,light:0xb8d39e,gold:0xf0c77c};
   const FONT='system-ui, -apple-system, sans-serif';
   const levels=window.CANDY_LEVELS;
-  let audioContext=null, soundEnabled=false;
-  window.CandyAudio={toggle(){soundEnabled=!soundEnabled;if(soundEnabled){try{audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();audioContext.resume();}catch(_){soundEnabled=false;}}return soundEnabled;}};
-  function tone(freq=500,duration=.06,type='square',volume=.018){
-    if(!soundEnabled||!audioContext)return;
-    const osc=audioContext.createOscillator(),gain=audioContext.createGain(),t=audioContext.currentTime;
-    osc.type=type;osc.frequency.setValueAtTime(freq,t);osc.frequency.exponentialRampToValueAtTime(freq*.65,t+duration);
-    gain.gain.setValueAtTime(volume,t);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);
-    osc.connect(gain);gain.connect(audioContext.destination);osc.start(t);osc.stop(t+duration);
-  }
-  let save={unlocked:0,current:0,stars:{}};
-  try{const s=JSON.parse(localStorage.getItem('apu-candy-v1'));if(s){save.unlocked=Phaser.Math.Clamp(Number.isInteger(s.unlocked)?s.unlocked:0,0,5);save.current=Phaser.Math.Clamp(Number.isInteger(s.current)?s.current:0,0,save.unlocked);if(s.stars&&typeof s.stars==='object')for(let i=0;i<6;i++)if([1,2,3].includes(s.stars[i]))save.stars[i]=s.stars[i];}}catch(_){}
+  const Economy=window.CandyProgress;
+  let rawSave={};try{rawSave=JSON.parse(localStorage.getItem('apu-candy-v1'))||{};}catch(_){}
+  const save=Economy.normalize(rawSave);
   function persist(){try{localStorage.setItem('apu-candy-v1',JSON.stringify(save));}catch(_){}}
+  persist();
   function text(scene,x,y,value,size=14,color='#fff1c7',align='left'){
     return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'bold',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
   }
@@ -31,7 +24,7 @@
     container.setSize(w,40).setInteractive(new Phaser.Geom.Rectangle(-w/2,-20,w,40),Phaser.Geom.Rectangle.Contains);
     // Containers use centered bounds with an explicit rectangle to avoid tiny hit targets.
     container.input.hitArea.setTo(0,0,w,40);
-    container.on('pointerdown',()=>{container.setScale(.97);});
+    container.on('pointerdown',()=>{window.CandyAudio.unlock();container.setScale(.97);});
     container.on('pointerout',()=>container.setScale(1));
     container.on('pointerup',()=>{container.setScale(1);callback();});
     container.label=labelText;return container;
@@ -40,7 +33,8 @@
     constructor(){super('Adventure');}
     preload(){
       this.load.image('forest','assets/forest.png');this.load.image('cover','assets/cover.png');
-      this.load.spritesheet('dragon','assets/dragon.png',{frameWidth:32,frameHeight:32});
+      for(const [name,file] of [['dragon','dragon'],['dragonBerry','dragon-berry'],['dragonSky','dragon-sky']])this.load.spritesheet(name,`assets/${file}.png`,{frameWidth:32,frameHeight:32});
+      this.load.image('bubbleStar','assets/bubble-star.png');this.load.image('bubbleRainbow','assets/bubble-rainbow.png');
       for(const key of ['jelly','berry','boss','popcorn','rainbow','bubble','star'])this.load.image(key,`assets/${key}.png`);
     }
     create(){
@@ -64,6 +58,8 @@
       this.events.on('shutdown',()=>this.time.removeAllEvents());
       this.showTitle();
     }
+    dragonTexture(){return Economy.equipped(save,'dragon').texture;}
+    bubbleTexture(){return Economy.equipped(save,'bubble').texture;}
     keep(...items){this.screenItems.push(...items);return items[0];}
     clearScreen(){
       this.generation++;this.time.removeAllEvents();this.tweens.killAll();this.aim.clear();this.fx.clear();
@@ -78,14 +74,14 @@
       this.clearScreen();this.background.setTexture('cover');this.state='title';
       this.keep(panel(this,26,37,308,69,COLORS.ink,0xc2d29d),text(this,180,51,'APU’S CANDY QUEST',11,'#bcd6aa','center'),text(this,180,72,'阿噗的糖果弹弹冒险',23,'#ffe5a1','center'));
       this.keep(text(this,180,135,'把小星星，从果冻森林救回来。',13,'#436e58','center'));
-      const dragon=this.keep(this.add.sprite(180,326,'dragon',0).setScale(5));
+      const dragon=this.keep(this.add.sprite(180,326,this.dragonTexture(),0).setScale(5));
       this.tweens.add({targets:dragon,y:319,duration:1200,yoyo:true,repeat:-1,ease:'Sine.easeInOut'});
       this.keep(this.add.image(66,392,'jelly').setScale(2),this.add.image(299,389,'berry').setScale(2),this.add.image(270,209,'star').setScale(2));
       for(const [x,y,s] of [[88,234,1.3],[284,283,1.5],[91,306,.9]]){const bubble=this.keep(this.add.image(x,y,'bubble').setScale(s));this.tweens.add({targets:bubble,y:y-10,duration:900+x,yoyo:true,repeat:-1});}
       this.keep(text(this,180,423,'瞄准反弹  /  爆米花连锁  /  小龙大招',11,'#426d56','center'));
       this.keep(button(this,180,482,240,save.current>0?`继续冒险 · 第 ${save.current+1} 关`:'开始冒险  →',()=>this.startLevel(save.current),'gold'));
-      this.keep(button(this,180,536,240,'选择关卡',()=>this.showLevels()));
-      this.keep(text(this,180,588,'原创像素角色 · 6 个手工关卡',11,'#3b6450','center'));
+      this.keep(button(this,112,536,122,'选择关卡',()=>this.showLevels()),button(this,248,536,122,'营地 · '+save.candy+'糖',()=>this.showWorkshop()));
+      this.keep(text(this,180,588,`星星收藏 ${Object.keys(save.stars).length}/6 · 过关赚星糖换装扮`,11,'#3b6450','center'));
     }
     showLevels(){
       this.clearScreen();this.background.setTexture('cover');this.state='levels';this.keep(panel(this,24,38,312,58),text(this,180,55,'糖果森林地图',24,'#ffe5a1','center'));
@@ -93,20 +89,43 @@
         const unlocked=i<=save.unlocked,y=145+i*66;
         this.keep(button(this,180,y,298,`${String(i+1).padStart(2,'0')}  ${levels[i].name}   ${save.stars[i]?'★'.repeat(save.stars[i]):unlocked?'→':'未解锁'}`,()=>{if(unlocked)this.startLevel(i);},unlocked?'gold':'green'));
       }
-      this.keep(button(this,180,584,180,'返回首页',()=>this.showTitle()));
+      this.keep(button(this,104,584,150,'返回首页',()=>this.showTitle()),button(this,266,584,150,`营地 · ${save.candy}糖`,()=>this.showWorkshop()));
+      this.keep(text(this,180,537,`已救星星 ${Object.keys(save.stars).length}/6 · ${Object.keys(save.stars).length===6?'森林守护者收藏已完成':'每关首次通关可救出一颗星星'}`,10,'#365f4d','center'));
+    }
+    showWorkshop(message='通关得星糖，用来换阿噗和泡泡的外观。'){
+      this.clearScreen();this.background.setTexture('cover');this.state='workshop';
+      this.keep(panel(this,16,20,328,70),text(this,180,32,'阿噗的营地',22,'#ffe5a1','center'),text(this,180,65,`星糖 ${save.candy} · 星星收藏 ${Object.keys(save.stars).length}/6`,12,'#d7e4b8','center'));
+      this.keep(text(this,180,106,'外观不增加伤害，凭路线赢取三星。',11,'#365f4d','center'));
+      Economy.SHOP.forEach((item,i)=>{
+        const col=i%3,row=Math.floor(i/3),x=65+col*115,y=156+row*184;
+        this.keep(panel(this,x-51,y,102,160,0xffedc6,0x87a77b));
+        const icon=item.slot==='dragon'?this.add.sprite(x,y+42,item.texture,0).setScale(2):this.add.image(x,y+42,item.texture).setScale(3);
+        this.keep(icon,text(this,x,y+82,item.name,12,'#365f4d','center'));
+        const owned=save.owned.includes(item.id),equipped=save.equipped[item.slot]===item.id;
+        this.keep(text(this,x,y+104,owned?'已拥有':`${item.price} 星糖`,11,'#77815c','center'));
+        this.keep(button(this,x,y+137,90,equipped?'已装备':owned?'装备':'解锁',()=>{
+          const result=Economy.buy(save,item.id);if(result.ok){persist();window.CandyAudio.play('ready');}
+          this.showWorkshop(result.reason);
+        },owned?'green':'gold'));
+      });
+      this.keep(text(this,180,526,message,10,'#365f4d','center'));
+      this.keep(text(this,180,548,'首通 30 + 星级×5 · 重玩 5 · 升星每颗另加 5',9,'#365f4d','center'));
+      this.keep(button(this,180,596,240,'回地图继续冒险',()=>this.showLevels()));
     }
     startLevel(index){
       this.clearScreen();this.background.setTexture('forest');this.index=index;this.level=levels[index];save.current=index;persist();
+      this.rewardClaimed=false;this.shotsFired=0;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
       this.gameClock=0;this.state='intro';this.turn=1;this.wave=0;this.energy=0;this.armed=false;this.combo=0;this.bestCombo=0;this.pending=0;this.rainbowUntil=0;this.hitCount=0;this.recalled=0;this.angle=-Math.PI/2;this.nextId=0;this.volleyAge=0;this.bossSplit=false;
       this.keep(panel(this,10,10,340,43),text(this,22,18,`0${index+1} / ${this.level.name}`,16));
       this.homeButton=this.keep(button(this,316,31,48,'地图',()=>this.showLevels()));this.homeButton.setScale(.75);
-      this.keep(panel(this,10,61,340,35,0xf5edc9,0x8da87e));
-      this.turnLabel=this.keep(text(this,23,70,'',11,'#42654b'));
-      this.goalLabel=this.keep(text(this,337,70,'',11,'#42654b'));this.goalLabel.setOrigin(1,0);
-      this.keep(text(this,30,104,'糖果森林 / CANDY WOODS',8,'#69966f'));
+      this.keep(panel(this,10,61,340,44,0xf5edc9,0x8da87e));
+      this.turnLabel=this.keep(text(this,23,67,'',10,'#42654b'));
+      this.goalLabel=this.keep(text(this,337,67,'',10,'#42654b'));this.goalLabel.setOrigin(1,0);
+      this.waveLabel=this.keep(text(this,23,86,'',10,'#42654b'));
+      this.keep(text(this,337,86,'果冻数字 = 剩余耐久',9,'#8b7551').setOrigin(1,0));
       const danger=this.keep(this.add.graphics());danger.lineStyle(1,0xc88972,.8);for(let x=25;x<337;x+=9)danger.lineBetween(x,493,x+4,493);
       this.keep(text(this,30,496,'守住这条线',8,'#af7b60'));
-      this.hero=this.keep(this.add.sprite(180,536,'dragon',0).setScale(2));
+      this.hero=this.keep(this.add.sprite(180,536,this.dragonTexture(),0).setScale(2));
       this.friend=this.keep(this.add.image(306,552,'star').setScale(1.5).setAlpha(.45));
       this.energyLabel=this.keep(text(this,28,540,'阿噗的能量',9,'#42634c'));
       this.energyGraphic=this.keep(this.add.graphics());
@@ -118,7 +137,7 @@
       this.recallButton=this.keep(button(this,298,574,74,'收球',()=>this.recall()));this.recallButton.setScale(.72).setVisible(false);
       for(let i=0;i<this.level.initial;i++)this.spawnWave(140+i*37);
       this.refreshHUD();this.drawEnergy();
-      this.modal('阿噗，出发！',this.level.subtitle+'\n\n按住战斗区域瞄准，松手发射。\n清掉全部果冻，救出小星星。', '开始这一关',()=>{this.clearModal();this.state='ready';this.hintText.setText('按住瞄准，松手吐出泡泡');});
+      this.modal('阿噗，出发！',`本关清除 ${this.totalMonsters} 只果冻${this.index===5?'（含分裂）':''}。数字是耐久。\n敌人分 ${this.level.waves.length} 批到场，不是发射上限。\n清空全部敌人获胜，越过虚线失败。\n首通得星糖，去营地解锁外观！`, '开始这一关',()=>{this.clearModal();this.state='ready';this.hintText.setText('阿噗：'+window.CandyAudio.voice('start')+' 按住瞄准，松手发射');});
     }
     modal(title,detail,label,callback,secondary=null){
       this.aim.clear();
@@ -153,9 +172,9 @@
     }
     remaining(){return [...this.nodes.values()].filter(n=>n.monster&&!n.dead).length;}
     refreshHUD(){
-      this.turnLabel?.setText(`第 ${this.turn} 轮 · 泡泡 ×${this.level.balls}`);
-      const future=this.level.waves.slice(this.wave).flat().filter(t=>t!=='.'&&['j','b','K'].includes(t[0])).length;
-      this.goalLabel?.setText(`果冻 ${this.remaining()+future} · 波次 ${this.wave}/${this.level.waves.length}`);
+      this.turnLabel?.setText(`已发射 ${this.shotsFired} 次 · 每次 ${this.level.balls} 颗`);
+      this.goalLabel?.setText(`已消灭 ${this.defeated}/${this.totalMonsters} 只`);
+      this.waveLabel?.setText(this.wave>=this.level.waves.length?'增援已全部到场，清空余敌':`敌人已到场 ${this.wave}/${this.level.waves.length} 批`);
     }
     drawEnergy(){
       this.energyGraphic.clear();this.energyGraphic.fillStyle(0x7a9b74).fillRect(28,556,80,9);this.energyGraphic.fillStyle(0xf2d38e).fillRect(30,558,Math.round(this.energy/100*76),5);
@@ -165,7 +184,7 @@
     toggleSkill(){
       if(this.state!=='ready')return;
       if(this.energy<100&&!this.armed){this.hintText.setText('命中果冻积能，满能量后可释放大泡泡');return;}
-      this.armed=!this.armed;this.drawEnergy();this.hintText.setText(this.armed?'下一轮首颗泡泡变大，伤害 ×4！':'已取消，继续普通发射');this.drawAim();
+      this.armed=!this.armed;this.drawEnergy();if(this.armed){window.CandyAudio.play('ready');window.CandyAudio.voice('power');}this.hintText.setText(this.armed?'阿噗：大泡泡，准备！首颗伤害 ×4':'已取消，继续普通发射');this.drawAim();
     }
     pointerDown(pointer){
       if(this.uiPaused||this.state!=='ready'||pointer.y<110||pointer.y>562||pointer.x<20||pointer.x>340)return;
@@ -189,7 +208,7 @@
     }
     fire(){
       if(!['ready','aiming'].includes(this.state)||this.uiPaused)return;
-      this.state='shooting';this.aim.clear();this.combo=0;this.volleyAge=0;this.fast=false;this.rainbowUntil=0;
+      this.state='shooting';this.shotsFired++;this.refreshHUD();this.aim.clear();this.combo=0;this.volleyAge=0;this.fast=false;this.rainbowUntil=0;
       this.actionButton.label.setText('加速 ×1');this.recallButton.setVisible(true);
       this.hero.setFrame(3);this.tweens.add({targets:this.hero,y:541,duration:80,yoyo:true});
       this.hintText.setText('看泡泡反弹！可加速或提前收球');
@@ -198,10 +217,10 @@
       for(let i=0;i<this.level.balls;i++)this.time.delayedCall(i*70,()=>{
         if(this.generation!==generation||this.state!=='shooting')return;
         this.pending--;const big=powered&&i===0;
-        const ball=this.balls.create(LAUNCH.x,LAUNCH.y,'bubble').setDepth(25).setScale(big?2:1);
+        const ball=this.balls.create(LAUNCH.x,LAUNCH.y,this.bubbleTexture()).setDepth(25).setScale(big?2:1);
         ball.body.setCircle(4);ball.setCollideWorldBounds(true).setBounce(1).setVelocity(Math.cos(this.angle)*SPEED,Math.sin(this.angle)*SPEED);
         ball.setData({damage:big?4:1,hits:new Map(),big});if(big)ball.setTint(0xffd779);
-        tone(540+i*18,.045,'triangle',.012);
+        window.CandyAudio.play(big?'big':'shoot',i);
       });
       this.time.delayedCall(220,()=>{if(this.generation===generation&&this.hero.active)this.hero.setFrame(0);});
     }
@@ -226,7 +245,7 @@
       if(node.monster){this.energy=Math.min(100,this.energy+5);this.drawEnergy();}
       node.label?.setText(String(Math.max(0,node.hp)));
       this.comboText.setText(this.combo>=3?`${this.combo} 连击!`:'');
-      tone(320+Math.min(900,this.combo*19),.045,'triangle');
+      window.CandyAudio.play(node.kind==='K'?'boss':node.kind==='b'?'berry':'hit',this.combo);
       if(node.hp<=0){this.destroyTarget(node);return;}
       node.sprite.setTintFill(0xfff6c9);
       this.tweens.killTweensOf(node.sprite);node.sprite.setScale(node.baseScale);
@@ -236,10 +255,10 @@
     }
     destroyTarget(node){
       if(node.dead)return;node.dead=true;
-      const x=node.sprite.x,y=node.sprite.y;
+      const x=node.sprite.x,y=node.sprite.y;if(node.monster)this.defeated++;
       this.tweens.killTweensOf(node.sprite);node.sprite.disableBody(true,true);node.label?.destroy();this.nodes.delete(node.id);
       this.burst(x,y,node.kind==='p'?0xf6ca7c:node.kind==='r'?0xa8d7da:0xa9d7a2,node.kind==='K'?32:12);
-      tone(node.kind==='p'?130:680,.1,node.kind==='p'?'sawtooth':'triangle');
+      window.CandyAudio.play(node.kind==='p'?'explode':node.kind==='r'?'rainbow':'pop');
       if(node.kind==='p'){
         const ring=this.add.rectangle(x,y,8,8,0xffdc8b,.6).setDepth(32);
         this.tempObjects.add(ring);
@@ -292,18 +311,19 @@
       this.spawnWave();this.turn++;this.refreshHUD();this.state='ready';this.hintText.setText(this.wave>=this.level.waves.length?'最后一波已到齐，清掉剩下的果冻！':'果冻前进了，重新找一个好角度');
     }
     win(){
+      if(this.rewardClaimed)return;this.rewardClaimed=true;
       this.state='won';this.hero.setFrame(4);this.friend.setAlpha(1);this.burst(306,552,0xffdb86,25);
       const stars=this.turn<=5+this.index&&this.recalled===0?3:this.turn<=9+this.index?2:1;
-      save.stars[this.index]=Math.max(stars,save.stars[this.index]||0);save.unlocked=Math.max(save.unlocked,Math.min(5,this.index+1));persist();
-      tone(880,.25,'triangle');
-      this.modal(this.index===5?'小星星，回家啦！':'小星星获救了！',`${'★'.repeat(stars)}${'☆'.repeat(3-stars)}\n${this.turn} 轮完成 · 最高 ${this.bestCombo} 连击\n${this.index===5?'六关冒险已完成，可以回地图挑战更高星级。':'阿噗学会了新路线，继续深入糖果森林。'}`,this.index===5?'返回森林地图':'前往下一关',()=>{this.clearModal();this.index===5?this.showLevels():this.startLevel(this.index+1);},{label:'重玩这一关',action:()=>this.startLevel(this.index)});
+      this.reward=Economy.win(save,this.index,stars);persist();
+      window.CandyAudio.play('win');window.CandyAudio.voice('win');
+      this.modal(this.index===5?'六颗星星，回家啦！':'小星星，回家啦！',`${'★'.repeat(stars)}${'☆'.repeat(3-stars)} · ${this.turn} 次发射\n${this.reward.first?'首次通关':'重玩奖励'} +${this.reward.amount} 星糖 · 现有 ${save.candy}\n星星收藏 ${Object.keys(save.stars).length}/6 · 星糖可换阿噗与泡泡外观\n三星目标：${5+this.index} 次内完成，且不提前收球`,this.index===5?'返回森林地图':'前往下一关',()=>{this.clearModal();this.index===5?this.showLevels():this.startLevel(this.index+1);},{label:'用星糖装扮阿噗',action:()=>this.showWorkshop()});
     }
     lose(){
-      this.state='lost';this.hero.setFrame(5);tone(140,.3,'triangle');
-      this.modal('这次先撤退！',`果冻越过了安全线。\n试试沿墙反弹，优先打爆米花桶。\n本关最高连击：${this.bestCombo}`, '再试一次',()=>this.startLevel(this.index),{label:'返回地图',action:()=>this.showLevels()});
+      this.state='lost';this.hero.setFrame(5);window.CandyAudio.play('lose');window.CandyAudio.voice('lose');
+      this.modal('这次先撤退！',`阿噗：再试一次，我陪你！\n果冻越过了安全线。\n试试沿墙反弹，优先打爆米花桶。\n本关最高连击：${this.bestCombo}`, '再试一次',()=>this.startLevel(this.index),{label:'返回地图',action:()=>this.showLevels()});
     }
     setPausedByUI(paused){
-      this.uiPaused=paused;
+      this.uiPaused=paused;window.CandyAudio.pause(paused);
       if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero?.setFrame(0);}
       if(paused){this.physics.world.pause();this.time.paused=true;this.tweens.pauseAll();}
       else{this.physics.world.resume();this.time.paused=false;this.tweens.resumeAll();}

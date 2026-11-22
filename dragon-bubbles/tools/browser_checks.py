@@ -66,7 +66,7 @@ def clear_targets(page):
 with TemporaryDirectory() as directory:
     serving=ROOT/'build'
     if args.archive:
-        with ZipFile(ROOT/'dragon-bubbles-0.1.1.zip') as archive:
+        with ZipFile(ROOT/'dragon-bubbles-0.2.0.zip') as archive:
             assert archive.testzip() is None
             archive.extractall(directory)
         serving=Path(directory)
@@ -146,6 +146,7 @@ with TemporaryDirectory() as directory:
             result=fixture(page,'return {level:s.index+1,state:s.state,turns:s.turn,hits:s.hitCount,combo:s.bestCombo,bossSplit:s.bossSplit}')
             results.append(result);assert result['state']=='won',result
             print('Combat',result,flush=True)
+            if i==0:page.screenshot(path=str(ROOT/'previews/rewards.png'),full_page=True)
             if i==5:page.screenshot(path=str(ROOT/'previews/victory.png'),full_page=True)
         page.reload();page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"')
         assert page.evaluate('JSON.parse(localStorage.getItem("apu-candy-v1")).unlocked')==5
@@ -168,7 +169,7 @@ with TemporaryDirectory() as directory:
         assert touch.evaluate('document.documentElement.scrollWidth <= innerWidth')
         assert all(r.startswith(url) or r.startswith('blob:'+url) for r in requests),requests
         assert not errors,errors
-        (ROOT/'tools/last-test-results.json').write_text(json.dumps({'combat':results,'errors':errors,'archive_test':args.archive,'external_requests':0},indent=2)+'\n')
+        (ROOT/'tools/last-test-results.json').write_text(json.dumps({'version':'0.2.0','combat':results,'errors':errors,'archive_test':args.archive,'external_requests':0},indent=2)+'\n')
         browser.close()
     server.shutdown()
 print('PASS: all 6 fights, persistence, mobile touch aim/fire, zero JS errors, zero external runtime requests.',flush=True)

@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "audio_dsp": [
+    {
+      "name": "shoot",
+      "length": 680,
+      "rms": 0.07741416058517062,
+      "finite": true
+    },
+    {
+      "name": "big",
+      "length": 2880,
+      "rms": 0.09236566185435081,
+      "finite": true
+    },
+    {
+      "name": "hit",
+      "length": 1040,
+      "rms": 0.06418519919368404,
+      "finite": true
+    },
+    {
+      "name": "berry",
+      "length": 1280,
+      "rms": 0.06347205860018368,
+      "finite": true
+    },
+    {
+      "name": "boss",
+      "length": 1600,
+      "rms": 0.06340142432550931,
+      "finite": true
+    },
+    {
+      "name": "voiceStart",
+      "length": 3600,
+      "rms": 0.19037791389968875,
+      "finite": true
+    }
+  ],
+  "music_dsp": {
+    "rms": 0.06294735869065017,
+    "finite": true
+  },
+  "award_once": true,
+  "shop_and_skins": true,
+  "legacy_migration_once": true,
+  "rounds_vs_batches": true,
+  "errors": []
+}

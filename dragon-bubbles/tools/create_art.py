@@ -115,3 +115,16 @@ for x,y,color in [(17,102,'#e4a1a0'),(160,114,'#e4c589'),(22,182,'#e2bcce'),(157
 c.rectangle((0,278,179,319),fill='#7ea47e');c.rectangle((0,290,179,319),fill='#caa16d')
 for x in range(0,180,11):c.rectangle((x,277,x+6,282),fill='#9fbd8e')
 cover.resize((360,640),Image.Resampling.NEAREST).save(ROOT/'cover.png')
+
+# Purchasable cosmetic palettes retain the same animation frames and collision sizes.
+for name,palette in [('dragon-berry',{'#368d75':'#996188','#67c49b':'#d58faf','#a3e2ac':'#f3bdce'}),('dragon-sky',{'#368d75':'#567eaa','#67c49b':'#89b7ce','#a3e2ac':'#c6e8dc'})]:
+ skin=sheet.copy();mapping={tuple(bytes.fromhex(old[1:])):tuple(bytes.fromhex(new[1:])) for old,new in palette.items()}
+ skin.putdata([(*mapping.get(pixel[:3],pixel[:3]),pixel[3]) for pixel in [skin.getpixel((x,y)) for y in range(skin.height) for x in range(skin.width)]]);skin.save(ROOT/(name+'.png'))
+for name in ['bubble-star','bubble-rainbow']:
+ image=Image.new('RGBA',(10,10));d=ImageDraw.Draw(image)
+ if name=='bubble-star':
+  d.rectangle((4,0,5,9),fill='#b28b4b');d.rectangle((0,4,9,5),fill='#b28b4b');d.rectangle((2,2,7,7),fill='#ffe5a4');d.rectangle((4,1,5,8),fill='#fff5ca');d.rectangle((1,4,8,5),fill='#fff5ca')
+ else:
+  d.rectangle((2,0,7,9),fill='#6c9da0');d.rectangle((0,2,9,7),fill='#6c9da0')
+  for y,c in [(1,'#edb1c0'),(3,'#ffe4a6'),(5,'#abe0b5'),(7,'#9fcddf')]:d.rectangle((2,y,7,y+1),fill=c)
+ image.save(ROOT/(name+'.png'))
