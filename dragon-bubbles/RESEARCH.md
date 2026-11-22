@@ -25,7 +25,7 @@
 - 固定 Phaser 3.90.0；包内自带引擎，无 CDN 运行依赖。
 - npm 发布包经 TLS 下载，并核对注册表声明的完整 SHA-512 integrity，再提取压缩引擎文件和许可证。
 - 来源、完整性值和引擎文件 SHA-256 记录在 `tools/vendor-provenance.json`。
-- 引擎 MIT 许可证保留在仓库 `PHASER-LICENSE.txt` 和上传包 `vendor/LICENSE.html`，引擎文件原有许可证头保留。
+- 引擎 MIT 许可证保留在仓库 `PHASER-LICENSE.txt` 和上传包 `index.html` 的完整许可证注释中，引擎文件原有许可证头保留。
 - 360×640 逻辑画布、nearest-neighbor 像素放大、关闭抗锯齿、整数像素绘制。
 - Arcade Physics 使用 120Hz 固定物理步长，减少快速泡泡跨过目标的风险；按需两倍速时增加步数，不粗暴放大单步位移。
 - 使用 Canvas renderer，优先保证网页环境兼容性；正式宿主表现仍须真机测试。

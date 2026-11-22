@@ -66,7 +66,7 @@ def clear_targets(page):
 with TemporaryDirectory() as directory:
     serving=ROOT/'build'
     if args.archive:
-        with ZipFile(ROOT/'dragon-bubbles-0.1.0.zip') as archive:
+        with ZipFile(ROOT/'dragon-bubbles-0.1.1.zip') as archive:
             assert archive.testzip() is None
             archive.extractall(directory)
         serving=Path(directory)

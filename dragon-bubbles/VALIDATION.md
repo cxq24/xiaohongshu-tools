@@ -1,6 +1,6 @@
-# 0.1.0 验证记录
+# 验证记录
 
-本次验证针对 `dragon-bubbles-0.1.0.zip` 解压后的实际网页，通过本地 HTTP 服务在 Chromium 中执行。测试脚本是 `tools/browser_checks.py --archive`，结果保存在 `tools/last-test-results.json`。
+0.1.0 完整战斗验证针对 `dragon-bubbles-0.1.0.zip` 解压后的实际网页，通过本地 HTTP 服务在 Chromium 中执行。测试脚本是 `tools/browser_checks.py --archive`，结果保存在 `tools/last-test-results.json`。
 
 ## 真实输入与页面检查
 
@@ -44,7 +44,7 @@
 
 - npm 下载的 Phaser 发布包按注册表 integrity 校验完整 SHA-512。
 - 本地引擎文件按 `vendor-provenance.json` 校验 SHA-256，保留 MIT 许可证。
-- ZIP 仅包含运行所需 HTML、CSS、JS、PNG 及许可证 HTML；入口为根目录 `index.html`。
+- ZIP 仅包含运行所需 HTML、CSS、JS、PNG ；完整许可证保留在 HTML 注释中（0.1.1 修正）；入口为根目录 `index.html`。
 - ZIP CRC 与每个包内文件和 `build/` 的字节一致性通过。
 - 固定 ZIP 时间戳，同一输入重复打包得到相同 SHA-256。
 
@@ -53,3 +53,14 @@
 小红书宿主实际部署、正式平台 SDK、TapTap 客户端打包、手机真机与 Safari、宿主内音频与存档权限、真人操作手感和难度。自动化测试不证明商业可玩性或留存。
 
 截图均来自实际浏览器画面，不是宣传概念图。全部六关共用同一套战斗背景，封面另有一张糖果森林插画。
+
+## 0.1.1：修复单 HTML 上传限制
+
+- 用户部署页报告：包中存在多个 HTML，只能保留根目录 `index.html`。
+- 移除运行目录 `vendor/LICENSE.html`，将完整 MIT 许可证放进入口文件注释，保留引擎文件原有许可证头和仓库许可证文本。
+- 打包脚本在写入前及写入后都验证只存在一个 HTML，且路径为 `index.html`；同时检查完整许可证存在。
+- `game.js`、`levels.js` 和引擎实现未改动，玩法沿用上述已验证版本。
+- 已验证 ZIP 内只有根目录 `index.html`，完整许可证存在，ZIP CRC 与源码字节一致；从其他目录重打包得到相同 SHA-256。
+- 在隔离临时目录重新加入 `vendor/LICENSE.html` 后，打包脚本按预期拒绝，未生成交付包。
+- 从 0.1.1 ZIP 解压运行，实际点击经过首页、关卡说明、瞄准发射、命中和回合推进；未捕获 JavaScript 错误，390 像素宽布局无横向溢出。
+- 未在小红书部署页代用户重新上传，不能声称实际部署已成功。
