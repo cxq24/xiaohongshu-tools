@@ -1,0 +1,55 @@
+{
+  "combat": [
+    {
+      "level": 1,
+      "state": "won",
+      "turns": 2,
+      "hits": 21,
+      "combo": 12,
+      "bossSplit": false
+    },
+    {
+      "level": 2,
+      "state": "won",
+      "turns": 4,
+      "hits": 39,
+      "combo": 19,
+      "bossSplit": false
+    },
+    {
+      "level": 3,
+      "state": "won",
+      "turns": 3,
+      "hits": 56,
+      "combo": 23,
+      "bossSplit": false
+    },
+    {
+      "level": 4,
+      "state": "won",
+      "turns": 4,
+      "hits": 78,
+      "combo": 30,
+      "bossSplit": false
+    },
+    {
+      "level": 5,
+      "state": "won",
+      "turns": 4,
+      "hits": 91,
+      "combo": 49,
+      "bossSplit": false
+    },
+    {
+      "level": 6,
+      "state": "won",
+      "turns": 6,
+      "hits": 107,
+      "combo": 41,
+      "bossSplit": true
+    }
+  ],
+  "errors": [],
+  "archive_test": true,
+  "external_requests": 0
+}
