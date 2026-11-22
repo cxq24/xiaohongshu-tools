@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>一间小屋 · 房间装饰试玩</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f3ec;color:#393c33;font-family:system-ui,-apple-system,'Segoe UI',sans-serif}button{font:inherit;cursor:pointer}header{max-width:1240px;margin:auto;padding:27px 34px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e4e1d7}.brand{font-size:21px;font-weight:750;letter-spacing:2px}.tag{font-size:12px;letter-spacing:2px;color:#808474}main{max-width:1240px;margin:auto;padding:36px 34px;display:grid;grid-template-columns:1fr 294px;gap:36px}h1{font-size:32px;margin:8px 0 9px;letter-spacing:-1px}p{color:#858779;line-height:1.8;font-size:14px}.eyebrow{font-size:11px;letter-spacing:3px;color:#93977d}.stage{position:relative;background:radial-gradient(ellipse at 50% 45%,#fffcf5,#ecebdf);border:1px solid #e3e2d7;border-radius:24px;margin-top:23px;overflow:hidden}.stage svg{display:block;width:100%;height:auto}.stage-note{position:absolute;left:22px;bottom:18px;color:#8a8c7c;font-size:11px;letter-spacing:1px}aside{background:#fffdf8;border:1px solid #e5e2d7;border-radius:22px;padding:24px;align-self:start;margin-top:9px}h2{font-size:18px;margin:0 0 8px}h3{font-size:13px;margin:25px 0 12px;font-weight:600}.sub{font-size:12px;margin:0;color:#9b9c8f}.styles{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.style{border:1px solid #dedfd2;background:#fffef9;border-radius:10px;padding:11px 2px;font-size:12px}.style.active{background:#e8eddc;border-color:#899b71;color:#53613e}.swatches{display:flex;gap:12px}.swatch{border-radius:50%;width:34px;height:34px;border:3px solid #fff;box-shadow:0 0 0 1px #e3e1d5}.swatch.active{box-shadow:0 0 0 2px #73835d}.item{width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid #e6e4da;background:#fafaf4;padding:12px;border-radius:10px;margin-top:8px;font-size:12px}.item span:last-child{color:#7c8c63}.item[aria-pressed=false]{opacity:.55}.primary{width:100%;border:0;border-radius:12px;padding:14px;background:#687a52;color:white;margin-top:27px}.reset{display:block;width:100%;background:none;border:0;font-size:12px;color:#989a8c;padding:14px 0 0}.footer{display:flex;justify-content:space-between;margin-top:17px;font-size:12px;color:#999b8e}.pill{border:1px solid #dedfd2;border-radius:20px;padding:5px 10px}.hint{font-size:12px;color:#8a8e7d;min-height:21px;margin-top:12px}[data-furniture]{cursor:pointer;transition:filter .15s}[data-furniture]:hover{filter:brightness(1.08)}:focus-visible{outline:3px solid #b28d69;outline-offset:4px}@media(max-width:800px){header{padding:20px}.tag{font-size:10px}main{display:block;padding:24px 18px}aside{margin-top:24px}h1{font-size:27px}.stage-note{font-size:9px;left:14px;bottom:12px}}
+</style></head><body>
+<header><div class="brand">⌂ 一间小屋</div><div class="tag">A LITTLE ROOM OF YOUR OWN</div></header>
+<main><section><div class="eyebrow">ROOM 01 / 午后的小卧室</div><h1>把喜欢的日子，装进房间。</h1><p style="margin:0">一张柔软的床，一点阳光，还有刚刚好的小心情。</p>
+<div class="stage">
+<svg id="room" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" role="img" aria-label="温馨的立体小卧室，包含床、书桌、窗户、地毯和绿植">
+<defs><filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter><pattern id="grain" width="58" height="26" patternUnits="userSpaceOnUse"><path d="M0 25H58M29 0V25" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/></pattern><linearGradient id="sun" x2="0" y2="1"><stop stop-color="#fff5cf" stop-opacity=".75"/><stop offset="1" stop-color="#fff5cf" stop-opacity=".05"/></linearGradient></defs>
+<ellipse cx="403" cy="555" rx="292" ry="35" fill="#aeb29e" opacity=".25" filter="url(#shadow)"/>
+<!-- Open dollhouse shell -->
+<path d="M110 430L400 275 690 430 400 590Z" fill="#b49a77"/>
+<path d="M110 416L400 260 690 416 400 574Z" fill="#d8bf98" id="floor"/>
+<path d="M110 416L400 260 690 416 400 574Z" fill="url(#grain)"/>
+<path d="M110 416V169L400 35V260Z" fill="#e8e8cf" id="wallLeft"/>
+<path d="M400 35L690 169V416L400 260Z" fill="#f3eddd" id="wallRight"/>
+<path d="M110 416L400 260 690 416" stroke="#c7b89a" stroke-width="9" fill="none"/>
+<path d="M110 169L400 35 690 169" stroke="#fffbed" stroke-width="8" fill="none"/>
+<!-- Window and soft sunlight -->
+<path d="M459 106L583 164V287L459 229Z" fill="#b9a27e"/>
+<path d="M466 116L576 168V275L466 224Z" fill="#cce0da"/>
+<path d="M466 181L576 232V275L466 224Z" fill="#a7c1ab"/>
+<path d="M466 197Q499 181 528 224T576 247V275L466 224Z" fill="#b7ccb6"/>
+<path d="M521 142V249M466 170L576 222" stroke="#fff9e9" stroke-width="6"/>
+<path d="M451 229L583 291 593 286 458 223Z" fill="#e3d6b8"/>
+<path d="M451 100Q457 155 443 222L469 234Q483 172 471 110Z" fill="#fff9eb" opacity=".95"/>
+<path d="M579 160Q566 209 579 281L602 291Q596 222 600 168Z" fill="#fff9eb"/>
+<path d="M467 226L574 277 452 455 300 393Z" fill="url(#sun)"/>
+<!-- Wall art -->
+<path d="M170 185L231 157V233L170 262Z" fill="#ad8864"/>
+<path d="M176 189L225 167V229L176 252Z" fill="#fff7df"/>
+<ellipse cx="200" cy="202" rx="11" ry="15" fill="#d9b384"/>
+<path d="M180 237L194 214 207 222 220 208V230L180 248Z" fill="#9baf87"/>
+<!-- Rug -->
+<g id="rug" data-furniture="地毯"><path d="M244 444L405 356Q419 349 434 358L578 438Q590 445 578 453L416 542Q401 550 386 541L244 463Q230 453 244 444Z" fill="#f7edd7"/><path d="M262 452L418 368 563 447 404 533Z" fill="none" stroke="#d7bc92" stroke-width="2" stroke-dasharray="5 5"/></g>
+<!-- Desk -->
+<g data-furniture="书桌"><path d="M515 342V409M631 353V419M575 375V444" stroke="#a98865" stroke-width="9"/><path d="M493 326L551 296 651 347 590 380Z" fill="#edd3a9"/><path d="M493 326V336L590 390V380Z" fill="#c4a079"/><path d="M590 380L651 347V357L590 390Z" fill="#b99168"/>
+<path d="M553 321L578 308 604 321 579 335Z" fill="#f8f0dc"/><path d="M558 321L578 312 596 321 578 330Z" fill="#9baf90"/>
+<path d="M623 337V292" stroke="#8b9871" stroke-width="5"/><path d="M604 291Q621 266 638 297Z" fill="#a9b68d"/><ellipse cx="621" cy="338" rx="12" ry="5" fill="#9ba77d"/>
+<path d="M552 397V443M588 414V459" stroke="#a38461" stroke-width="7"/><path d="M533 392L558 379 603 401 576 417Z" fill="#adba91"/><path d="M533 392V365L576 388V417Z" fill="#bdc7a3"/></g>
+<!-- Bed, duvet and pillows -->
+<g data-furniture="小床"><path d="M208 362V414M344 433V489M440 377V423" stroke="#a58664" stroke-width="10"/>
+<path d="M199 297L299 244Q309 240 318 245L318 320 199 380Z" fill="#b39770"/>
+<path d="M205 302L303 254 309 257V310L205 366Z" fill="#cfb68f"/>
+<path d="M203 358L302 305 450 383 347 442Z" fill="#d2b38a"/>
+<path d="M203 347L302 294 450 372V392L347 452 203 371Z" fill="#fbf4e6"/>
+<path d="M203 347L347 425 450 372 302 294Z" fill="#fff8e9"/>
+<path d="M258 338L352 290 450 342 450 385 347 443 258 393Z" fill="#a9b88f" id="duvet" transform="translate(0 13)"/>
+<path d="M266 356L352 310 443 359" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="3"/>
+<path d="M219 334L259 314Q269 309 281 315L308 330Q316 335 306 341L265 363Q255 366 245 361L220 347Q212 342 219 334Z" fill="#eee5d0"/>
+<path d="M226 330L263 310Q273 306 283 312L307 325Q314 330 305 335L267 355Q256 359 247 354L225 342Q218 336 226 330Z" fill="#fffbef"/>
+<path d="M283 318L302 308 321 318 302 330Z" fill="#d2ae88"/>
+</g>
+<!-- Bedside table -->
+<g data-furniture="床头柜"><path d="M140 374L170 358 204 377 174 394Z" fill="#e1c298"/><path d="M140 374V409L174 429V394Z" fill="#c9a77e"/><path d="M174 394L204 377V412L174 429Z" fill="#b79670"/><path d="M146 387L168 399M146 401L168 413" stroke="#ac8d65"/><circle cx="158" cy="399" r="2" fill="#f6e1b8"/><path d="M173 372V347" stroke="#aa9574" stroke-width="4"/><path d="M154 345L161 320Q173 315 185 324L193 354Z" fill="#fff0c5"/><ellipse cx="173" cy="374" rx="12" ry="5" fill="#e7d3b2"/></g>
+<!-- House plant -->
+<g id="plant" data-furniture="绿植"><ellipse cx="589" cy="464" rx="30" ry="12" fill="#9c9c76" opacity=".15"/><path d="M570 433L577 463Q590 474 602 463L609 433Z" fill="#cf9d79"/><ellipse cx="589" cy="433" rx="20" ry="9" fill="#e0b38d"/><ellipse cx="589" cy="432" rx="15" ry="6" fill="#806d50"/><path d="M589 433V365M590 412L568 389M589 400L613 374" stroke="#768d5e" stroke-width="4"/><ellipse cx="568" cy="382" rx="10" ry="22" transform="rotate(-40 568 382)" fill="#95ad7b"/><ellipse cx="611" cy="379" rx="11" ry="25" transform="rotate(36 611 379)" fill="#7d9b66"/><ellipse cx="589" cy="365" rx="11" ry="26" transform="rotate(-8 589 365)" fill="#acc08b"/><ellipse cx="575" cy="407" rx="9" ry="20" transform="rotate(-49 575 407)" fill="#8aa773"/></g>
+<!-- Cat -->
+<g id="cat" data-furniture="小猫"><ellipse cx="443" cy="479" rx="27" ry="14" fill="#b7a486" opacity=".18"/><path d="M423 469Q424 447 444 450Q467 449 467 468Q468 480 446 481Q427 481 423 469Z" fill="#d3a271"/><path d="M425 459L424 442 436 449 447 442 450 461Z" fill="#deb389"/><path d="M429 459L433 461M441 459L445 457" stroke="#775f45" stroke-width="1.5" stroke-linecap="round"/><path d="M462 471Q481 470 476 458" fill="none" stroke="#c39163" stroke-width="7" stroke-linecap="round"/></g>
+</svg><div class="stage-note">✦ 点击家具，认识房间里的小物件</div></div>
+<div class="footer"><span class="pill">约 12㎡ · 单人小卧室</span><span>装饰概念试玩 / 01</span></div><div id="hint" class="hint" aria-live="polite"></div></section>
+<aside><h2>今天，住进哪种心情？</h2><p class="sub">挑选配色，布置你的第一个小房间</p><h3>整体风格</h3><div class="styles"><button class="style active" data-theme="matcha">抹茶奶油</button><button class="style" data-theme="peach">蜜桃午后</button><button class="style" data-theme="blue">海盐晴天</button></div><h3>墙面颜色</h3><div class="swatches" id="walls"></div><h3>床品颜色</h3><div class="swatches" id="bedding"></div><h3>地板颜色</h3><div class="swatches" id="floors"></div><h3>房间里的小美好</h3><button class="item" data-toggle="rug" aria-pressed="true"><span>▱ 柔软地毯</span><span>已摆放</span></button><button class="item" data-toggle="plant" aria-pressed="true"><span>♧ 窗边绿植</span><span>已摆放</span></button><button class="item" data-toggle="cat" aria-pressed="true"><span>♧ 午睡小猫</span><span>已摆放</span></button><button class="primary" id="export">↓ 保存我的房间图片</button><button class="reset" id="reset">恢复初始布置</button><p class="sub" style="margin-top:20px;line-height:1.8">这是装饰玩法的视觉原型。当前支持换色和显隐摆件，尚未加入家具拖动、关卡和平台登录。</p></aside></main>
+<script>
+const $=id=>document.getElementById(id),themes={matcha:['#e8e8cf','#f3eddd','#a9b88f','#d8bf98'],peach:['#eddbd4','#faeade','#d6a6a0','#d9bb9a'],blue:['#d6e2e0','#e8f0ea','#9cb8c9','#c9bba5']};
+const groups={walls:[['#e8e8cf','抹茶'],['#eddbd4','蜜桃'],['#d6e2e0','海盐'],['#e4dfd5','燕麦']],bedding:[['#a9b88f','绿'],['#d6a6a0','粉'],['#9cb8c9','蓝'],['#d9bc82','黄']],floors:[['#d8bf98','浅木'],['#d9bb9a','暖木'],['#c9bba5','灰木'],['#b79b7c','深木']]};
+function highlight(){for(const key of Object.keys(groups)){const target={walls:'wallLeft',bedding:'duvet',floors:'floor'}[key];document.querySelectorAll('#'+key+' button').forEach(b=>{const active=b.dataset.color===$(target).getAttribute('fill');b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))})}}
+function clearTheme(){document.querySelectorAll('[data-theme]').forEach(b=>b.classList.remove('active'))}
+for(const [key,colors]of Object.entries(groups))for(const[color,label]of colors){const b=document.createElement('button');b.className='swatch';b.style.background=color;b.dataset.color=color;b.setAttribute('aria-label',label+'配色');b.onclick=()=>{if(key==='walls'){const t=Object.values(themes).find(v=>v[0]===color);$('wallLeft').setAttribute('fill',color);$('wallRight').setAttribute('fill',t?t[1]:'#f2eee6')}else $(key==='bedding'?'duvet':'floor').setAttribute('fill',color);clearTheme();highlight()};$(key).append(b)}
+function applyTheme(key){const t=themes[key];['wallLeft','wallRight','duvet','floor'].forEach((id,i)=>$(id).setAttribute('fill',t[i]));document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b.dataset.theme===key));highlight()}
+document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>applyTheme(b.dataset.theme));document.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{const visible=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(visible));$(b.dataset.toggle).style.display=visible?'':'none';b.lastElementChild.textContent=visible?'已摆放':'未摆放'});
+const descriptions={'小床':'小床 · 今天的烦恼，睡一觉再说。','书桌':'书桌 · 给灵感留一个靠窗的位置。','绿植':'绿植 · 一点绿色，房间就有了呼吸。','地毯':'地毯 · 把赤脚踩下去的瞬间，变柔软。','小猫':'小猫 · 本房间的真正主人正在午睡。','床头柜':'床头柜 · 一盏灯，等你回家。'};document.querySelectorAll('[data-furniture]').forEach(el=>el.onclick=()=>{$('hint').textContent=descriptions[el.dataset.furniture]});
+$('reset').onclick=()=>{applyTheme('matcha');document.querySelectorAll('[data-toggle]').forEach(b=>{b.setAttribute('aria-pressed','true');$(b.dataset.toggle).style.display='';b.lastElementChild.textContent='已摆放'});$('hint').textContent='已恢复抹茶奶油小卧室。'};
+$('export').onclick=()=>{const svg=$('room').cloneNode(true);svg.insertAdjacentHTML('afterbegin','<rect width="800" height="650" fill="#f3f1e8"/>');const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml;charset=utf-8'}));const img=new Image;img.onload=()=>{const canvas=document.createElement('canvas');canvas.width=1600;canvas.height=1300;canvas.getContext('2d').drawImage(img,0,0,1600,1300);URL.revokeObjectURL(url);canvas.toBlob(blob=>{if(!blob){$('hint').textContent='导出失败，请换用新版浏览器重试。';return}const link=document.createElement('a');const out=URL.createObjectURL(blob);link.href=out;link.download='我的小房间.png';link.click();setTimeout(()=>URL.revokeObjectURL(out),10000);$('hint').textContent='房间图片已生成，可以保存分享。'},'image/png')};img.onerror=()=>{URL.revokeObjectURL(url);$('hint').textContent='导出失败，请换用新版浏览器重试。'};img.src=url};highlight();
+</script></body></html>
