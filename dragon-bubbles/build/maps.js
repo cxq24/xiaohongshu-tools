@@ -43,7 +43,7 @@
    b.append(el('b','',level.boss?'♛':String(i+1)),el('span','node-stars',stars?'★'.repeat(stars):level.elite?'精英':''),el('span','node-name',level.name));trail.append(b);
    if(open&&!stars&&!next){next=b;b.classList.add('next');const avatar=image('assets/dragon.png','阿噗所在位置');avatar.className='route-avatar';b.append(avatar);}
   });
-  hidden.filter(x=>x.world===world.id).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'宣传视频秘境':'隐藏挑战'));trail.append(b);});
+  hidden.filter(x=>x.world===world.id).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible&&!open;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'宣传视频秘境':'隐藏挑战'));trail.append(b);});
   const bottom=el('nav','map-bottom');bottom.append(action('仓库',warehouse),action('图鉴',codex),action('任务',tasks),action('世界地图',back));h.append(bottom);
   if(next)requestAnimationFrame(()=>{scroll.scrollTop=Math.max(0,next.offsetTop-scroll.clientHeight/2);});
  },
@@ -63,21 +63,35 @@
  },
  inventory({save,items,back,equip,goods,tab='items'}){
   const {h,scroll}=shell('我的仓库','查看已拥有的物品，战斗内用道具袋快捷使用。',back);wallet(h,save);
-  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备']],tab,t=>this.inventory({save,items,back,equip,goods,tab:t}));
+  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备'],['medals','收藏']],tab,t=>this.inventory({save,items,back,equip,goods,tab:t}));
   const grid=el('div','shop-grid');scroll.append(grid);
   if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));grid.append(row);}
+  else if(tab==='medals'){const medals=Object.keys(save.bossClaims||{});if(!medals.length)grid.append(el('p','empty-collection','击败章节最终首领，收集主题徽章。'));for(const id of medals){const row=el('section','shop-card');row.append(image(`assets/w${id}-island.png`),el('strong','',window.CANDY_WORLDS[+id].name+'徽章'),el('p','','章节首领首通纪念'));grid.append(row);}}
   else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card'),im=image(`assets/${asset(item)}.png`);if(tab==='dragon')im.classList.add('dragon-preview');row.append(im,el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,tab});}));grid.append(row);}
  },
  tasks({save,missions,back}){
   const {h,scroll}=shell('章节任务','达成目标后，奖励自动进入星糖余额和仓库。',back);wallet(h,save);
   for(const m of missions){const card=el('section','task-card');card.append(glyph('tasks'),el('strong','',m.name),el('span','',m.claimed?'✓ 已领取':'进行中'),currency(m.candy),glyph(m.item));scroll.append(card);}
  },
- codex({level,world,attack,recommended,back}){
-  const {scroll}=shell(`${world.name} · 本关图鉴`,`普通泡泡 ${attack} · 大泡泡 ${attack*4} · 推荐火力 ${recommended}`,back);
-  const stats={};for(const token of level.waves.flat()){if(!['j','b','K'].includes(token[0]))continue;const kind=token[0],hp=Number(token.slice(1))*recommended;const a=stats[kind]||(stats[kind]={min:Infinity,max:0});a.min=Math.min(a.min,hp);a.max=Math.max(a.max,hp);}
-  if(stats.K){const a=stats.j||(stats.j={min:Infinity,max:0});a.min=Math.min(a.min,4*recommended);a.max=Math.max(a.max,4*recommended);}
-  for(const [kind,a]of Object.entries(stats)){const armor=kind!=='K'?(level.armor||0):0;const card=el('section','codex-card');card.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`),el('h3','',kind==='K'?'章节首领':kind==='b'?'精英'+world.enemy:world.enemy),el('p','',`生命 ${a.min===a.max?a.min:a.min+'—'+a.max}`),el('p','',`普通泡泡约 ${Math.ceil(a.min/attack)+armor}—${Math.ceil(a.max/attack)+armor} 次命中`));if(armor)card.append(el('p','','冰壳会额外抵挡一次命中'));scroll.append(card);}
-  const rule=el('section','codex-card');rule.append(el('h3','','本关目标'),el('p','',level.mode==='timed'?`${level.timeLimit} 秒内清除敌人`:level.mode==='defense'?'保护工程师，守住三颗生命并击退全部进攻':level.mode==='raid'?'击败首领及其分裂守卫':'清除全部敌人；敌人越线则失败'),el('p','',`${world.bomb}引发连锁，${world.pickup}提供穿透。`));scroll.append(rule);
+ codex(options){
+  const {save,level,worlds,levels,hidden,playtest,attack,back}=options,all=[...levels,...hidden],{scroll}=shell('怪怪图鉴','遇见后解锁详情',back);
+  for(const world of worlds){
+   const group=el('section','codex-world');group.append(el('h3','',world.name));const grid=el('div','codex-grid');group.append(grid);scroll.append(group);
+   for(const kind of ['j','b','K']){const known=playtest||!!save.seenEnemies[world.id+'-'+kind],b=action('',()=>this.enemyDetail({...options,world,kind}),'codex-portrait'+(known?'':' undiscovered'));b.disabled=!known;b.dataset.enemy=world.id+'-'+kind;b.setAttribute('aria-label',world.name+(known?'已遇见怪怪':'未遇见怪怪')+' '+kind);b.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`));grid.append(b);}
+  }
+ },
+ enemyDetail(options){
+  const {save,level,world,worlds,levels,hidden,playtest,attack,kind}=options,all=[...levels,...hidden],seen=save.seenEnemies[world.id+'-'+kind];
+  if(!playtest&&!seen)return;
+  const hasKind=l=>l.world===world.id&&(l.waves.flat().some(t=>t[0]===kind)||(kind==='j'&&l.boss));
+  const available=all.filter(l=>hasKind(l)&&(playtest||save.stars[l.id]||save.hiddenCleared[l.id]||l.id===seen?.stage||l.id===level.id));
+  let selected=available.find(l=>l.id===options.selected)||available.find(l=>l.id===level.id)||available.find(l=>l.id===seen?.stage)||available[0];if(!selected)return;
+  const title=kind==='K'?'章节首领':kind==='b'?'精英'+world.enemy:world.enemy,{scroll}=shell(title,world.name,()=>this.codex(options));
+  const select=el('select','codex-stage');select.setAttribute('aria-label','查看关卡生命值');for(const l of available){const o=el('option','',l.hidden?l.name:`第 ${l.local+1} 关 · ${l.name}`);o.value=String(l.id);o.selected=l===selected;select.append(o);}select.onchange=()=>this.enemyDetail({...options,selected:available.find(l=>String(l.id)===select.value)?.id});scroll.append(select);
+  const hp=new Set(selected.waves.flat().filter(t=>t[0]===kind).map(t=>Number(t.slice(1))*window.CandyProgress.recommendedAttack(selected)));if(kind==='j'&&selected.boss)hp.add(4*window.CandyProgress.recommendedAttack(selected));
+  const card=el('section','codex-card');card.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`),el('h3','',title));
+  [...hp].sort((a,b)=>a-b).forEach((value,i)=>{const armor=kind==='K'?0:selected.armor||0;const row=el('p','codex-variant',`${hp.size>1?'形态 '+(i+1)+' · ':''}生命 ${value} · 普通泡泡 ${Math.ceil(value/attack)+armor} 次命中`);card.append(row);});
+  if(selected.armor&&kind!=='K')card.append(el('p','','冰壳额外抵挡一次命中。'));card.append(el('p','','每只怪怪的生命值固定；不同关卡或强化形态会不同。'));scroll.append(card);
  },
  secret({save,level,available,unlock,play,back}){
   const {scroll}=shell(level.name,'可跳过，不影响 300 关主线进度',back);const card=el('section','secret-card');card.append(image('assets/portal.png'),el('h2','',({timed:'限时清屏',defense:'守护工程师',obstacle:'机关试炼',raid:'首领讨伐'})[level.mode]||'秘境挑战'),el('p','',`首通奖励：${window.CandyProgress.ITEMS[level.rewardItem].name} ×1，以及星糖。不会直接赠送皮肤。`),el('p','','首次完整观看视频后开启；失败可免费重试。'));

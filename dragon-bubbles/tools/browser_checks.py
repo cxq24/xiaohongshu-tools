@@ -1,4 +1,4 @@
 """Compatibility entry point for the current browser acceptance suite."""
 from pathlib import Path
 import runpy
-runpy.run_path(str(Path(__file__).with_name('v4_browser_checks.py')), run_name='__main__')
+runpy.run_path(str(Path(__file__).with_name('v5_browser_checks.py')), run_name='__main__')

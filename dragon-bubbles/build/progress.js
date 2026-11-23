@@ -27,9 +27,17 @@
  ];
  const ITEMS={balls:{name:'额外泡泡',description:'下一次发射 +3 颗',rare:false},aim:{name:'路线透镜',description:'本次瞄准线延长',rare:false},guard:{name:'缓冲护盾',description:'抵消一次敌人推进',rare:false},rewind:{name:'时光回退',description:'回到上次发射前，已用道具不返还',rare:true},nova:{name:'星爆泡泡',description:'下一次首颗泡泡造成 6 倍火力伤害',rare:true},hammer:{name:'障碍消除',description:'移除最靠近安全线的普通障碍',rare:true}};
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,Number.isInteger(n)?n:a));
+ function discoverLevel(p,level){for(const token of level.waves.flat())if(['j','b','K'].includes(token[0]))discover(p,level,token[0]);}
+ function discover(p,level,kind){const key=level.world+'-'+kind;if(!p.seenEnemies[key]){p.seenEnemies[key]={stage:level.id};return true;}return false;}
+ const gradeBonus={C:0,B:5,A:10,S:20};
+ function gradeReward(p,id,stats,rewards){
+  if(!Object.hasOwn(gradeBonus,stats.grade))return;
+  if(Number.isInteger(stats.score)&&stats.score>=45&&stats.score<=100&&(stats.score>(p.bestScores[id]||0))){p.bestScores[id]=stats.score;p.bestGrades[id]=stats.grade;}
+  if(stats.grade==='S'&&!p.perfectClaims[id]){p.perfectClaims[id]=true;const pool=['balls','aim','guard'],roll=Math.max(0,Math.min(.999999,Number((stats.random||Math.random)())||0)),item=pool[Math.floor(roll*3)];addItem(p,item);rewards.push('首次 S 级：'+ITEMS[item].name+' ×1');}
+ }
  function normalize(raw={}){
   if(!raw||typeof raw!=='object')raw={};
-  const p={version:4,fireRank:0,economyVersion:1,unlocked:clamp(raw.unlocked,0,299),current:0,stars:{},candy:0,claimed:{},owned:['dragon-mint','bubble-classic','gear-none','turret-wood'],equipped:{dragon:'dragon-mint',bubble:'bubble-classic',gear:'gear-none',turret:'turret-wood'},worlds:[0],inventory:{},missions:{},eggs:{},hiddenUnlocked:[],hiddenCleared:{}};
+  const p={version:5,fireRank:0,economyVersion:1,unlocked:clamp(raw.unlocked,0,299),current:0,stars:{},candy:0,claimed:{},owned:['dragon-mint','bubble-classic','gear-none','turret-wood'],equipped:{dragon:'dragon-mint',bubble:'bubble-classic',gear:'gear-none',turret:'turret-wood'},worlds:[0],inventory:{},missions:{},eggs:{},hiddenUnlocked:[],hiddenCleared:{},bestScores:{},bestGrades:{},perfectClaims:{},bossClaims:{},seenEnemies:{}};
   for(let i=0;i<COUNT;i++)if([1,2,3].includes(raw.stars?.[i]))p.stars[i]=raw.stars[i];
   if(raw.economyVersion===1){p.candy=clamp(raw.candy,0,999999);for(let i=0;i<COUNT;i++)if(raw.claimed?.[i]===true&&p.stars[i])p.claimed[i]=true;}
   else for(const [i,stars]of Object.entries(p.stars)){p.candy+=30+5*stars;p.claimed[i]=true;}
@@ -39,6 +47,12 @@
   for(const id of Object.keys(ITEMS))p.inventory[id]=clamp(raw.inventory?.[id],0,999);
   for(const k of ['missions','eggs'])if(raw[k]&&typeof raw[k]==='object')for(const [id,value]of Object.entries(raw[k]))if(value===true&&id.length<40)p[k][id]=true;
   for(const h of data.hidden){if(raw.hiddenUnlocked?.includes(h.id))p.hiddenUnlocked.push(h.id);if(raw.hiddenCleared?.[h.id]===true)p.hiddenCleared[h.id]=true;}
+  for(const key of ['perfectClaims','bossClaims'])for(const [id,v]of Object.entries(raw[key]||{}))if(v===true&&((key==='bossClaims'&&/^([0-9])$/.test(id))||(key==='perfectClaims'&&(/^(0|[1-9][0-9]{0,2})$/.test(id)&&+id<300||data.hidden.some(h=>h.id===id)))))p[key][id]=true;
+  for(const level of [...data.levels,...data.hidden]){
+   const id=level.id,score=raw.bestScores?.[id],grade=raw.bestGrades?.[id];if(Number.isInteger(score)&&score>=45&&score<=100&&['S','A','B','C'].includes(grade)){p.bestScores[id]=score;p.bestGrades[id]=grade;}
+   if((!level.hidden&&p.stars[id])||(level.hidden&&p.hiddenCleared[id]))discoverLevel(p,level);
+  }
+  for(const [key,v]of Object.entries(raw.seenEnemies||{}))if(/^[0-9]-[jbK]$/.test(key)&&v&&[...data.levels,...data.hidden].some(l=>l.id===v.stage&&l.world===+key[0]&&l.waves.flat().some(t=>t[0]===key.slice(2))))p.seenEnemies[key]={stage:v.stage};
   for(let w=0;w<10;w++)for(const m of missions(p,w))if(m.ready&&!p.missions[m.id]){p.missions[m.id]=true;p.candy=Math.min(999999,p.candy+m.candy);addItem(p,m.item);}
   p.fireRank=raw.version>=4?clamp(raw.fireRank,0,maxFireRank(p)):maxFireRank(p);
   p.current=clamp(raw.current,0,299);if(!canEnter(p,p.current))p.current=firstAvailable(p);
@@ -52,8 +66,11 @@
  function win(p,index,stars,stats={}){
   if(!Number.isInteger(index)||index<0||index>=COUNT||![1,2,3].includes(stars))throw Error('Invalid victory');
   const before=p.candy,w=Math.floor(index/SIZE),best=p.stars[index]||0,first=!p.claimed[index],improvement=Math.max(0,stars-best);
-  const amount=first?30+5*stars+w*5:5+5*improvement,rewards=[];
+  const graded=Object.hasOwn(gradeBonus,stats.grade),bonus=gradeBonus[stats.grade]||0,oldBonus=gradeBonus[p.bestGrades[index]]||0;
+  const amount=graded?(first?30+w*5+bonus:5+Math.max(0,bonus-oldBonus)):(first?30+5*stars+w*5:5+5*improvement),rewards=[];
   p.candy=Math.min(999999,p.candy+amount);p.claimed[index]=true;p.stars[index]=Math.max(best,stars);p.unlocked=Math.max(p.unlocked,Math.min(299,index+1));
+  discoverLevel(p,data.levels[index]);gradeReward(p,index,stats,rewards);
+  if(index%30===29&&!p.bossClaims[w]){p.bossClaims[w]=true;const extra=100+w*20;p.candy=Math.min(999999,p.candy+extra);addItem(p,'balls');addItem(p,'guard');rewards.push(`首领宝箱 +${extra} 星糖 · 额外泡泡 / 缓冲护盾 · 主题徽章`);}
   if(index%30===29&&w<9&&!p.worlds.includes(w+1))p.worlds.push(w+1);
   if(first&&(index+1)%3===0){const id=['balls','aim','guard'][Math.floor(index/3)%3];addItem(p,id);rewards.push(ITEMS[id].name+' ×1');}
   if(!p.eggs[index]&&(stats.combo||0)>=12+w*3){p.eggs[index]=true;addItem(p,'aim');rewards.push('连击彩蛋：路线透镜 ×1');}
@@ -64,7 +81,7 @@
  function buy(p,id){const item=SHOP.find(x=>x.id===id);if(!item)return {ok:false,reason:'没有这个商品'};if(item.world!==undefined&&!p.worlds.includes(item.world))return {ok:false,reason:'先开启对应主题，再用星糖购买'};if(!p.owned.includes(id)){if(p.candy<item.price)return {ok:false,reason:`还差 ${item.price-p.candy} 星糖`};p.candy-=item.price;p.owned.push(id);}p.equipped[item.slot]=id;return {ok:true,reason:`已装备${item.name}`};}
  function hiddenEligible(p,id){const h=data.hidden.find(x=>x.id===id);return !!h&&!!p.stars[h.trigger];}
  function unlockHidden(p,id){if(!hiddenEligible(p,id))return false;if(!p.hiddenUnlocked.includes(id))p.hiddenUnlocked.push(id);return true;}
- function winHidden(p,id){const h=data.hidden.find(x=>x.id===id);if(!h||!p.hiddenUnlocked.includes(id))return {ok:false};if(p.hiddenCleared[id]){p.candy=Math.min(999999,p.candy+5);return {ok:true,first:false,amount:5,rewards:[]};}p.hiddenCleared[id]=true;addItem(p,h.rewardItem);const amount=60+h.world*5;p.candy=Math.min(999999,p.candy+amount);return {ok:true,first:true,amount,rewards:[ITEMS[h.rewardItem].name+' ×1']};}
- const api={SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
+ function winHidden(p,id,stats={}){const h=data.hidden.find(x=>x.id===id);if(!h||!p.hiddenUnlocked.includes(id))return {ok:false};const before=p.candy,first=!p.hiddenCleared[id],rewards=[];const bonus=gradeBonus[stats.grade]||0,oldBonus=gradeBonus[p.bestGrades[id]]||0;const amount=first?60+h.world*5+bonus:5+Math.max(0,bonus-oldBonus);p.hiddenCleared[id]=true;if(first){addItem(p,h.rewardItem);rewards.push(ITEMS[h.rewardItem].name+' ×1');}gradeReward(p,id,stats,rewards);discoverLevel(p,h);p.candy=Math.min(999999,p.candy+amount);return {ok:true,first,amount,totalCurrency:p.candy-before,balance:p.candy,rewards};}
+ const api={SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,discover,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CandyProgress=api;
 })(typeof window==='undefined'?globalThis:window);

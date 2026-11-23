@@ -1,7 +1,8 @@
 """Reproducible runtime ZIP; documents and developer tools stay outside the upload."""
 from pathlib import Path
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
-import json,hashlib
+import json,hashlib,argparse
+parser=argparse.ArgumentParser();parser.add_argument("--test",action="store_true");args=parser.parse_args()
 ROOT=Path(__file__).resolve().parents[1]
 BUILD=ROOT/'build'
 ALLOWED={'.html','.css','.js','.json','.jpg','.jpeg','.png','.gif','.svg','.webp','.woff','.woff2'}
@@ -16,15 +17,18 @@ if html_files != ['index.html']:raise SystemExit(f'Only root index.html is allow
 for path in files:
     if path.is_symlink() or not path.resolve().is_relative_to(BUILD.resolve()):raise SystemExit(f'Unexpected link: {path}')
     if path.suffix.lower() not in ALLOWED:raise SystemExit(f'Unsupported runtime type: {path.name}')
-output=ROOT/'dragon-bubbles-0.4.0.zip'
+output=ROOT/('dragon-bubbles-0.5.0'+('-test' if args.test else '')+'.zip')
+def contents(path):
+    if args.test and path.relative_to(BUILD).as_posix()=='release-config.js':return b"window.CandyRelease=Object.freeze({version:'0.5.0',playtest:true});\n"
+    return path.read_bytes()
 with ZipFile(output,'w',ZIP_DEFLATED) as archive:
     for path in files:
         info=ZipInfo(path.relative_to(BUILD).as_posix(),(2026,11,22,0,0,0))
         info.compress_type=ZIP_DEFLATED;info.external_attr=0o644<<16
-        archive.writestr(info,path.read_bytes())
+        archive.writestr(info,contents(path))
 with ZipFile(output) as archive:
     assert archive.testzip() is None
     assert [n for n in archive.namelist() if Path(n).suffix.lower() in {'.html','.htm'}] == ['index.html']
     assert license in archive.read('index.html').decode()
-    for path in files:assert archive.read(path.relative_to(BUILD).as_posix())==path.read_bytes()
+    for path in files:assert archive.read(path.relative_to(BUILD).as_posix())==contents(path)
 print(f'{output.name}: {len(files)} runtime files, {output.stat().st_size} bytes; checksum, file types, root entry and ZIP contents verified.')

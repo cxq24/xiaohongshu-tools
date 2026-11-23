@@ -51,7 +51,7 @@ INSTALL=r'''()=>{
    let t=0;while(s.state==='shooting'&&t++<4000){tick();ticks++;}
    if(t>=4000)break;
   }
-  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,mode:s.level.mode||'normal',angles,ticks,variant};
+  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,mode:s.level.mode||'normal',grade:s.rating?.grade,score:s.rating?.score,productive:s.productiveShots,reward:s.reward?.totalCurrency,angles,ticks,variant};
  };
 }'''
 with sync_playwright() as p:
@@ -69,7 +69,7 @@ with sync_playwright() as p:
     if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.4.0','results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.5.0','results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

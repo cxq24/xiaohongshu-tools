@@ -6,9 +6,11 @@
   const FONT='system-ui, -apple-system, sans-serif';
   const levels=window.CANDY_LEVELS;
   const Economy=window.CandyProgress;
-  let rawSave={};try{rawSave=JSON.parse(localStorage.getItem('apu-candy-v1'))||{};}catch(_){}
+  const playtest=window.CandyRelease?.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
+  let rawSave={};try{rawSave=JSON.parse(localStorage.getItem(storageKey))||{};}catch(_){}
   const save=Economy.normalize(rawSave);
-  function persist(){try{localStorage.setItem('apu-candy-v1',JSON.stringify(save));}catch(_){}}
+  function persist(){try{localStorage.setItem(storageKey,JSON.stringify(save));}catch(_){}}
+  if(playtest){save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);document.querySelector('footer span')?.replaceChildren(document.createTextNode('测试版 · 全关开放 · 推荐火力'));}
   persist();
   function text(scene,x,y,value,size=14,color='#fff1c7',align='left'){
     return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'bold',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
@@ -97,7 +99,7 @@
     }
     showChapter(id){
       this.clearScreen();this.state='chapter';this.mapWorld=id;this.input.enabled=false;
-      window.CandyMapView.chapter({save,world:window.CANDY_WORLDS[id],levels,hidden:window.CANDY_HIDDEN,canEnter:i=>Economy.canEnter(save,i),play:i=>this.startLevel(i),back:()=>this.showLevels(),secret:h=>this.showSecret(h),warehouse:()=>this.showInventory(id),codex:()=>this.showCodex(levels.slice(id*30,id*30+30).find(l=>Economy.canEnter(save,l.id)&&!save.stars[l.id])||levels[id*30+29]),tasks:()=>this.showTasks(id)});
+      window.CandyMapView.chapter({save,world:window.CANDY_WORLDS[id],levels,hidden:window.CANDY_HIDDEN,canEnter:i=>playtest||Economy.canEnter(save,i),play:i=>this.startLevel(i),back:()=>this.showLevels(),secret:h=>this.showSecret(h),warehouse:()=>this.showInventory(id),codex:()=>this.showCodex(levels.slice(id*30,id*30+30).find(l=>Economy.canEnter(save,l.id)&&!save.stars[l.id])||levels[id*30+29]),tasks:()=>this.showTasks(id)});
     }
     showSecret(level){
       this.clearScreen();this.state='secret';this.input.enabled=false;
@@ -119,10 +121,10 @@
     showCodex(level=levels[save.current]){
       const battle=['intro','ready','aiming','shooting'].includes(this.state),from=this.state;
       if(battle){this.codexOpen=true;this.setPausedByUI(true);this.input.enabled=false;}else{this.clearScreen();this.state='codex';this.input.enabled=false;}
-      window.CandyMapView.codex({level,world:window.CANDY_WORLDS[level.world],attack:battle?this.attackDamage:Economy.attack(save),recommended:Economy.recommendedAttack(level),back:()=>{if(battle){window.CandyMapView.hide();this.codexOpen=false;this.input.enabled=true;this.setPausedByUI(false);}else if(from==='worlds')this.showLevels();else this.showChapter(level.world);}});
+      window.CandyMapView.codex({save,level,worlds:window.CANDY_WORLDS,levels,hidden:window.CANDY_HIDDEN,playtest,attack:battle?this.attackDamage:Economy.attack(save),back:()=>{if(battle){window.CandyMapView.hide();this.codexOpen=false;this.input.enabled=true;this.setPausedByUI(false);}else if(from==='worlds')this.showLevels();else this.showChapter(level.world);}});
     }
     takeSnapshot(){
-      this.snapshot={nodes:[...this.nodes.values()].map(n=>({kind:n.kind,hp:n.hp,maxHp:n.maxHp,x:n.sprite.x,y:n.sprite.y,armor:n.armor||0})),obstacles:this.obstacles.filter(o=>o.active).map(o=>({...o.getData('spec'),x:o.x,y:o.y,hp:o.getData('hp')})),wave:this.wave,turn:this.turn,shots:this.shotsFired,energy:this.energy,defeated:this.defeated,bossSplit:this.bossSplit,clock:this.gameClock,hits:this.hitCount,bestCombo:this.bestCombo};
+      this.snapshot={nodes:[...this.nodes.values()].map(n=>({kind:n.kind,hp:n.hp,maxHp:n.maxHp,x:n.sprite.x,y:n.sprite.y,armor:n.armor||0})),obstacles:this.obstacles.filter(o=>o.active).map(o=>({...o.getData('spec'),x:o.x,y:o.y,hp:o.getData('hp')})),wave:this.wave,turn:this.turn,shots:this.shotsFired,energy:this.energy,defeated:this.defeated,bossSplit:this.bossSplit,clock:this.gameClock,hits:this.hitCount,bestCombo:this.bestCombo,productive:this.productiveShots};
     }
     useItem(id){
       if(this.state!=='ready')return {ok:false,reason:'请在两次发射之间使用道具'};
@@ -140,7 +142,7 @@
         const snap=this.snapshot;this.time.removeAllEvents();this.balls.clear(true,true);for(const n of this.nodes.values()){n.label?.destroy();n.bar?.destroy();}this.nodes.clear();this.targets.clear(true,true);this.walls.clear(true,true);this.obstacles=[];
         for(const n of snap.nodes){const node=this.addTarget(n.kind+String(n.hp),(n.x-48)/44,n.y,{exact:true});node.maxHp=n.maxHp;node.armor=n.armor;this.drawHealth(node);node.label?.setText(String(n.hp)+(n.armor?'◇':''));}
         for(const spec of snap.obstacles)this.addObstacle(spec);
-        Object.assign(this,{wave:snap.wave,turn:snap.turn,shotsFired:snap.shots,energy:snap.energy,defeated:snap.defeated,bossSplit:snap.bossSplit,gameClock:snap.clock,hitCount:snap.hits,bestCombo:snap.bestCombo,snapshot:null,extraBalls:0,itemAim:false,nova:false,guard:0});
+        Object.assign(this,{wave:snap.wave,turn:snap.turn,shotsFired:snap.shots,energy:snap.energy,defeated:snap.defeated,bossSplit:snap.bossSplit,gameClock:snap.clock,hitCount:snap.hits,bestCombo:snap.bestCombo,productiveShots:snap.productive||0,volleyProductive:false,snapshot:null,extraBalls:0,itemAim:false,nova:false,guard:0});
       }
       this.drawEnergy();this.refreshHUD();this.hintText.setText(Economy.ITEMS[id].name+'已使用');return {ok:true};
     }
@@ -158,25 +160,25 @@
     }
     startLevel(index){
       this.clearScreen();this.isHidden=typeof index==='object';this.level=this.isHidden?index:levels[index];this.index=this.isHidden?this.level.world*30+this.level.local:index;this.world=window.CANDY_WORLDS[this.level.world];this.background.setTexture(`w${this.world.id}-arena`);window.CandyAudio.setTheme(this.world.id);if(!this.isHidden){save.current=index;persist();}
-      this.attackDamage=Economy.attack(save);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
+      this.attackDamage=Math.max(Economy.attack(save),playtest?Economy.recommendedAttack(this.level):0);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
       this.snapshot=null;this.extraBalls=0;this.itemAim=false;this.guard=0;this.nova=false;
-      this.rewardClaimed=false;this.shotsFired=0;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
+      this.rewardClaimed=false;this.shotsFired=0;this.productiveShots=0;this.volleyProductive=false;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
       this.gameClock=0;this.state='intro';this.turn=1;this.wave=0;this.energy=save.equipped.gear==='gear-spark'?15:0;this.armed=false;this.combo=0;this.bestCombo=0;this.pending=0;this.rainbowUntil=0;this.hitCount=0;this.angle=-Math.PI/2;this.nextId=0;this.volleyAge=0;this.bossSplit=false;
       this.keep(panel(this,10,10,340,43),text(this,22,18,`${this.isHidden?'秘境':String(this.level.local+1).padStart(2,'0')} / ${this.level.name}`,16));
-      this.keep(this.add.image(285,31,'icon-fire'),text(this,337,23,String(this.attackDamage),11,'#f5dfa5').setOrigin(1,0));
+      this.keep(this.add.image(174,514,'icon-fire'));this.damageLabel=this.keep(text(this,190,508,String(this.attackDamage),11,'#365f4d'));
 
       this.keep(panel(this,10,61,340,44,0xf5edc9,0x8da87e));
       this.turnLabel=this.keep(text(this,23,67,'',10,'#42654b'));
       this.goalLabel=this.keep(text(this,337,67,'',10,'#42654b'));this.goalLabel.setOrigin(1,0);
       this.waveLabel=this.keep(text(this,23,86,'',10,'#42654b'));
-      this.keep(text(this,337,86,'敌人数字 = 剩余耐久',9,'#8b7551').setOrigin(1,0));
+      this.keep(text(this,337,86,'长按怪怪查看生命',9,'#8b7551').setOrigin(1,0));
       const danger=this.keep(this.add.graphics());danger.lineStyle(1,0xc88972,.8);for(let x=25;x<337;x+=9)danger.lineBetween(x,493,x+4,493);
       this.keep(text(this,30,496,'守住这条线',8,'#af7b60'));
       this.hero=this.keep(this.add.sprite(128,536,this.dragonTexture(),0).setScale(2));
       this.turret=this.keep(this.add.image(180,556,Economy.equipped(save,'turret').texture).setScale(1.5));
       if(this.level.mode==='defense')this.keep(this.add.image(245,540,'engineer').setScale(1.5));
       this.friend=this.keep(this.add.image(this.level.mode==='defense'?287:245,552,'star').setScale(1.5).setAlpha(.45));
-      this.energyLabel=this.keep(text(this,28,540,'阿噗的能量',9,'#42634c'));
+      this.energyLabel=this.keep(text(this,28,540,'大泡泡能量',9,'#42634c'));
       this.energyGraphic=this.keep(this.add.graphics());
       this.comboText=this.keep(text(this,180,457,'',18,'#4a8062','center').setDepth(35));
       this.hintText=this.keep(text(this,180,583,'',10,'#395f4d','center'));
@@ -185,7 +187,8 @@
       for(const spec of this.level.obstacles||[])this.addObstacle(spec);
       for(const spec of this.level.portals||[])this.portalSprites.push(this.add.image(spec.x,spec.y,'portal').setScale(1.3).setAlpha(.85).setDepth(8));
       this.refreshHUD();this.drawEnergy();
-      this.modal('阿噗，出发！',`本关清除 ${this.totalMonsters} 只敌人${this.level.boss?'（含分裂）':''}。数字是耐久。\n敌人分 ${this.level.waves.length} 批到场，不是发射上限。\n${this.level.mode==='timed'?this.level.timeLimit+'秒内清屏':this.level.mode==='defense'?'守护工程师三颗生命，击退进攻':'清空全部敌人获胜，越线失败'}\n普通伤害 ${this.attackDamage} / 大泡泡 ${this.attackDamage*4}`, '开始这一关',()=>{this.clearModal();this.state='ready';this.hintText.setText('阿噗：'+window.CandyAudio.voice('start')+' 按住瞄准，松手发射');},{label:'本关敌人图鉴',action:()=>this.showCodex(this.level)});
+      const goal=this.level.mode==='timed'?`${this.level.timeLimit} 秒内清除全部敌人。`:this.level.mode==='defense'?'保护工程师，击退全部进攻。':this.level.mode==='raid'?'击败首领及其分裂守卫。':'清除全部敌人，守住安全线。';
+      this.modal('本关目标',goal,'开始这一关',()=>{this.clearModal();this.state='ready';this.hintText.setText('阿噗：'+window.CandyAudio.voice('start')+' 按住瞄准，松手发射');},{label:'怪怪图鉴',action:()=>this.showCodex(this.level)});
     }
     modal(title,detail,label,callback,secondary=null){
       this.aim.clear();
@@ -211,6 +214,7 @@
       this.fitTarget(sprite,bw,bh);
       const node={id:++this.nextId,kind,hp,maxHp:hp,armor:['j','b'].includes(kind)?this.level.armor||0:0,sprite,baseScale:sprite.scaleX,monster:['j','b','K'].includes(kind),dead:false};
       sprite.setData('node',node);sprite.setDepth(10);
+      if(node.monster&&Economy.discover(save,this.level,kind))persist();
       if(node.monster)node.label=text(this,sprite.x,sprite.y+5,String(hp)+(node.armor?'◇':''),kind==='K'?12:9,'#254d43','center').setDepth(12);
       if(node.monster){node.bar=this.add.graphics().setDepth(11);this.drawHealth(node);}this.nodes.set(node.id,node);return node;
     }
@@ -225,7 +229,9 @@
       this.goalLabel?.setText(`已消灭 ${this.defeated}/${this.totalMonsters} 只`);
       if(this.level.mode==='defense')this.goalLabel?.setText(`守护 ♥ ${this.baseLives}/3`);
       if(this.level.mode==='timed')this.goalLabel?.setText(`剩余 ${Math.max(0,Math.ceil(this.level.timeLimit-this.challengeElapsed/1000))} 秒`);
-      this.waveLabel?.setText(this.wave>=this.level.waves.length?'增援已全部到场，清空余敌':`敌人已到场 ${this.wave}/${this.level.waves.length} 批`);
+      const total=Math.max(0,this.level.waves.length-this.level.initial),arrived=Math.max(0,this.wave-this.level.initial);
+      this.waveLabel?.setText(total?`后续援军 ${arrived}/${total} 批${arrived===total?' · 已到齐':''}`:'无后续援军');
+      this.damageLabel?.setText(String(this.attackDamage));
     }
     drawEnergy(){
       this.energyGraphic.clear();this.energyGraphic.fillStyle(0x7a9b74).fillRect(28,556,80,9);this.energyGraphic.fillStyle(0xf2d38e).fillRect(30,558,Math.round(this.energy/100*76),5);
@@ -235,7 +241,7 @@
     toggleSkill(){
       if(this.state!=='ready')return;
       if(this.nova){this.hintText.setText('这次已准备星爆泡泡，能量留待下次');return;}
-      if(this.energy<100&&!this.armed){this.hintText.setText('命中敌人积能，满能量后可释放大泡泡');return;}
+      if(this.energy<100&&!this.armed){this.hintText.setText('每次命中怪怪 +5 能量，满 100 可释放大泡泡');return;}
       this.armed=!this.armed;this.drawEnergy();if(this.armed){window.CandyAudio.play('ready');window.CandyAudio.voice('power');}this.hintText.setText(this.armed?'阿噗：大泡泡，准备！首颗伤害 ×4':'已取消，继续普通发射');this.drawAim();
     }
     pointerDown(pointer){
@@ -263,7 +269,7 @@
     }
     fire(){
       if(!['ready','aiming'].includes(this.state)||this.uiPaused)return;
-      this.takeSnapshot();this.state='shooting';this.shotsFired++;this.refreshHUD();this.aim.clear();this.combo=0;this.volleyAge=0;this.rainbowUntil=0;
+      this.takeSnapshot();this.volleyProductive=false;this.state='shooting';this.shotsFired++;this.refreshHUD();this.aim.clear();this.combo=0;this.volleyAge=0;this.rainbowUntil=0;
       this.hero.setFrame(3);this.tweens.add({targets:this.hero,y:541,duration:80,yoyo:true});
       this.hintText.setText('利用反弹和连锁命中敌人');
       const powered=this.armed;this.armed=false;if(powered)this.energy=0;this.drawEnergy();
@@ -297,7 +303,7 @@
     damage(node,amount){
       if(node.dead)return;
       if(node.armor>0){node.armor--;amount=0;}node.hp-=amount;this.hitCount++;this.combo++;this.bestCombo=Math.max(this.bestCombo,this.combo);
-      if(node.monster){this.energy=Math.min(100,this.energy+5);this.drawEnergy();}
+      if(node.monster){this.volleyProductive=true;this.energy=Math.min(100,this.energy+5);this.drawEnergy();}
       node.label?.setText(String(Math.max(0,node.hp))+(node.armor?'◇':''));
       this.drawHealth(node);this.comboText.setText(this.combo>=3?`${this.combo} 连击!`:'');
       window.CandyAudio.play(node.kind==='K'?'boss':node.kind==='b'?'berry':'hit',this.combo);
@@ -341,6 +347,7 @@
     }
     endVolley(){
       if(this.state!=='shooting')return;
+      if(this.volleyProductive)this.productiveShots++;this.volleyProductive=false;
       this.state='advancing';this.physics.world.timeScale=1;this.time.timeScale=1;this.hero.setFrame(0);this.comboText.setText('');
       if(this.remaining()===0&&this.wave>=this.level.waves.length){this.win();return;}
       if(this.guard>0){this.guard--;this.turn++;this.state='ready';this.refreshHUD();this.hintText.setText('缓冲护盾抵消了本次推进');return;}
@@ -359,11 +366,11 @@
     }
     win(){
       if(this.rewardClaimed)return;this.rewardClaimed=true;this.state='won';this.time.removeAllEvents();this.balls.clear(true,true);this.physics.world.pause();this.hero.setFrame(4);this.friend.setAlpha(1);this.burst(245,552,0xffdb86,25);
-      const target=this.level.starTarget||6;let stars=this.turn<=target?3:this.turn<=target+4?2:1;if(this.level.mode==='defense')stars=Math.min(stars,this.baseLives);
-      this.reward=this.isHidden?Economy.winHidden(save,this.level.id):Economy.win(save,this.index,stars,{combo:this.bestCombo});persist();
+      const target=this.level.starTarget||6;this.rating=window.CandyScore.evaluate({won:true,shots:this.shotsFired,par:target,productive:this.productiveShots,combo:this.bestCombo,mode:this.level.mode,lives:this.baseLives,elapsed:this.challengeElapsed/1000,limit:this.level.timeLimit});const {stars}=this.rating,stats={...this.rating,combo:this.bestCombo};
+      this.reward=this.isHidden?Economy.winHidden(save,this.level.id,stats):Economy.win(save,this.index,stars,stats);persist();
       window.CandyAudio.play('win');window.CandyAudio.voice('win');
       const amount=this.reward.totalCurrency??this.reward.amount??0,loot=this.reward.rewards||[];
-      window.CandyBattleUI.reward({title:this.isHidden?'秘境挑战完成！':'小星星，回家啦！',stars,amount,balance:save.candy,shots:this.shotsFired,target,loot:loot[0]||'',nextLabel:this.isHidden||this.level.local===29?'返回主题地图':'前往下一关',next:()=>this.isHidden||this.level.local===29?this.showChapter(this.world.id):this.startLevel(this.index+1),warehouse:()=>this.showInventory(this.world.id),powerReady:Economy.powerInfo(save).eligible,upgrade:()=>this.showWorkshop('power')});
+      window.CandyBattleUI.reward({title:this.isHidden?'秘境挑战完成！':'小星星，回家啦！',stars,rating:this.rating,amount,balance:save.candy,shots:this.shotsFired,target,loot:loot.join('\n'),nextLabel:this.isHidden||this.level.local===29?'返回主题地图':'前往下一关',next:()=>this.isHidden||this.level.local===29?this.showChapter(this.world.id):this.startLevel(this.index+1),warehouse:()=>this.showInventory(this.world.id),powerReady:Economy.powerInfo(save).eligible,upgrade:()=>this.showWorkshop('power')});
     }
     lose(reason='敌人越过了安全线。'){
       this.state='lost';this.refreshHUD();this.time.removeAllEvents();this.balls.clear(true,true);this.physics.world.pause();this.hero.setFrame(5);window.CandyAudio.play('lose');window.CandyAudio.voice('lose');
