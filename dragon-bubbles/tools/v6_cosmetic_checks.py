@@ -7,7 +7,9 @@ from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
 from PIL import Image
+import os
 import json,shutil
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.6.1')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -15,7 +17,7 @@ class Quiet(SimpleHTTPRequestHandler):
 def f(page,body):return page.evaluate('()=>{const s='+S+';'+body+'}')
 def save(page):return page.evaluate('JSON.parse(localStorage.getItem("apu-candy-v1"))')
 with TemporaryDirectory() as folder:
- with ZipFile(ROOT/'dragon-bubbles-0.6.0.zip') as z:z.extractall(folder)
+ with ZipFile(ROOT/f'dragon-bubbles-{VERSION}.zip') as z:z.extractall(folder)
  server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(folder)));Thread(target=server.serve_forever,daemon=True).start()
  with sync_playwright() as p:
   opts={'headless':True}
@@ -58,7 +60,7 @@ with TemporaryDirectory() as folder:
   for width in [320,390,430]:
    page.set_viewport_size({'width':width,'height':844});f(page,'s.showWorkshop("bubble")');assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');assert page.locator('.camp-tabs').evaluate('(e)=>e.scrollWidth<=e.clientWidth')
   assert not errors,errors
-  (ROOT/'tools/v6-cosmetic-results.json').write_text(json.dumps({'version':'0.6.0','real_zip':True,'local_pixel_font':True,'preview_does_not_spend':True,'purchase_and_equip':True,'four_frame_animation':True,'cosmetics_no_damage_bonus':True,'collision_centred_and_equal_radius':True,'all_sheet_dimensions':True,'72_distinct_paid_designs':True,'eight_price_bands_three_each':True,'mobile_widths':[320,390,430],'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/cosmetic-results-{VERSION}.json').write_text(json.dumps({'version':VERSION,'real_zip':True,'local_pixel_font':True,'preview_does_not_spend':True,'purchase_and_equip':True,'four_frame_animation':True,'cosmetics_no_damage_bonus':True,'collision_centred_and_equal_radius':True,'all_sheet_dimensions':True,'72_distinct_paid_designs':True,'eight_price_bands_three_each':True,'mobile_widths':[320,390,430],'errors':errors},indent=2)+'\n')
   browser.close()
  server.shutdown()
 print('PASS: pixel font, no-cost previews, purchases, visible frames, live equipment, unchanged damage/centred collision, sheet dimensions and narrow mobile tabs.')

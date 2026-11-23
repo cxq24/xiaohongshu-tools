@@ -1,14 +1,18 @@
-# 阿噗的像素弹弹冒险 · 0.6.0
+# 阿噗的像素弹弹冒险 · 0.6.1
 
 Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 个主线关卡，共 300 关，另有 30 个隐藏挑战**，保留双层地图，加入战斗内快捷道具栏、退出确认、图鉴、分类营地与进度限制的炮台成长。
 
-[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.0-test.zip)
+[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.1.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.1-test.zip)
 
 测试版直接开放 10 个世界、300 个主线和 30 个隐藏挑战，使用至少本关推荐火力；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
 
 0.6.0 将十个章节最终首领生命提升为 0.5.0 的十倍，重型首领每轮推进 18 像素；秘境守卫由同章最终首领设定生命上限。UI 使用本地中文像素字体、统一阶梯边框和小色板；角色、泡泡、炮台各有 24 款可购买外观（每类另保留 1 个免费基础款），八个价格档各三款。保留 S/A/B/C 评分、首次 S 随机普通道具、首领宝箱和收藏徽章。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
 
+0.6.1 修复小红书 200 文件上限：上传包从 211 个文件降为 **198 个**。保留全部运行脚本、194 张图片、像素字体、关卡、皮肤和存档规则；打包时按原顺序合并 13 个脚本为 `app.js`，把样式并入入口。`video-config.js` 保持单独可配置。
+
 ## 运行与上传
+
+请上传 `tools/package.py` 生成的 ZIP，不要直接压缩 `build/`：开发目录保留分开的源码，上传包会自动合并。超过 200 个文件时打包会失败，不会覆盖上一份有效包。
 
 ZIP 仅有根目录 `index.html` 一个 HTML，完整 Phaser MIT 许可保留在入口注释中。包内不含 Markdown、开发工具、测试视频或 MP4。
 
@@ -90,6 +94,7 @@ python3 tools/create_cosmetic_art.py
 node tools/test_progress.cjs
 python3 tools/package.py
 python3 tools/package.py --test
+python3 tools/test_package.py
 node tools/test_v5.cjs
 node tools/test_v6.cjs
 python3 tools/v6_browser_checks.py

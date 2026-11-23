@@ -6,7 +6,9 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
+import os
 import ast,json,shutil
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.6.1')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text());INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):
@@ -17,7 +19,7 @@ def ready(page):page.wait_for_function('window.candyGame?.scene.getScene("Advent
 with TemporaryDirectory() as folder:
  folder=Path(folder)
  for name,suffix in [('normal',''),('test','-test')]:
-  with ZipFile(ROOT/f'dragon-bubbles-0.6.0{suffix}.zip') as z:z.extractall(folder/name)
+  with ZipFile(ROOT/f'dragon-bubbles-{VERSION}{suffix}.zip') as z:z.extractall(folder/name)
  server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(folder)));Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
  with sync_playwright() as p:
   options={'headless':True}
@@ -54,7 +56,7 @@ with TemporaryDirectory() as folder:
   page.goto(base+'/normal/');ready(page);assert not page.evaluate('CandyRelease.playtest');assert json.loads(page.evaluate('localStorage.getItem("apu-candy-v1")'))==json.loads(normal)
   f(page,'s.showChapter(9)');assert page.locator('.level-node:not([disabled])').count()==0
   assert not errors,errors;assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  (ROOT/'tools/v6-release-results.json').write_text(json.dumps({'version':'0.6.0','both_actual_zips':True,'reinforcements_start_zero':True,'minimal_intro':True,'turret_damage_badge':True,'shared_energy_pool':True,'real_physics_grade_receipt':True,'test_all_300_and_30_hidden_open':True,'separate_storage_same_origin':True,'gallery_30_portraits':True,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/release-results-{VERSION}.json').write_text(json.dumps({'version':VERSION,'both_actual_zips':True,'reinforcements_start_zero':True,'minimal_intro':True,'turret_damage_badge':True,'shared_energy_pool':True,'real_physics_grade_receipt':True,'test_all_300_and_30_hidden_open':True,'separate_storage_same_origin':True,'gallery_30_portraits':True,'errors':errors},indent=2)+'\n')
   browser.close()
  server.shutdown()
 print('PASS: normal/test real ZIPs, zero-based reinforcements, minimal entry, damage placement, energy, physics scoring receipt, all test nodes and save isolation.')

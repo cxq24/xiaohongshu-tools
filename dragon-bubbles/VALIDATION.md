@@ -194,3 +194,21 @@ iPhone 小红书预览的真实声音表现尚需用户复测。桌面 Chromium 
 - 用户给的三个设计站本轮均被环境代理拒绝，未直接浏览或复制站内素材；限制及实际访问的字体来源列在 `STYLE_GUIDE.md`。外观为本工程程序绘制的原创像素图。
 
 证据包括 `v6-browser-results.json`、`v6-release-results.json`、`v6-cosmetic-results.json`、两份全量 `simulation-*.json`、`campaign-validation.json` 和哈希表 `release-0.6.0.json`。自动检查不证明真人难度已调平，小红书部署及 iPhone 真机体验仍需复测。
+
+## 0.6.1：修复小红书上传文件数上限
+
+用户实际部署页报告代码包超过 200 个文件。0.6.0 包有 211 个文件，旧打包脚本漏检了这一限制。
+
+本补丁只改变部署文件组织：13 个脚本按原入口的顺序逐字合入一个 `app.js`，样式原文并入唯一入口 `index.html`。`video-config.js` 仍单独提供，并保证先于宣传视频初始化执行。全部 194 张 PNG 和 WOFF2 字体逐字保留，未删除关卡、皮肤或游戏功能。
+
+最终普通包和全关开放测试包均为 **198 个文件**，无额外 ZIP 目录条目，仍只含根目录一个 HTML。开发目录仍保持分离源码，必须通过打包脚本生成上传包，不能直接压缩 `build/`。
+
+### 已通过
+
+- `python tools/test_package.py`：最终 ZIP 198 个文件；全部原图片、字体、单独视频配置及脚本源码保留；CSS 原文存在于入口；合并后脚本通过 Node 语法检查；两版差异只在 `app.js` 中的测试配置。
+- 临时源码副本加入两张图片时生成 200 文件包；再加一张达到 201 时打包拒绝，之前有效 ZIP 字节保持不变。打包前、后均检查 200 上限、文件类型、唯一入口、CRC、引擎与字体哈希及完整许可。
+- `CANDY_TEST_VERSION=0.6.1 python tools/v6_browser_checks.py`：从新普通包解压，真实输入、道具、退出、升级、皮肤、图鉴、回退、声音挂起恢复、限时/守护规则及临时 31 秒真实宣传视频完整播放流程通过。
+- `CANDY_TEST_VERSION=0.6.1 python tools/v6_cosmetic_checks.py`：新包像素字体、全部 72 款素材帧、试穿/购买/装备、动画、伤害不变、碰撞居中及 320/390/430 布局通过。
+- `CANDY_TEST_VERSION=0.6.1 python tools/v6_release_checks.py`：两份新 ZIP 的正常解锁、300+30 全开放测试入口、同来源独立存档、真实物理通关与评分收据、首领和秘境守卫显示通过。
+
+证据为 `package-results-0.6.1.json`、`browser-results-0.6.1.json`、`cosmetic-results-0.6.1.json`、`release-results-0.6.1.json` 和 `release-0.6.1.json`。关卡、数值和物理代码没有改变，0.6.0 的全量通关记录继续适用。尚未代用户在小红书部署页上传新包，不能将文件数量及浏览器验收说成平台部署已成功。
