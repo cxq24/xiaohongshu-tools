@@ -5,7 +5,7 @@ from pathlib import Path
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 import json, hashlib, argparse, re
 
-VERSION = '0.6.1'
+VERSION = '0.7.0'
 MAX_FILES = 200
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / 'build'

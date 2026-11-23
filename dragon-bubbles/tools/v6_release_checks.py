@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import ast,json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.6.1')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.7.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text());INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):
@@ -28,8 +28,8 @@ with TemporaryDirectory() as folder:
   page.goto(base+'/normal/');ready(page);f(page,'s.showChapter(0)');assert page.locator('.level-node:not([disabled])').count()==1
   f(page,'s.startLevel(3)');assert f(page,'return s.waveLabel.text')=='后续援军 0/1 批';assert f(page,'return s.energyLabel.text')=='大泡泡能量';assert f(page,'return s.damageLabel.text')=='100';assert f(page,'return s.damageLabel.y')>490
   # Entry modal contains just the win condition.
-  assert f(page,'return s.modals.filter(m=>typeof m.text==="string").map(m=>m.text)')==['本关目标','清除全部敌人，守住安全线。']
-  f(page,'s.clearModal();s.state="ready"');page.screenshot(path=str(ROOT/'previews/gameplay.png'),full_page=True)
+  assert ('清除全部敌人，守住安全线。' in page.locator('.discovery-dialog').inner_text()) if page.locator('.discovery-dialog').count() else f(page,'return s.modals.filter(m=>typeof m.text==="string").map(m=>m.text)')==['本关目标','清除全部敌人，守住安全线。']
+  f(page,'s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");');page.screenshot(path=str(ROOT/'previews/gameplay.png'),full_page=True)
   # Hits, armor and big-skill consumption share the same single energy pool.
   f(page,'const n=[...s.nodes.values()].find(n=>n.monster);s.energy=95;s.damage(n,1);');assert f(page,'return s.energy')==100
   f(page,'s.toggleSkill();s.fire()');assert f(page,'return s.energy')==0
@@ -43,8 +43,8 @@ with TemporaryDirectory() as folder:
   f(page,'s.showLevels()');assert page.locator('.world-island.blocked').count()==0
   for w in range(10):
    page.evaluate('(w)=>'+S+'.showChapter(w)',w);assert page.locator('.level-node:not([disabled])').count()==30;assert page.locator('.secret-node:not([disabled])').count()==3
-  page.locator('.secret-node').first.click();assert page.get_by_role('button',name='进入隐藏关').is_enabled();page.get_by_role('button',name='进入隐藏关').click();assert f(page,'return s.isHidden');f(page,'s.clearModal();s.state="ready"');assert '秘境守卫' in f(page,'return s.bossStatus.text');page.screenshot(path=str(ROOT/'previews/secret-guardian.png'),full_page=True)
-  f(page,'s.startLevel(299);s.clearModal();s.state="ready"');assert f(page,'return s.attackDamage')==page.evaluate('CandyProgress.recommendedAttack(CANDY_LEVELS[299])');assert f(page,'return s.damageLabel.text')==str(f(page,'return s.attackDamage'))
+  page.locator('.secret-node').first.click();assert page.get_by_role('button',name='进入隐藏关').is_enabled();page.get_by_role('button',name='进入隐藏关').click();assert f(page,'return s.isHidden');f(page,'s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");');assert '秘境守卫' in f(page,'return s.bossStatus.text');page.screenshot(path=str(ROOT/'previews/secret-guardian.png'),full_page=True)
+  f(page,'s.startLevel(299);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");');assert f(page,'return s.attackDamage')==page.evaluate('CandyProgress.recommendedAttack(CANDY_LEVELS[299])');assert f(page,'return s.damageLabel.text')==str(f(page,'return s.attackDamage'))
   assert '重型首领' in f(page,'return s.bossStatus.text');page.screenshot(path=str(ROOT/'previews/heavy-boss.png'),full_page=True);f(page,'s.showCodex(s.level)');assert page.locator('.codex-portrait').count()==30;assert page.locator('.codex-portrait[disabled]').count()==0;page.screenshot(path=str(ROOT/'previews/codex-all-test.png'),full_page=True)
   page.locator('[data-enemy="9-K"]').click();assert page.locator('.codex-stage option').count()>=1;assert '生命' in page.locator('.codex-card').inner_text();assert '—' not in page.locator('.codex-card').inner_text()
   # Test victories and profile changes cannot alter the normal save.

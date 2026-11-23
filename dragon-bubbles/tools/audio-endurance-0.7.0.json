@@ -1,0 +1,1008 @@
+{
+  "version": "0.7.0",
+  "seconds": 360.46,
+  "real_audio_context": true,
+  "foreground_preserves_theme": true,
+  "suspension_recovers": true,
+  "lost_music_source_recovers": true,
+  "samples": [
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 0.2002721088435374,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {},
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 0,
+      "effect": true,
+      "elapsed": 0.01
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 10.210975056689342,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 1
+        },
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.119995993587171,
+      "effect": true,
+      "elapsed": 10.01
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 20.221678004535146,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 2
+        },
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.0866395562164364,
+      "effect": true,
+      "elapsed": 20.02
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 30.232380952380954,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 3
+        },
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.5181197251863898,
+      "effect": true,
+      "elapsed": 30.03
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 40.231473922902495,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 4
+        },
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.9675095298371492,
+      "effect": true,
+      "elapsed": 40.04
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 50.2421768707483,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 5
+        },
+        "musicStarts": 2,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 0.9100137361600648,
+      "effect": true,
+      "elapsed": 50.04
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 60.2528798185941,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 6
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.3721052400540525,
+      "effect": true,
+      "elapsed": 60.06
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 70.26068027210884,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 7
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.61420807370024,
+      "effect": true,
+      "elapsed": 70.07
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 80.27138321995464,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 8
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.5699820858850588,
+      "effect": true,
+      "elapsed": 80.07
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 90.27047619047619,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 9
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.1194781197266463,
+      "effect": true,
+      "elapsed": 90.08
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 100.28117913832199,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 10
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 0.8220591523728691,
+      "effect": true,
+      "elapsed": 100.08
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 110.2918820861678,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 1,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 11
+        },
+        "musicStarts": 3,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.6710437888971033,
+      "effect": true,
+      "elapsed": 110.09
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 120.34031746031746,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 12
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.9515618744994994,
+      "effect": true,
+      "elapsed": 120.18
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 130.35102040816327,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 13
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.6213902213841058,
+      "effect": true,
+      "elapsed": 130.19
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 140.36172335600907,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 14
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.9575574704207281,
+      "effect": true,
+      "elapsed": 140.19
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 150.36081632653062,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 15
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.0532687216470449,
+      "effect": true,
+      "elapsed": 150.2
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 160.37151927437642,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 16
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.588719304988898,
+      "effect": true,
+      "elapsed": 160.21
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 170.38222222222223,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 17
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.7038830975072634,
+      "effect": true,
+      "elapsed": 170.21
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 180.38131519274376,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 18
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.9039432764659772,
+      "effect": true,
+      "elapsed": 180.22
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 190.39201814058956,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 19
+        },
+        "musicStarts": 4,
+        "musicRestarts": 0,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.1469455046647083,
+      "effect": true,
+      "elapsed": 190.23
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 200.43174603174603,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 20
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 4.501735776342277,
+      "effect": true,
+      "elapsed": 200.26
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 210.43083900226756,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 21
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.9154759474226504,
+      "effect": true,
+      "elapsed": 210.27
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 220.4415419501134,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 22
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.7364724098737043,
+      "effect": true,
+      "elapsed": 220.28
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 230.4522448979592,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 23
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.4630874888399532,
+      "effect": true,
+      "elapsed": 230.29
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 240.4716553287982,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 24
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.4402148277253641,
+      "effect": true,
+      "elapsed": 240.31
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 250.482358276644,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 25
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 5.381536722907315,
+      "effect": true,
+      "elapsed": 250.32
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 260.501768707483,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 26
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.3006452899132452,
+      "effect": true,
+      "elapsed": 260.33
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 270.5124716553288,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 27
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.537992563030869,
+      "effect": true,
+      "elapsed": 270.34
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 280.46222222222224,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 28
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.757795138803154,
+      "effect": true,
+      "elapsed": 280.36
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 290.47002267573697,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 29
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.331844763272204,
+      "effect": true,
+      "elapsed": 290.37
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 300.49233560090704,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 30
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 0.8220591523728691,
+      "effect": true,
+      "elapsed": 300.38
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 310.5001360544218,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 31
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.7645550865938993,
+      "effect": true,
+      "elapsed": 310.4
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 320.5108390022676,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 32
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 3.6276929652328627,
+      "effect": true,
+      "elapsed": 320.41
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 330.5302494331066,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 33
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.6547752868592158,
+      "effect": true,
+      "elapsed": 330.42
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 340.5409523809524,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 34
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.919269066598011,
+      "effect": true,
+      "elapsed": 340.44
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 350.5516553287982,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 35
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 1.0116508785149154,
+      "effect": true,
+      "elapsed": 350.45
+    },
+    {
+      "status": {
+        "available": true,
+        "running": true,
+        "musicPlaying": true,
+        "theme": 7,
+        "unlockedOnce": true,
+        "contextTime": 360.5710657596372,
+        "paused": false,
+        "active": 0,
+        "contextState": "running",
+        "needsGesture": false,
+        "recoveryAttempts": 2,
+        "lastError": "",
+        "audioSession": "unsupported",
+        "events": {
+          "shoot": 36
+        },
+        "musicStarts": 5,
+        "musicRestarts": 1,
+        "prunedEffects": 0,
+        "voiceMode": "\u62df\u58f0"
+      },
+      "rms": 2.980404754391591,
+      "effect": true,
+      "elapsed": 360.46
+    }
+  ],
+  "errors": []
+}

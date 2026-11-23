@@ -29,7 +29,7 @@ assert.equal(P.buy(all,'bubble-world-9').ok,true);assert.equal(all.equipped.bubb
 const ids=new Set();for(const level of [...campaign.levels,...campaign.hidden]){assert(!ids.has(level.id));ids.add(level.id);assert(level.waves.every(row=>row.length===7));assert(level.obstacles.every(o=>o.width<100));}
 console.log('PASS: all 300 sequential unlocks, paid adjacent worlds, inventory conservation, 30 hidden gates, rare first-clear rewards and themed cosmetics.');
 const vm=require('node:vm'),fs=require('node:fs');
-const box={window:{addEventListener(){},dispatchEvent(){}},document:{hidden:false,addEventListener(){}},navigator:{},localStorage:{getItem(){return null;}},Event:class {}};
+const box={setInterval(){},window:{addEventListener(){},dispatchEvent(){}},document:{hidden:false,addEventListener(){}},navigator:{},localStorage:{getItem(){return null;}},Event:class {}};
 vm.runInNewContext(fs.readFileSync(require.resolve('../build/audio.js'),'utf8'),box);
 for(let world=0;world<10;world++){
  const samples=box.window.CandyAudio.renderMusic(8000,world);let energy=0;

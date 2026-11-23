@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 from PIL import Image
 import os
 import json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.6.1')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.7.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -37,13 +37,13 @@ with TemporaryDirectory() as folder:
   page.get_by_role('button',name='泡泡皮肤',exact=True).click();page.locator('.price-tier-select').select_option('7');page.get_by_role('button',name='试穿梦境城堡泡泡',exact=True).click();page.locator('.map-scroll').evaluate('(e)=>e.scrollTop=0');page.screenshot(path=str(ROOT/'previews/pixel-bubbles.png'),full_page=True)
   page.locator('.shop-showcase').get_by_role('button',name='购买并装备',exact=False).click();assert save(page)['equipped']['bubble']=='bubble-world-9'
   assert save(page)['fireRank']==0
-  f(page,'s.startLevel(0);s.clearModal();s.state="ready"');assert f(page,'return s.attackDamage')==100;assert f(page,'return s.hero.texture.key')=='outfit-6';assert f(page,'return s.turret.texture.key')=='turret-cosmic'
+  f(page,'s.startLevel(0);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");');assert f(page,'return s.attackDamage')==100;assert f(page,'return s.hero.texture.key')=='outfit-6';assert f(page,'return s.turret.texture.key')=='turret-cosmic'
   f(page,'s.angle=-Math.PI/2;s.fire()');page.wait_for_function(S+'.balls.countActive()>0')
   data=f(page,'const b=s.balls.getChildren()[0];return {damage:b.getData("damage"),radius:b.body.radius,dx:b.body.center.x-b.x,dy:b.body.center.y-b.y,frame:b.frame.name};');assert data['damage']==100;assert data['radius']==4;assert abs(data['dx'])<.1 and abs(data['dy'])<.1,data
   page.wait_for_timeout(200);assert f(page,'return s.bubbleLook.frames')==4;assert f(page,'return s.bubbleLook.fx')
   page.screenshot(path=str(ROOT/'previews/pixel-cosmetics-combat.png'),full_page=True)
   # Large cosmetic projectiles keep the same multiplier and centred collision.
-  f(page,'s.startLevel(0);s.clearModal();s.state="ready";s.energy=100;s.toggleSkill();s.angle=-Math.PI/2;s.fire()');page.wait_for_function(S+'.balls.countActive()>0')
+  f(page,'s.startLevel(0);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");;s.energy=100;s.toggleSkill();s.angle=-Math.PI/2;s.fire()');page.wait_for_function(S+'.balls.countActive()>0')
   data=f(page,'const b=s.balls.getChildren()[0];return {damage:b.getData("damage"),radius:b.body.radius,dx:b.body.center.x-b.x,dy:b.body.center.y-b.y};');assert data['damage']==400;assert abs(data['dx'])<.1 and abs(data['dy'])<.1,data
   # Every cosmetic sheet has the advertised dimensions and distinct silhouettes.
   catalog=page.evaluate('CandyProgress.SHOP');assert len([i for i in catalog if i['slot']=='dragon'])==25

@@ -1,0 +1,9 @@
+{
+  "version": "0.7.0",
+  "actual_zip": true,
+  "missing_ended_events_pruned": 24,
+  "closed_context_recreated": true,
+  "theme_preserved": true,
+  "mute_respected": true,
+  "errors": []
+}

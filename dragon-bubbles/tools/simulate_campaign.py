@@ -43,15 +43,16 @@ INSTALL=r'''()=>{
    if(score>best.score)best={score,angle};
   }return best;
  };
- window.runLevel=(index,hidden=false,variant=0)=>{
-  const level=hidden?CANDY_HIDDEN[index]:CANDY_LEVELS[index];if(!hidden)while(s.upgradePower().ok){}s.startLevel(hidden?level:index);if(hidden)s.attackDamage=CandyProgress.recommendedAttack(level);s.clearModal();s.state='ready';
-  const angles=[];let ticks=0;
+ window.runLevel=(index,hidden=false,variant=0,allowRetreat=false)=>{
+  const level=hidden?CANDY_HIDDEN[index]:CANDY_LEVELS[index];if(!hidden)while(s.upgradePower().ok){}s.startLevel(hidden?level:index);if(hidden)s.attackDamage=CandyProgress.recommendedAttack(level);s.beginLevel?s.beginLevel():(s.clearModal(),s.state='ready');
+  const angles=[],used=[];let ticks=0;
   for(let attempt=0;attempt<20&&s.state==='ready';attempt++){
+   if(allowRetreat){if(!used.includes('balls')&&s.useItem('balls').ok)used.push('balls');if(!used.includes('guard')&&[...s.nodes.values()].some(n=>n.monster&&n.sprite.y>355)&&s.useItem('guard').ok)used.push('guard');if(!s.retreatUsed&&[...s.nodes.values()].some(n=>n.monster&&n.sprite.y>395)&&s.useItem('retreat').ok)used.push('retreat');}
    const choice=pickAngle(variant);s.angle=choice.angle;if(s.energy>=100)s.armed=true;s.fire();angles.push(choice.angle);
    let t=0;while(s.state==='shooting'&&t++<4000){tick();ticks++;}
    if(t>=4000)break;
   }
-  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,mode:s.level.mode||'normal',grade:s.rating?.grade,score:s.rating?.score,productive:s.productiveShots,reward:s.reward?.totalCurrency,angles,ticks,variant};
+  return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,itemsUsed:used,mode:s.level.mode||'normal',grade:s.rating?.grade,score:s.rating?.score,productive:s.productiveShots,reward:s.reward?.totalCurrency,angles,ticks,variant};
  };
 }'''
 with sync_playwright() as p:
@@ -67,9 +68,13 @@ with sync_playwright() as p:
    for variant in [1,2]:
     result=page.evaluate('([i,h,v])=>runLevel(i,h,v)',[i,args.hidden,variant])
     if result['state']=='won':break
+  if result['state']!='won' and not args.hidden:
+   for variant in [0,1,2]:
+    result=page.evaluate('([i,v])=>runLevel(i,false,v,true)',[i,variant])
+    if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.6.0','results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.7.0','results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

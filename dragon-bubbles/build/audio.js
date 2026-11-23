@@ -5,7 +5,7 @@
   let settings={...DEFAULTS};
   try{const raw=JSON.parse(localStorage.getItem(STORE));if(raw){for(const k of ['enabled'])if(typeof raw[k]==='boolean')settings[k]=raw[k];for(const k of ['music','effects','voice'])if(typeof raw[k]==='number'&&Number.isFinite(raw[k]))settings[k]=Math.max(0,Math.min(1,raw[k]));}}catch(_){}
   let ctx,master,compressor,musicGain,effectGain,voiceGain,musicBuffer,musicSource=null,musicOffset=0,musicStart=0,paused=false,hidden=document.hidden,unlockedOnce=false,resuming=null,theme=0,lastError="",recoveryAttempts=0,needsGesture=true;
-  const active=new Set(),last={},stats={events:{},musicStarts:0,voiceMode:'拟声'};
+  const active=new Set(),last={},stats={events:{},musicStarts:0,musicRestarts:0,prunedEffects:0,voiceMode:'拟声'};
   const midi=n=>440*2**((n-69)/12);
   const tri=p=>2/Math.PI*Math.asin(Math.sin(p));
   // Deterministic timbres can be inspected and tested without an audio device.
@@ -54,23 +54,24 @@
   function save(){try{localStorage.setItem(STORE,JSON.stringify(settings));}catch(_){}notify();}
   function setup(){
     if(ctx&&ctx.state!=='closed')return true;
+    if(ctx)stopEffects();
     musicSource=null;musicBuffer=null;musicOffset=0;
     try{
       const Context=window.AudioContext||window.webkitAudioContext;if(!Context)return false;
       try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch(_){}
       ctx=new Context({latencyHint:'interactive'});
-      ctx.addEventListener('statechange',()=>{needsGesture=ctx.state!=='running';if(ctx.state==='running'){apply();startMusic();}else{stopMusic();}notify();});
+      const ownedContext=ctx;ctx.addEventListener('statechange',()=>{if(ctx!==ownedContext)return;needsGesture=ctx.state!=='running';if(ctx.state==='running'){apply();startMusic();}else{stopMusic();stopEffects();}notify();});
       master=ctx.createGain();compressor=ctx.createDynamicsCompressor();compressor.threshold.value=-10;compressor.ratio.value=5;master.connect(compressor);compressor.connect(ctx.destination);
       musicGain=ctx.createGain();effectGain=ctx.createGain();voiceGain=ctx.createGain();musicGain.connect(master);effectGain.connect(master);voiceGain.connect(master);
       apply();return true;
     }catch(_){return false;}
   }
   function apply(){if(!ctx)return;master.gain.setValueAtTime(settings.enabled?1:0,ctx.currentTime);musicGain.gain.setValueAtTime(settings.music,ctx.currentTime);effectGain.gain.setValueAtTime(settings.effects*.65,ctx.currentTime);voiceGain.gain.setValueAtTime(settings.voice*.65,ctx.currentTime);}
-  function stopMusic(){if(musicSource){musicOffset=(musicOffset+ctx.currentTime-musicStart)%musicBuffer.duration;musicSource.stop();musicSource.disconnect();musicSource=null;}}
+  function stopMusic(){if(musicSource){musicOffset=(musicOffset+ctx.currentTime-musicStart)%musicBuffer.duration;const source=musicSource;musicSource=null;source.onended=null;try{source.stop();source.disconnect();}catch(_){}}}
   function startMusic(){
     if(!ctx||ctx.state!=='running'||musicSource||paused||hidden||!settings.enabled||settings.music<=0)return;
     if(!musicBuffer){const data=renderMusic(ctx.sampleRate,theme);musicBuffer=ctx.createBuffer(1,data.length,ctx.sampleRate);musicBuffer.copyToChannel(data,0);}
-    musicSource=ctx.createBufferSource();musicSource.buffer=musicBuffer;musicSource.loop=true;musicSource.connect(musicGain);musicStart=ctx.currentTime;musicSource.start(0,musicOffset);stats.musicStarts++;
+    const source=ctx.createBufferSource();musicSource=source;source.buffer=musicBuffer;source.loop=true;source.connect(musicGain);musicStart=ctx.currentTime;source.onended=()=>{source.disconnect();if(musicSource===source){musicSource=null;musicOffset=0;stats.musicRestarts++;recover();}};source.start(0,musicOffset);stats.musicStarts++;
   }
   function stopEffects(){for(const source of active){try{source.stop();source.disconnect();}catch(_){}}active.clear();}
   async function unlock(){
@@ -84,13 +85,14 @@
     return resuming;
   }
   function recover(){if(unlockedOnce&&settings.enabled&&!hidden){if(ctx?.state==='running'){startMusic();}else unlock();}}
+  function pruneEffects(){if(!ctx)return;for(const source of active)if(source.candyEnd<=ctx.currentTime){active.delete(source);source.onended=null;try{source.stop();source.disconnect();}catch(_){}stats.prunedEffects++;}}
   function play(name,variant=0,preview=false,bus='effects'){
     if(!ctx||ctx.state!=='running'||!settings.enabled||hidden||(!preview&&paused)||settings[bus]<=0)return false;
-    const now=ctx.currentTime;
+    pruneEffects();const now=ctx.currentTime;
     if(['hit','berry','boss','pop','explode'].includes(name)&&now-(last[name]??-1)<.045)return false;
     if(active.size>=24)return false;
     const data=render(name,ctx.sampleRate,variant),buffer=ctx.createBuffer(1,data.length,ctx.sampleRate);buffer.copyToChannel(data,0);
-    const source=ctx.createBufferSource();source.buffer=buffer;source.connect(bus==='voice'?voiceGain:effectGain);active.add(source);
+    const source=ctx.createBufferSource();source.buffer=buffer;source.connect(bus==='voice'?voiceGain:effectGain);source.candyEnd=now+buffer.duration+.15;active.add(source);
     source.onended=()=>{active.delete(source);source.disconnect();};source.start();last[name]=now;stats.events[name]=(stats.events[name]||0)+1;return true;
   }
   const lines={start:'出发啦！',power:'大泡泡，准备！',win:'小星星，回家啦！',lose:'再试一次，我陪你！'};
@@ -102,8 +104,10 @@
   }
   function set(name,value){if(!(name in DEFAULTS))return;if(typeof DEFAULTS[name]==='boolean')settings[name]=Boolean(value);else settings[name]=Math.max(0,Math.min(1,Number(value)||0));apply();if(!settings.enabled){stopMusic();stopEffects();}else if(settings.music>0)startMusic();else stopMusic();save();}
   function pause(value){paused=Boolean(value);if(paused){stopMusic();stopEffects();}else recover();}
-  document.addEventListener('visibilitychange',()=>{hidden=document.hidden,unlockedOnce=false,resuming=null,theme=0,lastError="",recoveryAttempts=0,needsGesture=true;if(hidden){stopMusic();stopEffects();}else recover();});
-  for(const name of ['pointerdown','touchend','keydown'])document.addEventListener(name,event=>{if(event.isTrusted&&settings.enabled&&(!ctx||ctx.state!=='running'))unlock();},{capture:true,passive:true});
-  window.addEventListener('pageshow',recover);window.addEventListener('focus',recover);
-  window.CandyAudio={unlock,play,voice,set,pause,setTheme(id){if(theme===id)return;stopMusic();theme=id;musicBuffer=null;musicOffset=0;startMusic();},preview:name=>play(name,0,true),get settings(){return {...settings};},get status(){return {available:Boolean(window.AudioContext||window.webkitAudioContext),running:ctx?.state==='running',paused,active:active.size,contextState:ctx?.state||'not-started',needsGesture,recoveryAttempts,lastError,audioSession:navigator.audioSession?.type||'unsupported',...stats,events:{...stats.events}};},render,renderMusic};
+  function visibility(){hidden=document.hidden;if(hidden){stopMusic();stopEffects();}else recover();}
+  document.addEventListener('visibilitychange',visibility);
+  for(const name of ['pointerdown','touchend','keydown'])document.addEventListener(name,event=>{if(event.isTrusted&&settings.enabled&&(!ctx||ctx.state!=='running'||(!musicSource&&!paused&&!hidden&&settings.music>0)))unlock();},{capture:true,passive:true});
+  window.addEventListener('pageshow',()=>{hidden=document.hidden;recover();});window.addEventListener('pagehide',()=>{hidden=true;stopMusic();stopEffects();});window.addEventListener('focus',visibility);
+  setInterval(()=>{pruneEffects();if(unlockedOnce&&settings.enabled&&!hidden&&!paused)recover();},4000);
+  window.CandyAudio={unlock,play,voice,set,pause,setTheme(id){if(theme===id)return;stopMusic();theme=id;musicBuffer=null;musicOffset=0;startMusic();},preview:name=>play(name,0,true),get settings(){return {...settings};},get status(){return {available:Boolean(window.AudioContext||window.webkitAudioContext),running:ctx?.state==='running',musicPlaying:Boolean(musicSource),theme,unlockedOnce,contextTime:ctx?.currentTime||0,paused,active:active.size,contextState:ctx?.state||'not-started',needsGesture,recoveryAttempts,lastError,audioSession:navigator.audioSession?.type||'unsupported',...stats,events:{...stats.events}};},render,renderMusic};
 })();

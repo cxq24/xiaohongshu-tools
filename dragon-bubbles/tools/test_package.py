@@ -15,7 +15,7 @@ for playtest in [False, True]:
     with ZipFile(archive_path) as archive:
         actual = {name: archive.read(name) for name in archive.namelist()}
         assert actual == expected
-        assert len(actual) == 198 <= 200
+        assert len(actual) == 199 <= 200
         assert not any(info.is_dir() for info in archive.infolist())
         assert compiler.SCRIPT.findall(actual['index.html'].decode()) == ['video-config.js', 'app.js']
         css = (ROOT/'build/style.css').read_text()
@@ -31,12 +31,12 @@ for playtest in [False, True]:
                 assert original in actual['app.js'], name
             elif name not in ['index.html', 'style.css']:
                 assert actual[name] == source.read_bytes(), name
-        assert sum(name.endswith('.png') for name in actual) == 194
+        assert sum(name.endswith('.png') for name in actual) == 195
         with TemporaryDirectory() as temp:
             script = Path(temp)/'app.js'
             script.write_bytes(actual['app.js'])
             subprocess.run(['node', '--check', str(script)], check=True)
-    results['test' if playtest else 'normal'] = {'files':len(actual),'source_files':source_count,'bundled_scripts':script_count,'pngs':194,'sha256':hashlib.sha256(archive_path.read_bytes()).hexdigest()}
+    results['test' if playtest else 'normal'] = {'files':len(actual),'source_files':source_count,'bundled_scripts':script_count,'pngs':195,'sha256':hashlib.sha256(archive_path.read_bytes()).hexdigest()}
 with ZipFile(ROOT/f'dragon-bubbles-{compiler.VERSION}.zip') as normal, ZipFile(ROOT/f'dragon-bubbles-{compiler.VERSION}-test.zip') as test:
     assert normal.namelist() == test.namelist()
     assert [n for n in normal.namelist() if normal.read(n) != test.read(n)] == ['app.js']
@@ -51,7 +51,7 @@ with TemporaryDirectory() as temp:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT/name,target)
     image = (ROOT/'build/assets/star.png').read_bytes()
-    for n in range(2):
+    for n in range(1):
         (fixture/f'build/assets/future-{n}.png').write_bytes(image)
     command = [sys.executable,str(fixture/'tools/package.py')]
     subprocess.run(command,check=True,capture_output=True,text=True)
@@ -65,4 +65,4 @@ with TemporaryDirectory() as temp:
     assert archive.read_bytes() == before
 results.update(version=compiler.VERSION,all_images_and_font_unchanged=True,all_script_sources_preserved=True,normal_test_difference='app.js',boundary_200_accepted=True,overflow_201_refused=True,previous_archive_preserved_on_error=True)
 (ROOT/f'tools/package-results-{compiler.VERSION}.json').write_text(json.dumps(results,indent=2)+'\n')
-print('PASS: 211→198 upload files, original assets/scripts/styles retained, both bundles parse, 200 accepted, 201 rejected without changing the previous archive.')
+print('PASS: 213→199 upload files, original assets/scripts/styles retained, both bundles parse, 200 accepted, 201 rejected without changing the previous archive.')

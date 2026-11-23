@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "worlds": [
     {
       "id": 0,
@@ -169,7 +169,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 22,
-      "pressure": 2.2
+      "pressure": 2.2,
+      "advance": 37
     },
     {
       "id": 1,
@@ -217,7 +218,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 22,
-      "pressure": 2.2
+      "pressure": 2.2,
+      "advance": 37
     },
     {
       "id": 2,
@@ -265,7 +267,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 23,
-      "pressure": 2.3
+      "pressure": 2.3,
+      "advance": 37
     },
     {
       "id": 3,
@@ -313,7 +316,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 23,
-      "pressure": 2.3
+      "pressure": 2.3,
+      "advance": 37
     },
     {
       "id": 4,
@@ -361,7 +365,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 23,
-      "pressure": 2.3
+      "pressure": 2.3,
+      "advance": 37
     },
     {
       "id": 5,
@@ -409,7 +414,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 23,
-      "pressure": 2.3
+      "pressure": 2.3,
+      "advance": 37
     },
     {
       "id": 6,
@@ -457,7 +463,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 26,
-      "pressure": 2.364
+      "pressure": 2.364,
+      "advance": 37
     },
     {
       "id": 7,
@@ -505,7 +512,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 26,
-      "pressure": 2.364
+      "pressure": 2.364,
+      "advance": 37
     },
     {
       "id": 8,
@@ -554,6 +562,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -561,7 +576,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 27,
-      "pressure": 2.455
+      "pressure": 2.455,
+      "advance": 37
     },
     {
       "id": 9,
@@ -610,6 +626,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -617,7 +640,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 27,
-      "pressure": 2.455
+      "pressure": 2.455,
+      "advance": 37
     },
     {
       "id": 10,
@@ -675,6 +699,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -682,7 +713,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 27,
-      "pressure": 2.455
+      "pressure": 2.455,
+      "advance": 37
     },
     {
       "id": 11,
@@ -740,6 +772,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -747,7 +786,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 28,
-      "pressure": 2.545
+      "pressure": 2.545,
+      "advance": 37
     },
     {
       "id": 12,
@@ -805,6 +845,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -812,7 +859,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 31,
-      "pressure": 2.583
+      "pressure": 2.583,
+      "advance": 37
     },
     {
       "id": 13,
@@ -870,6 +918,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -877,7 +932,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 31,
-      "pressure": 2.583
+      "pressure": 2.583,
+      "advance": 37
     },
     {
       "id": 14,
@@ -935,6 +991,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -942,7 +1005,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 31,
-      "pressure": 2.583
+      "pressure": 2.583,
+      "advance": 37
     },
     {
       "id": 15,
@@ -1000,6 +1064,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1007,7 +1078,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 31,
-      "pressure": 2.583
+      "pressure": 2.583,
+      "advance": 37
     },
     {
       "id": 16,
@@ -1065,6 +1137,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1072,7 +1151,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 32,
-      "pressure": 2.667
+      "pressure": 2.667,
+      "advance": 37
     },
     {
       "id": 17,
@@ -1130,6 +1210,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1137,7 +1224,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 32,
-      "pressure": 2.667
+      "pressure": 2.667,
+      "advance": 37
     },
     {
       "id": 18,
@@ -1195,6 +1283,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1202,7 +1297,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 35,
-      "pressure": 2.692
+      "pressure": 2.692,
+      "advance": 37
     },
     {
       "id": 19,
@@ -1260,6 +1356,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1267,7 +1370,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 36,
-      "pressure": 2.769
+      "pressure": 2.769,
+      "advance": 37
     },
     {
       "id": 20,
@@ -1334,6 +1438,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1341,7 +1452,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 36,
-      "pressure": 2.769
+      "pressure": 2.769,
+      "advance": 37
     },
     {
       "id": 21,
@@ -1408,6 +1520,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1415,7 +1534,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 36,
-      "pressure": 2.769
+      "pressure": 2.769,
+      "advance": 37
     },
     {
       "id": 22,
@@ -1482,6 +1602,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1489,7 +1616,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 37,
-      "pressure": 2.846
+      "pressure": 2.846,
+      "advance": 37
     },
     {
       "id": 23,
@@ -1556,6 +1684,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1563,7 +1698,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 37,
-      "pressure": 2.846
+      "pressure": 2.846,
+      "advance": 37
     },
     {
       "id": 24,
@@ -1630,6 +1766,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1637,7 +1780,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 37,
-      "pressure": 2.846
+      "pressure": 2.846,
+      "advance": 37
     },
     {
       "id": 25,
@@ -1704,6 +1848,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1711,7 +1862,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 38,
-      "pressure": 2.923
+      "pressure": 2.923,
+      "advance": 37
     },
     {
       "id": 26,
@@ -1778,6 +1930,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1785,7 +1944,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 38,
-      "pressure": 2.923
+      "pressure": 2.923,
+      "advance": 37
     },
     {
       "id": 27,
@@ -1852,6 +2012,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1859,7 +2026,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 38,
-      "pressure": 2.923
+      "pressure": 2.923,
+      "advance": 37
     },
     {
       "id": 28,
@@ -1926,6 +2094,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -1933,7 +2108,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 39,
-      "pressure": 3.0
+      "pressure": 3.0,
+      "advance": 37
     },
     {
       "id": 29,
@@ -2000,6 +2176,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2011,7 +2194,8 @@
       "bossBaseUnits": 9,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 24,
+      "advance": 37
     },
     {
       "id": 30,
@@ -2059,7 +2243,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 31,
-      "pressure": 3.1
+      "pressure": 3.1,
+      "advance": 37
     },
     {
       "id": 31,
@@ -2107,7 +2292,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 31,
-      "pressure": 3.1
+      "pressure": 3.1,
+      "advance": 37
     },
     {
       "id": 32,
@@ -2155,7 +2341,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 32,
-      "pressure": 3.2
+      "pressure": 3.2,
+      "advance": 37
     },
     {
       "id": 33,
@@ -2203,7 +2390,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 32,
-      "pressure": 3.2
+      "pressure": 3.2,
+      "advance": 37
     },
     {
       "id": 34,
@@ -2251,7 +2439,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 32,
-      "pressure": 3.2
+      "pressure": 3.2,
+      "advance": 37
     },
     {
       "id": 35,
@@ -2293,13 +2482,22 @@
           "."
         ]
       ],
-      "obstacles": [],
+      "obstacles": [
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
+        }
+      ],
       "portals": [],
       "wind": 20,
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 32,
-      "pressure": 3.2
+      "pressure": 3.2,
+      "advance": 37
     },
     {
       "id": 36,
@@ -2341,13 +2539,22 @@
           "p1"
         ]
       ],
-      "obstacles": [],
+      "obstacles": [
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
+        }
+      ],
       "portals": [],
       "wind": -20,
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 36,
-      "pressure": 3.273
+      "pressure": 3.273,
+      "advance": 37
     },
     {
       "id": 37,
@@ -2389,13 +2596,22 @@
           "j4"
         ]
       ],
-      "obstacles": [],
+      "obstacles": [
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
+        }
+      ],
       "portals": [],
       "wind": 20,
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 36,
-      "pressure": 3.273
+      "pressure": 3.273,
+      "advance": 37
     },
     {
       "id": 38,
@@ -2444,6 +2660,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2451,7 +2674,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 37,
-      "pressure": 3.364
+      "pressure": 3.364,
+      "advance": 37
     },
     {
       "id": 39,
@@ -2500,6 +2724,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2507,7 +2738,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 37,
-      "pressure": 3.364
+      "pressure": 3.364,
+      "advance": 37
     },
     {
       "id": 40,
@@ -2565,6 +2797,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2572,7 +2811,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 37,
-      "pressure": 3.364
+      "pressure": 3.364,
+      "advance": 37
     },
     {
       "id": 41,
@@ -2630,6 +2870,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2637,7 +2884,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 37,
-      "pressure": 3.364
+      "pressure": 3.364,
+      "advance": 37
     },
     {
       "id": 42,
@@ -2695,6 +2943,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2702,7 +2957,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 41,
-      "pressure": 3.417
+      "pressure": 3.417,
+      "advance": 37
     },
     {
       "id": 43,
@@ -2760,6 +3016,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2767,7 +3030,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 42,
-      "pressure": 3.5
+      "pressure": 3.5,
+      "advance": 37
     },
     {
       "id": 44,
@@ -2825,6 +3089,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2832,7 +3103,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 42,
-      "pressure": 3.5
+      "pressure": 3.5,
+      "advance": 37
     },
     {
       "id": 45,
@@ -2890,6 +3162,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2897,7 +3176,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 42,
-      "pressure": 3.5
+      "pressure": 3.5,
+      "advance": 37
     },
     {
       "id": 46,
@@ -2955,6 +3235,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -2962,7 +3249,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 43,
-      "pressure": 3.583
+      "pressure": 3.583,
+      "advance": 37
     },
     {
       "id": 47,
@@ -3020,6 +3308,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3027,7 +3322,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 43,
-      "pressure": 3.583
+      "pressure": 3.583,
+      "advance": 37
     },
     {
       "id": 48,
@@ -3085,6 +3381,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3092,7 +3395,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 47,
-      "pressure": 3.615
+      "pressure": 3.615,
+      "advance": 37
     },
     {
       "id": 49,
@@ -3150,6 +3454,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3157,7 +3468,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 47,
-      "pressure": 3.615
+      "pressure": 3.615,
+      "advance": 37
     },
     {
       "id": 50,
@@ -3224,6 +3536,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3231,7 +3550,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 48,
-      "pressure": 3.692
+      "pressure": 3.692,
+      "advance": 37
     },
     {
       "id": 51,
@@ -3298,6 +3618,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3305,7 +3632,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 48,
-      "pressure": 3.692
+      "pressure": 3.692,
+      "advance": 37
     },
     {
       "id": 52,
@@ -3372,6 +3700,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3379,7 +3714,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 48,
-      "pressure": 3.692
+      "pressure": 3.692,
+      "advance": 37
     },
     {
       "id": 53,
@@ -3446,6 +3782,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3453,7 +3796,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 49,
-      "pressure": 3.769
+      "pressure": 3.769,
+      "advance": 37
     },
     {
       "id": 54,
@@ -3520,6 +3864,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3527,7 +3878,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 49,
-      "pressure": 3.769
+      "pressure": 3.769,
+      "advance": 37
     },
     {
       "id": 55,
@@ -3594,6 +3946,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3601,7 +3960,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 49,
-      "pressure": 3.769
+      "pressure": 3.769,
+      "advance": 37
     },
     {
       "id": 56,
@@ -3668,6 +4028,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3675,7 +4042,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 50,
-      "pressure": 3.846
+      "pressure": 3.846,
+      "advance": 37
     },
     {
       "id": 57,
@@ -3742,6 +4110,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3749,7 +4124,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 50,
-      "pressure": 3.846
+      "pressure": 3.846,
+      "advance": 37
     },
     {
       "id": 58,
@@ -3816,6 +4192,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3823,7 +4206,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 50,
-      "pressure": 3.846
+      "pressure": 3.846,
+      "advance": 37
     },
     {
       "id": 59,
@@ -3890,6 +4274,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -3901,7 +4292,8 @@
       "bossBaseUnits": 11,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 26,
+      "advance": 37
     },
     {
       "id": 60,
@@ -3957,7 +4349,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 44,
-      "pressure": 4.0
+      "pressure": 4.0,
+      "advance": 37
     },
     {
       "id": 61,
@@ -4013,7 +4406,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 44,
-      "pressure": 4.0
+      "pressure": 4.0,
+      "advance": 37
     },
     {
       "id": 62,
@@ -4069,7 +4463,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 45,
-      "pressure": 4.091
+      "pressure": 4.091,
+      "advance": 37
     },
     {
       "id": 63,
@@ -4125,7 +4520,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 45,
-      "pressure": 4.091
+      "pressure": 4.091,
+      "advance": 37
     },
     {
       "id": 64,
@@ -4181,7 +4577,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 45,
-      "pressure": 4.091
+      "pressure": 4.091,
+      "advance": 37
     },
     {
       "id": 65,
@@ -4237,7 +4634,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 46,
-      "pressure": 4.182
+      "pressure": 4.182,
+      "advance": 37
     },
     {
       "id": 66,
@@ -4293,7 +4691,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 51,
-      "pressure": 4.25
+      "pressure": 4.25,
+      "advance": 37
     },
     {
       "id": 67,
@@ -4349,7 +4748,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 51,
-      "pressure": 4.25
+      "pressure": 4.25,
+      "advance": 37
     },
     {
       "id": 68,
@@ -4398,6 +4798,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4405,7 +4812,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 51,
-      "pressure": 4.25
+      "pressure": 4.25,
+      "advance": 37
     },
     {
       "id": 69,
@@ -4454,6 +4862,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4461,7 +4876,8 @@
       "armor": 1,
       "starTarget": 4,
       "healthBudget": 51,
-      "pressure": 4.25
+      "pressure": 4.25,
+      "advance": 37
     },
     {
       "id": 70,
@@ -4519,6 +4935,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4526,7 +4949,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 51,
-      "pressure": 4.25
+      "pressure": 4.25,
+      "advance": 37
     },
     {
       "id": 71,
@@ -4584,6 +5008,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4591,7 +5022,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 52,
-      "pressure": 4.333
+      "pressure": 4.333,
+      "advance": 37
     },
     {
       "id": 72,
@@ -4649,6 +5081,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4656,7 +5095,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 57,
-      "pressure": 4.385
+      "pressure": 4.385,
+      "advance": 37
     },
     {
       "id": 73,
@@ -4714,6 +5154,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4721,7 +5168,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 57,
-      "pressure": 4.385
+      "pressure": 4.385,
+      "advance": 37
     },
     {
       "id": 74,
@@ -4779,6 +5227,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4786,7 +5241,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 57,
-      "pressure": 4.385
+      "pressure": 4.385,
+      "advance": 37
     },
     {
       "id": 75,
@@ -4844,6 +5300,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4851,7 +5314,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 57,
-      "pressure": 4.385
+      "pressure": 4.385,
+      "advance": 37
     },
     {
       "id": 76,
@@ -4909,6 +5373,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4916,7 +5387,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 58,
-      "pressure": 4.462
+      "pressure": 4.462,
+      "advance": 37
     },
     {
       "id": 77,
@@ -4974,6 +5446,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -4981,7 +5460,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 58,
-      "pressure": 4.462
+      "pressure": 4.462,
+      "advance": 37
     },
     {
       "id": 78,
@@ -5039,6 +5519,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5046,7 +5533,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 63,
-      "pressure": 4.5
+      "pressure": 4.5,
+      "advance": 37
     },
     {
       "id": 79,
@@ -5104,6 +5592,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5111,7 +5606,8 @@
       "armor": 1,
       "starTarget": 5,
       "healthBudget": 63,
-      "pressure": 4.5
+      "pressure": 4.5,
+      "advance": 37
     },
     {
       "id": 80,
@@ -5178,6 +5674,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5185,7 +5688,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 64,
-      "pressure": 4.571
+      "pressure": 4.571,
+      "advance": 37
     },
     {
       "id": 81,
@@ -5252,6 +5756,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5259,7 +5770,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 64,
-      "pressure": 4.571
+      "pressure": 4.571,
+      "advance": 37
     },
     {
       "id": 82,
@@ -5326,6 +5838,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5333,7 +5852,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 65,
-      "pressure": 4.643
+      "pressure": 4.643,
+      "advance": 37
     },
     {
       "id": 83,
@@ -5400,6 +5920,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5407,7 +5934,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 65,
-      "pressure": 4.643
+      "pressure": 4.643,
+      "advance": 37
     },
     {
       "id": 84,
@@ -5474,6 +6002,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5481,7 +6016,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 65,
-      "pressure": 4.643
+      "pressure": 4.643,
+      "advance": 37
     },
     {
       "id": 85,
@@ -5548,6 +6084,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5555,7 +6098,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 66,
-      "pressure": 4.714
+      "pressure": 4.714,
+      "advance": 37
     },
     {
       "id": 86,
@@ -5622,6 +6166,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5629,7 +6180,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 66,
-      "pressure": 4.714
+      "pressure": 4.714,
+      "advance": 37
     },
     {
       "id": 87,
@@ -5696,6 +6248,13 @@
           "width": 30,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5703,7 +6262,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 67,
-      "pressure": 4.786
+      "pressure": 4.786,
+      "advance": 37
     },
     {
       "id": 88,
@@ -5770,6 +6330,13 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5777,7 +6344,8 @@
       "armor": 1,
       "starTarget": 6,
       "healthBudget": 67,
-      "pressure": 4.786
+      "pressure": 4.786,
+      "advance": 37
     },
     {
       "id": 89,
@@ -5844,6 +6412,13 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -5855,7 +6430,8 @@
       "bossBaseUnits": 14,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 28,
+      "advance": 37
     },
     {
       "id": 90,
@@ -5918,7 +6494,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 54,
-      "pressure": 4.909
+      "pressure": 4.909,
+      "advance": 38
     },
     {
       "id": 91,
@@ -5981,7 +6558,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 54,
-      "pressure": 4.909
+      "pressure": 4.909,
+      "advance": 38
     },
     {
       "id": 92,
@@ -6044,7 +6622,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 55,
-      "pressure": 5.0
+      "pressure": 5.0,
+      "advance": 38
     },
     {
       "id": 93,
@@ -6107,7 +6686,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 55,
-      "pressure": 5.0
+      "pressure": 5.0,
+      "advance": 38
     },
     {
       "id": 94,
@@ -6170,7 +6750,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 55,
-      "pressure": 5.0
+      "pressure": 5.0,
+      "advance": 38
     },
     {
       "id": 95,
@@ -6233,7 +6814,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 55,
-      "pressure": 5.0
+      "pressure": 5.0,
+      "advance": 38
     },
     {
       "id": 96,
@@ -6289,6 +6871,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6296,7 +6885,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 61,
-      "pressure": 5.083
+      "pressure": 5.083,
+      "advance": 38
     },
     {
       "id": 97,
@@ -6352,6 +6942,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6359,7 +6956,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 61,
-      "pressure": 5.083
+      "pressure": 5.083,
+      "advance": 38
     },
     {
       "id": 98,
@@ -6415,6 +7013,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6422,7 +7027,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 61,
-      "pressure": 5.083
+      "pressure": 5.083,
+      "advance": 38
     },
     {
       "id": 99,
@@ -6478,6 +7084,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6485,7 +7098,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 62,
-      "pressure": 5.167
+      "pressure": 5.167,
+      "advance": 38
     },
     {
       "id": 100,
@@ -6550,6 +7164,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6557,7 +7178,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 62,
-      "pressure": 5.167
+      "pressure": 5.167,
+      "advance": 38
     },
     {
       "id": 101,
@@ -6622,6 +7244,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6629,7 +7258,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 62,
-      "pressure": 5.167
+      "pressure": 5.167,
+      "advance": 38
     },
     {
       "id": 102,
@@ -6694,6 +7324,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6701,7 +7338,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 68,
-      "pressure": 5.231
+      "pressure": 5.231,
+      "advance": 38
     },
     {
       "id": 103,
@@ -6766,6 +7404,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6773,7 +7418,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 68,
-      "pressure": 5.231
+      "pressure": 5.231,
+      "advance": 38
     },
     {
       "id": 104,
@@ -6838,6 +7484,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6845,7 +7498,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 69,
-      "pressure": 5.308
+      "pressure": 5.308,
+      "advance": 38
     },
     {
       "id": 105,
@@ -6910,6 +7564,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6917,7 +7578,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 69,
-      "pressure": 5.308
+      "pressure": 5.308,
+      "advance": 38
     },
     {
       "id": 106,
@@ -6982,6 +7644,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -6989,7 +7658,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 70,
-      "pressure": 5.385
+      "pressure": 5.385,
+      "advance": 38
     },
     {
       "id": 107,
@@ -7054,6 +7724,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7061,7 +7738,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 70,
-      "pressure": 5.385
+      "pressure": 5.385,
+      "advance": 38
     },
     {
       "id": 108,
@@ -7126,6 +7804,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7133,7 +7818,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 76,
-      "pressure": 5.429
+      "pressure": 5.429,
+      "advance": 38
     },
     {
       "id": 109,
@@ -7198,6 +7884,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7205,7 +7898,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 76,
-      "pressure": 5.429
+      "pressure": 5.429,
+      "advance": 38
     },
     {
       "id": 110,
@@ -7279,6 +7973,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7286,7 +7987,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 76,
-      "pressure": 5.429
+      "pressure": 5.429,
+      "advance": 38
     },
     {
       "id": 111,
@@ -7360,6 +8062,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7367,7 +8076,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 77,
-      "pressure": 5.5
+      "pressure": 5.5,
+      "advance": 38
     },
     {
       "id": 112,
@@ -7441,6 +8151,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7448,7 +8165,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 77,
-      "pressure": 5.5
+      "pressure": 5.5,
+      "advance": 38
     },
     {
       "id": 113,
@@ -7522,6 +8240,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7529,7 +8254,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 78,
-      "pressure": 5.571
+      "pressure": 5.571,
+      "advance": 38
     },
     {
       "id": 114,
@@ -7603,6 +8329,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7610,7 +8343,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 78,
-      "pressure": 5.571
+      "pressure": 5.571,
+      "advance": 38
     },
     {
       "id": 115,
@@ -7684,6 +8418,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7691,7 +8432,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 78,
-      "pressure": 5.571
+      "pressure": 5.571,
+      "advance": 38
     },
     {
       "id": 116,
@@ -7765,6 +8507,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7772,7 +8521,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 79,
-      "pressure": 5.643
+      "pressure": 5.643,
+      "advance": 38
     },
     {
       "id": 117,
@@ -7846,6 +8596,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7853,7 +8610,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 79,
-      "pressure": 5.643
+      "pressure": 5.643,
+      "advance": 38
     },
     {
       "id": 118,
@@ -7927,6 +8685,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -7934,7 +8699,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 80,
-      "pressure": 5.714
+      "pressure": 5.714,
+      "advance": 38
     },
     {
       "id": 119,
@@ -8008,6 +8774,13 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
         }
       ],
       "portals": [],
@@ -8019,7 +8792,8 @@
       "bossBaseUnits": 24,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 30,
+      "advance": 38
     },
     {
       "id": 120,
@@ -8082,7 +8856,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 70,
-      "pressure": 5.833
+      "pressure": 5.833,
+      "advance": 38
     },
     {
       "id": 121,
@@ -8145,7 +8920,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 70,
-      "pressure": 5.833
+      "pressure": 5.833,
+      "advance": 38
     },
     {
       "id": 122,
@@ -8208,7 +8984,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 70,
-      "pressure": 5.833
+      "pressure": 5.833,
+      "advance": 38
     },
     {
       "id": 123,
@@ -8271,7 +9048,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 71,
-      "pressure": 5.917
+      "pressure": 5.917,
+      "advance": 38
     },
     {
       "id": 124,
@@ -8334,7 +9112,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 71,
-      "pressure": 5.917
+      "pressure": 5.917,
+      "advance": 38
     },
     {
       "id": 125,
@@ -8397,7 +9176,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 71,
-      "pressure": 5.917
+      "pressure": 5.917,
+      "advance": 38
     },
     {
       "id": 126,
@@ -8460,7 +9240,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 78,
-      "pressure": 6.0
+      "pressure": 6.0,
+      "advance": 38
     },
     {
       "id": 127,
@@ -8523,7 +9304,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 78,
-      "pressure": 6.0
+      "pressure": 6.0,
+      "advance": 38
     },
     {
       "id": 128,
@@ -8579,6 +9361,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -8586,7 +9376,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 78,
-      "pressure": 6.0
+      "pressure": 6.0,
+      "advance": 38
     },
     {
       "id": 129,
@@ -8642,6 +9433,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -8649,7 +9448,8 @@
       "armor": 0,
       "starTarget": 4,
       "healthBudget": 79,
-      "pressure": 6.077
+      "pressure": 6.077,
+      "advance": 38
     },
     {
       "id": 130,
@@ -8714,6 +9514,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -8721,7 +9529,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 79,
-      "pressure": 6.077
+      "pressure": 6.077,
+      "advance": 38
     },
     {
       "id": 131,
@@ -8786,6 +9595,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -8793,7 +9610,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 79,
-      "pressure": 6.077
+      "pressure": 6.077,
+      "advance": 38
     },
     {
       "id": 132,
@@ -8858,6 +9676,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -8865,7 +9691,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 86,
-      "pressure": 6.143
+      "pressure": 6.143,
+      "advance": 38
     },
     {
       "id": 133,
@@ -8930,6 +9757,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -8937,7 +9772,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 86,
-      "pressure": 6.143
+      "pressure": 6.143,
+      "advance": 38
     },
     {
       "id": 134,
@@ -9002,6 +9838,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9009,7 +9853,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 87,
-      "pressure": 6.214
+      "pressure": 6.214,
+      "advance": 38
     },
     {
       "id": 135,
@@ -9074,6 +9919,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9081,7 +9934,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 87,
-      "pressure": 6.214
+      "pressure": 6.214,
+      "advance": 38
     },
     {
       "id": 136,
@@ -9146,6 +10000,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9153,7 +10015,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 87,
-      "pressure": 6.214
+      "pressure": 6.214,
+      "advance": 38
     },
     {
       "id": 137,
@@ -9218,6 +10081,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9225,7 +10096,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 88,
-      "pressure": 6.286
+      "pressure": 6.286,
+      "advance": 38
     },
     {
       "id": 138,
@@ -9290,6 +10162,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9297,7 +10177,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 95,
-      "pressure": 6.333
+      "pressure": 6.333,
+      "advance": 38
     },
     {
       "id": 139,
@@ -9362,6 +10243,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9369,7 +10258,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 95,
-      "pressure": 6.333
+      "pressure": 6.333,
+      "advance": 38
     },
     {
       "id": 140,
@@ -9450,6 +10340,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9457,7 +10355,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 95,
-      "pressure": 6.333
+      "pressure": 6.333,
+      "advance": 38
     },
     {
       "id": 141,
@@ -9538,6 +10437,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9545,7 +10452,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 96,
-      "pressure": 6.4
+      "pressure": 6.4,
+      "advance": 38
     },
     {
       "id": 142,
@@ -9626,6 +10534,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9633,7 +10549,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 96,
-      "pressure": 6.4
+      "pressure": 6.4,
+      "advance": 38
     },
     {
       "id": 143,
@@ -9714,6 +10631,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9721,7 +10646,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 97,
-      "pressure": 6.467
+      "pressure": 6.467,
+      "advance": 38
     },
     {
       "id": 144,
@@ -9802,6 +10728,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9809,7 +10743,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 97,
-      "pressure": 6.467
+      "pressure": 6.467,
+      "advance": 38
     },
     {
       "id": 145,
@@ -9890,6 +10825,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -9897,7 +10840,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 98,
-      "pressure": 6.533
+      "pressure": 6.533,
+      "advance": 38
     },
     {
       "id": 146,
@@ -9978,6 +10922,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -9985,7 +10937,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 98,
-      "pressure": 6.533
+      "pressure": 6.533,
+      "advance": 38
     },
     {
       "id": 147,
@@ -10066,6 +11019,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -10073,7 +11034,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 98,
-      "pressure": 6.533
+      "pressure": 6.533,
+      "advance": 38
     },
     {
       "id": 148,
@@ -10154,6 +11116,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -10161,7 +11131,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 99,
-      "pressure": 6.6
+      "pressure": 6.6,
+      "advance": 38
     },
     {
       "id": 149,
@@ -10242,6 +11213,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -10253,7 +11232,8 @@
       "bossBaseUnits": 22,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 32,
+      "advance": 38
     },
     {
       "id": 150,
@@ -10325,7 +11305,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 80,
-      "pressure": 6.667
+      "pressure": 6.667,
+      "advance": 38
     },
     {
       "id": 151,
@@ -10397,7 +11378,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 81,
-      "pressure": 6.75
+      "pressure": 6.75,
+      "advance": 38
     },
     {
       "id": 152,
@@ -10469,7 +11451,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 81,
-      "pressure": 6.75
+      "pressure": 6.75,
+      "advance": 38
     },
     {
       "id": 153,
@@ -10541,7 +11524,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 81,
-      "pressure": 6.75
+      "pressure": 6.75,
+      "advance": 38
     },
     {
       "id": 154,
@@ -10613,7 +11597,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 82,
-      "pressure": 6.833
+      "pressure": 6.833,
+      "advance": 38
     },
     {
       "id": 155,
@@ -10685,7 +11670,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 82,
-      "pressure": 6.833
+      "pressure": 6.833,
+      "advance": 38
     },
     {
       "id": 156,
@@ -10757,7 +11743,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 89,
-      "pressure": 6.846
+      "pressure": 6.846,
+      "advance": 38
     },
     {
       "id": 157,
@@ -10829,7 +11816,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 90,
-      "pressure": 6.923
+      "pressure": 6.923,
+      "advance": 38
     },
     {
       "id": 158,
@@ -10894,6 +11882,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -10901,7 +11897,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 90,
-      "pressure": 6.923
+      "pressure": 6.923,
+      "advance": 38
     },
     {
       "id": 159,
@@ -10966,6 +11963,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -10973,7 +11978,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 90,
-      "pressure": 6.923
+      "pressure": 6.923,
+      "advance": 38
     },
     {
       "id": 160,
@@ -11047,6 +12053,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11054,7 +12068,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 91,
-      "pressure": 7.0
+      "pressure": 7.0,
+      "advance": 38
     },
     {
       "id": 161,
@@ -11128,6 +12143,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11135,7 +12158,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 91,
-      "pressure": 7.0
+      "pressure": 7.0,
+      "advance": 38
     },
     {
       "id": 162,
@@ -11209,6 +12233,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11216,7 +12248,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 99,
-      "pressure": 7.071
+      "pressure": 7.071,
+      "advance": 38
     },
     {
       "id": 163,
@@ -11290,6 +12323,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11297,7 +12338,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 99,
-      "pressure": 7.071
+      "pressure": 7.071,
+      "advance": 38
     },
     {
       "id": 164,
@@ -11371,6 +12413,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11378,7 +12428,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 99,
-      "pressure": 7.071
+      "pressure": 7.071,
+      "advance": 38
     },
     {
       "id": 165,
@@ -11452,6 +12503,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11459,7 +12518,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 100,
-      "pressure": 7.143
+      "pressure": 7.143,
+      "advance": 38
     },
     {
       "id": 166,
@@ -11533,6 +12593,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11540,7 +12608,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 100,
-      "pressure": 7.143
+      "pressure": 7.143,
+      "advance": 38
     },
     {
       "id": 167,
@@ -11614,6 +12683,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11621,7 +12698,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 100,
-      "pressure": 7.143
+      "pressure": 7.143,
+      "advance": 38
     },
     {
       "id": 168,
@@ -11695,6 +12773,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11702,7 +12788,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 108,
-      "pressure": 7.2
+      "pressure": 7.2,
+      "advance": 38
     },
     {
       "id": 169,
@@ -11776,6 +12863,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11783,7 +12878,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 108,
-      "pressure": 7.2
+      "pressure": 7.2,
+      "advance": 38
     },
     {
       "id": 170,
@@ -11873,6 +12969,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -11880,7 +12984,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 109,
-      "pressure": 7.267
+      "pressure": 7.267,
+      "advance": 38
     },
     {
       "id": 171,
@@ -11970,6 +13075,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -11977,7 +13090,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 109,
-      "pressure": 7.267
+      "pressure": 7.267,
+      "advance": 38
     },
     {
       "id": 172,
@@ -12067,6 +13181,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -12074,7 +13196,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 110,
-      "pressure": 7.333
+      "pressure": 7.333,
+      "advance": 38
     },
     {
       "id": 173,
@@ -12164,6 +13287,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -12171,7 +13302,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 110,
-      "pressure": 7.333
+      "pressure": 7.333,
+      "advance": 38
     },
     {
       "id": 174,
@@ -12261,6 +13393,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -12268,7 +13408,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 111,
-      "pressure": 7.4
+      "pressure": 7.4,
+      "advance": 38
     },
     {
       "id": 175,
@@ -12358,6 +13499,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -12365,7 +13514,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 111,
-      "pressure": 7.4
+      "pressure": 7.4,
+      "advance": 38
     },
     {
       "id": 176,
@@ -12455,6 +13605,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -12462,7 +13620,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 111,
-      "pressure": 7.4
+      "pressure": 7.4,
+      "advance": 38
     },
     {
       "id": 177,
@@ -12552,6 +13711,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -12559,7 +13726,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 112,
-      "pressure": 7.467
+      "pressure": 7.467,
+      "advance": 38
     },
     {
       "id": 178,
@@ -12649,6 +13817,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -12656,7 +13832,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 112,
-      "pressure": 7.467
+      "pressure": 7.467,
+      "advance": 38
     },
     {
       "id": 179,
@@ -12746,6 +13923,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
         }
       ],
       "portals": [],
@@ -12757,7 +13942,8 @@
       "bossBaseUnits": 27,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 34,
+      "advance": 38
     },
     {
       "id": 180,
@@ -12822,7 +14008,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 99,
-      "pressure": 7.615
+      "pressure": 7.615,
+      "advance": 39
     },
     {
       "id": 181,
@@ -12887,7 +14074,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 99,
-      "pressure": 7.615
+      "pressure": 7.615,
+      "advance": 39
     },
     {
       "id": 182,
@@ -12952,7 +14140,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 100,
-      "pressure": 7.692
+      "pressure": 7.692,
+      "advance": 39
     },
     {
       "id": 183,
@@ -13010,6 +14199,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13026,7 +14224,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 100,
-      "pressure": 7.692
+      "pressure": 7.692,
+      "advance": 39
     },
     {
       "id": 184,
@@ -13084,6 +14283,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13100,7 +14308,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 100,
-      "pressure": 7.692
+      "pressure": 7.692,
+      "advance": 39
     },
     {
       "id": 185,
@@ -13158,6 +14367,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13174,7 +14392,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 101,
-      "pressure": 7.769
+      "pressure": 7.769,
+      "advance": 39
     },
     {
       "id": 186,
@@ -13232,6 +14451,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13248,7 +14476,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 109,
-      "pressure": 7.786
+      "pressure": 7.786,
+      "advance": 39
     },
     {
       "id": 187,
@@ -13306,6 +14535,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13322,7 +14560,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 109,
-      "pressure": 7.786
+      "pressure": 7.786,
+      "advance": 39
     },
     {
       "id": 188,
@@ -13380,6 +14619,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13396,7 +14644,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 110,
-      "pressure": 7.857
+      "pressure": 7.857,
+      "advance": 39
     },
     {
       "id": 189,
@@ -13454,6 +14703,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13470,7 +14728,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 110,
-      "pressure": 7.857
+      "pressure": 7.857,
+      "advance": 39
     },
     {
       "id": 190,
@@ -13537,6 +14796,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13553,7 +14821,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 110,
-      "pressure": 7.857
+      "pressure": 7.857,
+      "advance": 39
     },
     {
       "id": 191,
@@ -13620,6 +14889,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13636,7 +14914,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 111,
-      "pressure": 7.929
+      "pressure": 7.929,
+      "advance": 39
     },
     {
       "id": 192,
@@ -13703,6 +14982,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13719,7 +15007,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 119,
-      "pressure": 7.933
+      "pressure": 7.933,
+      "advance": 39
     },
     {
       "id": 193,
@@ -13786,6 +15075,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13802,7 +15100,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 119,
-      "pressure": 7.933
+      "pressure": 7.933,
+      "advance": 39
     },
     {
       "id": 194,
@@ -13869,6 +15168,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13885,7 +15193,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 120,
-      "pressure": 8.0
+      "pressure": 8.0,
+      "advance": 39
     },
     {
       "id": 195,
@@ -13952,6 +15261,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -13968,7 +15286,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 120,
-      "pressure": 8.0
+      "pressure": 8.0,
+      "advance": 39
     },
     {
       "id": 196,
@@ -14035,6 +15354,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14051,7 +15379,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 121,
-      "pressure": 8.067
+      "pressure": 8.067,
+      "advance": 39
     },
     {
       "id": 197,
@@ -14118,6 +15447,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14134,7 +15472,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 121,
-      "pressure": 8.067
+      "pressure": 8.067,
+      "advance": 39
     },
     {
       "id": 198,
@@ -14201,6 +15540,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14217,7 +15565,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 130,
-      "pressure": 8.125
+      "pressure": 8.125,
+      "advance": 39
     },
     {
       "id": 199,
@@ -14284,6 +15633,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14300,7 +15658,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 130,
-      "pressure": 8.125
+      "pressure": 8.125,
+      "advance": 39
     },
     {
       "id": 200,
@@ -14383,6 +15742,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14399,7 +15767,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 131,
-      "pressure": 8.188
+      "pressure": 8.188,
+      "advance": 39
     },
     {
       "id": 201,
@@ -14482,6 +15851,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14498,7 +15876,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 131,
-      "pressure": 8.188
+      "pressure": 8.188,
+      "advance": 39
     },
     {
       "id": 202,
@@ -14581,6 +15960,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14597,7 +15985,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 131,
-      "pressure": 8.188
+      "pressure": 8.188,
+      "advance": 39
     },
     {
       "id": 203,
@@ -14680,6 +16069,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14696,7 +16094,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 132,
-      "pressure": 8.25
+      "pressure": 8.25,
+      "advance": 39
     },
     {
       "id": 204,
@@ -14779,6 +16178,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14795,7 +16203,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 132,
-      "pressure": 8.25
+      "pressure": 8.25,
+      "advance": 39
     },
     {
       "id": 205,
@@ -14878,6 +16287,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14894,7 +16312,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 133,
-      "pressure": 8.312
+      "pressure": 8.312,
+      "advance": 39
     },
     {
       "id": 206,
@@ -14977,6 +16396,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -14993,7 +16421,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 133,
-      "pressure": 8.312
+      "pressure": 8.312,
+      "advance": 39
     },
     {
       "id": 207,
@@ -15076,6 +16505,15 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -15092,7 +16530,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 134,
-      "pressure": 8.375
+      "pressure": 8.375,
+      "advance": 39
     },
     {
       "id": 208,
@@ -15175,6 +16614,15 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -15191,7 +16639,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 134,
-      "pressure": 8.375
+      "pressure": 8.375,
+      "advance": 39
     },
     {
       "id": 209,
@@ -15274,6 +16723,15 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -15294,7 +16752,8 @@
       "bossBaseUnits": 27,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 36,
+      "advance": 39
     },
     {
       "id": 210,
@@ -15366,7 +16825,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 110,
-      "pressure": 8.462
+      "pressure": 8.462,
+      "advance": 39
     },
     {
       "id": 211,
@@ -15438,7 +16898,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 111,
-      "pressure": 8.538
+      "pressure": 8.538,
+      "advance": 39
     },
     {
       "id": 212,
@@ -15510,7 +16971,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 111,
-      "pressure": 8.538
+      "pressure": 8.538,
+      "advance": 39
     },
     {
       "id": 213,
@@ -15582,7 +17044,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 112,
-      "pressure": 8.615
+      "pressure": 8.615,
+      "advance": 39
     },
     {
       "id": 214,
@@ -15654,7 +17117,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 112,
-      "pressure": 8.615
+      "pressure": 8.615,
+      "advance": 39
     },
     {
       "id": 215,
@@ -15719,6 +17183,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -15726,7 +17198,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 112,
-      "pressure": 8.615
+      "pressure": 8.615,
+      "advance": 39
     },
     {
       "id": 216,
@@ -15791,6 +17264,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -15798,7 +17279,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 121,
-      "pressure": 8.643
+      "pressure": 8.643,
+      "advance": 39
     },
     {
       "id": 217,
@@ -15863,6 +17345,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -15870,7 +17360,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 122,
-      "pressure": 8.714
+      "pressure": 8.714,
+      "advance": 39
     },
     {
       "id": 218,
@@ -15935,6 +17426,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -15942,7 +17441,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 122,
-      "pressure": 8.714
+      "pressure": 8.714,
+      "advance": 39
     },
     {
       "id": 219,
@@ -16007,6 +17507,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16014,7 +17522,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 123,
-      "pressure": 8.786
+      "pressure": 8.786,
+      "advance": 39
     },
     {
       "id": 220,
@@ -16088,6 +17597,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16095,7 +17612,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 123,
-      "pressure": 8.786
+      "pressure": 8.786,
+      "advance": 39
     },
     {
       "id": 221,
@@ -16169,6 +17687,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16176,7 +17702,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 123,
-      "pressure": 8.786
+      "pressure": 8.786,
+      "advance": 39
     },
     {
       "id": 222,
@@ -16250,6 +17777,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16257,7 +17792,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 133,
-      "pressure": 8.867
+      "pressure": 8.867,
+      "advance": 39
     },
     {
       "id": 223,
@@ -16331,6 +17867,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16338,7 +17882,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 133,
-      "pressure": 8.867
+      "pressure": 8.867,
+      "advance": 39
     },
     {
       "id": 224,
@@ -16412,6 +17957,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16419,7 +17972,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 133,
-      "pressure": 8.867
+      "pressure": 8.867,
+      "advance": 39
     },
     {
       "id": 225,
@@ -16493,6 +18047,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16500,7 +18062,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 134,
-      "pressure": 8.933
+      "pressure": 8.933,
+      "advance": 39
     },
     {
       "id": 226,
@@ -16574,6 +18137,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16581,7 +18152,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 134,
-      "pressure": 8.933
+      "pressure": 8.933,
+      "advance": 39
     },
     {
       "id": 227,
@@ -16655,6 +18227,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16662,7 +18242,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 135,
-      "pressure": 9.0
+      "pressure": 9.0,
+      "advance": 39
     },
     {
       "id": 228,
@@ -16736,6 +18317,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16743,7 +18332,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 144,
-      "pressure": 9.0
+      "pressure": 9.0,
+      "advance": 39
     },
     {
       "id": 229,
@@ -16817,6 +18407,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16824,7 +18422,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 145,
-      "pressure": 9.062
+      "pressure": 9.062,
+      "advance": 39
     },
     {
       "id": 230,
@@ -16914,6 +18513,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -16921,7 +18528,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 145,
-      "pressure": 9.062
+      "pressure": 9.062,
+      "advance": 39
     },
     {
       "id": 231,
@@ -17011,6 +18619,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17018,7 +18634,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 145,
-      "pressure": 9.062
+      "pressure": 9.062,
+      "advance": 39
     },
     {
       "id": 232,
@@ -17108,6 +18725,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17115,7 +18740,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 146,
-      "pressure": 9.125
+      "pressure": 9.125,
+      "advance": 39
     },
     {
       "id": 233,
@@ -17205,6 +18831,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17212,7 +18846,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 146,
-      "pressure": 9.125
+      "pressure": 9.125,
+      "advance": 39
     },
     {
       "id": 234,
@@ -17302,6 +18937,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17309,7 +18952,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 147,
-      "pressure": 9.188
+      "pressure": 9.188,
+      "advance": 39
     },
     {
       "id": 235,
@@ -17399,6 +19043,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17406,7 +19058,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 147,
-      "pressure": 9.188
+      "pressure": 9.188,
+      "advance": 39
     },
     {
       "id": 236,
@@ -17496,6 +19149,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17503,7 +19164,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 148,
-      "pressure": 9.25
+      "pressure": 9.25,
+      "advance": 39
     },
     {
       "id": 237,
@@ -17593,6 +19255,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17600,7 +19270,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 148,
-      "pressure": 9.25
+      "pressure": 9.25,
+      "advance": 39
     },
     {
       "id": 238,
@@ -17690,6 +19361,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17697,7 +19376,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 149,
-      "pressure": 9.312
+      "pressure": 9.312,
+      "advance": 39
     },
     {
       "id": 239,
@@ -17787,6 +19467,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
         }
       ],
       "portals": [],
@@ -17798,7 +19486,8 @@
       "bossBaseUnits": 32,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 38,
+      "advance": 39
     },
     {
       "id": 240,
@@ -17863,7 +19552,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 132,
-      "pressure": 9.429
+      "pressure": 9.429,
+      "advance": 39
     },
     {
       "id": 241,
@@ -17928,7 +19618,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 132,
-      "pressure": 9.429
+      "pressure": 9.429,
+      "advance": 39
     },
     {
       "id": 242,
@@ -17993,7 +19684,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 132,
-      "pressure": 9.429
+      "pressure": 9.429,
+      "advance": 39
     },
     {
       "id": 243,
@@ -18058,7 +19750,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 133,
-      "pressure": 9.5
+      "pressure": 9.5,
+      "advance": 39
     },
     {
       "id": 244,
@@ -18123,7 +19816,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 133,
-      "pressure": 9.5
+      "pressure": 9.5,
+      "advance": 39
     },
     {
       "id": 245,
@@ -18181,6 +19875,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18188,7 +19889,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 134,
-      "pressure": 9.571
+      "pressure": 9.571,
+      "advance": 39
     },
     {
       "id": 246,
@@ -18246,6 +19948,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18253,7 +19962,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 144,
-      "pressure": 9.6
+      "pressure": 9.6,
+      "advance": 39
     },
     {
       "id": 247,
@@ -18311,6 +20021,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18318,7 +20035,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 144,
-      "pressure": 9.6
+      "pressure": 9.6,
+      "advance": 39
     },
     {
       "id": 248,
@@ -18376,6 +20094,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18383,7 +20108,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 144,
-      "pressure": 9.6
+      "pressure": 9.6,
+      "advance": 39
     },
     {
       "id": 249,
@@ -18441,6 +20167,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18448,7 +20181,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 145,
-      "pressure": 9.667
+      "pressure": 9.667,
+      "advance": 39
     },
     {
       "id": 250,
@@ -18515,6 +20249,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18522,7 +20263,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 145,
-      "pressure": 9.667
+      "pressure": 9.667,
+      "advance": 39
     },
     {
       "id": 251,
@@ -18589,6 +20331,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18596,7 +20345,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 146,
-      "pressure": 9.733
+      "pressure": 9.733,
+      "advance": 39
     },
     {
       "id": 252,
@@ -18663,6 +20413,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18670,7 +20427,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 156,
-      "pressure": 9.75
+      "pressure": 9.75,
+      "advance": 39
     },
     {
       "id": 253,
@@ -18737,6 +20495,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18744,7 +20509,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 156,
-      "pressure": 9.75
+      "pressure": 9.75,
+      "advance": 39
     },
     {
       "id": 254,
@@ -18811,6 +20577,13 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18818,7 +20591,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 157,
-      "pressure": 9.812
+      "pressure": 9.812,
+      "advance": 39
     },
     {
       "id": 255,
@@ -18885,6 +20659,13 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18892,7 +20673,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 157,
-      "pressure": 9.812
+      "pressure": 9.812,
+      "advance": 39
     },
     {
       "id": 256,
@@ -18959,6 +20741,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -18966,7 +20755,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 158,
-      "pressure": 9.875
+      "pressure": 9.875,
+      "advance": 39
     },
     {
       "id": 257,
@@ -19033,6 +20823,20 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19040,7 +20844,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 158,
-      "pressure": 9.875
+      "pressure": 9.875,
+      "advance": 39
     },
     {
       "id": 258,
@@ -19107,6 +20912,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19114,7 +20933,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 168,
-      "pressure": 9.882
+      "pressure": 9.882,
+      "advance": 39
     },
     {
       "id": 259,
@@ -19181,6 +21001,20 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19188,7 +21022,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 169,
-      "pressure": 9.941
+      "pressure": 9.941,
+      "advance": 39
     },
     {
       "id": 260,
@@ -19271,6 +21106,20 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19278,7 +21127,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 169,
-      "pressure": 9.941
+      "pressure": 9.941,
+      "advance": 39
     },
     {
       "id": 261,
@@ -19361,6 +21211,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19368,7 +21232,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 170,
-      "pressure": 10.0
+      "pressure": 10.0,
+      "advance": 39
     },
     {
       "id": 262,
@@ -19451,6 +21316,20 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19458,7 +21337,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 170,
-      "pressure": 10.0
+      "pressure": 10.0,
+      "advance": 39
     },
     {
       "id": 263,
@@ -19541,6 +21421,20 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19548,7 +21442,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 171,
-      "pressure": 10.059
+      "pressure": 10.059,
+      "advance": 39
     },
     {
       "id": 264,
@@ -19631,6 +21526,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19638,7 +21547,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 171,
-      "pressure": 10.059
+      "pressure": 10.059,
+      "advance": 39
     },
     {
       "id": 265,
@@ -19721,6 +21631,20 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19728,7 +21652,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 172,
-      "pressure": 10.118
+      "pressure": 10.118,
+      "advance": 39
     },
     {
       "id": 266,
@@ -19811,6 +21736,20 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19818,7 +21757,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 172,
-      "pressure": 10.118
+      "pressure": 10.118,
+      "advance": 39
     },
     {
       "id": 267,
@@ -19901,6 +21841,20 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19908,7 +21862,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 173,
-      "pressure": 10.176
+      "pressure": 10.176,
+      "advance": 39
     },
     {
       "id": 268,
@@ -19991,6 +21946,20 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -19998,7 +21967,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 173,
-      "pressure": 10.176
+      "pressure": 10.176,
+      "advance": 39
     },
     {
       "id": 269,
@@ -20081,6 +22051,20 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -20092,7 +22076,8 @@
       "bossBaseUnits": 47,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 40,
+      "advance": 39
     },
     {
       "id": 270,
@@ -20157,6 +22142,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [],
@@ -20164,7 +22157,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 144,
-      "pressure": 10.286
+      "pressure": 10.286,
+      "advance": 40
     },
     {
       "id": 271,
@@ -20229,6 +22223,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [],
@@ -20236,7 +22238,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 145,
-      "pressure": 10.357
+      "pressure": 10.357,
+      "advance": 40
     },
     {
       "id": 272,
@@ -20301,6 +22304,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [],
@@ -20308,7 +22319,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 145,
-      "pressure": 10.357
+      "pressure": 10.357,
+      "advance": 40
     },
     {
       "id": 273,
@@ -20373,6 +22385,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20389,7 +22409,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 145,
-      "pressure": 10.357
+      "pressure": 10.357,
+      "advance": 40
     },
     {
       "id": 274,
@@ -20454,6 +22475,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20470,7 +22499,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 146,
-      "pressure": 10.429
+      "pressure": 10.429,
+      "advance": 40
     },
     {
       "id": 275,
@@ -20535,6 +22565,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20551,7 +22589,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 146,
-      "pressure": 10.429
+      "pressure": 10.429,
+      "advance": 40
     },
     {
       "id": 276,
@@ -20616,6 +22655,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20632,7 +22679,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 157,
-      "pressure": 10.467
+      "pressure": 10.467,
+      "advance": 40
     },
     {
       "id": 277,
@@ -20697,6 +22745,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20713,7 +22769,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 157,
-      "pressure": 10.467
+      "pressure": 10.467,
+      "advance": 40
     },
     {
       "id": 278,
@@ -20778,6 +22835,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20794,7 +22859,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 158,
-      "pressure": 10.533
+      "pressure": 10.533,
+      "advance": 40
     },
     {
       "id": 279,
@@ -20859,6 +22925,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "blackhole",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20875,7 +22949,8 @@
       "armor": 0,
       "starTarget": 5,
       "healthBudget": 158,
-      "pressure": 10.533
+      "pressure": 10.533,
+      "advance": 40
     },
     {
       "id": 280,
@@ -20949,6 +23024,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -20965,7 +23048,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 159,
-      "pressure": 10.6
+      "pressure": 10.6,
+      "advance": 40
     },
     {
       "id": 281,
@@ -21039,6 +23123,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21055,7 +23147,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 159,
-      "pressure": 10.6
+      "pressure": 10.6,
+      "advance": 40
     },
     {
       "id": 282,
@@ -21129,6 +23222,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21145,7 +23246,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 170,
-      "pressure": 10.625
+      "pressure": 10.625,
+      "advance": 40
     },
     {
       "id": 283,
@@ -21219,6 +23321,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21235,7 +23345,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 171,
-      "pressure": 10.688
+      "pressure": 10.688,
+      "advance": 40
     },
     {
       "id": 284,
@@ -21309,6 +23420,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21325,7 +23444,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 171,
-      "pressure": 10.688
+      "pressure": 10.688,
+      "advance": 40
     },
     {
       "id": 285,
@@ -21399,6 +23519,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21415,7 +23543,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 172,
-      "pressure": 10.75
+      "pressure": 10.75,
+      "advance": 40
     },
     {
       "id": 286,
@@ -21489,6 +23618,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21505,7 +23642,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 172,
-      "pressure": 10.75
+      "pressure": 10.75,
+      "advance": 40
     },
     {
       "id": 287,
@@ -21579,6 +23717,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21595,7 +23741,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 172,
-      "pressure": 10.75
+      "pressure": 10.75,
+      "advance": 40
     },
     {
       "id": 288,
@@ -21669,6 +23816,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21685,7 +23840,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 184,
-      "pressure": 10.824
+      "pressure": 10.824,
+      "advance": 40
     },
     {
       "id": 289,
@@ -21759,6 +23915,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 330,
+          "width": 38,
+          "height": 28,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21775,7 +23939,8 @@
       "armor": 0,
       "starTarget": 6,
       "healthBudget": 184,
-      "pressure": 10.824
+      "pressure": 10.824,
+      "advance": 40
     },
     {
       "id": 290,
@@ -21865,6 +24030,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21881,7 +24054,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 185,
-      "pressure": 10.882
+      "pressure": 10.882,
+      "advance": 40
     },
     {
       "id": 291,
@@ -21971,6 +24145,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -21987,7 +24169,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 185,
-      "pressure": 10.882
+      "pressure": 10.882,
+      "advance": 40
     },
     {
       "id": 292,
@@ -22077,6 +24260,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22093,7 +24284,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 186,
-      "pressure": 10.941
+      "pressure": 10.941,
+      "advance": 40
     },
     {
       "id": 293,
@@ -22183,6 +24375,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22199,7 +24399,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 186,
-      "pressure": 10.941
+      "pressure": 10.941,
+      "advance": 40
     },
     {
       "id": 294,
@@ -22289,6 +24490,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22305,7 +24514,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 187,
-      "pressure": 11.0
+      "pressure": 11.0,
+      "advance": 40
     },
     {
       "id": 295,
@@ -22395,6 +24605,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22411,7 +24629,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 187,
-      "pressure": 11.0
+      "pressure": 11.0,
+      "advance": 40
     },
     {
       "id": 296,
@@ -22501,6 +24720,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22517,7 +24744,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 187,
-      "pressure": 11.0
+      "pressure": 11.0,
+      "advance": 40
     },
     {
       "id": 297,
@@ -22607,6 +24835,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22623,7 +24859,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 188,
-      "pressure": 11.059
+      "pressure": 11.059,
+      "advance": 40
     },
     {
       "id": 298,
@@ -22713,6 +24950,14 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22729,7 +24974,8 @@
       "armor": 0,
       "starTarget": 7,
       "healthBudget": 188,
-      "pressure": 11.059
+      "pressure": 11.059,
+      "advance": 40
     },
     {
       "id": 299,
@@ -22819,6 +25065,14 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
         }
       ],
       "portals": [
@@ -22839,7 +25093,8 @@
       "bossBaseUnits": 41,
       "bossHealthMultiplier": 10,
       "bossRole": "chapter",
-      "bossAdvance": 18
+      "bossAdvance": 40,
+      "advance": 40
     }
   ],
   "hidden": [
@@ -22908,6 +25163,22 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -22920,7 +25191,8 @@
       "timeLimit": 120,
       "bossBaseUnits": 22,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 37
     },
     {
       "id": "h-0-1",
@@ -22987,6 +25259,22 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -22999,7 +25287,8 @@
       "baseLives": 3,
       "bossBaseUnits": 22,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 37
     },
     {
       "id": "h-0-2",
@@ -23080,6 +25369,22 @@
           "width": 38,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "slime",
+          "x": 96,
+          "y": 315,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 350,
+          "width": 38,
+          "height": 28,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23091,7 +25396,8 @@
       "mode": "obstacle",
       "bossBaseUnits": 22,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 37
     },
     {
       "id": "h-1-0",
@@ -23158,6 +25464,13 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
         }
       ],
       "portals": [],
@@ -23170,7 +25483,8 @@
       "timeLimit": 125,
       "bossBaseUnits": 25,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 37
     },
     {
       "id": "h-1-1",
@@ -23237,6 +25551,22 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23249,7 +25579,8 @@
       "baseLives": 3,
       "bossBaseUnits": 25,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 37
     },
     {
       "id": "h-1-2",
@@ -23316,6 +25647,22 @@
           "width": 30,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 305,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 350,
+          "width": 38,
+          "height": 28,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23327,7 +25674,8 @@
       "mode": "raid",
       "bossBaseUnits": 40,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 37
     },
     {
       "id": "h-2-0",
@@ -23394,6 +25742,22 @@
           "width": 35,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23406,7 +25770,8 @@
       "timeLimit": 130,
       "bossBaseUnits": 28,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 37
     },
     {
       "id": "h-2-1",
@@ -23473,6 +25838,22 @@
           "width": 40,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23485,7 +25866,8 @@
       "baseLives": 3,
       "bossBaseUnits": 28,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 37
     },
     {
       "id": "h-2-2",
@@ -23566,6 +25948,13 @@
           "width": 38,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 325,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -23577,7 +25966,8 @@
       "mode": "obstacle",
       "bossBaseUnits": 28,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 37
     },
     {
       "id": "h-3-0",
@@ -23651,6 +26041,22 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23663,7 +26069,8 @@
       "timeLimit": 135,
       "bossBaseUnits": 31,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 38
     },
     {
       "id": "h-3-1",
@@ -23737,6 +26144,22 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23749,7 +26172,8 @@
       "baseLives": 3,
       "bossBaseUnits": 31,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 38
     },
     {
       "id": "h-3-2",
@@ -23823,6 +26247,22 @@
           "width": 44,
           "height": 10,
           "kind": "spring"
+        },
+        {
+          "kind": "slime",
+          "x": 264,
+          "y": 355,
+          "width": 48,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 350,
+          "width": 38,
+          "height": 28,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23834,7 +26274,8 @@
       "mode": "raid",
       "bossBaseUnits": 48,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 38
     },
     {
       "id": "h-4-0",
@@ -23915,6 +26356,23 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -23927,7 +26385,8 @@
       "timeLimit": 140,
       "bossBaseUnits": 34,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 38
     },
     {
       "id": "h-4-1",
@@ -24008,6 +26467,14 @@
           "width": 65,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -24020,7 +26487,8 @@
       "baseLives": 3,
       "bossBaseUnits": 34,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 38
     },
     {
       "id": "h-4-2",
@@ -24115,6 +26583,23 @@
           "width": 38,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 350,
+          "width": 38,
+          "height": 28,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -24126,7 +26611,8 @@
       "mode": "obstacle",
       "bossBaseUnits": 34,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 38
     },
     {
       "id": "h-5-0",
@@ -24216,6 +26702,23 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -24228,7 +26731,8 @@
       "timeLimit": 145,
       "bossBaseUnits": 37,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 38
     },
     {
       "id": "h-5-1",
@@ -24318,6 +26822,14 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 260,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": -160
         }
       ],
       "portals": [],
@@ -24330,7 +26842,8 @@
       "baseLives": 3,
       "bossBaseUnits": 37,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 38
     },
     {
       "id": "h-5-2",
@@ -24420,6 +26933,23 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "conveyor",
+          "x": 100,
+          "y": 365,
+          "width": 76,
+          "height": 20,
+          "force": 160
+        },
+        {
+          "kind": "prism",
+          "x": 96,
+          "y": 350,
+          "width": 38,
+          "height": 28,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -24431,7 +26961,8 @@
       "mode": "raid",
       "bossBaseUnits": 56,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 38
     },
     {
       "id": "h-6-0",
@@ -24514,6 +27045,24 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [
@@ -24535,7 +27084,8 @@
       "timeLimit": 150,
       "bossBaseUnits": 40,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 39
     },
     {
       "id": "h-6-1",
@@ -24618,6 +27168,24 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [
@@ -24639,7 +27207,8 @@
       "baseLives": 3,
       "bossBaseUnits": 40,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 39
     },
     {
       "id": "h-6-2",
@@ -24736,6 +27305,15 @@
           "width": 38,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66,
+          "period": 3200
         }
       ],
       "portals": [
@@ -24756,7 +27334,8 @@
       "mode": "obstacle",
       "bossBaseUnits": 40,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 39
     },
     {
       "id": "h-7-0",
@@ -24846,6 +27425,23 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -24858,7 +27454,8 @@
       "timeLimit": 155,
       "bossBaseUnits": 43,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 39
     },
     {
       "id": "h-7-1",
@@ -24948,6 +27545,23 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -24960,7 +27574,8 @@
       "baseLives": 3,
       "bossBaseUnits": 43,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 39
     },
     {
       "id": "h-7-2",
@@ -25050,6 +27665,23 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 310,
+          "width": 36,
+          "height": 36,
+          "radius": 70
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 350,
+          "width": 36,
+          "height": 36,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -25061,7 +27693,8 @@
       "mode": "raid",
       "bossBaseUnits": 64,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 39
     },
     {
       "id": "h-8-0",
@@ -25144,6 +27777,20 @@
           "width": 35,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
         }
       ],
       "portals": [],
@@ -25156,7 +27803,8 @@
       "timeLimit": 160,
       "bossBaseUnits": 46,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 39
     },
     {
       "id": "h-8-1",
@@ -25239,6 +27887,29 @@
           "width": 40,
           "height": 10,
           "kind": "stone"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -25251,7 +27922,8 @@
       "baseLives": 3,
       "bossBaseUnits": 46,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 39
     },
     {
       "id": "h-8-2",
@@ -25348,6 +28020,29 @@
           "width": 38,
           "height": 10,
           "kind": "ice"
+        },
+        {
+          "kind": "boost",
+          "x": 96,
+          "y": 345,
+          "width": 44,
+          "height": 12
+        },
+        {
+          "kind": "prism",
+          "x": 264,
+          "y": 300,
+          "width": 38,
+          "height": 28
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 350,
+          "width": 36,
+          "height": 36,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [],
@@ -25359,7 +28054,8 @@
       "mode": "obstacle",
       "bossBaseUnits": 46,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 39
     },
     {
       "id": "h-9-0",
@@ -25449,6 +28145,23 @@
           "width": 44,
           "height": 10,
           "kind": "phase"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
+        },
+        {
+          "kind": "boost",
+          "x": 264,
+          "y": 350,
+          "width": 44,
+          "height": 12,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [
@@ -25470,7 +28183,8 @@
       "timeLimit": 165,
       "bossBaseUnits": 49,
       "bossRole": "guardian",
-      "bossRatioCap": 0.35
+      "bossRatioCap": 0.35,
+      "advance": 40
     },
     {
       "id": "h-9-1",
@@ -25560,6 +28274,23 @@
           "width": 44,
           "height": 10,
           "kind": "moving"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
+        },
+        {
+          "kind": "conveyor",
+          "x": 96,
+          "y": 395,
+          "width": 76,
+          "height": 20,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [
@@ -25581,7 +28312,8 @@
       "baseLives": 3,
       "bossBaseUnits": 49,
       "bossRole": "guardian",
-      "bossRatioCap": 0.45
+      "bossRatioCap": 0.45,
+      "advance": 40
     },
     {
       "id": "h-9-2",
@@ -25671,6 +28403,23 @@
           "width": 44,
           "height": 10,
           "kind": "mirror"
+        },
+        {
+          "kind": "repulsor",
+          "x": 264,
+          "y": 330,
+          "width": 36,
+          "height": 36,
+          "radius": 66
+        },
+        {
+          "kind": "blackhole",
+          "x": 96,
+          "y": 350,
+          "width": 36,
+          "height": 36,
+          "force": -150,
+          "radius": 62
         }
       ],
       "portals": [
@@ -25691,7 +28440,8 @@
       "mode": "raid",
       "bossBaseUnits": 72,
       "bossRole": "guardian",
-      "bossRatioCap": 0.6
+      "bossRatioCap": 0.6,
+      "advance": 40
     }
   ]
 }

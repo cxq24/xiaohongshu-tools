@@ -1,0 +1,19 @@
+{
+  "version": "0.7.0",
+  "actual_zip": true,
+  "first_encounter_ack_only_once": true,
+  "guides_survive_reload": true,
+  "guide_pauses_clock": true,
+  "warehouse_retreat_purchase": true,
+  "retreat_keeps_damage_once_per_battle": true,
+  "rewind_snapshot_restores": true,
+  "boss_base_fire_100_vs_fixed_hp": true,
+  "blackhole_absorption_phase_and_cap": true,
+  "gravity_and_repulsion": true,
+  "conveyor_force": true,
+  "slime_boost_and_expiry": true,
+  "prism_half_damage_cap": true,
+  "loot_item_and_candy_and_medal_images": true,
+  "real_physics_boss_reward": true,
+  "errors": []
+}

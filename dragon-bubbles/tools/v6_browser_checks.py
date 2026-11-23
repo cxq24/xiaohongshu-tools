@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import json,shutil,subprocess
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.6.1')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.7.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -19,7 +19,7 @@ def tap(page,x,y,hold=0):
  b=page.locator('canvas').bounding_box();page.mouse.move(b['x']+x/360*b['width'],b['y']+y/640*b['height']);page.mouse.down()
  if hold:page.wait_for_timeout(hold)
  page.mouse.up()
-def fresh(page,i=0):page.evaluate('(i)=>{const s='+S+';s.startLevel(i);s.clearModal();s.state="ready"}',i);page.wait_for_timeout(35)
+def fresh(page,i=0):page.evaluate('(i)=>{const s='+S+';s.startLevel(i);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");}',i);page.wait_for_timeout(35)
 
 with TemporaryDirectory() as folder:
  folder=Path(folder)
@@ -35,7 +35,7 @@ with TemporaryDirectory() as folder:
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(url);page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"')
   f(page,'s.showLevels()');page.get_by_role('button',name='糖果森林，已开放',exact=True).click();assert page.locator('.level-node').count()==30
-  page.get_by_role('button',name='第1关 糖果林入口',exact=True).click();tap(page,180,391);page.wait_for_function(S+'.state==="ready"')
+  page.get_by_role('button',name='第1关 糖果林入口',exact=True).click();(page.get_by_role('button',name='开始冒险',exact=True).click() if page.locator('.discovery-dialog').count() else tap(page,180,391));page.wait_for_function(S+'.state==="ready"')
   assert f(page,'return s.attackDamage')==100;assert f(page,'return [...s.nodes.values()].find(n=>n.monster).maxHp')>=200
   assert page.locator('#battle-bar button').count()==4
   assert page.get_by_role('button',name='加速',exact=False).count()==0 and page.get_by_role('button',name='收球',exact=False).count()==0
@@ -66,8 +66,8 @@ with TemporaryDirectory() as folder:
   # Rewind restores actual scaled HP, not HP multiplied a second time.
   fresh(page,70);old=f(page,'return [...s.nodes.values()].map(n=>[n.kind,n.sprite.x,n.hp])');f(page,'s.angle=-Math.PI/2;s.fire()');page.wait_for_function(S+'.state==="ready"',timeout=18000);assert f(page,'return s.useItem("rewind").ok');assert f(page,'return [...s.nodes.values()].map(n=>[n.kind,n.sprite.x,n.hp])')==old;assert saved(page)['inventory']['rewind']==1
   # Different hidden rules have real win/fail conditions, not just different labels.
-  page.evaluate('()=>{const s='+S+';s.startLevel(CANDY_HIDDEN[0]);s.clearModal();s.state="ready";s.challengeElapsed=s.level.timeLimit*1000-300;}');page.locator('#menu-toggle').click();elapsed=f(page,'return s.challengeElapsed');page.wait_for_timeout(400);assert f(page,'return s.challengeElapsed')==elapsed;page.get_by_role('button',name='继续冒险',exact=True).click();page.wait_for_function(S+'.state==="lost"');assert f(page,'return s.balls.countActive()')==0
-  page.evaluate('()=>{const s='+S+';s.startLevel(CANDY_HIDDEN[1]);s.clearModal();s.state="ready";for(const n of s.nodes.values()){n.label?.destroy();n.bar?.destroy();}s.nodes.clear();s.targets.clear(true,true);s.wave=s.level.waves.length;s.addTarget("j2",3,480);s.state="shooting";s.endVolley();}');assert f(page,'return s.baseLives')==2;assert f(page,'return s.state')=='ready';f(page,'s.state="shooting";s.endVolley()');assert f(page,'return s.state')=='won'
+  page.evaluate('()=>{const s='+S+';s.startLevel(CANDY_HIDDEN[0]);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");;s.challengeElapsed=s.level.timeLimit*1000-300;}');page.locator('#menu-toggle').click();elapsed=f(page,'return s.challengeElapsed');page.wait_for_timeout(400);assert f(page,'return s.challengeElapsed')==elapsed;page.get_by_role('button',name='继续冒险',exact=True).click();page.wait_for_function(S+'.state==="lost"');assert f(page,'return s.balls.countActive()')==0
+  page.evaluate('()=>{const s='+S+';s.startLevel(CANDY_HIDDEN[1]);s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");;for(const n of s.nodes.values()){n.label?.destroy();n.bar?.destroy();}s.nodes.clear();s.targets.clear(true,true);s.wave=s.level.waves.length;s.addTarget("j2",3,480);s.state="shooting";s.endVolley();}');assert f(page,'return s.baseLives')==2;assert f(page,'return s.state')=='ready';f(page,'s.state="shooting";s.endVolley()');assert f(page,'return s.state')=='won'
   # Promo integration uses an actual local 31-second TEST FIXTURE, not a countdown.
   videoctx=browser.new_context(viewport={'width':390,'height':844});videoctx.add_init_script('if(!localStorage.getItem("apu-candy-v1"))localStorage.setItem("apu-candy-v1",JSON.stringify({version:4,economyVersion:1,stars:{0:3,1:3,2:3,3:3,4:3},claimed:{0:true,1:true,2:true,3:true,4:true}}));')
   videoctx.route('**/video-config.js',lambda route:route.fulfill(status=200,content_type='application/javascript',body=f'window.CANDY_PROMO={{src:{json.dumps(url+"fixture.mp4")},minimumSeconds:30}};'))

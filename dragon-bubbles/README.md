@@ -1,14 +1,14 @@
-# 阿噗的像素弹弹冒险 · 0.6.1
+# 阿噗的像素弹弹冒险 · 0.7.0
 
 Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 个主线关卡，共 300 关，另有 30 个隐藏挑战**，保留双层地图，加入战斗内快捷道具栏、退出确认、图鉴、分类营地与进度限制的炮台成长。
 
-[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.1.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.1-test.zip)
+[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.7.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.7.0-test.zip)
 
 测试版直接开放 10 个世界、300 个主线和 30 个隐藏挑战，使用至少本关推荐火力；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
 
-0.6.0 将十个章节最终首领生命提升为 0.5.0 的十倍，重型首领每轮推进 18 像素；秘境守卫由同章最终首领设定生命上限。UI 使用本地中文像素字体、统一阶梯边框和小色板；角色、泡泡、炮台各有 24 款可购买外观（每类另保留 1 个免费基础款），八个价格档各三款。保留 S/A/B/C 评分、首次 S 随机普通道具、首领宝箱和收藏徽章。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
+十个章节最终首领生命保持 0.6.0 的数值（0.5.0 的十倍），本版首领每轮推进 24—40 像素；秘境守卫由同章最终首领设定生命上限。UI 使用本地中文像素字体、统一阶梯边框和小色板；角色、泡泡、炮台各有 24 款可购买外观（每类另保留 1 个免费基础款），八个价格档各三款。保留 S/A/B/C 评分、首次 S 随机普通道具、首领宝箱和收藏徽章。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
 
-0.6.1 修复小红书 200 文件上限：上传包从 211 个文件降为 **198 个**。保留全部运行脚本、194 张图片、像素字体、关卡、皮肤和存档规则；打包时按原顺序合并 13 个脚本为 `app.js`，把样式并入入口。`video-config.js` 保持单独可配置。
+0.7.0 上传包为 **199 个文件**，仍满足 200 上限；新增六种机关及退步糖共用一张像素图。结算改为星糖、道具和徽章的图片卡片；首领生命不变，提高后期每轮推进；首次遇见的玩法在开局前用图文介绍，确认后写入存档。修复音频前后台恢复及音效资源清理，已通过六分钟 Web Audio 持续播放检查。详见 [0.7 玩法说明](GAMEPLAY_0.7.md)。
 
 ## 运行与上传
 
@@ -56,6 +56,7 @@ python3 -m http.server 8000 --directory build
 - 达成连击条件的彩蛋给普通道具，不直接送皮肤。皮肤和永久装备只用星糖购买。
 - 仓库可积累额外泡泡、路线透镜、缓冲护盾；隐藏关首通提供时光回退、星爆泡泡、障碍消除等稀有道具。
 - 道具袋默认收起；点击展开图标，点选或长按查看用途，点击“使用”才扣数量，成功后自动收起。不会进入仓库页面，也不弹二次确认。
+- 新增普通道具退步糖：敌阵最多退回一步、保留已造成伤害，每局一次；第三关首通赠送、每六关首通补给，也可在仓库用 80 星糖兑换。原有稀有时光回退仍恢复上次发射前的局面。
 - 主菜单可暂停、查看图鉴、返回章节或退出本局。返回章节和退出本局均先确认；取消后恢复当前战斗。
 - 道具只在两次发射之间使用。回退不返还已消耗道具，也不撤回已结算奖励或限时挑战的计时。
 - 长按敌人查看精确生命和预计命中数；全地图图鉴先展示所有怪怪外观，未遇见的置灰且不可点，已遇见的可查看具体关卡的固定生命值。
@@ -74,7 +75,7 @@ python3 -m http.server 8000 --directory build
 
 ## 声音与存档
 
-首次真实触摸、点击或按键启动声音。在支持的 iPhone 上请求 `audioSession.type = playback`；监听音频状态、页面焦点与前后台恢复，避免只依赖某个按钮。声音设置只保留总开关和三个音量滑杆；不显示诊断和技术参数。打开声音设置暂停战斗但保留背景乐，方便试听音量。
+首次真实触摸、点击或按键启动声音。0.7 修正切后台清掉声音授权与主题的错误；回前台续播同一主题，异常结束的背景音乐会重建，超时未清理的音效节点会释放。在支持的 iPhone 上请求 `audioSession.type = playback`；监听音频状态、页面焦点与前后台恢复，避免只依赖某个按钮。声音设置只保留总开关和三个音量滑杆；不显示诊断和技术参数。打开声音设置暂停战斗但保留背景乐，方便试听音量。
 
 不能保证未操作页面就自动出声，也不能覆盖系统音量为零。已用真实浏览器 AudioContext 的挂起/恢复验证触摸重新启动；**iPhone 小红书预览的物理设备听感仍需用户复测**。
 
@@ -91,20 +92,25 @@ python3 tools/create_art.py
 python3 tools/create_world_art.py
 python3 tools/create_ui_art.py
 python3 tools/create_cosmetic_art.py
+python3 tools/create_mechanism_art.py
 node tools/test_progress.cjs
 python3 tools/package.py
 python3 tools/package.py --test
 python3 tools/test_package.py
 node tools/test_v5.cjs
 node tools/test_v6.cjs
+node tools/test_v7.cjs
 python3 tools/v6_browser_checks.py
 python3 tools/v6_release_checks.py
 python3 tools/v6_cosmetic_checks.py
+python3 tools/v7_browser_checks.py
+python3 tools/audio_recovery_checks.py
+python3 tools/audio_endurance.py
 python3 tools/simulate_campaign.py --end 300
 python3 tools/simulate_campaign.py --hidden --end 30
 ```
 
-300 关来自可复现的关卡设计规则，生成后冻结为固定数据，并非逐关手工绘制。关卡组合敌人分布、波次、机关位置及主题机制；结构签名为 300/300 不同。300 主线和 30 隐藏关均已由实际 Phaser 物理引擎模拟通关，按进度使用推荐火力，未使用仓库道具。详细范围、限制与证据见 [VALIDATION.md](VALIDATION.md)。
+300 关来自可复现的关卡设计规则，生成后冻结为固定数据，并非逐关手工绘制。关卡组合敌人分布、波次、机关位置及主题机制；结构签名为 300/300 不同。300 主线和 30 隐藏关均已由实际 Phaser 物理引擎模拟通关，按进度使用推荐火力，其中第 270 关的测试路线使用正常获得的额外泡泡与缓冲护盾；没有注入额外火力或稀有道具。详细范围、限制与证据见 [VALIDATION.md](VALIDATION.md)。
 
 手机真机兼容性、小红书本版部署、宣传片托管是否被宿主允许、人类玩家难度与留存尚未验证。自动通关证明可完成，不代表人类体验已经调平。
 
@@ -112,7 +118,7 @@ python3 tools/simulate_campaign.py --hidden --end 30
 
 ![章内路线](previews/chapter.png)
 
-## 营地外观与成长（0.6.0）
+## 营地外观与成长
 
 营地分为角色装扮、泡泡皮肤、炮台外观、火力升级和功能装备。当前每类都有 24 款可购买外观和 1 款免费基础外观，共 75 款。八档价格为 40、80、160、260、420、650、1000、1600 星糖，每档同类三款。角色改变服装与配饰，炮台改变炮身轮廓，泡泡改变图形；炮台与泡泡使用四帧光效，高档增加星屑拖尾或光点。外观均不增加伤害。
 
@@ -139,3 +145,7 @@ python3 tools/simulate_campaign.py --hidden --end 30
 ![像素试穿与三款选择](previews/pixel-outfits.png)
 
 ![72款原创外观总览](previews/cosmetic-lineup.png)
+
+![图标结算](previews/rewards-v7.png)
+
+![首次遇见机关](previews/blackhole-discovery.png)

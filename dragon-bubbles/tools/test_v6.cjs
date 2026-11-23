@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),P=require('../build/progress.js'),D=r
 const baseline=[9,11,14,24,22,27,27,32,47,41],bossHP=l=>Number(l.waves.flat().find(t=>t[0]==='K').slice(1))*P.recommendedAttack(l);
 let previous=0;
 for(let w=0;w<10;w++){
- const main=D.levels[w*30+29];assert.equal(main.bossBaseUnits,baseline[w]);assert.equal(main.bossHealthMultiplier,10);assert.equal(bossHP(main),baseline[w]*P.recommendedAttack(main)*10);assert(bossHP(main)>previous);previous=bossHP(main);assert.equal(main.bossAdvance,18);assert.equal(main.starTarget,main.waves.length+4);
+ const main=D.levels[w*30+29];assert.equal(main.bossBaseUnits,baseline[w]);assert.equal(main.bossHealthMultiplier,10);assert.equal(bossHP(main),baseline[w]*P.recommendedAttack(main)*10);assert(bossHP(main)>previous);previous=bossHP(main);assert.equal(main.bossAdvance,Math.min(40,24+w*2));assert.equal(main.starTarget,main.waves.length+4);
  const hidden=D.hidden.filter(l=>l.world===w);for(let i=0;i<3;i++){assert.equal(hidden[i].bossRole,'guardian');assert(bossHP(hidden[i])<=bossHP(main)*[.35,.45,.6][i]);assert(bossHP(hidden[i])<bossHP(main));}
 }
 for(const slot of ['dragon','bubble','turret']){

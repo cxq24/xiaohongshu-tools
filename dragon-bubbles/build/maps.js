@@ -3,7 +3,7 @@
  const host=()=>document.getElementById('map-screen');
  const el=(tag,className='',text='')=>{const n=document.createElement(tag);n.className=className;n.textContent=text;return n;};
  const currency=value=>{const c=el('span','currency');c.title='星糖';c.setAttribute('aria-label',`${value} 星糖`);c.append(image('assets/icon-candy.png'),el('span','',String(value)));return c;};
- const glyph=id=>image(`assets/icon-${id}.png`);
+ const glyph=id=>{if(id!=='retreat')return image(`assets/icon-${id}.png`);const n=el('span','atlas-icon');n.style.setProperty('--atlas-frame',6);n.setAttribute('aria-label','退步糖');return n;};
  const image=(src,alt='')=>{const n=el('img');n.src=src;n.alt=alt;return n;};
  function action(label,fn,className='map-action'){const b=el('button',className,label);b.type='button';b.onclick=()=>{window.CandyAudio.unlock();fn();};return b;}
  function wallet(h,save){h.querySelector('.map-heading').append(currency(save.candy));}
@@ -81,13 +81,13 @@
    const b=action(equipped?'已装备':owned?'装备':'购买',()=>{const result=buy(item.id);this.shop({...args,tab,selected:item.id,priceTier:tab==='gear'?null:tier,message:result.ok?'已装备':result.reason});});b.disabled=equipped;card.append(b);grid.append(card);
   }
  },
- inventory({save,items,back,equip,goods,tab='items'}){
+ inventory({save,items,back,equip,goods,purchase,tab='items',message=''}){
   const {h,scroll}=shell('我的仓库','查看已拥有的物品，战斗内用道具袋快捷使用。',back);wallet(h,save);
-  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备'],['medals','收藏']],tab,t=>this.inventory({save,items,back,equip,goods,tab:t}));
-  const grid=el('div','shop-grid');scroll.append(grid);
-  if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));grid.append(row);}
+  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备'],['medals','收藏']],tab,t=>this.inventory({save,items,back,equip,goods,purchase,tab:t}));
+  const grid=el('div','shop-grid');if(message)scroll.append(el('p','inventory-message',message));scroll.append(grid);
+  if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));if(item.price&&purchase){row.append(currency(item.price),action('兑换',()=>{const result=purchase(id);this.inventory({save,items,back,equip,goods,purchase,tab,message:result.reason});}));}grid.append(row);}
   else if(tab==='medals'){const medals=Object.keys(save.bossClaims||{});if(!medals.length)grid.append(el('p','empty-collection','击败章节最终首领，收集主题徽章。'));for(const id of medals){const row=el('section','shop-card');row.append(image(`assets/w${id}-island.png`),el('strong','',window.CANDY_WORLDS[+id].name+'徽章'),el('p','','章节首领首通纪念'));grid.append(row);}}
-  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card');row.append(portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,tab});}));grid.append(row);}
+  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card');row.append(portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,purchase,tab});}));grid.append(row);}
  },
  tasks({save,missions,back}){
   const {h,scroll}=shell('章节任务','达成目标后，奖励自动进入星糖余额和仓库。',back);wallet(h,save);
