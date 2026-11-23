@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 from PIL import Image
 import os
 import json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.8.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.9.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -26,8 +26,8 @@ with TemporaryDirectory() as folder:
   # Isolated purchasing fixture, not a source of currency in the real game.
   ctx.add_init_script('if(!localStorage.getItem("apu-candy-v1"))localStorage.setItem("apu-candy-v1",JSON.stringify({version:5,economyVersion:1,candy:20000,worlds:[0,1,2,3,4,5,6,7,8,9]}));')
   page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-  page.goto(f'http://127.0.0.1:{server.server_port}/');page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"');assert page.evaluate('document.fonts.check(\'12px "Apu Pixel"\')')
-  f(page,'s.showWorkshop()');assert 'Apu Pixel' in page.locator('#map-screen').evaluate('(e)=>getComputedStyle(e).fontFamily');assert page.locator('.price-tier-select option').count()==8;assert page.locator('.cosmetic-card').count()==3
+  page.goto(f'http://127.0.0.1:{server.server_port}/');page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"');assert page.evaluate('document.fonts.check(\'13px system-ui\')')
+  f(page,'s.showWorkshop()');assert 'system-ui' in page.locator('#map-screen').evaluate('(e)=>getComputedStyle(e).fontFamily');assert page.locator('.price-tier-select option').count()==8;assert page.locator('.cosmetic-card').count()==3
   before=save(page);page.locator('.price-tier-select').select_option('7');page.get_by_role('button',name='试穿阿噗的星冕王袍',exact=True).click();assert save(page)==before;assert page.locator('.shop-showcase').get_attribute('data-preview')=='outfit-6'
   page.locator('.map-scroll').evaluate('(e)=>e.scrollTop=0');page.screenshot(path=str(ROOT/'previews/pixel-outfits.png'),full_page=True)
   page.locator('.shop-showcase').get_by_role('button',name='购买并装备',exact=False).click();assert save(page)['candy']==before['candy']-1600;assert save(page)['equipped']['dragon']=='outfit-6';assert save(page)['fireRank']==0
@@ -60,7 +60,7 @@ with TemporaryDirectory() as folder:
   for width in [320,390,430]:
    page.set_viewport_size({'width':width,'height':844});f(page,'s.showWorkshop("bubble")');assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');assert page.locator('.camp-tabs').evaluate('(e)=>e.scrollWidth<=e.clientWidth')
   assert not errors,errors
-  (ROOT/f'tools/cosmetic-results-{VERSION}.json').write_text(json.dumps({'version':VERSION,'real_zip':True,'local_pixel_font':True,'preview_does_not_spend':True,'purchase_and_equip':True,'four_frame_animation':True,'cosmetics_no_damage_bonus':True,'collision_centred_and_equal_radius':True,'all_sheet_dimensions':True,'72_distinct_paid_designs':True,'eight_price_bands_three_each':True,'mobile_widths':[320,390,430],'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/cosmetic-results-{VERSION}.json').write_text(json.dumps({'version':VERSION,'real_zip':True,'readable_system_font':True,'preview_does_not_spend':True,'purchase_and_equip':True,'four_frame_animation':True,'cosmetics_no_damage_bonus':True,'collision_centred_and_equal_radius':True,'all_sheet_dimensions':True,'72_distinct_paid_designs':True,'eight_price_bands_three_each':True,'mobile_widths':[320,390,430],'errors':errors},indent=2)+'\n')
   browser.close()
  server.shutdown()
-print('PASS: pixel font, no-cost previews, purchases, visible frames, live equipment, unchanged damage/centred collision, sheet dimensions and narrow mobile tabs.')
+print('PASS: readable font, no-cost previews, purchases, visible frames, live equipment, unchanged damage/centred collision, sheet dimensions and narrow mobile tabs.')

@@ -47,6 +47,6 @@ for(let i=0;i<300;i++){
  assert.equal(P.attack(budget),P.recommendedAttack(campaign.levels[i]));P.win(budget,i,1);
 }
 while(P.powerInfo(budget).eligible){spent+=P.powerInfo(budget).cost;assert(P.upgrade(budget).ok);}
-assert.equal(budget.fireRank,50);assert.equal(spent,8250);assert(budget.candy>0);
-console.log('PASS: 50 progress-gated fire upgrades, 100→1100 damage, chapter-six cap 500, cosmetic isolation, legacy migration and complete one-star income budget.');
+assert.equal(budget.fireRank,99);assert.equal(spent,13550);assert(budget.candy>0);
+console.log('PASS: 99 progress-gated fire upgrades, 100→2000 damage, chapter-six cap 500, cosmetic isolation, legacy migration and complete one-star income budget.');
 const questMoney=P.normalize();P.win(questMoney,0,3);P.win(questMoney,1,3);const beforeQuest=questMoney.candy;const receipt=P.win(questMoney,2,3);assert.equal(receipt.totalCurrency,questMoney.candy-beforeQuest);assert.equal(receipt.totalCurrency,105,'Reward UI must include the completed three-star mission bonus');

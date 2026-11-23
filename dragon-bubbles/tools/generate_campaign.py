@@ -125,7 +125,7 @@ def main():
   if w in [4,5] and l>=8:add('conveyor',100 if l%2 else 260,365,force=160 if l%2 else -160)
   if w==6 and l>=3:add('blackhole',96,330,radius=66,period=3200)
   if w==7 and l>=5:add('repulsor',264,310,radius=70)
-  if w==8 and l>=5:add('boost',96,345)
+  if w==8 and l>=5:add('boost',120,365)
   if w==8 and l>=17:add('prism',264,300)
   if w==9:add(['blackhole','prism','repulsor'][min(2,l//10)],264,330,radius=66)
   if lev.get('hidden'):

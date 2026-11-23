@@ -3,7 +3,7 @@
   'use strict';
   const W=360,H=640,LAUNCH={x:180,y:540},SPEED=410,ENERGY_MAX=100;
   const COLORS={ink:0x253449,cream:0xffefc2,green:0x477d60,light:0xb8d39e,gold:0xf0c77c};
-  const FONT='Apu Pixel, monospace';
+  const FONT='system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif';
   const levels=window.CANDY_LEVELS;
   const Economy=window.CandyProgress;
   const playtest=window.CandyRelease?.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
@@ -14,13 +14,13 @@
   if(playtest){
     save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);
     for(const item of Economy.SHOP)if(!save.owned.includes(item.id))save.owned.push(item.id);
-    save.testFireRank=Number.isInteger(rawSave.testFireRank)?Math.max(0,Math.min(50,rawSave.testFireRank)):null;
+    save.testFireRank=Number.isInteger(rawSave.testFireRank)?Math.max(0,Math.min(Economy.MAX_FIRE_RANK,rawSave.testFireRank)):null;
     if(rawSave.testStockVersion!==8)for(const id of Object.keys(Economy.ITEMS))save.inventory[id]=Math.max(save.inventory[id]||0,10);
     save.testStockVersion=8;testFooter();
   }
   persist();
   function text(scene,x,y,value,size=14,color='#fff1c7',align='left'){
-    return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'normal',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
+    return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:Math.max(11,size)+'px',fontStyle:'normal',color,align,resolution:4}).setOrigin(align==='center'?.5:0,0);
   }
   function panel(scene,x,y,w,h,fill=COLORS.ink,edge=0x91ac80){
     const g=scene.add.graphics();g.fillStyle(0x193d36,.5).fillRect(x+3,y+4,w,h);g.fillStyle(edge).fillRect(x,y,w,h);g.fillStyle(fill).fillRect(x+2,y+2,w-4,h-4);return g;
@@ -62,8 +62,8 @@
       this.physics.add.collider(this.balls,this.targets,this.onHit,this.shouldCollide,this);
       this.walls=this.physics.add.staticGroup();this.obstacles=[];this.portalSprites=[];
       this.physics.add.collider(this.balls,this.walls,this.hitObstacle,(ball,wall)=>!['blackhole','conveyor','repulsor'].includes(wall.getData('kind'))&&(wall.getData('kind')!=='phase'||Math.floor(this.gameClock/1200)%2===0),this);
-      this.input.on('pointerdown',this.pointerDown,this);this.input.on('pointermove',this.pointerMove,this);this.input.on('pointerup',this.pointerUp,this);
-      this.input.on('gameout',()=>{if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero?.setFrame(0);}});
+      this.input.on('pointerdown',this.pointerDown,this);window.addEventListener('pointercancel',()=>this.releaseFast());window.addEventListener('blur',()=>this.releaseFast());document.addEventListener('visibilitychange',()=>{if(document.hidden)this.releaseFast();});this.input.on('pointermove',this.pointerMove,this);this.input.on('pointerup',this.pointerUp,this);
+      this.input.on('gameout',()=>{this.releaseFast();if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero?.setFrame(0);}});
       this.input.keyboard?.on('keydown',e=>{
         if(this.uiPaused||document.getElementById('help-dialog').open)return;
         if(['Space','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();
@@ -78,6 +78,7 @@
     bubbleTexture(){return Economy.equipped(save,'bubble').texture;}
     keep(...items){this.screenItems.push(...items);return items[0];}
     clearScreen(){
+      this.releaseFast();
       window.CandyBattleUI.hide();window.CandyMapView.hide();this.inventoryOpen=false;this.itemTrayOpen=false;this.menuOpen=false;this.inspectingEnemy=false;this.codexOpen=false;clearTimeout(this.inspectTimer);
       this.generation++;this.time.removeAllEvents();this.tweens.killAll();this.aim.clear();this.fx.clear();
       this.balls.clear(true,true);this.targets.clear(true,true);
@@ -136,30 +137,29 @@
       window.CandyMapView.codex({save,level,worlds:window.CANDY_WORLDS,levels,hidden:window.CANDY_HIDDEN,playtest,attack:battle?this.attackDamage:Economy.attack(save),back:()=>{if(battle){window.CandyMapView.hide();this.codexOpen=false;this.input.enabled=true;this.setPausedByUI(false);}else if(from==='worlds')this.showLevels();else this.showChapter(level.world);}});
     }
     takeSnapshot(){
-      this.snapshot={nodes:[...this.nodes.values()].map(n=>({kind:n.kind,hp:n.hp,maxHp:n.maxHp,x:n.sprite.x,y:n.sprite.y,armor:n.armor||0})),obstacles:this.obstacles.filter(o=>o.active).map(o=>({...o.getData('spec'),x:o.x,y:o.y,hp:o.getData('hp')})),wave:this.wave,turn:this.turn,shots:this.shotsFired,energy:this.energy,defeated:this.defeated,bossSplit:this.bossSplit,clock:this.gameClock,hits:this.hitCount,bestCombo:this.bestCombo,productive:this.productiveShots};
+      this.snapshot={nodes:[...this.nodes.values()].map(n=>({kind:n.kind,hp:n.hp,maxHp:n.maxHp,x:n.sprite.x,y:n.sprite.y,armor:n.armor||0})),obstacles:this.obstacles.filter(o=>o.active).map(o=>({...o.getData('spec'),x:o.x,y:o.y,hp:o.getData('hp')})),wave:this.wave,turn:this.turn,shots:this.shotsFired,energy:this.energy,defeated:this.defeated,bossSplit:this.bossSplit,clock:this.gameClock,hits:this.hitCount,bestCombo:this.bestCombo,productive:this.productiveShots};this.history.push(this.snapshot);
     }
     useItem(id){
       if(this.state!=='ready')return {ok:false,reason:'请在两次发射之间使用道具'};
       if(!save.inventory[id])return {ok:false,reason:'仓库里没有这个道具'};
       if(id==='retreat'&&this.shotsFired===0)return {ok:false,reason:'敌阵推进后再使用退步糖'};
-      if(id==='retreat'&&this.retreatUsed)return {ok:false,reason:'每局只能使用一次退步糖'};
-      if(id==='rewind'&&!this.snapshot)return {ok:false,reason:'还没有可回退的发射'};
+      if(id==='retreat'&&![...this.nodes.values()].some(n=>n.sprite.y>(n.kind==='K'?140:122)))return {ok:false,reason:'敌阵已在最上方，无需退步'};
+      if(id==='rewind'&&!this.history.length)return {ok:false,reason:'还没有可回退的发射'};
       if(id==='hammer'&&!this.obstacles.some(o=>o.active))return {ok:false,reason:'本关没有可移除的障碍'};
-      if((id==='balls'&&this.extraBalls)||(id==='aim'&&this.itemAim)||(id==='guard'&&this.guard)||(id==='nova'&&this.nova))return {ok:false,reason:'这个效果已经准备好了'};
       if(!Economy.spendItem(save,id))return {ok:false,reason:'道具不足'};persist();
-      if(id==='retreat'){this.retreatUsed=true;for(const n of this.nodes.values()){n.sprite.y=Math.max(n.kind==='K'?140:122,n.sprite.y-(n.kind==='K'?(this.level.bossAdvance||this.level.advance||37):(this.level.advance||37)));const bw=n.kind==='K'?72:n.kind==='p'?27:n.kind==='r'?22:33,bh=n.kind==='K'?46:n.kind==='r'?22:23;this.fitTarget(n.sprite,bw,bh);if(n.label)n.label.y=n.sprite.y+5;this.drawHealth(n);}}
-      if(id==='balls')this.extraBalls=3;
-      if(id==='aim')this.itemAim=true;
-      if(id==='guard')this.guard=1;
-      if(id==='nova'){this.nova=true;this.armed=false;}
+      if(id==='retreat'){for(const n of this.nodes.values()){n.sprite.y=Math.max(n.kind==='K'?140:122,n.sprite.y-(n.kind==='K'?(this.level.bossAdvance||this.level.advance||37):(this.level.advance||37)));const bw=n.kind==='K'?72:n.kind==='p'?27:n.kind==='r'?22:33,bh=n.kind==='K'?46:n.kind==='r'?22:23;this.fitTarget(n.sprite,bw,bh);if(n.label)n.label.y=n.sprite.y+5;this.drawHealth(n);}}
+      if(id==='balls')this.extraBalls+=3;
+      if(id==='aim')this.itemAim++;
+      if(id==='guard')this.guard++;
+      if(id==='nova'){this.nova++;this.armed=false;}
       if(id==='hammer'){const wall=this.obstacles.filter(o=>o.active).sort((a,b)=>b.y-a.y)[0];wall.disableBody(true,true);}
       if(id==='rewind'){
-        const snap=this.snapshot;this.time.removeAllEvents();this.balls.clear(true,true);for(const n of this.nodes.values()){n.label?.destroy();n.bar?.destroy();}this.nodes.clear();this.targets.clear(true,true);this.walls.clear(true,true);this.obstacles=[];
+        const snap=this.history.pop();this.time.removeAllEvents();this.balls.clear(true,true);for(const n of this.nodes.values()){n.label?.destroy();n.bar?.destroy();}this.nodes.clear();this.targets.clear(true,true);this.walls.clear(true,true);this.obstacles=[];
         for(const n of snap.nodes){const node=this.addTarget(n.kind+String(n.hp),(n.x-48)/44,n.y,{exact:true});node.maxHp=n.maxHp;node.armor=n.armor;this.drawHealth(node);node.label?.setText(String(n.hp)+(n.armor?'◇':''));}
         for(const spec of snap.obstacles)this.addObstacle(spec);
-        Object.assign(this,{wave:snap.wave,turn:snap.turn,shotsFired:snap.shots,energy:snap.energy,defeated:snap.defeated,bossSplit:snap.bossSplit,gameClock:snap.clock,hitCount:snap.hits,bestCombo:snap.bestCombo,productiveShots:snap.productive||0,volleyProductive:false,snapshot:null,extraBalls:0,itemAim:false,nova:false,guard:0});
+        Object.assign(this,{wave:snap.wave,turn:snap.turn,shotsFired:snap.shots,energy:snap.energy,defeated:snap.defeated,bossSplit:snap.bossSplit,gameClock:snap.clock,hitCount:snap.hits,bestCombo:snap.bestCombo,productiveShots:snap.productive||0,volleyProductive:false,snapshot:this.history.at(-1)||null,extraBalls:0,itemAim:0,nova:0,guard:0});
       }
-      this.drawEnergy();this.refreshHUD();this.hintText.setText(Economy.ITEMS[id].name+'已使用');return {ok:true};
+      this.volleyHits=new Map();this.drawEnergy();this.refreshHUD();this.hintText.setText(Economy.ITEMS[id].name+'已使用');return {ok:true};
     }
     addObstacle(spec){
       const frame=window.CandyGuides.frames[spec.kind],wall=this.walls.create(spec.x,spec.y,frame===undefined?'obstacle-'+spec.kind:'mechanism-sheet',frame===undefined?undefined:frame).setDisplaySize(spec.width,spec.height).setDepth(14);
@@ -179,9 +179,9 @@
     }
     startLevel(index){
       this.clearScreen();this.isHidden=typeof index==='object';this.level=this.isHidden?index:levels[index];this.index=this.isHidden?this.level.world*30+this.level.local:index;this.world=window.CANDY_WORLDS[this.level.world];this.background.setTexture(`w${this.world.id}-arena`);window.CandyAudio.setTheme(this.world.id);if(!this.isHidden){save.current=index;persist();}
-      this.attackDamage=playtest?(save.testFireRank===null?Economy.recommendedAttack(this.level):Economy.attackAt(save.testFireRank)):Economy.attack(save);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
+      this.attackDamage=playtest?(save.testFireRank===null?Economy.recommendedAttack(this.level):Economy.attackAt(save.testFireRank)):Economy.attack(save);this.balanceAttack=Economy.healthAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
       this.bubbleLook=Economy.equipped(save,'bubble');this.dragonLook=Economy.equipped(save,'dragon');this.turretLook=Economy.equipped(save,'turret');this.cosmeticAt=0;
-      this.retreatUsed=false;this.prismCount=0;this.absorbedThisVolley=0;this.snapshot=null;this.extraBalls=0;this.itemAim=false;this.guard=0;this.nova=false;
+      this.history=[];this.volleyHits=new Map();this.criticalHits=0;this.prismCount=0;this.absorbedThisVolley=0;this.snapshot=null;this.extraBalls=0;this.itemAim=0;this.guard=0;this.nova=0;
       this.rewardClaimed=false;this.rating=null;this.reward=null;this.shotsFired=0;this.productiveShots=0;this.volleyProductive=false;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
       this.gameClock=0;this.state='intro';this.turn=1;this.wave=0;this.energy=save.equipped.gear==='gear-spark'?15:0;this.armed=false;this.combo=0;this.bestCombo=0;this.pending=0;this.rainbowUntil=0;this.hitCount=0;this.angle=-Math.PI/2;this.nextId=0;this.volleyAge=0;this.bossSplit=false;
       this.keep(panel(this,10,10,340,43),text(this,22,18,`${this.isHidden?'秘境':String(this.level.local+1).padStart(2,'0')} / ${this.level.name}`,16));
@@ -189,10 +189,10 @@
       this.keep(this.add.image(174,514,'icon-fire'));this.damageLabel=this.keep(text(this,190,508,String(this.attackDamage),11,'#365f4d'));
 
       this.keep(panel(this,10,61,340,44,0xf5edc9,0x8da87e));
-      this.turnLabel=this.keep(text(this,23,67,'',10,'#42654b'));
-      this.goalLabel=this.keep(text(this,337,67,'',10,'#42654b'));this.goalLabel.setOrigin(1,0);
-      this.waveLabel=this.keep(text(this,23,86,'',10,'#42654b'));
-      this.keep(text(this,337,86,'长按怪怪查看生命',9,'#8b7551').setOrigin(1,0));
+      this.turnLabel=this.keep(text(this,23,67,'',12,'#42654b'));
+      this.goalLabel=this.keep(text(this,337,67,'',12,'#42654b'));this.goalLabel.setOrigin(1,0);
+      this.waveLabel=this.keep(text(this,23,86,'',12,'#42654b'));
+      this.keep(text(this,337,86,'长按查看',12,'#8b7551').setOrigin(1,0));
       const danger=this.keep(this.add.graphics());danger.lineStyle(1,0xc88972,.8);for(let x=25;x<337;x+=9)danger.lineBetween(x,493,x+4,493);
       this.keep(text(this,30,496,'守住这条线',8,'#af7b60'));
       this.hero=this.keep(this.add.sprite(112,536,this.dragonTexture(),0).setScale(2));
@@ -272,7 +272,16 @@
       if(this.energy<100&&!this.armed){this.hintText.setText('每次命中怪怪 +5 能量，满 100 可释放大泡泡');return;}
       this.armed=!this.armed;this.drawEnergy();if(this.armed){window.CandyAudio.play('ready');window.CandyAudio.voice('power');}this.hintText.setText(this.armed?'阿噗：大泡泡，准备！首颗伤害 ×4':'已取消，继续普通发射');this.drawAim();
     }
+    setFast(value){
+      value=!!value&&this.state==='shooting'&&!this.uiPaused;
+      this.fast=value;this.physics.world.timeScale=value?.5:1;this.time.timeScale=value?2:1;this.tweens.timeScale=value?2:1;
+      window.CandyBattleUI.speed?.(value);
+    }
+    releaseFast(){clearTimeout(this.fastTimer);this.fastPointer=null;this.setFast(false);}
     pointerDown(pointer){
+      if(this.state==='shooting'&&!this.uiPaused&&pointer.y>=110&&pointer.y<=562&&pointer.x>=20&&pointer.x<=340){
+        this.releaseFast();this.fastPointer=pointer.id;this.fastTimer=setTimeout(()=>{if(this.fastPointer===pointer.id)this.setFast(true);},220);return;
+      }
       if(this.uiPaused||this.state!=='ready'||pointer.y<110||pointer.y>562||pointer.x<20||pointer.x>340||(pointer.y>520&&pointer.x>265))return;
       this.state='aiming';this.hero.setFrame(2);this.setAngle(pointer);this.drawAim();this.aimStart={x:pointer.x,y:pointer.y};
       const node=[...this.nodes.values()].find(n=>n.monster&&Math.abs(pointer.x-n.sprite.x)<n.sprite.body.width/2+5&&Math.abs(pointer.y-n.sprite.y)<n.sprite.body.height/2+5);
@@ -280,12 +289,12 @@
       clearTimeout(this.inspectTimer);if(node||mechanism)this.inspectTimer=setTimeout(()=>{if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero.setFrame(0);if(node)window.CandyBattleUI.inspect(node);else window.CandyBattleUI.inspectMechanism(this.mechanismInfo(mechanism));}},450);
     }
     pointerMove(pointer){if(this.state==='aiming'&&!this.uiPaused){if(this.aimStart&&Phaser.Math.Distance.Between(pointer.x,pointer.y,this.aimStart.x,this.aimStart.y)>8)clearTimeout(this.inspectTimer);this.setAngle(pointer);this.drawAim();}}
-    pointerUp(pointer){clearTimeout(this.inspectTimer);if(this.state!=='aiming'||this.uiPaused)return;if(pointer.y>575){this.state='ready';this.hero.setFrame(0);this.aim.clear();return;}this.setAngle(pointer);this.fire();}
+    pointerUp(pointer){this.releaseFast();clearTimeout(this.inspectTimer);if(this.state!=='aiming'||this.uiPaused)return;if(pointer.y>575){this.state='ready';this.hero.setFrame(0);this.aim.clear();return;}this.setAngle(pointer);this.fire();}
     setAngle(pointer){this.angle=Phaser.Math.Clamp(Math.atan2(Math.min(-22,pointer.y-LAUNCH.y),pointer.x-LAUNCH.x),-Math.PI+.18,-.18);}
     drawAim(){
       this.aim.clear();if(!['ready','aiming'].includes(this.state))return;
       let x=LAUNCH.x,y=LAUNCH.y,dx=Math.cos(this.angle),dy=Math.sin(this.angle),bounce=0;
-      for(let i=0;i<90+(this.itemAim?80:0)+(save.equipped.gear==='gear-lens'?50:0);i++){
+      for(let i=0;i<90+(this.itemAim*80)+(save.equipped.gear==='gear-lens'?50:0);i++){
         x+=dx*5;y+=dy*5;
         if(x<25||x>335){dx=-dx;x=Phaser.Math.Clamp(x,25,335);bounce++;}
         if(y<111){dy=-dy;y=111;bounce++;}
@@ -298,15 +307,15 @@
     }
     fire(){
       if(!['ready','aiming'].includes(this.state)||this.uiPaused)return;
-      this.takeSnapshot();this.prismCount=0;this.absorbedThisVolley=0;this.volleyProductive=false;this.state='shooting';this.shotsFired++;this.refreshHUD();this.aim.clear();this.combo=0;this.volleyAge=0;this.rainbowUntil=0;
+      this.takeSnapshot();this.volleyHits=new Map();this.prismCount=0;this.absorbedThisVolley=0;this.volleyProductive=false;this.state='shooting';this.shotsFired++;this.refreshHUD();this.aim.clear();this.combo=0;this.volleyAge=0;this.rainbowUntil=0;
       this.hero.setFrame(3);this.tweens.add({targets:this.hero,y:541,duration:80,yoyo:true});
-      this.hintText.setText('利用反弹和连锁命中敌人');
+      this.hintText.setText('长按战场加速 · 松手恢复');
       const powered=this.armed;this.armed=false;if(powered)this.energy=0;this.drawEnergy();
-      const generation=this.generation,volleyBalls=this.level.balls+this.extraBalls,nova=this.nova;this.extraBalls=0;this.nova=false;this.itemAim=false;this.pending=volleyBalls;
+      const generation=this.generation,volleyBalls=this.level.balls+this.extraBalls,nova=this.nova;this.extraBalls=0;this.nova=Math.max(0,nova-volleyBalls);this.itemAim=0;this.pending=volleyBalls;
       for(let i=0;i<volleyBalls;i++)this.time.delayedCall(i*70,()=>{
         if(this.generation!==generation||this.state!=='shooting')return;
-        this.pending--;const big=(powered||nova)&&i===0;
-        const ball=this.createBubble(LAUNCH.x,LAUNCH.y,this.angle,SPEED,this.attackDamage*(big?(nova?6:4):1),big);ball.setData('cosmeticOffset',i%4);if(this.turretLook.fx)this.burst(LAUNCH.x,LAUNCH.y,this.turretLook.color,2);
+        this.pending--;const isNova=i<nova,big=isNova||(powered&&i===0);
+        const ball=this.createBubble(LAUNCH.x,LAUNCH.y,this.angle,SPEED,this.attackDamage*(isNova?6:big?4:1),big);ball.setData('cosmeticOffset',i%4);if(this.turretLook.fx)this.burst(LAUNCH.x,LAUNCH.y,this.turretLook.color,2);
         window.CandyAudio.play(big?'big':'shoot',i);
       });
       this.time.delayedCall(220,()=>{if(this.generation===generation&&this.hero.active)this.hero.setFrame(0);});
@@ -318,20 +327,24 @@
       const node=sprite.getData('node');if(!node||node.dead||!ball.active)return false;
       if(this.rainbowUntil>this.gameClock||node.kind==='r'){
         const last=ball.getData('hits').get(node.id)||-1000;
-        if(this.gameClock-last>180){ball.getData('hits').set(node.id,this.gameClock);this.damage(node,ball.getData('damage'));}
+        if(this.gameClock-last>180){ball.getData('hits').set(node.id,this.gameClock);this.damage(node,ball.getData('damage'),true);}
         return false;
       }
       return true;
     }
     onHit(ball,sprite){
       const node=sprite.getData('node');if(!node||node.dead)return;
-      this.damage(node,ball.getData('damage'));
+      this.damage(node,ball.getData('damage'),true);
       // Prevent shallow, almost-horizontal loops from waiting indefinitely.
       if(ball.active&&Math.abs(ball.body.velocity.y)<50)ball.setVelocityY(ball.body.velocity.y<0?-85:85);
     }
-    damage(node,amount){
+    damage(node,amount,fromBubble=false){
       if(node.dead)return;
-      if(node.armor>0){node.armor--;amount=0;}node.hp-=amount;this.hitCount++;this.combo++;this.bestCombo=Math.max(this.bestCombo,this.combo);
+      if(node.armor>0){node.armor--;amount=0;}
+      if(fromBubble&&node.monster&&amount>0){
+        const hits=(this.volleyHits.get(node.id)||0)+1;this.volleyHits.set(node.id,hits);
+        if(hits%10===0){amount*=2;this.criticalHits++;this.showCritical(node);}
+      }node.hp-=amount;this.hitCount++;this.combo++;this.bestCombo=Math.max(this.bestCombo,this.combo);
       if(node.monster){this.volleyProductive=true;this.energy=Math.min(100,this.energy+5);this.drawEnergy();}
       node.label?.setText(String(Math.max(0,node.hp))+(node.armor?'◇':''));
       this.drawHealth(node);this.comboText.setText(this.combo>=3?`${this.combo} 连击!`:'');
@@ -342,6 +355,11 @@
       this.tweens.add({targets:node.sprite,scaleX:node.baseScale*1.08,scaleY:node.baseScale*.86,duration:60,yoyo:true});
       this.time.delayedCall(65,()=>{if(node.sprite.active&&!node.dead)node.sprite.clearTint();});
       this.burst(node.sprite.x,node.sprite.y,0xffedb2,3);
+    }
+    showCritical(node){
+      const label=text(this,node.sprite.x,Math.max(119,node.sprite.y-30),'暴击 ×2',15,'#a24e38','center').setDepth(38);this.tempObjects.add(label);
+      this.tweens.add({targets:label,y:label.y-18,alpha:0,duration:650,onComplete:()=>{this.tempObjects.delete(label);label.destroy();}});
+      window.CandyAudio.play('critical');this.burst(node.sprite.x,node.sprite.y,0xf4bc69,8);
     }
     destroyTarget(node){
       if(node.dead)return;node.dead=true;
@@ -377,7 +395,7 @@
     endVolley(){
       if(this.state!=='shooting')return;
       if(this.volleyProductive)this.productiveShots++;this.volleyProductive=false;
-      this.state='advancing';this.physics.world.timeScale=1;this.time.timeScale=1;this.hero.setFrame(0);this.comboText.setText('');
+      this.releaseFast();this.state='advancing';this.hero.setFrame(0);this.comboText.setText('');
       if(this.remaining()===0&&this.wave>=this.level.waves.length){this.win();return;}
       if(this.guard>0){this.guard--;this.turn++;this.state='ready';this.refreshHUD();this.hintText.setText('缓冲护盾抵消了本次推进');return;}
       let danger=false;
@@ -394,6 +412,7 @@
       this.spawnWave();this.turn++;this.refreshHUD();this.state='ready';this.hintText.setText(this.wave>=this.level.waves.length?'最后一波已到齐，清掉剩下的敌人！':'敌人前进了，重新找一个好角度');
     }
     win(){
+      this.releaseFast();
       if(this.rewardClaimed)return;this.rewardClaimed=true;this.state='won';this.time.removeAllEvents();this.balls.clear(true,true);this.physics.world.pause();this.hero.setFrame(4);this.friend.setAlpha(1);this.burst(245,552,0xffdb86,25);
       const target=this.level.starTarget||6;this.rating=window.CandyScore.evaluate({won:true,shots:this.shotsFired,par:target,productive:this.productiveShots,combo:this.bestCombo,mode:this.level.mode,lives:this.baseLives,elapsed:this.challengeElapsed/1000,limit:this.level.timeLimit});const {stars}=this.rating,stats={...this.rating,combo:this.bestCombo};
       this.reward=this.isHidden?Economy.winHidden(save,this.level.id,stats):Economy.win(save,this.index,stars,stats);persist();
@@ -402,10 +421,12 @@
       window.CandyBattleUI.reward({title:this.isHidden?'秘境挑战完成！':'小星星，回家啦！',stars,rating:this.rating,amount,balance:save.candy,shots:this.shotsFired,target,loot:this.reward.loot||[],medals:this.reward.medals||[],canAdvance:!this.isHidden&&this.index<299,nextLabel:this.isHidden||this.index===299?'返回关卡地图':this.level.local===29?'前往下一主题':'前往下一关',next:()=>this.isHidden||this.index===299?this.showChapter(this.world.id):this.level.local===29?this.showChapter(this.world.id+1):this.startLevel(this.index+1),back:()=>this.showChapter(this.world.id),worldMap:()=>this.showLevels(),powerReady:Economy.powerInfo(save).eligible,upgrade:()=>this.showWorkshop('power',()=>this.showChapter(this.world.id))});
     }
     lose(reason='敌人越过了安全线。'){
+      this.releaseFast();
       this.state='lost';this.refreshHUD();this.time.removeAllEvents();this.balls.clear(true,true);this.physics.world.pause();this.hero.setFrame(5);window.CandyAudio.play('lose');window.CandyAudio.voice('lose');
       this.modal('这次先撤退！',`阿噗：再试一次，我陪你！\n${reason}\n试试沿墙反弹，优先引爆连锁机关。\n本关最高连击：${this.bestCombo}`, '再试一次',()=>this.startLevel(this.isHidden?this.level:this.index),{label:'返回地图',action:()=>this.showLevels()});
     }
     setPausedByUI(paused){
+      if(paused)this.releaseFast();
       paused=Boolean(paused||this.inventoryOpen||this.itemTrayOpen||this.menuOpen||this.inspectingEnemy||this.codexOpen);this.uiPaused=paused;window.CandyAudio.pause(paused&&!this.audioSettingsOpen&&this.state!=='won');
       if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero?.setFrame(0);}
       if(paused){this.physics.world.pause();this.time.paused=true;this.tweens.pauseAll();}
@@ -419,31 +440,38 @@
       const kind=object.getData('kind');if(!kind)return {name:'成对传送门',description:'进入一扇门，会从另一扇门穿出，保持飞行方向；传送门不吞球。',image:'assets/portal.png',status:'双向传送'};
       const [name,description]=window.CandyGuides.obstacles[kind]||[kind,'观察机关再选择弹道。'];let status='';
       if(kind==='blackhole'){const cap=this.isHidden?5:3;status=this.absorbedThisVolley>=cap?`本轮已满 ${cap}/${cap}，下次发射恢复`:this.fieldActive(object)?`吸入中 · 本轮 ${this.absorbedThisVolley}/${cap}`:'休眠中 · 暂时不吸、不吞';}
-      if(kind==='repulsor')status=this.fieldActive(object)?'向外推开 · 不吞球':'休眠中';
+      if(kind==='repulsor')status=this.fieldActive(object)?'向外偏转弹道 · 不吞球':'休眠中';
       return {name,description,status,image:window.CandyGuides.frames[kind]===undefined?`assets/obstacle-${kind}.png`:null,atlasFrame:window.CandyGuides.frames[kind]};
     }
     updateFieldVisuals(){
       this.fieldGraphic?.clear();for(const wall of this.obstacles){const badge=wall.getData('badge');badge?.setVisible(wall.active);if(!wall.active)continue;const kind=wall.getData('kind');if(!['blackhole','repulsor'].includes(kind))continue;
         const active=this.fieldActive(wall),full=kind==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3);wall.setAlpha(active?1:.48);
-        badge?.setText(kind==='repulsor'?(active?'向外推':'休眠'):full?'本轮已满':active?`吸入 ${this.absorbedThisVolley}/${this.isHidden?5:3}`:'休眠');badge?.setColor(active?(kind==='blackhole'?'#70508d':'#2b7f8a'):'#7e7b82');
-        if(active&&this.fieldGraphic?.active){const phase=(this.gameClock%800)/800,radius=kind==='blackhole'?30-phase*18:12+phase*18;this.fieldGraphic.fillStyle(kind==='blackhole'?0xa98acb:0x53bfc6,.8);for(let i=0;i<4;i++){const a=i*Math.PI/2;this.fieldGraphic.fillRect(Math.round(wall.x+Math.cos(a)*radius)-1,Math.round(wall.y+Math.sin(a)*radius)-1,3,3);}}
+        badge?.setText(kind==='repulsor'?(active?'斥力场':'休眠'):full?'本轮已满':active?`吸入 ${this.absorbedThisVolley}/${this.isHidden?5:3}`:'休眠');badge?.setColor(active?(kind==='blackhole'?'#70508d':'#2b7f8a'):'#7e7b82');
+        if(active&&this.fieldGraphic?.active){const phase=(this.gameClock%800)/800,radius=kind==='blackhole'?30-phase*18:12+phase*((wall.getData('spec').radius||70)-12);if(kind==='repulsor'){this.fieldGraphic.lineStyle(1,0x53bfc6,.35).strokeCircle(wall.x,wall.y,wall.getData('spec').radius||70);}this.fieldGraphic.fillStyle(kind==='blackhole'?0xa98acb:0x53bfc6,.8);for(let i=0;i<4;i++){const a=i*Math.PI/2;this.fieldGraphic.fillRect(Math.round(wall.x+Math.cos(a)*radius)-1,Math.round(wall.y+Math.sin(a)*radius)-1,3,3);}}
       }
     }
     fieldActive(wall){if(wall.getData('kind')==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3))return false;const spec=wall.getData('spec');return this.gameClock%(spec.period||3200)<1400;}
     applyFields(ball,delta){
       for(const wall of this.obstacles){if(!wall.active)continue;const kind=wall.getData('kind'),spec=wall.getData('spec'),dx=wall.x-ball.x,dy=wall.y-ball.y,d=Math.hypot(dx,dy),dt=delta/1000;
         if(kind==='conveyor'&&Math.abs(dx)<spec.width/2&&Math.abs(dy)<spec.height/2+4)ball.setVelocityX(Phaser.Math.Clamp(ball.body.velocity.x+(spec.force||150)*dt,-500,500));
-        if((kind==='blackhole'||kind==='repulsor')&&this.fieldActive(wall)&&d<(spec.radius||66)){
-          if(kind==='blackhole'&&d<11&&this.absorbedThisVolley<(this.isHidden?5:3)){this.absorbedThisVolley++;this.swallowVisual(ball,wall);ball.destroy();window.CandyAudio.play('pop');return false;}
-          if(kind==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3))continue;
-          if(d===0)continue;const force=(kind==='blackhole'?180:-220)*(1-d/(spec.radius||66));ball.setVelocity(Phaser.Math.Clamp(ball.body.velocity.x+dx/d*force*dt,-500,500),Phaser.Math.Clamp(ball.body.velocity.y+dy/d*force*dt,-500,500));
+        if(kind==='repulsor'){
+          let contacts=ball.getData('repulsorContacts');if(!contacts){contacts=new Set();ball.setData('repulsorContacts',contacts);}
+          if(!this.fieldActive(wall)||d>=(spec.radius||70)){contacts.delete(wall);continue;}
+          if(!contacts.has(wall)&&d>0){
+            contacts.add(wall);const nx=-dx/d,ny=-dy/d,v=ball.body.velocity,toward=v.x*nx+v.y*ny;
+            if(toward<0){ball.setVelocity(v.x-2*toward*nx,v.y-2*toward*ny);this.burst(ball.x,ball.y,0x53bfc6,4);}
+          }continue;
+        }
+        if(kind==='blackhole'&&this.fieldActive(wall)&&d<(spec.radius||66)){
+          if(d<11&&this.absorbedThisVolley<(this.isHidden?5:3)){this.absorbedThisVolley++;this.swallowVisual(ball,wall);ball.destroy();window.CandyAudio.play('pop');return false;}
+          if(d===0)continue;const force=180*(1-d/(spec.radius||66));ball.setVelocity(Phaser.Math.Clamp(ball.body.velocity.x+dx/d*force*dt,-500,500),Phaser.Math.Clamp(ball.body.velocity.y+dy/d*force*dt,-500,500));
         }
       }return true;
     }
     update(_time,delta){
       window.CandyBattleUI.refresh();
       if(this.uiPaused)return;
-      this.gameClock+=delta;if(['ready','aiming','shooting'].includes(this.state))this.updateFieldVisuals();
+      delta*=this.fast?2:1;this.gameClock+=delta;if(['ready','aiming','shooting'].includes(this.state))this.updateFieldVisuals();
       if(['ready','aiming','shooting'].includes(this.state)){this.challengeElapsed+=delta;if(this.level.mode==='timed'){this.refreshHUD();if(this.challengeElapsed>=this.level.timeLimit*1000){this.lose('限时挑战结束了，再试试更直接的路线。');return;}}}
       if(['ready','aiming','shooting'].includes(this.state)){for(const wall of this.obstacles){if(!wall.active)continue;const spec=wall.getData('spec');if(spec.kind==='moving'){wall.x=spec.x+Math.sin(this.gameClock/1200)*55;this.fitTarget(wall,spec.width,spec.height);}if(spec.kind==='phase')wall.setAlpha(Math.floor(this.gameClock/1200)%2===0?1:.28);}}
       if(this.state==='shooting'){
@@ -472,5 +500,5 @@
     scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},
     physics:{default:'arcade',arcade:{gravity:{x:0,y:0},fps:120,fixedStep:true,debug:false}},
     scene:[Adventure],audio:{noAudio:true},banner:false};
-  const boot=()=>{window.candyGame=new Phaser.Game(config);};if(document.fonts)document.fonts.load('12px "Apu Pixel"').then(boot,boot);else boot();
+  window.candyGame=new Phaser.Game(config);
 })();

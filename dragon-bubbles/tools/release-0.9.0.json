@@ -1,0 +1,21 @@
+{
+  "version": "0.9.0",
+  "source_files": 213,
+  "upload_files": 199,
+  "platform_file_limit": 200,
+  "png_files": 195,
+  "artifacts": [
+    {
+      "file": "dragon-bubbles-0.9.0.zip",
+      "bytes": 1224150,
+      "sha256": "f5f2198c4162d25d2955d66b9a45385b66f35a28ba4e9894d5f82d50cee535db",
+      "playtest": false
+    },
+    {
+      "file": "dragon-bubbles-0.9.0-test.zip",
+      "bytes": 1224115,
+      "sha256": "d1ed44674ac62bd385e16efbc7adb68c25bc6727f01a2e012d4c2d887303e0bf",
+      "playtest": true
+    }
+  ]
+}

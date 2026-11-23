@@ -10,7 +10,7 @@
   const tri=p=>2/Math.PI*Math.asin(Math.sin(p));
   // Deterministic timbres can be inspected and tested without an audio device.
   function render(name,rate=32000,variant=0){
-    const lengths={shoot:.085,big:.36,hit:.13,berry:.16,boss:.2,pop:.21,explode:.32,rainbow:.5,ready:.4,win:.8,lose:.65,voiceStart:.45,voicePower:.5,voiceWin:.65,voiceLose:.55};
+    const lengths={shoot:.085,big:.36,critical:.24,hit:.13,berry:.16,boss:.2,pop:.21,explode:.32,rainbow:.5,ready:.4,win:.8,lose:.65,voiceStart:.45,voicePower:.5,voiceWin:.65,voiceLose:.55};
     const length=lengths[name]||.1,data=new Float32Array(Math.ceil(length*rate));let phase=0,seed=3271+variant;
     for(let i=0;i<data.length;i++){
       const t=i/rate,u=t/length;let value=0;
@@ -18,6 +18,7 @@
       if(name==='shoot') {const f=1100*(1-u)**2+300+variant%5*36;phase+=2*Math.PI*f/rate;value=Math.sin(phase)*Math.sin(Math.PI*Math.min(1,u*4))*Math.exp(-u*5)*.55;}
       else if(name==='big'){phase+=2*Math.PI*(190-115*u)/rate;value=(Math.sin(phase)*.65+tri(phase*2)*.15+noise*.07)*Math.sin(Math.PI*Math.min(1,u*8))*Math.exp(-u*4);}
       else if(['hit','berry','boss'].includes(name)){const base=name==='boss'?100:name==='berry'?190:310;phase+=2*Math.PI*(base+220*Math.sin(u*Math.PI))/rate;value=(tri(phase)*.52+noise*.08)*Math.sin(Math.PI*u)*Math.exp(-u*3);}
+      else if(name==='critical'){phase+=2*Math.PI*(620+900*u)/rate;value=(Math.sin(phase)*.45+Math.sin(phase*1.5)*.2)*Math.sin(Math.PI*u)*Math.exp(-u*2);}
       else if(name==='explode'){phase+=2*Math.PI*(95-65*u)/rate;value=(noise*.42+Math.sin(phase)*.45)*Math.min(1,u*40)*Math.exp(-u*5);}
       else if(name.startsWith('voice')){
         const pattern=name==='voiceWin'?[690,890,1080]:name==='voiceLose'?[480,380]:name==='voicePower'?[380,720]:[640,860];

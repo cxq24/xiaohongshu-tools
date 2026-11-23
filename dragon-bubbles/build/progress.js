@@ -4,12 +4,16 @@
  const data=typeof module!=='undefined'&&module.exports?require('./levels.js'):{worlds:root.CANDY_WORLDS,levels:root.CANDY_LEVELS,hidden:root.CANDY_HIDDEN};
  const COUNT=300,SIZE=30;
  const FIRE_CAPS=[150,200,260,330,410,500,620,760,920,1100];
- function attackAt(rank){rank=clamp(rank,0,50);if(!rank)return 100;const w=Math.floor((rank-1)/5),step=(rank-1)%5+1,base=w?FIRE_CAPS[w-1]:100;return Math.round(base+(FIRE_CAPS[w]-base)*step/5);}
- function maxFireRank(p){let rank=0;while(rank<50){const gate=Math.floor(rank/5)*30+(rank%5+1)*6-1;if(!p.stars[gate])break;rank++;}return rank;}
- function powerInfo(p){const rank=p.fireRank||0,next=rank+1,w=Math.floor(rank/5),step=rank%5;return {rank,damage:attackAt(rank),capRank:maxFireRank(p),capDamage:attackAt(maxFireRank(p)),nextDamage:attackAt(next),cost:80+w*10+step*20,gate:w*30+(step+1)*6-1,maxed:rank>=50,eligible:rank<50&&next<=maxFireRank(p)};}
+ const MAX_FIRE_RANK=99,FIRE_RANK_CAPS=[5,10,15,20,25,30,40,55,75,99];
+ function attackAt(rank){rank=clamp(rank,0,MAX_FIRE_RANK);if(!rank)return 100;if(rank>50)return Math.round(1100+(rank-50)*900/49);const w=Math.floor((rank-1)/5),step=(rank-1)%5+1,base=w?FIRE_CAPS[w-1]:100;return Math.round(base+(FIRE_CAPS[w]-base)*step/5);}
+ function fireGate(rank){rank=clamp(rank,1,MAX_FIRE_RANK);const w=FIRE_RANK_CAPS.findIndex(cap=>rank<=cap),before=w?FIRE_RANK_CAPS[w-1]:0;return w*30+Math.ceil((rank-before)*(w===9?25:30)/(FIRE_RANK_CAPS[w]-before))-1;}
+ function maxFireRank(p){let rank=0;while(rank<MAX_FIRE_RANK&&p.stars[fireGate(rank+1)])rank++;return rank;}
+ function powerInfo(p){const rank=p.fireRank||0,next=rank+1,w=Math.floor(rank/5),step=rank%5;return {rank,damage:attackAt(rank),capRank:maxFireRank(p),capDamage:attackAt(maxFireRank(p)),nextDamage:attackAt(next),cost:rank<50?80+w*10+step*20:80+Math.floor((rank-50)/4)*5,gate:fireGate(next),maxed:rank>=MAX_FIRE_RANK,eligible:rank<MAX_FIRE_RANK&&next<=maxFireRank(p)};}
  function upgrade(p){const info=powerInfo(p);if(info.maxed)return {ok:false,reason:'火力已满级'};if(!info.eligible)return {ok:false,reason:`通关第 ${info.gate+1} 关后开放下一档`};if(p.candy<info.cost)return {ok:false,reason:`还差 ${info.cost-p.candy} 星糖`};p.candy-=info.cost;p.fireRank++;return {ok:true,reason:`普通泡泡伤害提升至 ${attackAt(p.fireRank)}`};}
- function recommendedRank(level){return Math.min(49,level.world*5+Math.floor((level.hidden?(level.trigger%30+1):level.local)/6));}
+ function recommendedRank(level){const before=level.hidden?level.trigger+1:level.id;let rank=0;while(rank<MAX_FIRE_RANK&&fireGate(rank+1)<before)rank++;return rank;}
  function recommendedAttack(level){return attackAt(recommendedRank(level));}
+ // Freeze enemy HP at the original Lv.0–49 curve, independently of new player upgrades.
+ function healthAttack(level){return attackAt(Math.min(49,level.world*5+Math.floor((level.hidden?(level.trigger%30+1):level.local)/6)));}
  const cosmeticData=typeof module!=='undefined'&&module.exports?require('./cosmetics.js'):root.CANDY_COSMETICS;
  const SHOP=[
   {id:'dragon-mint',slot:'dragon',name:'薄荷阿噗',price:0,texture:'dragon',description:'薄荷小龙，最初的冒险伙伴'},
@@ -23,7 +27,7 @@
   const rarity=item.price===0?0:item.price<=80?1:item.price<=260?2:item.price<=650?3:4;
   return {...item,rarity,rarityName:Number.isInteger(item.collectionTier)?['初旅','灵巧','精制','珍奇','华彩','史诗','星耀','典藏'][item.collectionTier]:['基础','精选','珍奇','史诗','典藏'][rarity],color:[0x79c89d,0x79c89d,0x78d3d5,0xa98acb,0xf4bc69][rarity],frames:item.slot==='dragon'?6:item.slot==='turret'?4:item.slot==='bubble'&&item.id!=='bubble-classic'?4:1,frameSize:item.slot==='dragon'||item.slot==='turret'?32:item.id==='bubble-classic'?10:item.slot==='bubble'?16:20,fx:item.collectionTier>=5};
  });
- const ITEMS={retreat:{name:'退步糖',description:'敌阵最多退回一步，保留伤害；每局限用一次',rare:false,price:80},balls:{name:'额外泡泡',description:'下一次发射 +3 颗',rare:false},aim:{name:'路线透镜',description:'本次瞄准线延长',rare:false},guard:{name:'缓冲护盾',description:'抵消一次敌人推进',rare:false},rewind:{name:'时光回退',description:'回到上次发射前，已用道具不返还',rare:true},nova:{name:'星爆泡泡',description:'下一次首颗泡泡造成 6 倍火力伤害',rare:true},hammer:{name:'障碍消除',description:'移除最靠近安全线的普通障碍',rare:true}};
+ const ITEMS={retreat:{name:'退步糖',description:'敌阵退回一步，保留伤害；可重复使用，已到顶不消耗',rare:false,price:80},balls:{name:'额外泡泡',description:'下一次发射 +3 颗',rare:false},aim:{name:'路线透镜',description:'每个增加一段瞄准距离，可叠加',rare:false},guard:{name:'缓冲护盾',description:'每个抵消一次敌人推进，可叠加',rare:false},rewind:{name:'时光回退',description:'回到上次发射前，已用道具不返还',rare:true},nova:{name:'星爆泡泡',description:'每个让下一次发射多一颗六倍伤害泡泡，可叠加',rare:true},hammer:{name:'障碍消除',description:'移除最靠近安全线的普通障碍',rare:true}};
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,Number.isInteger(n)?n:a));
  function discoverLevel(p,level){for(const token of level.waves.flat())if(['j','b','K'].includes(token[0]))discover(p,level,token[0]);}
  function discover(p,level,kind){const key=level.world+'-'+kind;if(!p.seenEnemies[key]){p.seenEnemies[key]={stage:level.id};return true;}return false;}
@@ -35,7 +39,7 @@
  }
  function normalize(raw={}){
   if(!raw||typeof raw!=='object')raw={};
-  const p={version:7,fireRank:0,economyVersion:1,unlocked:clamp(raw.unlocked,0,299),current:0,stars:{},candy:0,claimed:{},owned:['dragon-mint','bubble-classic','gear-none','turret-wood'],equipped:{dragon:'dragon-mint',bubble:'bubble-classic',gear:'gear-none',turret:'turret-wood'},worlds:[0],inventory:{},missions:{},eggs:{},hiddenUnlocked:[],hiddenCleared:{},bestScores:{},bestGrades:{},perfectClaims:{},bossClaims:{},seenEnemies:{},seenGuides:{},retreatGranted:raw.retreatGranted===true};
+  const p={version:9,fireRank:0,economyVersion:1,unlocked:clamp(raw.unlocked,0,299),current:0,stars:{},candy:0,claimed:{},owned:['dragon-mint','bubble-classic','gear-none','turret-wood'],equipped:{dragon:'dragon-mint',bubble:'bubble-classic',gear:'gear-none',turret:'turret-wood'},worlds:[0],inventory:{},missions:{},eggs:{},hiddenUnlocked:[],hiddenCleared:{},bestScores:{},bestGrades:{},perfectClaims:{},bossClaims:{},seenEnemies:{},seenGuides:{},retreatGranted:raw.retreatGranted===true};
   for(let i=0;i<COUNT;i++)if([1,2,3].includes(raw.stars?.[i]))p.stars[i]=raw.stars[i];
   if(raw.economyVersion===1){p.candy=clamp(raw.candy,0,999999);for(let i=0;i<COUNT;i++)if(raw.claimed?.[i]===true&&p.stars[i])p.claimed[i]=true;}
   else for(const [i,stars]of Object.entries(p.stars)){p.candy+=30+5*stars;p.claimed[i]=true;}
@@ -97,6 +101,6 @@
  function hiddenEligible(p,id){const h=data.hidden.find(x=>x.id===id);return !!h&&!!p.stars[h.trigger];}
  function unlockHidden(p,id){if(!hiddenEligible(p,id))return false;if(!p.hiddenUnlocked.includes(id))p.hiddenUnlocked.push(id);return true;}
  function winHidden(p,id,stats={}){const h=data.hidden.find(x=>x.id===id);if(!h||!p.hiddenUnlocked.includes(id))return {ok:false};const beforeInventory={...p.inventory},before=p.candy,first=!p.hiddenCleared[id],rewards=[];const bonus=gradeBonus[stats.grade]||0,oldBonus=gradeBonus[p.bestGrades[id]]||0;const amount=first?60+h.world*5+bonus:5+Math.max(0,bonus-oldBonus);p.hiddenCleared[id]=true;if(first){addItem(p,h.rewardItem);rewards.push(ITEMS[h.rewardItem].name+' ×1');}gradeReward(p,id,stats,rewards);discoverLevel(p,h);p.candy=Math.min(999999,p.candy+amount);return {ok:true,first,amount,totalCurrency:p.candy-before,balance:p.candy,rewards,loot:inventoryDiff(p,beforeInventory),medals:[]};}
- const api={buyConsumable,SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,discover,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
+ const api={buyConsumable,SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,MAX_FIRE_RANK,FIRE_RANK_CAPS,fireGate,discover,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,healthAttack,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CandyProgress=api;
 })(typeof window==='undefined'?globalThis:window);

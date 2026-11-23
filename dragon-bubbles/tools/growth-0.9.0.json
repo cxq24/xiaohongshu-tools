@@ -1,0 +1,70 @@
+{
+  "version": "0.9.0",
+  "upgradeCostTotal": 13550,
+  "cOnlyBeforeBossBalance": 5045,
+  "highestGate": 295,
+  "chapters": [
+    {
+      "world": 1,
+      "rank": 5,
+      "damage": 150,
+      "lastGate": 30
+    },
+    {
+      "world": 2,
+      "rank": 10,
+      "damage": 200,
+      "lastGate": 60
+    },
+    {
+      "world": 3,
+      "rank": 15,
+      "damage": 260,
+      "lastGate": 90
+    },
+    {
+      "world": 4,
+      "rank": 20,
+      "damage": 330,
+      "lastGate": 120
+    },
+    {
+      "world": 5,
+      "rank": 25,
+      "damage": 410,
+      "lastGate": 150
+    },
+    {
+      "world": 6,
+      "rank": 30,
+      "damage": 500,
+      "lastGate": 180
+    },
+    {
+      "world": 7,
+      "rank": 40,
+      "damage": 760,
+      "lastGate": 210
+    },
+    {
+      "world": 8,
+      "rank": 55,
+      "damage": 1192,
+      "lastGate": 240
+    },
+    {
+      "world": 9,
+      "rank": 75,
+      "damage": 1559,
+      "lastGate": 270
+    },
+    {
+      "world": 10,
+      "rank": 99,
+      "damage": 2000,
+      "lastGate": 295
+    }
+  ],
+  "old50Preserved": true,
+  "paidWorldDoesNotUnlockFire": true
+}

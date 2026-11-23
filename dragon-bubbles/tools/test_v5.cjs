@@ -18,8 +18,8 @@ p=P.normalize();p.stars[4]=1;P.unlockHidden(p,'h-0-0');r=P.winHidden(p,'h-0-0',{
 // Legacy progress survives without fabricating historical scores or S claims.
 p=P.normalize({version:4,economyVersion:1,candy:123,stars:{0:2},claimed:{0:true}});assert.equal(p.candy,123);assert.equal(p.stars[0],2);assert.equal(p.bestScores[0],undefined);assert(!p.perfectClaims[0]);assert(p.seenEnemies['0-j']);assert(!p.seenEnemies['9-K']);
 const before=JSON.stringify(p.seenEnemies);assert(!P.discover(p,D.levels[0],'j'));assert.equal(JSON.stringify(p.seenEnemies),before);
-// Low-grade progression can afford all 50 upgrades without purchases or adverts.
-p=P.normalize();for(let i=0;i<300;i++){while(P.upgrade(p).ok){}assert(P.canEnter(p,i));P.win(p,i,1,{grade:'C',score:45});}while(P.upgrade(p).ok){}assert.equal(p.fireRank,50);assert(p.candy>=0);
+// Low-grade progression can afford all 99 upgrades without purchases or adverts.
+p=P.normalize();for(let i=0;i<300;i++){while(P.upgrade(p).ok){}assert(P.canEnter(p,i));P.win(p,i,1,{grade:'C',score:45});}while(P.upgrade(p).ok){}assert.equal(p.fireRank,99);assert(p.candy>=0);
 // Deterministic fixed HP per token; normalized pressure never falls within a world.
 for(let w=0;w<10;w++){const a=D.levels.slice(w*30,w*30+30);for(let i=1;i<30;i++)assert(a[i].healthBudget*a[i-1].balls>=a[i-1].healthBudget*a[i].balls);for(const l of a){assert.equal(l.healthBudget,l.waves.flat().filter(t=>'jbK'.includes(t[0])).reduce((n,t)=>n+Number(t.slice(1)),l.boss?8:0));assert(l.waves.flat().filter(t=>'jbK'.includes(t[0])).every(t=>Number.isInteger(Number(t.slice(1)))))}}
 console.log('PASS: score thresholds, fail/no score, reward improvement, first-S RNG/once, all boss chests/once, hidden rare isolation, save migration/discovery, C-grade upgrade budget, and 300 monotonic chapter pressure budgets.');

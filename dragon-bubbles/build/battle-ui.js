@@ -11,6 +11,7 @@
  window.CandyBattleUI={
   hide(){if(!$('battle-ui'))return;closeTray();$('battle-ui').hidden=true;$('battle-modal').hidden=true;clearTimeout(press);hooks=null;},
   show(options){hooks=options;selected=null;$('battle-ui').hidden=false;$('item-tray').hidden=true;$('battle-modal').hidden=true;$('tray-items').replaceChildren();
+   if(!$('speed-status')){const badge=document.createElement('div');badge.id='speed-status';badge.textContent='加速 ×2 · 松手恢复';badge.hidden=true;badge.setAttribute('aria-live','polite');$('battle-ui').append(badge);}this.speed(false);
    $('menu-toggle').replaceChildren(icon('menu'));$('menu-toggle').onclick=()=>this.menu();$('exit-battle').replaceChildren(icon('exit'));$('exit-battle').onclick=()=>confirmExit('title');
    $('tray-toggle').replaceChildren(icon('bag'));$('tray-toggle').onclick=()=>{if(hooks.state()!=='ready')return;if(!$('item-tray').hidden){closeTray();return;}hooks.pause('tray',true);$('item-tray').hidden=false;$('tray-toggle').setAttribute('aria-expanded','true');this.refresh();};
    for(const [id,item]of Object.entries(hooks.items)){const b=button(item.name,id,()=>{if(long){long=false;return;}select(id);});b.className='item-icon';b.dataset.item=id;const n=document.createElement('small');n.className='item-count';b.append(n);
@@ -21,6 +22,7 @@
    return {label:{setText(value){$('skill-label').textContent=value;}},setAlpha(value){$('power-skill').style.opacity=value;},setEnergy(value,armed){const b=$('power-skill');b.dataset.energy=value;b.style.setProperty('--energy-level',value+'%');b.classList.toggle('power-ready',value>=100);b.classList.toggle('power-armed',armed);b.setAttribute('aria-label',armed?'大泡泡已装填，点击取消':value>=100?'释放大泡泡':'大泡泡能量 '+value+'%');b.title='命中怪怪积能；满100准备一次四倍伤害大泡泡';}};
   },
   refresh(){if(!hooks)return;const state=hooks.state();$('battle-bar').hidden=(!['intro','ready','aiming','shooting'].includes(state)||hooks.obscured?.());$('tray-toggle').disabled=state!=='ready';$('power-skill').disabled=state!=='ready';document.querySelectorAll('.item-icon').forEach(b=>{b.querySelector('.item-count').textContent=hooks.count(b.dataset.item);b.classList.toggle('empty',!hooks.count(b.dataset.item));});if(selected)select(selected);},
+  speed(active){$('battle-ui')?.classList.toggle('battle-fast',active);const s=$('speed-status');if(s)s.hidden=!active;},
   menu(){panel('冒险菜单','战斗已暂停。',[['继续冒险',closeModal],['敌人图鉴',()=>{closeModal();hooks.codex();}],['返回章节地图',()=>confirmExit('chapter')],['退出本局',()=>confirmExit('title')]]);},
   inspect(node){hooks.pause('inspect',true);const a=hooks.attack(),hits=Math.ceil(node.hp/a)+(node.armor?1:0);panel('敌人情报',`生命 ${Math.max(0,node.hp)} / ${node.maxHp}\n普通泡泡 ${a} 伤害，预计还需 ${hits} 次命中${node.armor?'（含冰壳）':''}。`,[['继续冒险',closeModal]]);},
   inspectMechanism(data){

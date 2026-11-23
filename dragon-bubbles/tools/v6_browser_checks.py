@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import json,shutil,subprocess
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.8.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.9.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -48,11 +48,11 @@ with TemporaryDirectory() as folder:
   page.locator('[data-item="balls"]').click();assert '+3' in page.locator('#item-description').inner_text();assert saved(page)['inventory']['balls']==2
   page.screenshot(path=str(ROOT/'previews/quick-items.png'),full_page=True)
   page.locator('#item-use').click();assert page.locator('#item-tray').is_hidden();assert saved(page)['inventory']['balls']==1;assert f(page,'return s.extraBalls')==3
-  page.locator('#tray-toggle').click();page.locator('[data-item="balls"]').click();page.locator('#item-use').click();assert saved(page)['inventory']['balls']==1;page.locator('#tray-toggle').click()
-  tap(page,136,177);page.wait_for_timeout(750);assert f(page,'return s.balls.countActive()+s.pending')==f(page,'return s.level.balls+3')
+  page.locator('#tray-toggle').click();page.locator('[data-item="balls"]').click();page.locator('#item-use').click();assert saved(page)['inventory']['balls']==0;assert f(page,'return s.extraBalls')==6
+  tap(page,136,177);page.wait_for_timeout(750);assert f(page,'return s.balls.countActive()+s.pending')==f(page,'return s.level.balls+6')
   page.locator('#exit-battle').click();assert page.get_by_role('heading',name='退出本局？').is_visible();before=f(page,'return s.gameClock');page.wait_for_timeout(200);assert f(page,'return s.gameClock')==before
   page.screenshot(path=str(ROOT/'previews/exit-confirm.png'),full_page=True)
-  page.get_by_role('button',name='继续冒险',exact=True).click();assert f(page,'return s.state')=='shooting';page.locator('#exit-battle').click();page.get_by_role('button',name='确认退出').click();assert f(page,'return s.state')=='title';assert f(page,'return s.balls.countActive()')==0;assert saved(page)['inventory']['balls']==1
+  page.get_by_role('button',name='继续冒险',exact=True).click();assert f(page,'return s.state')=='shooting';page.locator('#exit-battle').click();page.get_by_role('button',name='确认退出').click();assert f(page,'return s.state')=='title';assert f(page,'return s.balls.countActive()')==0;assert saved(page)['inventory']['balls']==0
   # Persistent growth and cosmetics are separate purchases.
   f(page,'s.showWorkshop()');page.get_by_role('button',name='火力升级',exact=True).click();cash=saved(page)['candy'];page.get_by_role('button',name='升级火力').click();assert saved(page)['fireRank']==1;assert saved(page)['candy']==cash-80;assert page.get_by_role('button',name='升级火力').is_disabled()
   page.screenshot(path=str(ROOT/'previews/fire-upgrade.png'),full_page=True)

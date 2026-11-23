@@ -1,0 +1,32 @@
+{
+  "version": "0.9.0",
+  "both_actual_zips": true,
+  "single_energy_control": true,
+  "real_physics_first_level_receipt": true,
+  "reward_next_and_map_returns": true,
+  "field_absorption_real_flight": true,
+  "sleep_and_quota_visible": true,
+  "repulsion_real_flight": true,
+  "long_press_field_and_portal_inspection": true,
+  "sensor_aim_preview": true,
+  "two_level_navigation_and_context_return": true,
+  "all_78_goods_owned_in_test": true,
+  "all_72_paid_looks_equippable_free": true,
+  "test_fire_0_to_99_and_recommended": true,
+  "test_inventory_persists_and_refills": true,
+  "normal_save_isolated": true,
+  "hold_speed_flight_ratio": 2.1444172779767614,
+  "speed_release_and_pause_reset": true,
+  "timed_challenge_scales_with_speed": true,
+  "fixed_final_boss_hp": 436240,
+  "per_monster_tenth_hit_critical": true,
+  "stackable_inventory_and_repeat_retreat": true,
+  "multiple_rewind_no_refunds": true,
+  "readable_canvas_and_dom_fonts": true,
+  "mobile_widths": [
+    320,
+    390,
+    430
+  ],
+  "errors": []
+}
