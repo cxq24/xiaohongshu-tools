@@ -1,14 +1,16 @@
-# 阿噗的像素弹弹冒险 · 0.7.0
+# 阿噗的像素弹弹冒险 · 0.8.0
 
 Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 个主线关卡，共 300 关，另有 30 个隐藏挑战**，保留双层地图，加入战斗内快捷道具栏、退出确认、图鉴、分类营地与进度限制的炮台成长。
 
-[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.7.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.7.0-test.zip)
+[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.8.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.8.0-test.zip)
 
-测试版直接开放 10 个世界、300 个主线和 30 个隐藏挑战，使用至少本关推荐火力；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
+测试版直接开放 10 个世界、300 个主线、30 个隐藏挑战和全部 75 款外观、3 件功能装备，切换装备不扣星糖。默认跟随本关推荐火力，也可在营地“火力升级”里固定 Lv.0—50（100—1100 伤害）；首次升级至本测试版时每种道具至少补到 10 个，按钮可补到 20 个，重载不会反复补给；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
 
 十个章节最终首领生命保持 0.6.0 的数值（0.5.0 的十倍），本版首领每轮推进 24—40 像素；秘境守卫由同章最终首领设定生命上限。UI 使用本地中文像素字体、统一阶梯边框和小色板；角色、泡泡、炮台各有 24 款可购买外观（每类另保留 1 个免费基础款），八个价格档各三款。保留 S/A/B/C 评分、首次 S 随机普通道具、首领宝箱和收藏徽章。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
 
 0.7.0 上传包为 **199 个文件**，仍满足 200 上限；新增六种机关及退步糖共用一张像素图。结算改为星糖、道具和徽章的图片卡片；首领生命不变，提高后期每轮推进；首次遇见的玩法在开局前用图文介绍，确认后写入存档。修复音频前后台恢复及音效资源清理，已通过六分钟 Web Audio 持续播放检查。详见 [0.7 玩法说明](GAMEPLAY_0.7.md)。
+
+0.8.0 取消角色旁重复能量条，仅保留底部大泡泡按钮，以按钮填色显示进度。黑洞、斥力场与传送门使用不同轮廓，新增状态提示与长按说明。通关可继续或返回，整理两层地图与营地的入口。两份包仍各为 **199 个文件**。详见 [0.8 交互与测试说明](GAMEPLAY_0.8.md)。
 
 ## 运行与上传
 
@@ -50,7 +52,7 @@ python3 -m http.server 8000 --directory build
 - 敌人数字代表剩余生命，◇ 表示冰壳；机关不计入击杀目标。
 - 已发射次数、消灭数和后续援军分别显示；援军从 0 开始，不含开场敌人。批数不是发射上限；清完全部敌人获胜，敌人越过虚线失败。
 - 不提供加速或提前收球。极端循环轨迹会自然回落，不销毁剩余泡泡或提前推进敌人。
-- 每次命中怪怪获得 5 点大泡泡能量，满 100 可选择首颗四倍伤害；能量不随时间恢复。炮台旁显示当前普通伤害，升级后随之更新。
+- 每次命中怪怪获得 5 点大泡泡能量，底部按钮填色和百分比共用一个指示，满 100 可选择首颗四倍伤害；能量不随时间恢复。炮台旁显示当前普通伤害，升级后随之更新。
 - 通关按表现评分 S/A/B/C；首次星糖 `30 + 主题序号×5 + 评级加奖`。重玩 5，刷新等级补评级差额。首次 S 额外随机普通道具，章节最终首领首通另发宝箱和收藏徽章。
 - 每三个主线首通关掉落普通道具；每章完成 5 关、获得 3 个三星、击败首领分别有一次性任务奖励。
 - 达成连击条件的彩蛋给普通道具，不直接送皮肤。皮肤和永久装备只用星糖购买。
@@ -103,7 +105,8 @@ node tools/test_v7.cjs
 python3 tools/v6_browser_checks.py
 python3 tools/v6_release_checks.py
 python3 tools/v6_cosmetic_checks.py
-python3 tools/v7_browser_checks.py
+python3 tools/v7_browser_checks.py # 历史 0.7 包验收
+python3 tools/v8_browser_checks.py # 当前 0.8 双包验收
 python3 tools/audio_recovery_checks.py
 python3 tools/audio_endurance.py
 python3 tools/simulate_campaign.py --end 300
@@ -114,7 +117,7 @@ python3 tools/simulate_campaign.py --hidden --end 30
 
 手机真机兼容性、小红书本版部署、宣传片托管是否被宿主允许、人类玩家难度与留存尚未验证。自动通关证明可完成，不代表人类体验已经调平。
 
-![世界地图](previews/worlds.png)
+![世界地图](previews/worlds-v8.png)
 
 ![章内路线](previews/chapter.png)
 
@@ -146,6 +149,6 @@ python3 tools/simulate_campaign.py --hidden --end 30
 
 ![72款原创外观总览](previews/cosmetic-lineup.png)
 
-![图标结算](previews/rewards-v7.png)
+![图标结算](previews/rewards-v8.png)
 
 ![首次遇见机关](previews/blackhole-discovery.png)

@@ -1,0 +1,13 @@
+{
+  "version": "0.8.0",
+  "inline_item_tray": true,
+  "exit_cancel_confirm": true,
+  "progress_gated_upgrades": true,
+  "cosmetics_independent": true,
+  "codex_and_enemy_inspect": true,
+  "audio_clean_and_recovers": true,
+  "timed_pause_timeout": true,
+  "defense_lives": true,
+  "real_promo_completion": true,
+  "errors": []
+}

@@ -17,7 +17,7 @@
  window.CandyMapView={hide(){if(host())host().hidden=true;},
  worlds({save,worlds,enter,back,unlock,camp,warehouse,codex}){
   const {h,scroll}=shell('阿噗的像素世界',`已完成 ${Object.keys(save.stars).length}/300 关`,back);
-  wallet(h,save);scroll.classList.add('world-scroll');const landscape=el('div','world-landscape');landscape.style.height='1420px';scroll.append(landscape);
+  h.querySelector('.map-back').setAttribute('aria-label','返回主菜单');wallet(h,save);scroll.classList.add('world-scroll');const landscape=el('div','world-landscape');landscape.style.height='1420px';scroll.append(landscape);
   const pts=worlds.map((w,i)=>[i%2?257:103,85+i*130]);route(landscape,pts,1420);
   worlds.forEach((w,i)=>{const open=save.worlds.includes(i),count=Object.keys(save.stars).filter(n=>+n>=i*30&&+n<i*30+30).length;
    const b=action('',()=>{
@@ -29,11 +29,11 @@
    b.style.left=(pts[i][0]/3.6)+'%';b.style.top=(pts[i][1]-35)+'px';b.setAttribute('aria-label',w.name+(open?'，已开放':'，未解锁'));
    b.append(image(`assets/w${i}-island.png`),el('strong','',`${String(i+1).padStart(2,'0')} ${w.name}`),el('span','',open?`${count}/30 关 · ${w.mechanic}`:'迷雾区域 · '+w.mechanic));landscape.append(b);
   });
-  const bottom=el('nav','map-bottom');bottom.append(action('营地与装备',camp),action('仓库',warehouse),action('图鉴',codex));h.append(bottom);
+  const bottom=el('nav','map-bottom');bottom.append(action('营地',camp),action('图鉴',codex));h.append(bottom);
  },
- chapter({save,world,levels,hidden,canEnter,play,back,secret,warehouse,codex,tasks}){
+ chapter({save,world,levels,hidden,canEnter,play,back,secret,prepare,warehouse,codex,tasks}){
   const start=world.id*30,done=Object.keys(save.stars).filter(n=>+n>=start&&+n<start+30).length;
-  const {h,scroll}=shell(world.name,`${done}/30 关完成 · 全局 ${start+1}—${start+30} 关`,back);
+  const {h,scroll}=shell(world.name,`${done}/30 关完成 · 全局 ${start+1}—${start+30} 关`,back);h.querySelector('.map-back').setAttribute('aria-label','返回世界地图');
   scroll.style.backgroundImage=`linear-gradient(#fff0c96e,#fff0c93a),url(assets/w${world.id}-cover.png)`;
   const trail=el('div','chapter-trail');trail.style.height='2110px';scroll.append(trail);
   const xs=[72,178,284,216,108,62,164,274,242,132],pts=Array.from({length:30},(_,i)=>[xs[i%xs.length],65+i*66]);route(trail,pts,2110);
@@ -47,13 +47,15 @@
    if(open&&!stars&&!next){next=b;b.classList.add('next');const avatar=image('assets/dragon.png','阿噗所在位置');avatar.className='route-avatar';b.append(avatar);}
   });
   hidden.filter(x=>x.world===world.id).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible&&!open;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'宣传视频秘境':'隐藏挑战'));trail.append(b);});
-  const bottom=el('nav','map-bottom');bottom.append(action('仓库',warehouse),action('图鉴',codex),action('任务',tasks),action('世界地图',back));h.append(bottom);
+  const bottom=el('nav','map-bottom');bottom.append(action('战前准备',prepare),action('章节任务',tasks));h.append(bottom);
   if(next)requestAnimationFrame(()=>{scroll.scrollTop=Math.max(0,next.offsetTop-scroll.clientHeight/2);});
  },
- shop({save,items,buy,back,power,upgrade,tab='dragon',message='',selected=null,priceTier=null}){
+ shop({save,items,buy,back,power,upgrade,warehouse,testPower,tab='dragon',message='',selected=null,priceTier=null}){
   const {h,scroll}=shell('阿噗的营地','试穿外观 · 星糖兑换 · 火力独立成长',back);wallet(h,save);
-  const args={save,items,buy,back,power,upgrade};
+  const args={save,items,buy,back,power,upgrade,warehouse,testPower};
+  h.querySelector('.map-back').setAttribute('aria-label','返回');if(warehouse){const bag=action('',()=>warehouse(tab),'camp-warehouse');bag.setAttribute('aria-label','道具仓库');bag.title='道具仓库';bag.append(glyph('bag'));h.querySelector('.map-heading').append(bag);}
   tabs(scroll,[['dragon','角色装扮'],['bubble','泡泡皮肤'],['turret','炮台外观'],['power','火力升级'],['gear','功能装备']],tab,t=>this.shop({...args,tab:t}));
+  if(tab==='power'&&testPower){const card=el('section','power-card test-power-card');card.append(glyph('fire'),el('h2','','测试火力'),el('p','','默认跟随关卡推荐；也可固定等级测试。'));const select=el('select','test-fire-select');select.setAttribute('aria-label','测试火力');const recommended=el('option','','跟随关卡推荐');recommended.value='recommended';recommended.selected=testPower.rank===null;select.append(recommended);for(let rank=0;rank<=50;rank++){const o=el('option','',`Lv.${rank} · ${window.CandyProgress.attackAt(rank)} 伤害`);o.value=rank;o.selected=testPower.rank===rank;select.append(o);}select.onchange=()=>testPower.select(select.value==='recommended'?null:+select.value);card.append(select,el('p','','仅测试版有效，不修改正式存档。'),action('补满测试道具',testPower.refill));scroll.append(card);return;}
   if(tab==='power'){
    const info=power(),card=el('section','power-card');card.append(glyph('turret'),el('h2','',`Lv.${info.rank} · ${info.damage} 伤害`),el('p','',`大泡泡 ${info.damage*4} · 当前进度上限 ${info.capDamage}`));
    if(info.maxed)card.append(el('p','','火力已满级'));
@@ -81,13 +83,13 @@
    const b=action(equipped?'已装备':owned?'装备':'购买',()=>{const result=buy(item.id);this.shop({...args,tab,selected:item.id,priceTier:tab==='gear'?null:tier,message:result.ok?'已装备':result.reason});});b.disabled=equipped;card.append(b);grid.append(card);
   }
  },
- inventory({save,items,back,equip,goods,purchase,tab='items',message=''}){
-  const {h,scroll}=shell('我的仓库','查看已拥有的物品，战斗内用道具袋快捷使用。',back);wallet(h,save);
-  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备'],['medals','收藏']],tab,t=>this.inventory({save,items,back,equip,goods,purchase,tab:t}));
+ inventory({save,items,back,equip,goods,purchase,backLabel='返回',tab='items',message=''}){
+  const {h,scroll}=shell('我的仓库','查看已拥有的物品，战斗内用道具袋快捷使用。',back);h.querySelector('.map-back').setAttribute('aria-label',backLabel);wallet(h,save);
+  tabs(scroll,[['items','道具'],['dragon','阿噗装扮'],['bubble','泡泡外观'],['turret','炮台外观'],['gear','装备'],['medals','收藏']],tab,t=>this.inventory({save,items,back,equip,goods,purchase,backLabel,tab:t}));
   const grid=el('div','shop-grid');if(message)scroll.append(el('p','inventory-message',message));scroll.append(grid);
-  if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));if(item.price&&purchase){row.append(currency(item.price),action('兑换',()=>{const result=purchase(id);this.inventory({save,items,back,equip,goods,purchase,tab,message:result.reason});}));}grid.append(row);}
+  if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));if(item.price&&purchase){row.append(currency(item.price),action('兑换',()=>{const result=purchase(id);this.inventory({save,items,back,equip,goods,purchase,backLabel,tab,message:result.reason});}));}grid.append(row);}
   else if(tab==='medals'){const medals=Object.keys(save.bossClaims||{});if(!medals.length)grid.append(el('p','empty-collection','击败章节最终首领，收集主题徽章。'));for(const id of medals){const row=el('section','shop-card');row.append(image(`assets/w${id}-island.png`),el('strong','',window.CANDY_WORLDS[+id].name+'徽章'),el('p','','章节首领首通纪念'));grid.append(row);}}
-  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card');row.append(portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,purchase,tab});}));grid.append(row);}
+  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card');row.append(portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,purchase,backLabel,tab});}));grid.append(row);}
  },
  tasks({save,missions,back}){
   const {h,scroll}=shell('章节任务','达成目标后，奖励自动进入星糖余额和仓库。',back);wallet(h,save);

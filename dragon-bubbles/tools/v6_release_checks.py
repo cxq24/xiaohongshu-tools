@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import ast,json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.7.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.8.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text());INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):
@@ -26,7 +26,7 @@ with TemporaryDirectory() as folder:
   if shutil.which('chromium'):options.update(executable_path=shutil.which('chromium'),args=['--no-sandbox'])
   browser=p.chromium.launch(**options);ctx=browser.new_context(viewport={'width':390,'height':844});page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(base+'/normal/');ready(page);f(page,'s.showChapter(0)');assert page.locator('.level-node:not([disabled])').count()==1
-  f(page,'s.startLevel(3)');assert f(page,'return s.waveLabel.text')=='后续援军 0/1 批';assert f(page,'return s.energyLabel.text')=='大泡泡能量';assert f(page,'return s.damageLabel.text')=='100';assert f(page,'return s.damageLabel.y')>490
+  f(page,'s.startLevel(3)');assert f(page,'return s.waveLabel.text')=='后续援军 0/1 批';assert page.locator('#power-skill').get_attribute('data-energy')=='0';assert not f(page,'return !!s.energyLabel');assert f(page,'return s.damageLabel.text')=='100';assert f(page,'return s.damageLabel.y')>490
   # Entry modal contains just the win condition.
   assert ('清除全部敌人，守住安全线。' in page.locator('.discovery-dialog').inner_text()) if page.locator('.discovery-dialog').count() else f(page,'return s.modals.filter(m=>typeof m.text==="string").map(m=>m.text)')==['本关目标','清除全部敌人，守住安全线。']
   f(page,'s.beginLevel?s.beginLevel():(s.clearModal(),s.state="ready");');page.screenshot(path=str(ROOT/'previews/gameplay.png'),full_page=True)

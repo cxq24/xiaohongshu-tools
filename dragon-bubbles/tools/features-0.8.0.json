@@ -1,0 +1,24 @@
+{
+  "version": "0.8.0",
+  "both_actual_zips": true,
+  "single_energy_control": true,
+  "real_physics_first_level_receipt": true,
+  "reward_next_and_map_returns": true,
+  "field_absorption_real_flight": true,
+  "sleep_and_quota_visible": true,
+  "repulsion_real_flight": true,
+  "long_press_field_and_portal_inspection": true,
+  "sensor_aim_preview": true,
+  "two_level_navigation_and_context_return": true,
+  "all_78_goods_owned_in_test": true,
+  "all_72_paid_looks_equippable_free": true,
+  "test_fire_0_to_50_and_recommended": true,
+  "test_inventory_persists_and_refills": true,
+  "normal_save_isolated": true,
+  "mobile_widths": [
+    320,
+    390,
+    430
+  ],
+  "errors": []
+}

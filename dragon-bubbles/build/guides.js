@@ -4,7 +4,7 @@
  const frames={blackhole:0,slime:1,boost:2,prism:3,conveyor:4,repulsor:5,retreat:6};
  const obstacles={
   stone:['石墙','泡泡会被挡回。沿墙反弹，寻找侧面的空隙。'],ice:['脆冰','命中三次后碎裂，可以打开新的弹道。'],spring:['弹跳台','将泡泡斜向上弹出，利用它绕到怪怪身后。'],moving:['移动挡板','挡板会左右移动，瞄准时留意空隙。'],mirror:['镜面石柱','改变反弹方向，将横向来球折向上方。'],phase:['相位屏障','明亮时阻挡泡泡，半透明时可以穿过。'],
-  blackhole:['黑洞','间歇开启，吸引并吞掉靠近的泡泡。避开亮起的核心；每轮吞球数量有限。'],slime:['黏液墙','反弹后会短暂减速，稍后恢复。角度不变，飞行节奏会改变。'],boost:['弹射板','命中后短暂提速，可以更快穿过通道；不会增加伤害。'],prism:['分光棱镜','普通泡泡命中可分出一颗半伤害泡泡。每颗只分光一次，每轮最多三颗。'],conveyor:['横推带','进入条纹区域会受到水平推力。箭头显示推力方向。'],repulsor:['电磁斥力场','周期性向外推开泡泡，不会吞球。利用边缘改变弹道。']
+  blackhole:['黑洞','紫色旋涡向内吸引泡泡，靠近黑色核心会被吞。休眠时不吸不吞；普通每轮限3颗，秘境5颗。'],slime:['黏液墙','反弹后会短暂减速，稍后恢复。角度不变，飞行节奏会改变。'],boost:['弹射板','命中后短暂提速，可以更快穿过通道；不会增加伤害。'],prism:['分光棱镜','普通泡泡命中可分出一颗半伤害泡泡。每颗只分光一次，每轮最多三颗。'],conveyor:['横推带','进入条纹区域会受到水平推力。箭头显示推力方向。'],repulsor:['电磁斥力场','青色方形磁芯向外推开泡泡，不会吞球。向外箭头与粒子显示排斥方向。']
  };
  function card(id,name,description,image,atlasFrame){return {id,name,description,image,atlasFrame};}
  function forLevel(level,save){
@@ -20,7 +20,7 @@
   for(const kind of new Set((level.obstacles||[]).map(o=>o.kind))){const [name,description]=obstacles[kind]||[kind,'观察机关再选择路线。'];cards.push(card('obstacle-'+kind,name,description,frames[kind]===undefined?`assets/obstacle-${kind}.png`:null,frames[kind]));}
   if(level.armor)cards.push(card('armor','冰壳护甲','冰壳先抵挡一次命中，之后才扣除生命。','assets/obstacle-ice.png'));
   if(level.wind)cards.push(card('wind','水流与风场','飞行中的泡泡会受到侧向力，瞄准直线不再等于实际路线。','assets/icon-aim.png'));
-  if(level.portals?.length)cards.push(card('portals','成对传送门','泡泡进入一个门，会从另一个门飞出，并保留方向。','assets/portal.png'));
+  if(level.portals?.length)cards.push(card('portals','成对传送门','两扇蓝色竖门互相连接，泡泡穿门后保留方向，不会被吞。','assets/portal.png'));
   if(level.mode){const rules={timed:['限时清屏',`${level.timeLimit} 秒内完成目标；菜单、道具栏和说明打开时计时暂停。`],defense:['守护工程师','普通怪越线扣一颗生命，首领扣两颗；守住剩余生命并击退进攻。'],obstacle:['机关试炼','多种机关组合出现，先看清空隙和开关节奏。'],raid:['首领讨伐','击败守卫以及分裂出来的小守卫，才能完成挑战。']};const r=rules[level.mode];if(r)cards.push(card('mode-'+level.mode,...r,'assets/portal.png'));}
   if(save.inventory.retreat>0)cards.push(card('item-retreat','退步糖','在两次发射之间使用，让敌阵退回一步并保留已造成的伤害。每局只能用一次。',null,frames.retreat));
   if(save.inventory.rewind>0)cards.push(card('item-rewind','时光回退','还原上次发射前的局面；已使用的道具不返还，限时挑战也不回拨时间。','assets/icon-rewind.png'));

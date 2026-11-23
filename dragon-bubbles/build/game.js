@@ -10,7 +10,14 @@
   let rawSave={};try{rawSave=JSON.parse(localStorage.getItem(storageKey))||{};}catch(_){}
   const save=Economy.normalize(rawSave);
   function persist(){try{localStorage.setItem(storageKey,JSON.stringify(save));}catch(_){}}
-  if(playtest){save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);document.querySelector('footer span')?.replaceChildren(document.createTextNode('测试版 · 全关开放 · 推荐火力'));}
+  function testFooter(){if(playtest)document.querySelector('footer span')?.replaceChildren(document.createTextNode('测试版 · 全外观 · '+(save.testFireRank===null?'推荐火力':'固定火力 '+Economy.attackAt(save.testFireRank))));}
+  if(playtest){
+    save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);
+    for(const item of Economy.SHOP)if(!save.owned.includes(item.id))save.owned.push(item.id);
+    save.testFireRank=Number.isInteger(rawSave.testFireRank)?Math.max(0,Math.min(50,rawSave.testFireRank)):null;
+    if(rawSave.testStockVersion!==8)for(const id of Object.keys(Economy.ITEMS))save.inventory[id]=Math.max(save.inventory[id]||0,10);
+    save.testStockVersion=8;testFooter();
+  }
   persist();
   function text(scene,x,y,value,size=14,color='#fff1c7',align='left'){
     return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'normal',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
@@ -100,20 +107,24 @@
     }
     showChapter(id){
       this.clearScreen();this.state='chapter';this.mapWorld=id;this.input.enabled=false;
-      window.CandyMapView.chapter({save,world:window.CANDY_WORLDS[id],levels,hidden:window.CANDY_HIDDEN,canEnter:i=>playtest||Economy.canEnter(save,i),play:i=>this.startLevel(i),back:()=>this.showLevels(),secret:h=>this.showSecret(h),warehouse:()=>this.showInventory(id),codex:()=>this.showCodex(levels.slice(id*30,id*30+30).find(l=>Economy.canEnter(save,l.id)&&!save.stars[l.id])||levels[id*30+29]),tasks:()=>this.showTasks(id)});
+      window.CandyMapView.chapter({save,world:window.CANDY_WORLDS[id],levels,hidden:window.CANDY_HIDDEN,canEnter:i=>playtest||Economy.canEnter(save,i),play:i=>this.startLevel(i),back:()=>this.showLevels(),secret:h=>this.showSecret(h),prepare:()=>this.showWorkshop('dragon',()=>this.showChapter(id)),warehouse:()=>this.showInventory(id),codex:()=>this.showCodex(levels.slice(id*30,id*30+30).find(l=>Economy.canEnter(save,l.id)&&!save.stars[l.id])||levels[id*30+29]),tasks:()=>this.showTasks(id)});
     }
     showSecret(level){
       this.clearScreen();this.state='secret';this.input.enabled=false;
       window.CandyMapView.secret({save,level,available:window.CandyAds.available,back:()=>this.showChapter(level.world),play:h=>this.startLevel(h),unlock:async id=>{const result=await window.CandyAds.request(id);if(result.completed&&Economy.unlockHidden(save,id))persist();return result;}});
     }
-    showWorkshop(tab='dragon'){
+    showWorkshop(tab='dragon',returnTo=null){
+      const origin=this.state,world=origin==='won'?this.world.id:(this.mapWorld??this.world?.id??0);
+      const back=returnTo||(origin==='chapter'||origin==='won'?()=>this.showChapter(world):origin==='title'?()=>this.showTitle():()=>this.showLevels());
       this.clearScreen();this.state='workshop';this.input.enabled=false;
-      window.CandyMapView.shop({save,tab,items:Economy.SHOP,buy:id=>{const result=Economy.buy(save,id);if(result.ok)persist();return result;},power:()=>Economy.powerInfo(save),upgrade:()=>this.upgradePower(),back:()=>this.showLevels()});
+      window.CandyMapView.shop({save,tab,items:Economy.SHOP,buy:id=>{const result=Economy.buy(save,id);if(result.ok)persist();return result;},power:()=>Economy.powerInfo(save),upgrade:()=>this.upgradePower(),back,
+        warehouse:active=>this.showInventory(world,()=>this.showWorkshop(active,back)),
+        testPower:playtest?{rank:save.testFireRank,select:rank=>{save.testFireRank=rank;testFooter();persist();this.showWorkshop('power',back);},refill:()=>{for(const id of Object.keys(Economy.ITEMS))save.inventory[id]=20;persist();this.showWorkshop('power',back);}}:null});
     }
     upgradePower(){const result=Economy.upgrade(save);if(result.ok)persist();return result;}
-    showInventory(world=this.mapWorld||0){
+    showInventory(world=this.mapWorld||0,returnTo=null){
       this.clearScreen();this.state='warehouse';this.input.enabled=false;
-      window.CandyMapView.inventory({save,purchase:id=>{const r=Economy.buyConsumable(save,id);if(r.ok)persist();return r;},items:Economy.ITEMS,goods:Economy.SHOP,equip:id=>{const result=Economy.buy(save,id);if(result.ok)persist();return result;},back:()=>this.showChapter(world)});
+      window.CandyMapView.inventory({save,purchase:id=>{const r=Economy.buyConsumable(save,id);if(r.ok)persist();return r;},items:Economy.ITEMS,goods:Economy.SHOP,equip:id=>{const result=Economy.buy(save,id);if(result.ok)persist();return result;},backLabel:returnTo?'返回营地':'返回关卡地图',back:returnTo||(()=>this.showChapter(world))});
     }
     showTasks(world){
       this.clearScreen();this.state='tasks';this.input.enabled=false;
@@ -152,7 +163,8 @@
     }
     addObstacle(spec){
       const frame=window.CandyGuides.frames[spec.kind],wall=this.walls.create(spec.x,spec.y,frame===undefined?'obstacle-'+spec.kind:'mechanism-sheet',frame===undefined?undefined:frame).setDisplaySize(spec.width,spec.height).setDepth(14);
-      this.fitTarget(wall,spec.width,spec.height);wall.setData({kind:spec.kind,spec:{...spec},hp:spec.hp??(spec.kind==='ice'?3:999)});if(spec.kind==='conveyor')wall.setFlipX((spec.force||150)<0);this.obstacles.push(wall);return wall;
+      this.fitTarget(wall,spec.width,spec.height);wall.setData({kind:spec.kind,spec:{...spec},hp:spec.hp??(spec.kind==='ice'?3:999)});if(spec.kind==='conveyor')wall.setFlipX((spec.force||150)<0);if(['blackhole','repulsor'].includes(spec.kind)){const badge=text(this,wall.x,wall.y-spec.height/2-12,'',9,'#775391','center').setDepth(16);wall.setData('badge',badge);wall.once('destroy',()=>badge.destroy());}
+      this.obstacles.push(wall);return wall;
     }
     hitObstacle(ball,wall){
       const last=ball.getData('lastObstacle')||-1000;if(this.gameClock-last<80)return;ball.setData('lastObstacle',this.gameClock);
@@ -167,7 +179,7 @@
     }
     startLevel(index){
       this.clearScreen();this.isHidden=typeof index==='object';this.level=this.isHidden?index:levels[index];this.index=this.isHidden?this.level.world*30+this.level.local:index;this.world=window.CANDY_WORLDS[this.level.world];this.background.setTexture(`w${this.world.id}-arena`);window.CandyAudio.setTheme(this.world.id);if(!this.isHidden){save.current=index;persist();}
-      this.attackDamage=Math.max(Economy.attack(save),playtest?Economy.recommendedAttack(this.level):0);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
+      this.attackDamage=playtest?(save.testFireRank===null?Economy.recommendedAttack(this.level):Economy.attackAt(save.testFireRank)):Economy.attack(save);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
       this.bubbleLook=Economy.equipped(save,'bubble');this.dragonLook=Economy.equipped(save,'dragon');this.turretLook=Economy.equipped(save,'turret');this.cosmeticAt=0;
       this.retreatUsed=false;this.prismCount=0;this.absorbedThisVolley=0;this.snapshot=null;this.extraBalls=0;this.itemAim=false;this.guard=0;this.nova=false;
       this.rewardClaimed=false;this.rating=null;this.reward=null;this.shotsFired=0;this.productiveShots=0;this.volleyProductive=false;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
@@ -183,12 +195,11 @@
       this.keep(text(this,337,86,'长按怪怪查看生命',9,'#8b7551').setOrigin(1,0));
       const danger=this.keep(this.add.graphics());danger.lineStyle(1,0xc88972,.8);for(let x=25;x<337;x+=9)danger.lineBetween(x,493,x+4,493);
       this.keep(text(this,30,496,'守住这条线',8,'#af7b60'));
-      this.hero=this.keep(this.add.sprite(128,536,this.dragonTexture(),0).setScale(2));
+      this.hero=this.keep(this.add.sprite(112,536,this.dragonTexture(),0).setScale(2));
       this.turret=this.keep(this.add.sprite(180,556,Economy.equipped(save,'turret').texture).setScale(1.5));
       if(this.level.mode==='defense')this.keep(this.add.image(245,540,'engineer').setScale(1.5));
       this.friend=this.keep(this.add.image(this.level.mode==='defense'?287:245,552,'star').setScale(1.5).setAlpha(.45));
-      this.energyLabel=this.keep(text(this,28,540,'大泡泡能量',9,'#42634c'));
-      this.energyGraphic=this.keep(this.add.graphics());
+      this.fieldGraphic=this.keep(this.add.graphics().setDepth(13));
       this.comboText=this.keep(text(this,180,457,'',18,'#4a8062','center').setDepth(35));
       this.hintText=this.keep(text(this,180,583,'',10,'#395f4d','center'));
       this.skillButton=window.CandyBattleUI.show({items:Economy.ITEMS,count:id=>save.inventory[id]||0,state:()=>this.state,obscured:()=>this.codexOpen,use:id=>this.useItem(id),skill:()=>this.toggleSkill(),attack:()=>this.attackDamage,pause:(kind,value)=>{this[{tray:'itemTrayOpen',menu:'menuOpen',inspect:'inspectingEnemy'}[kind]]=value;this.setPausedByUI(value);},leave:dest=>dest==='chapter'?this.showChapter(this.world.id):this.showTitle(),codex:()=>this.showCodex(this.level)});
@@ -251,9 +262,9 @@
       this.damageLabel?.setText(String(this.attackDamage));
     }
     drawEnergy(){
-      this.energyGraphic.clear();this.energyGraphic.fillStyle(0x7a9b74).fillRect(28,556,80,9);this.energyGraphic.fillStyle(0xf2d38e).fillRect(30,558,Math.round(this.energy/100*76),5);
+      this.skillButton.setEnergy(Math.max(0,Math.min(100,this.energy)),this.armed);
       this.skillButton.label.setText(this.armed?'大泡泡 已就绪':this.energy>=100?'释放大泡泡':`大泡泡 ${this.energy}%`);
-      this.skillButton.setAlpha(this.energy>=100||this.armed?1:.68);
+
     }
     toggleSkill(){
       if(this.state!=='ready')return;
@@ -265,7 +276,8 @@
       if(this.uiPaused||this.state!=='ready'||pointer.y<110||pointer.y>562||pointer.x<20||pointer.x>340||(pointer.y>520&&pointer.x>265))return;
       this.state='aiming';this.hero.setFrame(2);this.setAngle(pointer);this.drawAim();this.aimStart={x:pointer.x,y:pointer.y};
       const node=[...this.nodes.values()].find(n=>n.monster&&Math.abs(pointer.x-n.sprite.x)<n.sprite.body.width/2+5&&Math.abs(pointer.y-n.sprite.y)<n.sprite.body.height/2+5);
-      clearTimeout(this.inspectTimer);if(node)this.inspectTimer=setTimeout(()=>{if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero.setFrame(0);window.CandyBattleUI.inspect(node);}},450);
+      const mechanism=this.obstacles.find(o=>o.active&&Math.abs(pointer.x-o.x)<o.displayWidth/2+6&&Math.abs(pointer.y-o.y)<o.displayHeight/2+6)||this.portalSprites.find(o=>Math.hypot(pointer.x-o.x,pointer.y-o.y)<22);
+      clearTimeout(this.inspectTimer);if(node||mechanism)this.inspectTimer=setTimeout(()=>{if(this.state==='aiming'){this.state='ready';this.aim.clear();this.hero.setFrame(0);if(node)window.CandyBattleUI.inspect(node);else window.CandyBattleUI.inspectMechanism(this.mechanismInfo(mechanism));}},450);
     }
     pointerMove(pointer){if(this.state==='aiming'&&!this.uiPaused){if(this.aimStart&&Phaser.Math.Distance.Between(pointer.x,pointer.y,this.aimStart.x,this.aimStart.y)>8)clearTimeout(this.inspectTimer);this.setAngle(pointer);this.drawAim();}}
     pointerUp(pointer){clearTimeout(this.inspectTimer);if(this.state!=='aiming'||this.uiPaused)return;if(pointer.y>575){this.state='ready';this.hero.setFrame(0);this.aim.clear();return;}this.setAngle(pointer);this.fire();}
@@ -278,7 +290,7 @@
         if(x<25||x>335){dx=-dx;x=Phaser.Math.Clamp(x,25,335);bounce++;}
         if(y<111){dy=-dy;y=111;bounce++;}
         if(y>LAUNCH.y||bounce>3)break;
-        const obstacle=this.obstacles.find(o=>o.active&&Math.abs(x-o.x)<o.body.width/2+3&&Math.abs(y-o.y)<o.body.height/2+3);if(obstacle){this.aim.lineStyle(2,0xbd8c6c,.8).strokeRect(obstacle.x-obstacle.body.width/2-2,obstacle.y-7,obstacle.body.width+4,14);break;}
+        const obstacle=this.obstacles.find(o=>o.active&&!['blackhole','repulsor','conveyor'].includes(o.getData('kind'))&&(o.getData('kind')!=='phase'||Math.floor(this.gameClock/1200)%2===0)&&Math.abs(x-o.x)<o.body.width/2+3&&Math.abs(y-o.y)<o.body.height/2+3);if(obstacle){this.aim.lineStyle(2,0xbd8c6c,.8).strokeRect(obstacle.x-obstacle.body.width/2-2,obstacle.y-7,obstacle.body.width+4,14);break;}
         if(i%3===0)this.aim.fillStyle(this.armed?0xd09c4c:0x4d8b74,Math.max(.1,.8-i/120)).fillRect(Math.round(x)-1,Math.round(y)-1,3,3);
         const target=[...this.nodes.values()].find(n=>!n.dead&&Math.abs(x-n.sprite.x)<n.sprite.body.width/2+3&&Math.abs(y-n.sprite.y)<n.sprite.body.height/2+3);
         if(target){this.aim.lineStyle(2,0xd7ae67,.85).strokeRect(target.sprite.x-target.sprite.body.width/2-3,target.sprite.y-target.sprite.body.height/2-3,target.sprite.body.width+6,target.sprite.body.height+6);break;}
@@ -387,7 +399,7 @@
       this.reward=this.isHidden?Economy.winHidden(save,this.level.id,stats):Economy.win(save,this.index,stars,stats);persist();
       window.CandyAudio.play('win');window.CandyAudio.voice('win');
       const amount=this.reward.totalCurrency??this.reward.amount??0,loot=this.reward.rewards||[];
-      window.CandyBattleUI.reward({title:this.isHidden?'秘境挑战完成！':'小星星，回家啦！',stars,rating:this.rating,amount,balance:save.candy,shots:this.shotsFired,target,loot:this.reward.loot||[],medals:this.reward.medals||[],nextLabel:this.isHidden||this.level.local===29?'返回主题地图':'前往下一关',next:()=>this.isHidden||this.level.local===29?this.showChapter(this.world.id):this.startLevel(this.index+1),warehouse:()=>this.showInventory(this.world.id),powerReady:Economy.powerInfo(save).eligible,upgrade:()=>this.showWorkshop('power')});
+      window.CandyBattleUI.reward({title:this.isHidden?'秘境挑战完成！':'小星星，回家啦！',stars,rating:this.rating,amount,balance:save.candy,shots:this.shotsFired,target,loot:this.reward.loot||[],medals:this.reward.medals||[],canAdvance:!this.isHidden&&this.index<299,nextLabel:this.isHidden||this.index===299?'返回关卡地图':this.level.local===29?'前往下一主题':'前往下一关',next:()=>this.isHidden||this.index===299?this.showChapter(this.world.id):this.level.local===29?this.showChapter(this.world.id+1):this.startLevel(this.index+1),back:()=>this.showChapter(this.world.id),worldMap:()=>this.showLevels(),powerReady:Economy.powerInfo(save).eligible,upgrade:()=>this.showWorkshop('power',()=>this.showChapter(this.world.id))});
     }
     lose(reason='敌人越过了安全线。'){
       this.state='lost';this.refreshHUD();this.time.removeAllEvents();this.balls.clear(true,true);this.physics.world.pause();this.hero.setFrame(5);window.CandyAudio.play('lose');window.CandyAudio.voice('lose');
@@ -399,12 +411,30 @@
       if(paused){this.physics.world.pause();this.time.paused=true;this.tweens.pauseAll();}
       else{this.physics.world.resume();this.time.paused=false;this.tweens.resumeAll();}
     }
+    swallowVisual(ball,wall){
+      const ghost=this.add.image(ball.x,ball.y,ball.texture.key,ball.frame.name).setDisplaySize(ball.displayWidth,ball.displayHeight).setDepth(24);this.tempObjects.add(ghost);
+      this.tweens.add({targets:ghost,x:wall.x,y:wall.y,scaleX:0,scaleY:0,alpha:.2,duration:160,onComplete:()=>{this.tempObjects.delete(ghost);ghost.destroy();}});
+    }
+    mechanismInfo(object){
+      const kind=object.getData('kind');if(!kind)return {name:'成对传送门',description:'进入一扇门，会从另一扇门穿出，保持飞行方向；传送门不吞球。',image:'assets/portal.png',status:'双向传送'};
+      const [name,description]=window.CandyGuides.obstacles[kind]||[kind,'观察机关再选择弹道。'];let status='';
+      if(kind==='blackhole'){const cap=this.isHidden?5:3;status=this.absorbedThisVolley>=cap?`本轮已满 ${cap}/${cap}，下次发射恢复`:this.fieldActive(object)?`吸入中 · 本轮 ${this.absorbedThisVolley}/${cap}`:'休眠中 · 暂时不吸、不吞';}
+      if(kind==='repulsor')status=this.fieldActive(object)?'向外推开 · 不吞球':'休眠中';
+      return {name,description,status,image:window.CandyGuides.frames[kind]===undefined?`assets/obstacle-${kind}.png`:null,atlasFrame:window.CandyGuides.frames[kind]};
+    }
+    updateFieldVisuals(){
+      this.fieldGraphic?.clear();for(const wall of this.obstacles){const badge=wall.getData('badge');badge?.setVisible(wall.active);if(!wall.active)continue;const kind=wall.getData('kind');if(!['blackhole','repulsor'].includes(kind))continue;
+        const active=this.fieldActive(wall),full=kind==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3);wall.setAlpha(active?1:.48);
+        badge?.setText(kind==='repulsor'?(active?'向外推':'休眠'):full?'本轮已满':active?`吸入 ${this.absorbedThisVolley}/${this.isHidden?5:3}`:'休眠');badge?.setColor(active?(kind==='blackhole'?'#70508d':'#2b7f8a'):'#7e7b82');
+        if(active&&this.fieldGraphic?.active){const phase=(this.gameClock%800)/800,radius=kind==='blackhole'?30-phase*18:12+phase*18;this.fieldGraphic.fillStyle(kind==='blackhole'?0xa98acb:0x53bfc6,.8);for(let i=0;i<4;i++){const a=i*Math.PI/2;this.fieldGraphic.fillRect(Math.round(wall.x+Math.cos(a)*radius)-1,Math.round(wall.y+Math.sin(a)*radius)-1,3,3);}}
+      }
+    }
     fieldActive(wall){if(wall.getData('kind')==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3))return false;const spec=wall.getData('spec');return this.gameClock%(spec.period||3200)<1400;}
     applyFields(ball,delta){
       for(const wall of this.obstacles){if(!wall.active)continue;const kind=wall.getData('kind'),spec=wall.getData('spec'),dx=wall.x-ball.x,dy=wall.y-ball.y,d=Math.hypot(dx,dy),dt=delta/1000;
         if(kind==='conveyor'&&Math.abs(dx)<spec.width/2&&Math.abs(dy)<spec.height/2+4)ball.setVelocityX(Phaser.Math.Clamp(ball.body.velocity.x+(spec.force||150)*dt,-500,500));
         if((kind==='blackhole'||kind==='repulsor')&&this.fieldActive(wall)&&d<(spec.radius||66)){
-          if(kind==='blackhole'&&d<11&&this.absorbedThisVolley<(this.isHidden?5:3)){this.absorbedThisVolley++;this.burst(ball.x,ball.y,0xa98acb,3);ball.destroy();window.CandyAudio.play('pop');return false;}
+          if(kind==='blackhole'&&d<11&&this.absorbedThisVolley<(this.isHidden?5:3)){this.absorbedThisVolley++;this.swallowVisual(ball,wall);ball.destroy();window.CandyAudio.play('pop');return false;}
           if(kind==='blackhole'&&this.absorbedThisVolley>=(this.isHidden?5:3))continue;
           if(d===0)continue;const force=(kind==='blackhole'?180:-220)*(1-d/(spec.radius||66));ball.setVelocity(Phaser.Math.Clamp(ball.body.velocity.x+dx/d*force*dt,-500,500),Phaser.Math.Clamp(ball.body.velocity.y+dy/d*force*dt,-500,500));
         }
@@ -413,12 +443,11 @@
     update(_time,delta){
       window.CandyBattleUI.refresh();
       if(this.uiPaused)return;
-      this.gameClock+=delta;
+      this.gameClock+=delta;if(['ready','aiming','shooting'].includes(this.state))this.updateFieldVisuals();
       if(['ready','aiming','shooting'].includes(this.state)){this.challengeElapsed+=delta;if(this.level.mode==='timed'){this.refreshHUD();if(this.challengeElapsed>=this.level.timeLimit*1000){this.lose('限时挑战结束了，再试试更直接的路线。');return;}}}
-      if(['ready','aiming','shooting'].includes(this.state)){for(const wall of this.obstacles){if(!wall.active)continue;const spec=wall.getData('spec');if(spec.kind==='moving'){wall.x=spec.x+Math.sin(this.gameClock/1200)*55;this.fitTarget(wall,spec.width,spec.height);}if(spec.kind==='blackhole'||spec.kind==='repulsor')wall.setAlpha(this.fieldActive(wall)?1:.3);if(spec.kind==='phase')wall.setAlpha(Math.floor(this.gameClock/1200)%2===0?1:.28);}}
+      if(['ready','aiming','shooting'].includes(this.state)){for(const wall of this.obstacles){if(!wall.active)continue;const spec=wall.getData('spec');if(spec.kind==='moving'){wall.x=spec.x+Math.sin(this.gameClock/1200)*55;this.fitTarget(wall,spec.width,spec.height);}if(spec.kind==='phase')wall.setAlpha(Math.floor(this.gameClock/1200)%2===0?1:.28);}}
       if(this.state==='shooting'){
         this.volleyAge+=delta;
-        for(const wall of this.obstacles){if(!wall.active)continue;const kind=wall.getData('kind');if(kind==='blackhole'||kind==='repulsor')wall.setAlpha(this.fieldActive(wall)?1:.3);}
         for(const ball of [...this.balls.getChildren()]){
           if(!this.applyFields(ball,delta))continue;
           const slow=ball.getData('slowUntil'),boost=ball.getData('boostUntil');if((slow&&slow<this.gameClock)||(boost&&boost<this.gameClock)){const v=ball.body.velocity,n=Math.hypot(v.x,v.y)||1;ball.setVelocity(v.x/n*SPEED,v.y/n*SPEED);ball.setData({slowUntil:0,boostUntil:0});}
