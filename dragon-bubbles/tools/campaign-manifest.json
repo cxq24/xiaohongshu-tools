@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "worlds": [
     {
       "id": 0,
@@ -1951,7 +1951,7 @@
           "j2",
           "p1",
           ".",
-          "K9",
+          "K90",
           ".",
           "j2",
           "."
@@ -2005,9 +2005,13 @@
       "portals": [],
       "wind": 0,
       "armor": 0,
-      "starTarget": 6,
-      "healthBudget": 44,
-      "pressure": 3.385
+      "starTarget": 9,
+      "healthBudget": 125,
+      "pressure": 9.615,
+      "bossBaseUnits": 9,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 30,
@@ -3837,7 +3841,7 @@
           "j3",
           "j2",
           ".",
-          "K11",
+          "K110",
           ".",
           ".",
           "p1"
@@ -3891,9 +3895,13 @@
       "portals": [],
       "wind": 20,
       "armor": 0,
-      "starTarget": 6,
-      "healthBudget": 55,
-      "pressure": 4.231
+      "starTarget": 9,
+      "healthBudget": 154,
+      "pressure": 11.846,
+      "bossBaseUnits": 11,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 60,
@@ -5787,7 +5795,7 @@
           ".",
           "j3",
           ".",
-          "K14",
+          "K140",
           ".",
           "p1",
           "j3"
@@ -5841,9 +5849,13 @@
       "portals": [],
       "wind": 0,
       "armor": 1,
-      "starTarget": 6,
-      "healthBudget": 72,
-      "pressure": 5.143
+      "starTarget": 9,
+      "healthBudget": 198,
+      "pressure": 14.143,
+      "bossBaseUnits": 14,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 90,
@@ -7940,7 +7952,7 @@
           "j5",
           "j4",
           ".",
-          "K24",
+          "K240",
           ".",
           ".",
           "p1"
@@ -8001,9 +8013,13 @@
       "portals": [],
       "wind": 0,
       "armor": 0,
-      "starTarget": 6,
-      "healthBudget": 85,
-      "pressure": 6.071
+      "starTarget": 9,
+      "healthBudget": 301,
+      "pressure": 21.5,
+      "bossBaseUnits": 24,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 120,
@@ -10163,7 +10179,7 @@
           ".",
           "p1",
           ".",
-          "K22",
+          "K220",
           ".",
           ".",
           "j5"
@@ -10231,9 +10247,13 @@
       "portals": [],
       "wind": 0,
       "armor": 0,
-      "starTarget": 6,
-      "healthBudget": 104,
-      "pressure": 6.933
+      "starTarget": 9,
+      "healthBudget": 302,
+      "pressure": 20.133,
+      "bossBaseUnits": 22,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 150,
@@ -12654,7 +12674,7 @@
           "p1",
           "j5",
           ".",
-          "K27",
+          "K270",
           ".",
           "j5",
           "j5"
@@ -12731,9 +12751,13 @@
       "portals": [],
       "wind": 0,
       "armor": 0,
-      "starTarget": 7,
-      "healthBudget": 118,
-      "pressure": 7.867
+      "starTarget": 10,
+      "healthBudget": 361,
+      "pressure": 24.067,
+      "bossBaseUnits": 27,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 180,
@@ -15185,7 +15209,7 @@
           "j6",
           ".",
           ".",
-          "K27",
+          "K270",
           ".",
           "j5",
           "."
@@ -15264,9 +15288,13 @@
       ],
       "wind": 0,
       "armor": 0,
-      "starTarget": 7,
-      "healthBudget": 140,
-      "pressure": 8.75
+      "starTarget": 10,
+      "healthBudget": 383,
+      "pressure": 23.938,
+      "bossBaseUnits": 27,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 210,
@@ -17687,7 +17715,7 @@
           "j6",
           "j5",
           ".",
-          "K32",
+          "K320",
           ".",
           "p1",
           "."
@@ -17764,9 +17792,13 @@
       "portals": [],
       "wind": 0,
       "armor": 0,
-      "starTarget": 7,
-      "healthBudget": 155,
-      "pressure": 9.688
+      "starTarget": 10,
+      "healthBudget": 443,
+      "pressure": 27.688,
+      "bossBaseUnits": 32,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 240,
@@ -19984,7 +20016,7 @@
           "p1",
           ".",
           ".",
-          "K47",
+          "K470",
           ".",
           ".",
           "."
@@ -20054,9 +20086,13 @@
       "portals": [],
       "wind": 34,
       "armor": 0,
-      "starTarget": 7,
-      "healthBudget": 180,
-      "pressure": 10.588
+      "starTarget": 10,
+      "healthBudget": 603,
+      "pressure": 35.471,
+      "bossBaseUnits": 47,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     },
     {
       "id": 270,
@@ -22711,7 +22747,7 @@
           "j8",
           "j7",
           ".",
-          "K41",
+          "K410",
           ".",
           "j7",
           "p1"
@@ -22797,9 +22833,13 @@
       ],
       "wind": 0,
       "armor": 0,
-      "starTarget": 7,
-      "healthBudget": 195,
-      "pressure": 11.471
+      "starTarget": 10,
+      "healthBudget": 564,
+      "pressure": 33.176,
+      "bossBaseUnits": 41,
+      "bossHealthMultiplier": 10,
+      "bossRole": "chapter",
+      "bossAdvance": 18
     }
   ],
   "hidden": [
@@ -22819,7 +22859,7 @@
           ".",
           ".",
           ".",
-          "K22",
+          "K31",
           ".",
           "j4",
           "j5"
@@ -22877,7 +22917,10 @@
       "trigger": 4,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 120
+      "timeLimit": 120,
+      "bossBaseUnits": 22,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-0-1",
@@ -22895,7 +22938,7 @@
           "r1",
           "j5",
           ".",
-          "K22",
+          "K40",
           ".",
           "j5",
           "b5"
@@ -22953,7 +22996,10 @@
       "trigger": 14,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 22,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-0-2",
@@ -22971,7 +23017,7 @@
           "j5",
           ".",
           ".",
-          "K22",
+          "K54",
           ".",
           "b5",
           "j5"
@@ -23042,7 +23088,10 @@
       "starTarget": 6,
       "trigger": 24,
       "rewardItem": "hammer",
-      "mode": "obstacle"
+      "mode": "obstacle",
+      "bossBaseUnits": 22,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-1-0",
@@ -23060,7 +23109,7 @@
           ".",
           "j4",
           ".",
-          "K25",
+          "K38",
           ".",
           "j4",
           "p1"
@@ -23118,7 +23167,10 @@
       "trigger": 34,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 125
+      "timeLimit": 125,
+      "bossBaseUnits": 25,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-1-1",
@@ -23136,7 +23188,7 @@
           "r1",
           "j5",
           ".",
-          "K25",
+          "K49",
           ".",
           "p1",
           "b5"
@@ -23194,7 +23246,10 @@
       "trigger": 44,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 25,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-1-2",
@@ -23212,7 +23267,7 @@
           ".",
           ".",
           ".",
-          "K40",
+          "K66",
           ".",
           "b5",
           "p1"
@@ -23269,7 +23324,10 @@
       "starTarget": 6,
       "trigger": 54,
       "rewardItem": "hammer",
-      "mode": "raid"
+      "mode": "raid",
+      "bossBaseUnits": 40,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-2-0",
@@ -23287,7 +23345,7 @@
           ".",
           "j5",
           ".",
-          "K28",
+          "K49",
           ".",
           "p1",
           "."
@@ -23345,7 +23403,10 @@
       "trigger": 64,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 130
+      "timeLimit": 130,
+      "bossBaseUnits": 28,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-2-1",
@@ -23363,7 +23424,7 @@
           ".",
           "j6",
           ".",
-          "K28",
+          "K63",
           ".",
           "p1",
           "."
@@ -23421,7 +23482,10 @@
       "trigger": 74,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 28,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-2-2",
@@ -23439,7 +23503,7 @@
           ".",
           "b6",
           ".",
-          "K28",
+          "K84",
           ".",
           "p1",
           "."
@@ -23510,7 +23574,10 @@
       "starTarget": 6,
       "trigger": 84,
       "rewardItem": "hammer",
-      "mode": "obstacle"
+      "mode": "obstacle",
+      "bossBaseUnits": 28,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-3-0",
@@ -23528,7 +23595,7 @@
           "j6",
           "j5",
           ".",
-          "K31",
+          "K84",
           ".",
           ".",
           "p1"
@@ -23593,7 +23660,10 @@
       "trigger": 94,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 135
+      "timeLimit": 135,
+      "bossBaseUnits": 31,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-3-1",
@@ -23611,7 +23681,7 @@
           "p1",
           "j6",
           ".",
-          "K31",
+          "K108",
           ".",
           "j6",
           "b6"
@@ -23676,7 +23746,10 @@
       "trigger": 104,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 31,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-3-2",
@@ -23694,7 +23767,7 @@
           "p1",
           "b6",
           ".",
-          "K48",
+          "K144",
           ".",
           ".",
           "j6"
@@ -23758,7 +23831,10 @@
       "starTarget": 6,
       "trigger": 114,
       "rewardItem": "hammer",
-      "mode": "raid"
+      "mode": "raid",
+      "bossBaseUnits": 48,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-4-0",
@@ -23776,7 +23852,7 @@
           ".",
           "j6",
           ".",
-          "K34",
+          "K77",
           ".",
           "p1",
           "j7"
@@ -23848,7 +23924,10 @@
       "trigger": 124,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 140
+      "timeLimit": 140,
+      "bossBaseUnits": 34,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-4-1",
@@ -23866,7 +23945,7 @@
           ".",
           "j7",
           ".",
-          "K34",
+          "K99",
           ".",
           "p1",
           "r1"
@@ -23938,7 +24017,10 @@
       "trigger": 134,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 34,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-4-2",
@@ -23956,7 +24038,7 @@
           ".",
           "b7",
           ".",
-          "K34",
+          "K132",
           ".",
           ".",
           "j7"
@@ -24041,7 +24123,10 @@
       "starTarget": 6,
       "trigger": 144,
       "rewardItem": "hammer",
-      "mode": "obstacle"
+      "mode": "obstacle",
+      "bossBaseUnits": 34,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-5-0",
@@ -24059,7 +24144,7 @@
           ".",
           "j6",
           ".",
-          "K37",
+          "K94",
           ".",
           ".",
           "p1"
@@ -24140,7 +24225,10 @@
       "trigger": 154,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 145
+      "timeLimit": 145,
+      "bossBaseUnits": 37,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-5-1",
@@ -24158,7 +24246,7 @@
           "j6",
           "j7",
           ".",
-          "K37",
+          "K121",
           ".",
           "p1",
           "r1"
@@ -24239,7 +24327,10 @@
       "trigger": 164,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 37,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-5-2",
@@ -24257,7 +24348,7 @@
           "p1",
           ".",
           ".",
-          "K56",
+          "K162",
           ".",
           ".",
           "j7"
@@ -24337,7 +24428,10 @@
       "starTarget": 7,
       "trigger": 174,
       "rewardItem": "hammer",
-      "mode": "raid"
+      "mode": "raid",
+      "bossBaseUnits": 56,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-6-0",
@@ -24355,7 +24449,7 @@
           ".",
           "j7",
           ".",
-          "K40",
+          "K94",
           ".",
           "j7",
           "p1"
@@ -24438,7 +24532,10 @@
       "trigger": 184,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 150
+      "timeLimit": 150,
+      "bossBaseUnits": 40,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-6-1",
@@ -24456,7 +24553,7 @@
           ".",
           "r1",
           ".",
-          "K40",
+          "K121",
           ".",
           ".",
           "b8"
@@ -24539,7 +24636,10 @@
       "trigger": 194,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 40,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-6-2",
@@ -24557,7 +24657,7 @@
           "j8",
           ".",
           ".",
-          "K40",
+          "K162",
           ".",
           ".",
           "p1"
@@ -24653,7 +24753,10 @@
       "starTarget": 7,
       "trigger": 204,
       "rewardItem": "hammer",
-      "mode": "obstacle"
+      "mode": "obstacle",
+      "bossBaseUnits": 40,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-7-0",
@@ -24671,7 +24774,7 @@
           ".",
           "j7",
           ".",
-          "K43",
+          "K112",
           ".",
           "j7",
           "."
@@ -24752,7 +24855,10 @@
       "trigger": 214,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 155
+      "timeLimit": 155,
+      "bossBaseUnits": 43,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-7-1",
@@ -24770,7 +24876,7 @@
           ".",
           "r1",
           ".",
-          "K43",
+          "K144",
           ".",
           "j8",
           "p1"
@@ -24851,7 +24957,10 @@
       "trigger": 224,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 43,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-7-2",
@@ -24869,7 +24978,7 @@
           "j8",
           "b8",
           ".",
-          "K64",
+          "K192",
           ".",
           "b8",
           "j8"
@@ -24949,7 +25058,10 @@
       "starTarget": 7,
       "trigger": 234,
       "rewardItem": "hammer",
-      "mode": "raid"
+      "mode": "raid",
+      "bossBaseUnits": 64,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-8-0",
@@ -24967,7 +25079,7 @@
           "p1",
           "j8",
           ".",
-          "K46",
+          "K164",
           ".",
           ".",
           "."
@@ -25041,7 +25153,10 @@
       "trigger": 244,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 160
+      "timeLimit": 160,
+      "bossBaseUnits": 46,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-8-1",
@@ -25059,7 +25174,7 @@
           "p1",
           "r1",
           ".",
-          "K46",
+          "K211",
           ".",
           "j9",
           "."
@@ -25133,7 +25248,10 @@
       "trigger": 254,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 46,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-8-2",
@@ -25151,7 +25269,7 @@
           "p1",
           "b9",
           ".",
-          "K46",
+          "K282",
           ".",
           "b9",
           "."
@@ -25238,7 +25356,10 @@
       "starTarget": 7,
       "trigger": 264,
       "rewardItem": "hammer",
-      "mode": "obstacle"
+      "mode": "obstacle",
+      "bossBaseUnits": 46,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     },
     {
       "id": "h-9-0",
@@ -25256,7 +25377,7 @@
           "p1",
           ".",
           ".",
-          "K49",
+          "K143",
           ".",
           "j8",
           "j9"
@@ -25346,7 +25467,10 @@
       "trigger": 274,
       "rewardItem": "rewind",
       "mode": "timed",
-      "timeLimit": 165
+      "timeLimit": 165,
+      "bossBaseUnits": 49,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.35
     },
     {
       "id": "h-9-1",
@@ -25364,7 +25488,7 @@
           "p1",
           "r1",
           ".",
-          "K49",
+          "K184",
           ".",
           "j9",
           "."
@@ -25454,7 +25578,10 @@
       "trigger": 284,
       "rewardItem": "nova",
       "mode": "defense",
-      "baseLives": 3
+      "baseLives": 3,
+      "bossBaseUnits": 49,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.45
     },
     {
       "id": "h-9-2",
@@ -25472,7 +25599,7 @@
           "j9",
           "b9",
           ".",
-          "K72",
+          "K246",
           ".",
           "b9",
           "p1"
@@ -25561,7 +25688,10 @@
       "starTarget": 7,
       "trigger": 294,
       "rewardItem": "hammer",
-      "mode": "raid"
+      "mode": "raid",
+      "bossBaseUnits": 72,
+      "bossRole": "guardian",
+      "bossRatioCap": 0.6
     }
   ]
 }

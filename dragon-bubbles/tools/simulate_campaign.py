@@ -69,7 +69,7 @@ with sync_playwright() as p:
     if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.5.0','results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.6.0','results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

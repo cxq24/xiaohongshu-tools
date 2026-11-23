@@ -11,15 +11,19 @@ assert hashlib.sha256((BUILD/'vendor/phaser-3.90.0.min.js').read_bytes()).hexdig
 assert (BUILD/'index.html').is_file()
 license=(ROOT/'PHASER-LICENSE.txt').read_text().strip()
 if license not in (BUILD/'index.html').read_text():raise SystemExit('Full Phaser license must remain in index.html')
+font_meta=json.loads((ROOT/'tools/font-provenance.json').read_text())
+assert hashlib.sha256((BUILD/'assets'/font_meta['file']).read_bytes()).hexdigest()==font_meta['sha256'],'Font checksum mismatch'
+font_license=(ROOT/'FONT-LICENSE.txt').read_text().strip()
+assert font_license in (BUILD/'index.html').read_text(),'Font notices must stay in entry HTML'
 files=sorted(p for p in BUILD.rglob('*') if p.is_file())
 html_files=[p.relative_to(BUILD).as_posix() for p in files if p.suffix.lower() in {'.html','.htm'}]
 if html_files != ['index.html']:raise SystemExit(f'Only root index.html is allowed; found: {html_files}')
 for path in files:
     if path.is_symlink() or not path.resolve().is_relative_to(BUILD.resolve()):raise SystemExit(f'Unexpected link: {path}')
     if path.suffix.lower() not in ALLOWED:raise SystemExit(f'Unsupported runtime type: {path.name}')
-output=ROOT/('dragon-bubbles-0.5.0'+('-test' if args.test else '')+'.zip')
+output=ROOT/('dragon-bubbles-0.6.0'+('-test' if args.test else '')+'.zip')
 def contents(path):
-    if args.test and path.relative_to(BUILD).as_posix()=='release-config.js':return b"window.CandyRelease=Object.freeze({version:'0.5.0',playtest:true});\n"
+    if args.test and path.relative_to(BUILD).as_posix()=='release-config.js':return b"window.CandyRelease=Object.freeze({version:'0.6.0',playtest:true});\n"
     return path.read_bytes()
 with ZipFile(output,'w',ZIP_DEFLATED) as archive:
     for path in files:

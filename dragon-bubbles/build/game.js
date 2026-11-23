@@ -2,8 +2,8 @@
 (() => {
   'use strict';
   const W=360,H=640,LAUNCH={x:180,y:540},SPEED=410,ENERGY_MAX=100;
-  const COLORS={ink:0x244e49,cream:0xffefc2,green:0x477d60,light:0xb8d39e,gold:0xf0c77c};
-  const FONT='system-ui, -apple-system, sans-serif';
+  const COLORS={ink:0x253449,cream:0xffefc2,green:0x477d60,light:0xb8d39e,gold:0xf0c77c};
+  const FONT='Apu Pixel, monospace';
   const levels=window.CANDY_LEVELS;
   const Economy=window.CandyProgress;
   const playtest=window.CandyRelease?.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
@@ -13,7 +13,7 @@
   if(playtest){save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);document.querySelector('footer span')?.replaceChildren(document.createTextNode('测试版 · 全关开放 · 推荐火力'));}
   persist();
   function text(scene,x,y,value,size=14,color='#fff1c7',align='left'){
-    return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'bold',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
+    return scene.add.text(x,y,value,{fontFamily:FONT,fontSize:size+'px',fontStyle:'normal',color,align,resolution:2}).setOrigin(align==='center'?.5:0,0);
   }
   function panel(scene,x,y,w,h,fill=COLORS.ink,edge=0x91ac80){
     const g=scene.add.graphics();g.fillStyle(0x193d36,.5).fillRect(x+3,y+4,w,h);g.fillStyle(edge).fillRect(x,y,w,h);g.fillStyle(fill).fillRect(x+2,y+2,w-4,h-4);return g;
@@ -34,13 +34,14 @@
   class Adventure extends Phaser.Scene{
     constructor(){super('Adventure');}
     preload(){
-      for(const world of window.CANDY_WORLDS)for(const part of ['cover','arena','island','jelly','berry','boss','bomb','pickup','bubble'])this.load.image(`w${world.id}-${part}`,`assets/w${world.id}-${part}.png`);
+      for(const world of window.CANDY_WORLDS)for(const part of ['cover','arena','island','jelly','berry','boss','bomb','pickup'])this.load.image(`w${world.id}-${part}`,`assets/w${world.id}-${part}.png`);
       for(const part of ['stone','ice','spring','moving','mirror','phase'])this.load.image('obstacle-'+part,`assets/obstacle-${part}.png`);this.load.image('portal','assets/portal.png');
       this.load.image('forest','assets/forest.png');this.load.image('cover','assets/cover.png');
-      for(const [name,file] of [['dragon','dragon'],['dragonBerry','dragon-berry'],['dragonSky','dragon-sky']])this.load.spritesheet(name,`assets/${file}.png`,{frameWidth:32,frameHeight:32});
-      for(const name of ['wood','candy','ice','neon','cosmic'])this.load.image('turret-'+name,`assets/turret-${name}.png`);
-      for(let i=0;i<5;i++)this.load.spritesheet('outfit-'+i,`assets/outfit-${i}.png`,{frameWidth:32,frameHeight:32});this.load.image('engineer','assets/engineer.png');this.load.image('icon-fire','assets/icon-fire.png');this.load.image('icon-candy','assets/icon-candy.png');
-      this.load.image('bubbleStar','assets/bubble-star.png');this.load.image('bubbleRainbow','assets/bubble-rainbow.png');
+      for(const item of Economy.SHOP.filter(i=>i.slot==='dragon'||i.slot==='bubble'||i.slot==='turret')){
+        const file={dragon:'dragon',dragonBerry:'dragon-berry',dragonSky:'dragon-sky',bubble:'bubble',bubbleStar:'bubble-star',bubbleRainbow:'bubble-rainbow'}[item.texture]||item.texture;
+        if(item.frames>1)this.load.spritesheet(item.texture,`assets/${file}.png`,{frameWidth:item.frameSize,frameHeight:item.frameSize});else this.load.image(item.texture,`assets/${file}.png`);
+      }
+      this.load.image('engineer','assets/engineer.png');this.load.image('icon-fire','assets/icon-fire.png');this.load.image('icon-candy','assets/icon-candy.png');
       for(const key of ['jelly','berry','boss','popcorn','rainbow','bubble','star'])this.load.image(key,`assets/${key}.png`);
     }
     create(){
@@ -161,10 +162,12 @@
     startLevel(index){
       this.clearScreen();this.isHidden=typeof index==='object';this.level=this.isHidden?index:levels[index];this.index=this.isHidden?this.level.world*30+this.level.local:index;this.world=window.CANDY_WORLDS[this.level.world];this.background.setTexture(`w${this.world.id}-arena`);window.CandyAudio.setTheme(this.world.id);if(!this.isHidden){save.current=index;persist();}
       this.attackDamage=Math.max(Economy.attack(save),playtest?Economy.recommendedAttack(this.level):0);this.balanceAttack=Economy.recommendedAttack(this.level);this.challengeElapsed=0;this.baseLives=this.level.baseLives||3;this.escaped=0;
+      this.bubbleLook=Economy.equipped(save,'bubble');this.dragonLook=Economy.equipped(save,'dragon');this.turretLook=Economy.equipped(save,'turret');this.cosmeticAt=0;
       this.snapshot=null;this.extraBalls=0;this.itemAim=false;this.guard=0;this.nova=false;
       this.rewardClaimed=false;this.shotsFired=0;this.productiveShots=0;this.volleyProductive=false;this.defeated=0;this.totalMonsters=this.level.waves.flat().filter(t=>['j','b','K'].includes(t[0])).length+this.level.waves.flat().filter(t=>t[0]==='K').length*2;
       this.gameClock=0;this.state='intro';this.turn=1;this.wave=0;this.energy=save.equipped.gear==='gear-spark'?15:0;this.armed=false;this.combo=0;this.bestCombo=0;this.pending=0;this.rainbowUntil=0;this.hitCount=0;this.angle=-Math.PI/2;this.nextId=0;this.volleyAge=0;this.bossSplit=false;
       this.keep(panel(this,10,10,340,43),text(this,22,18,`${this.isHidden?'秘境':String(this.level.local+1).padStart(2,'0')} / ${this.level.name}`,16));
+      this.bossBar=this.keep(this.add.graphics());this.bossStatus=this.keep(text(this,22,36,'',9,'#ffe5b1'));
       this.keep(this.add.image(174,514,'icon-fire'));this.damageLabel=this.keep(text(this,190,508,String(this.attackDamage),11,'#365f4d'));
 
       this.keep(panel(this,10,61,340,44,0xf5edc9,0x8da87e));
@@ -175,7 +178,7 @@
       const danger=this.keep(this.add.graphics());danger.lineStyle(1,0xc88972,.8);for(let x=25;x<337;x+=9)danger.lineBetween(x,493,x+4,493);
       this.keep(text(this,30,496,'守住这条线',8,'#af7b60'));
       this.hero=this.keep(this.add.sprite(128,536,this.dragonTexture(),0).setScale(2));
-      this.turret=this.keep(this.add.image(180,556,Economy.equipped(save,'turret').texture).setScale(1.5));
+      this.turret=this.keep(this.add.sprite(180,556,Economy.equipped(save,'turret').texture).setScale(1.5));
       if(this.level.mode==='defense')this.keep(this.add.image(245,540,'engineer').setScale(1.5));
       this.friend=this.keep(this.add.image(this.level.mode==='defense'?287:245,552,'star').setScale(1.5).setAlpha(.45));
       this.energyLabel=this.keep(text(this,28,540,'大泡泡能量',9,'#42634c'));
@@ -218,13 +221,18 @@
       if(node.monster)node.label=text(this,sprite.x,sprite.y+5,String(hp)+(node.armor?'◇':''),kind==='K'?12:9,'#254d43','center').setDepth(12);
       if(node.monster){node.bar=this.add.graphics().setDepth(11);this.drawHealth(node);}this.nodes.set(node.id,node);return node;
     }
-    drawHealth(node){if(!node.bar)return;const w=node.kind==='K'?62:32;node.bar.clear().fillStyle(0x527465).fillRect(node.sprite.x-w/2,node.sprite.y+17,w,3).fillStyle(0xa9cf8b).fillRect(node.sprite.x-w/2+1,node.sprite.y+18,Math.max(0,(w-2)*node.hp/node.maxHp),1);}
+    drawHealth(node){if(!node.bar)return;const w=node.kind==='K'?62:32;node.bar.clear().fillStyle(0x527465).fillRect(node.sprite.x-w/2,node.sprite.y+17,w,3).fillStyle(0xa9cf8b).fillRect(node.sprite.x-w/2+1,node.sprite.y+18,Math.max(0,(w-2)*node.hp/node.maxHp),1);if(node.kind==='K')this.drawBossHUD();}
+    drawBossHUD(){
+      if(!this.bossBar?.active)return;this.bossBar.clear();const boss=[...this.nodes.values()].find(n=>n.kind==='K'&&!n.dead);if(!boss){this.bossStatus.setText('');return;}
+      this.bossStatus.setText((this.isHidden?'秘境守卫':'重型首领')+`  ${Math.max(0,boss.hp)} / ${boss.maxHp}`);this.bossBar.fillStyle(0x684c55).fillRect(22,47,316,3).fillStyle(boss.hp/boss.maxHp<.25?0xe68da8:0xf4bc69).fillRect(22,47,Math.ceil(316*Math.max(0,boss.hp)/boss.maxHp),3);
+    }
     fitTarget(sprite,bw,bh){
       sprite.body.setOffset(0,0);sprite.refreshBody();sprite.body.setSize(bw,bh);
       sprite.body.setOffset((sprite.displayWidth-bw)/2,(sprite.displayHeight-bh)/2);
     }
     remaining(){return [...this.nodes.values()].filter(n=>n.monster&&!n.dead).length;}
     refreshHUD(){
+      this.drawBossHUD();
       this.turnLabel?.setText(`已发射 ${this.shotsFired} 次 · 每次 ${this.level.balls} 颗`);
       this.goalLabel?.setText(`已消灭 ${this.defeated}/${this.totalMonsters} 只`);
       if(this.level.mode==='defense')this.goalLabel?.setText(`守护 ♥ ${this.baseLives}/3`);
@@ -278,9 +286,9 @@
         if(this.generation!==generation||this.state!=='shooting')return;
         this.pending--;const big=(powered||nova)&&i===0;
         const ball=this.balls.create(LAUNCH.x,LAUNCH.y,this.bubbleTexture()).setDepth(25).setScale(big?2:1);
-        ball.body.setCircle(4);ball.setCollideWorldBounds(true).setBounce(1).setVelocity(Math.cos(this.angle)*SPEED,Math.sin(this.angle)*SPEED);
-        ball.setAccelerationX(this.level.wind||0).setMaxVelocity(500,500);
-        ball.setData({damage:this.attackDamage*(big?(nova?6:4):1),hits:new Map(),big});if(big)ball.setTint(0xffd779);
+        ball.body.setCircle(4,(ball.width-8)/2,(ball.height-8)/2);ball.setCollideWorldBounds(true).setBounce(1).setVelocity(Math.cos(this.angle)*SPEED,Math.sin(this.angle)*SPEED);
+        ball.setAccelerationX(this.level.wind||0).setMaxVelocity(500,500);if(this.turretLook.fx)this.burst(LAUNCH.x,LAUNCH.y,this.turretLook.color,2);
+        ball.setData({cosmeticOffset:i%4,cosmeticAt:0,damage:this.attackDamage*(big?(nova?6:4):1),hits:new Map(),big});if(big)ball.setTint(0xffd779);
         window.CandyAudio.play(big?'big':'shoot',i);
       });
       this.time.delayedCall(220,()=>{if(this.generation===generation&&this.hero.active)this.hero.setFrame(0);});
@@ -353,7 +361,7 @@
       if(this.guard>0){this.guard--;this.turn++;this.state='ready';this.refreshHUD();this.hintText.setText('缓冲护盾抵消了本次推进');return;}
       let danger=false;
       for(const node of this.nodes.values()){
-        node.sprite.y+=37;node.sprite.clearTint();this.tweens.killTweensOf(node.sprite);node.sprite.setScale(node.baseScale);
+        node.sprite.y+=node.kind==='K'?(this.level.bossAdvance||37):37;node.sprite.clearTint();this.tweens.killTweensOf(node.sprite);node.sprite.setScale(node.baseScale);
         // refreshBody resets the custom collision size, so restore it each advance.
         const bw=node.kind==='K'?72:node.kind==='p'?27:node.kind==='r'?22:33,bh=node.kind==='K'?46:node.kind==='r'?22:23;
         this.fitTarget(node.sprite,bw,bh);
@@ -391,6 +399,8 @@
       if(this.state==='shooting'){
         this.volleyAge+=delta;
         for(const ball of [...this.balls.getChildren()]){
+          if(this.bubbleLook.frames>1)ball.setFrame((Math.floor(this.gameClock/140)+ball.getData('cosmeticOffset'))%4);
+          if(this.bubbleLook.fx&&this.gameClock-ball.getData('cosmeticAt')>180){ball.setData('cosmeticAt',this.gameClock);this.burst(ball.x,ball.y,this.bubbleLook.color,1);}
           if(this.portalSprites.length===2&&this.gameClock-(ball.getData('portalAt')||-1000)>650){const index=this.portalSprites.findIndex(p=>Phaser.Math.Distance.Between(ball.x,ball.y,p.x,p.y)<18);if(index>=0){const dest=this.portalSprites[1-index];ball.setPosition(dest.x+Math.sign(ball.body.velocity.x||1)*20,dest.y+Math.sign(ball.body.velocity.y||1)*22);ball.setData('portalAt',this.gameClock);}}
           if(ball.y>LAUNCH.y+4&&ball.body.velocity.y>0){this.burst(ball.x,LAUNCH.y,0xc9e4b6,2);ball.destroy();}
           else if(this.rainbowUntil<=this.gameClock&&!ball.getData('big'))ball.clearTint();
@@ -399,6 +409,8 @@
         // Degenerate loops gently fall back, without changing speed or discarding hits.
         if(this.volleyAge>22000)for(const ball of this.balls.getChildren())ball.setAccelerationY(180);
       }
+      if(this.turret?.active&&['ready','aiming','shooting'].includes(this.state))this.turret.setFrame(Math.floor(this.gameClock/180)%4);
+      if(this.hero?.active&&this.dragonLook?.fx&&['ready','aiming','shooting'].includes(this.state)&&this.gameClock-this.cosmeticAt>800){this.cosmeticAt=this.gameClock;this.burst(this.hero.x+(Math.random()>.5?25:-25),this.hero.y-12,this.dragonLook.color,1);}
       if(this.hero?.active&&this.state==='ready'){
         if(Math.floor(this.gameClock/3500)%2===0&&this.gameClock%3500<100)this.hero.setFrame(1);else this.hero.setFrame(0);
       }
@@ -408,5 +420,5 @@
     scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},
     physics:{default:'arcade',arcade:{gravity:{x:0,y:0},fps:120,fixedStep:true,debug:false}},
     scene:[Adventure],audio:{noAudio:true},banner:false};
-  window.candyGame=new Phaser.Game(config);
+  const boot=()=>{window.candyGame=new Phaser.Game(config);};if(document.fonts)document.fonts.load('12px "Apu Pixel"').then(boot,boot);else boot();
 })();

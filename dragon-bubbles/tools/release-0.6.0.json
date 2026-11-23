@@ -1,0 +1,17 @@
+{
+  "version": "0.6.0",
+  "artifacts": [
+    {
+      "file": "dragon-bubbles-0.6.0.zip",
+      "bytes": 1215192,
+      "sha256": "ddba0a8a4508ad6b565c043d3e5d24d3ce745cf124ea702d0ff8e31d0ab80dd9",
+      "playtest": false
+    },
+    {
+      "file": "dragon-bubbles-0.6.0-test.zip",
+      "bytes": 1215137,
+      "sha256": "1d11cbfd093a061343e7d9d5067d349bbdc7c4b49dd306eb4e5e64cee4ca8ee6",
+      "playtest": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": "0.6.0",
+  "both_actual_zips": true,
+  "reinforcements_start_zero": true,
+  "minimal_intro": true,
+  "turret_damage_badge": true,
+  "shared_energy_pool": true,
+  "real_physics_grade_receipt": true,
+  "test_all_300_and_30_hidden_open": true,
+  "separate_storage_same_origin": true,
+  "gallery_30_portraits": true,
+  "errors": []
+}

@@ -10,21 +10,19 @@
  function upgrade(p){const info=powerInfo(p);if(info.maxed)return {ok:false,reason:'火力已满级'};if(!info.eligible)return {ok:false,reason:`通关第 ${info.gate+1} 关后开放下一档`};if(p.candy<info.cost)return {ok:false,reason:`还差 ${info.cost-p.candy} 星糖`};p.candy-=info.cost;p.fireRank++;return {ok:true,reason:`普通泡泡伤害提升至 ${attackAt(p.fireRank)}`};}
  function recommendedRank(level){return Math.min(49,level.world*5+Math.floor((level.hidden?(level.trigger%30+1):level.local)/6));}
  function recommendedAttack(level){return attackAt(recommendedRank(level));}
+ const cosmeticData=typeof module!=='undefined'&&module.exports?require('./cosmetics.js'):root.CANDY_COSMETICS;
  const SHOP=[
-  {id:'dragon-mint',slot:'dragon',name:'薄荷阿噗',price:0,texture:'dragon'},
-  {id:'dragon-berry',slot:'dragon',name:'莓果阿噗',price:40,texture:'dragonBerry'},
-  {id:'dragon-sky',slot:'dragon',name:'海盐阿噗',price:80,texture:'dragonSky'},
-  {id:'bubble-classic',slot:'bubble',name:'弹力泡泡',price:0,texture:'bubble'},
-  {id:'bubble-star',slot:'bubble',name:'星光泡泡',price:40,texture:'bubbleStar'},
-  {id:'bubble-rainbow',slot:'bubble',name:'彩虹泡泡',price:70,texture:'bubbleRainbow'},
-  {id:'turret-wood',slot:'turret',name:'木糖发射器',price:0,texture:'turret-wood'},
-  ...['糖果','冰晶','霓虹','星云'].map((name,i)=>({id:'turret-'+['candy','ice','neon','cosmic'][i],slot:'turret',name:name+'发射器',price:120+i*100,texture:'turret-'+['candy','ice','neon','cosmic'][i]})),
-  ...['航海服','雪帽','学徒披风','工匠围裙','霓虹外套'].map((name,i)=>({id:'outfit-'+i,slot:'dragon',name:'阿噗的'+name,price:150+i*60,texture:'outfit-'+i})),
+  {id:'dragon-mint',slot:'dragon',name:'薄荷阿噗',price:0,texture:'dragon',description:'薄荷小龙，最初的冒险伙伴'},
+  {id:'bubble-classic',slot:'bubble',name:'弹力泡泡',price:0,texture:'bubble',description:'清透弹力泡泡'},
+  {id:'turret-wood',slot:'turret',name:'木糖发射器',price:0,texture:'turret-wood',description:'木质单管 · 黄铜卡箍'},
+  ...cosmeticData,
   {id:'gear-none',slot:'gear',name:'轻装冒险',price:0,description:'标准瞄准与能量'},
   {id:'gear-lens',slot:'gear',name:'远眺瞄准镜',price:160,description:'延长瞄准线，不增加伤害'},
-  {id:'gear-spark',slot:'gear',name:'启明星徽章',price:300,description:'每关以 15% 能量开始'},
-  ...data.worlds.map(w=>({id:'bubble-world-'+w.id,slot:'bubble',name:w.name+'泡泡',price:120+w.id*40,texture:`w${w.id}-bubble`,world:w.id}))
- ];
+  {id:'gear-spark',slot:'gear',name:'启明星徽章',price:300,description:'每关以 15% 能量开始'}
+ ].map(item=>{
+  const rarity=item.price===0?0:item.price<=80?1:item.price<=260?2:item.price<=650?3:4;
+  return {...item,rarity,rarityName:Number.isInteger(item.collectionTier)?['初旅','灵巧','精制','珍奇','华彩','史诗','星耀','典藏'][item.collectionTier]:['基础','精选','珍奇','史诗','典藏'][rarity],color:[0x79c89d,0x79c89d,0x78d3d5,0xa98acb,0xf4bc69][rarity],frames:item.slot==='dragon'?6:item.slot==='turret'?4:item.slot==='bubble'&&item.id!=='bubble-classic'?4:1,frameSize:item.slot==='dragon'||item.slot==='turret'?32:item.id==='bubble-classic'?10:item.slot==='bubble'?16:20,fx:item.collectionTier>=5};
+ });
  const ITEMS={balls:{name:'额外泡泡',description:'下一次发射 +3 颗',rare:false},aim:{name:'路线透镜',description:'本次瞄准线延长',rare:false},guard:{name:'缓冲护盾',description:'抵消一次敌人推进',rare:false},rewind:{name:'时光回退',description:'回到上次发射前，已用道具不返还',rare:true},nova:{name:'星爆泡泡',description:'下一次首颗泡泡造成 6 倍火力伤害',rare:true},hammer:{name:'障碍消除',description:'移除最靠近安全线的普通障碍',rare:true}};
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,Number.isInteger(n)?n:a));
  function discoverLevel(p,level){for(const token of level.waves.flat())if(['j','b','K'].includes(token[0]))discover(p,level,token[0]);}

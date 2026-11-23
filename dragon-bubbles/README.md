@@ -1,12 +1,12 @@
-# 阿噗的像素弹弹冒险 · 0.5.0
+# 阿噗的像素弹弹冒险 · 0.6.0
 
 Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 个主线关卡，共 300 关，另有 30 个隐藏挑战**，保留双层地图，加入战斗内快捷道具栏、退出确认、图鉴、分类营地与进度限制的炮台成长。
 
-[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.5.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.5.0-test.zip)
+[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.6.0-test.zip)
 
 测试版直接开放 10 个世界、300 个主线和 30 个隐藏挑战，使用至少本关推荐火力；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
 
-0.5.0 新增 S/A/B/C 表现评分、首次 S 随机普通道具、章节最终首领宝箱与收藏徽章；重做全地图外观图鉴和章内生命预算。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
+0.6.0 将十个章节最终首领生命提升为 0.5.0 的十倍，重型首领每轮推进 18 像素；秘境守卫由同章最终首领设定生命上限。UI 使用本地中文像素字体、统一阶梯边框和小色板；角色、泡泡、炮台各有 24 款可购买外观（每类另保留 1 个免费基础款），八个价格档各三款。保留 S/A/B/C 评分、首次 S 随机普通道具、首领宝箱和收藏徽章。详细规则见 [评分与奖励](SCORE_RULES.md) 和 [数值设计](BALANCE.md)。
 
 ## 运行与上传
 
@@ -82,15 +82,19 @@ python3 -m http.server 8000 --directory build
 
 ```sh
 python3 tools/generate_campaign.py
+python3 tools/generate_cosmetic_catalog.py
 python3 tools/create_art.py
 python3 tools/create_world_art.py
 python3 tools/create_ui_art.py
+python3 tools/create_cosmetic_art.py
 node tools/test_progress.cjs
 python3 tools/package.py
 python3 tools/package.py --test
 node tools/test_v5.cjs
-python3 tools/v5_browser_checks.py
-python3 tools/v5_release_checks.py
+node tools/test_v6.cjs
+python3 tools/v6_browser_checks.py
+python3 tools/v6_release_checks.py
+python3 tools/v6_cosmetic_checks.py
 python3 tools/simulate_campaign.py --end 300
 python3 tools/simulate_campaign.py --hidden --end 30
 ```
@@ -103,9 +107,9 @@ python3 tools/simulate_campaign.py --hidden --end 30
 
 ![章内路线](previews/chapter.png)
 
-## 0.4.0：分类和成长
+## 营地外观与成长（0.6.0）
 
-营地分为角色装扮、泡泡皮肤、炮台外观、火力升级和功能装备。当前有 8 款阿噗外观（含 5 套新服装）、13 款泡泡外观和 5 款炮台外观。外观均不增加伤害。
+营地分为角色装扮、泡泡皮肤、炮台外观、火力升级和功能装备。当前每类都有 24 款可购买外观和 1 款免费基础外观，共 75 款。八档价格为 40、80、160、260、420、650、1000、1600 星糖，每档同类三款。角色改变服装与配饰，炮台改变炮身轮廓，泡泡改变图形；炮台与泡泡使用四帧光效，高档增加星屑拖尾或光点。外观均不增加伤害。
 
 火力初始 100，每章五档，共 50 档，最高 1100；第六章最高 500。升级消耗星糖，资格必须通过实际关卡里程碑开放，费用与生命计算见 [BALANCE.md](BALANCE.md)。
 
@@ -118,3 +122,15 @@ python3 tools/simulate_campaign.py --hidden --end 30
 ![火力升级](previews/fire-upgrade.png)
 
 ![敌人图鉴](previews/codex.png)
+
+## 皮肤展示与素材来源
+
+商店先按角色、泡泡、炮台分类，再用价位选择器切换八档；每档并排展示三款。点选只改变试穿预览，购买才扣星糖，已购买款不会因价格调整补扣。功能装备和火力升级仍独立。完整 72 款表与设计边界见 [STYLE_GUIDE.md](STYLE_GUIDE.md)。
+
+所有角色装扮、泡泡和炮台图形为本项目原创程序像素绘制；中文使用 [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font) 2026.11.10 发布版，OFL-1.1 及其随包来源许可保留于 `FONT-LICENSE.txt` 和唯一入口 HTML 注释。字体也在 ZIP 内，不依赖线上字体。
+
+用户提供的 Game UI Database、itch.io 像素 UI、Lospec 本轮均被环境代理拒绝（403），未直接浏览，也没有复制它们的付费素材。设计说明明确区分这些待参考站点与实际读取的开源字体资料。
+
+![像素试穿与三款选择](previews/pixel-outfits.png)
+
+![72款原创外观总览](previews/cosmetic-lineup.png)

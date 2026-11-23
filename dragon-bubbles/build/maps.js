@@ -7,8 +7,11 @@
  const image=(src,alt='')=>{const n=el('img');n.src=src;n.alt=alt;return n;};
  function action(label,fn,className='map-action'){const b=el('button',className,label);b.type='button';b.onclick=()=>{window.CandyAudio.unlock();fn();};return b;}
  function wallet(h,save){h.querySelector('.map-heading').append(currency(save.candy));}
- function tabs(parent,entries,active,fn){const nav=el('nav','camp-tabs');for(const [id,name]of entries){const b=action(name,()=>fn(id));b.classList.toggle('active',id===active);nav.append(b);}parent.append(nav);}
+ function tabs(parent,entries,active,fn){const nav=el('nav','camp-tabs');nav.style.setProperty('--tab-count',Math.min(5,entries.length));for(const [id,name]of entries){const b=action('',()=>fn(id));b.setAttribute('aria-label',name);const icon={dragon:'dragon',bubble:'bubble',turret:'turret',power:'fire',gear:'gear',items:'bag',medals:'star'}[id];if(icon&&icon!=='star')b.append(glyph(icon));b.append(el('span','',({dragon:'角色',bubble:'泡泡',turret:'炮台',power:'火力',gear:'装备',items:'道具',medals:'收藏'})[id]||name));b.classList.toggle('active',id===active);nav.append(b);}parent.append(nav);}
  function asset(item){if(item.slot==='dragon')return {'dragon':'dragon','dragonBerry':'dragon-berry','dragonSky':'dragon-sky'}[item.texture]||item.texture;if(item.slot==='gear')return 'icon-gear';return {'bubble':'bubble','bubbleStar':'bubble-star','bubbleRainbow':'bubble-rainbow'}[item.texture]||item.texture;}
+ function portrait(item,scale=2,className=''){
+  const n=el('span','cosmetic-sprite '+className);n.setAttribute('role','img');n.setAttribute('aria-label',item.name);const size=item.frameSize||20,frames=item.frames||1;n.style.width=size*scale+'px';n.style.height=size*scale+'px';n.style.backgroundImage=`url(assets/${asset(item)}.png)`;n.style.backgroundSize=size*scale*frames+'px '+size*scale+'px';n.style.setProperty('--sheet-width',size*scale*frames+'px');n.style.setProperty('--frame-width',size*scale+'px');if(item.slot==='dragon')n.classList.add('portrait-blink');else if(frames>1){n.style.animation=`cosmetic-cycle 1s steps(${frames}) infinite`;}return n;
+ }
  function shell(title,subtitle,back){const h=host();h.hidden=false;h.replaceChildren();const top=el('header','map-heading');top.append(action('‹',back,'map-back'),el('div','map-heading-text',title));h.append(top,el('p','map-subtitle',subtitle));const scroll=el('div','map-scroll');h.append(scroll);return {h,scroll};}
  function route(parent,positions,height){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 360 ${height}`);svg.setAttribute('preserveAspectRatio','none');svg.classList.add('map-route');const p=document.createElementNS(svg.namespaceURI,'path');p.setAttribute('d',positions.map(([x,y],i)=>i?`C ${positions[i-1][0]},${y-30} ${x},${y-30} ${x},${y}`:`M ${x},${y}`).join(' '));p.setAttribute('fill','none');p.setAttribute('stroke','#e9d7a5');p.setAttribute('stroke-width','8');p.setAttribute('stroke-dasharray','4 7');svg.append(p);parent.append(svg);}
  window.CandyMapView={hide(){if(host())host().hidden=true;},
@@ -47,19 +50,36 @@
   const bottom=el('nav','map-bottom');bottom.append(action('仓库',warehouse),action('图鉴',codex),action('任务',tasks),action('世界地图',back));h.append(bottom);
   if(next)requestAnimationFrame(()=>{scroll.scrollTop=Math.max(0,next.offsetTop-scroll.clientHeight/2);});
  },
- shop({save,items,buy,back,power,upgrade,tab='dragon',message=''}){
-  const {h,scroll}=shell('阿噗的营地','外观与火力独立，所有购买都使用星糖。',back);wallet(h,save);
-  tabs(scroll,[['dragon','角色装扮'],['bubble','泡泡皮肤'],['turret','炮台外观'],['power','火力升级'],['gear','功能装备']],tab,t=>this.shop({save,items,buy,back,power,upgrade,tab:t}));
+ shop({save,items,buy,back,power,upgrade,tab='dragon',message='',selected=null,priceTier=null}){
+  const {h,scroll}=shell('阿噗的营地','试穿外观 · 星糖兑换 · 火力独立成长',back);wallet(h,save);
+  const args={save,items,buy,back,power,upgrade};
+  tabs(scroll,[['dragon','角色装扮'],['bubble','泡泡皮肤'],['turret','炮台外观'],['power','火力升级'],['gear','功能装备']],tab,t=>this.shop({...args,tab:t}));
   if(tab==='power'){
    const info=power(),card=el('section','power-card');card.append(glyph('turret'),el('h2','',`Lv.${info.rank} · ${info.damage} 伤害`),el('p','',`大泡泡 ${info.damage*4} · 当前进度上限 ${info.capDamage}`));
    if(info.maxed)card.append(el('p','','火力已满级'));
-   else {card.append(el('p','',`下一档 ${info.nextDamage} 伤害`),el('p','',info.eligible?'升级资格已开放':`通关第 ${info.gate+1} 关后开放下一档`),currency(info.cost));const b=action('升级火力',()=>{const result=upgrade();this.shop({save,items,buy,back,power,upgrade,tab,message:result.reason});});b.disabled=!info.eligible||save.candy<info.cost;card.append(b);}
+   else {card.append(el('p','',`下一档 ${info.nextDamage} 伤害`),el('p','',info.eligible?'升级资格已开放':`通关第 ${info.gate+1} 关后开放下一档`),currency(info.cost));const b=action('升级火力',()=>{const result=upgrade();this.shop({...args,tab,message:result.reason});});b.disabled=!info.eligible||save.candy<info.cost;card.append(b);}
    card.append(el('p','',message||'购买地图不开放火力等级，实际通关才能提高上限。'));scroll.append(card);return;
   }
-  const grid=el('div','shop-grid');scroll.append(grid);
-  items.filter(item=>item.slot===tab).forEach(item=>{const card=el('section','shop-card');const im=image(`assets/${asset(item)}.png`,item.name);if(item.slot==='dragon')im.classList.add('dragon-preview');card.append(im,el('strong','',item.name),el('p','',item.description||'纯外观，不增加伤害'));
-   const owned=save.owned.includes(item.id),equipped=save.equipped[item.slot]===item.id;const status=el('p','shop-status',owned?'已拥有':'');if(!owned)status.append(currency(item.price));card.append(status,action(equipped?'已装备':owned?'装备':'购买',()=>{const result=buy(item.id);if(result.ok)this.shop({save,items,buy,back,power,upgrade,tab});else status.textContent=result.reason;}));grid.append(card);
-  });
+  const collection=items.filter(i=>i.slot===tab).sort((a,b)=>a.price-b.price),desired=collection.find(i=>i.id===selected)||collection.find(i=>i.id===save.equipped[tab]);
+  const tier=Number.isInteger(priceTier)?Math.max(0,Math.min(7,priceTier)):(desired?.collectionTier??0),goods=tab==='gear'?collection:collection.filter(i=>i.collectionTier===tier);
+  const focus=collection.find(i=>i.id===selected)||(priceTier===null?desired:null)||goods[0];
+  const showcase=el('section','shop-showcase tier-'+focus.rarity);showcase.dataset.preview=focus.id;
+  const scene=el('div','showcase-scene');scene.append(el('span','rarity-badge',focus.rarityName),el('span','preview-note','试穿预览'));
+  if(tab==='gear'){scene.append(portrait(focus,4,'showcase-gear'));}else{
+   const hero=tab==='dragon'?focus:items.find(i=>i.id===save.equipped.dragon),turret=tab==='turret'?focus:items.find(i=>i.id===save.equipped.turret),bubble=tab==='bubble'?focus:items.find(i=>i.id===save.equipped.bubble);
+   scene.append(el('span','showcase-plinth'),portrait(hero,3,'showcase-hero'),portrait(turret,2,'showcase-turret'),portrait(bubble,3,'showcase-bubble'));
+   if(focus.fx)for(let i=0;i<4;i++){const spark=el('span','showcase-spark');spark.style.setProperty('--spark',i);scene.append(spark);}
+  }
+  const info=el('div','showcase-info');info.append(el('strong','',focus.name),el('p','',focus.description||''));const owned=save.owned.includes(focus.id),equipped=save.equipped[tab]===focus.id;
+  const purchase=action(equipped?'已装备':owned?'装备此款':'购买并装备',()=>{const result=buy(focus.id);this.shop({...args,tab,selected:focus.id,priceTier:tab==='gear'?null:tier,message:result.ok?'已装备，去冒险看看吧':result.reason});});if(!owned)purchase.append(currency(focus.price));purchase.disabled=equipped;info.append(purchase);if(message)info.append(el('p','shop-message',message));showcase.append(scene,info);scroll.append(showcase);
+  const heading=el('div','collection-heading');heading.append(el('strong','',tab==='gear'?'功能装备':'外观收藏 · 24 款'),el('small','',tab==='gear'?'按需装备':'8 档 · 每档 3 款'));if(tab!=='gear')heading.append(action('基础款',()=>this.shop({...args,tab,selected:collection.find(i=>i.price===0).id,priceTier:tier}),'base-look'));scroll.append(heading);
+  if(tab!=='gear'){const picker=el('div','price-tier-picker'),select=el('select','price-tier-select'),prices=[40,80,160,260,420,650,1000,1600];select.setAttribute('aria-label','选择皮肤价位');prices.forEach((cost,i)=>{const o=el('option','',`${['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ','Ⅷ'][i]} ${['初旅','灵巧','精制','珍奇','华彩','史诗','星耀','典藏'][i]} · ${cost} 星糖`);o.value=i;o.selected=tier===i;select.append(o);});const change=t=>this.shop({...args,tab,priceTier:t,selected:collection.find(i=>i.collectionTier===t).id});select.onchange=()=>change(+select.value);const prev=action('‹',()=>change(Math.max(0,tier-1))),next=action('›',()=>change(Math.min(7,tier+1)));prev.setAttribute('aria-label','上一个价位');next.setAttribute('aria-label','下一个价位');prev.disabled=tier===0;next.disabled=tier===7;picker.append(prev,select,next);scroll.append(picker);}
+  const grid=el('div','shop-grid cosmetic-grid');scroll.append(grid);
+  for(const item of goods){const card=el('section','shop-card cosmetic-card tier-'+item.rarity+(item.id===focus.id?' selected':''));card.dataset.cosmetic=item.id;
+   const preview=action('',()=>this.shop({...args,tab,selected:item.id,priceTier:tab==='gear'?null:tier}),'cosmetic-choice');preview.setAttribute('aria-label','试穿'+item.name);preview.append(el('span','rarity-tag',item.rarityName),portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name));card.append(preview);
+   const owned=save.owned.includes(item.id),equipped=save.equipped[tab]===item.id,status=el('p','shop-status',equipped?'✓ 已装备':owned?'已收藏':'');if(!owned)status.append(currency(item.price));card.append(status);
+   const b=action(equipped?'已装备':owned?'装备':'购买',()=>{const result=buy(item.id);this.shop({...args,tab,selected:item.id,priceTier:tab==='gear'?null:tier,message:result.ok?'已装备':result.reason});});b.disabled=equipped;card.append(b);grid.append(card);
+  }
  },
  inventory({save,items,back,equip,goods,tab='items'}){
   const {h,scroll}=shell('我的仓库','查看已拥有的物品，战斗内用道具袋快捷使用。',back);wallet(h,save);
@@ -67,7 +87,7 @@
   const grid=el('div','shop-grid');scroll.append(grid);
   if(tab==='items')for(const [id,item]of Object.entries(items)){const row=el('section','shop-card');row.append(glyph(id),el('strong','',item.name),el('b','',`×${save.inventory[id]||0}`),el('p','',item.description));grid.append(row);}
   else if(tab==='medals'){const medals=Object.keys(save.bossClaims||{});if(!medals.length)grid.append(el('p','empty-collection','击败章节最终首领，收集主题徽章。'));for(const id of medals){const row=el('section','shop-card');row.append(image(`assets/w${id}-island.png`),el('strong','',window.CANDY_WORLDS[+id].name+'徽章'),el('p','','章节首领首通纪念'));grid.append(row);}}
-  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card'),im=image(`assets/${asset(item)}.png`);if(tab==='dragon')im.classList.add('dragon-preview');row.append(im,el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,tab});}));grid.append(row);}
+  else for(const item of goods.filter(i=>i.slot===tab&&save.owned.includes(i.id))){const row=el('section','shop-card');row.append(portrait(item,item.slot==='bubble'?3:2),el('strong','',item.name),action(save.equipped[tab]===item.id?'已装备':'装备',()=>{equip(item.id);this.inventory({save,items,back,equip,goods,tab});}));grid.append(row);}
  },
  tasks({save,missions,back}){
   const {h,scroll}=shell('章节任务','达成目标后，奖励自动进入星糖余额和仓库。',back);wallet(h,save);
@@ -86,7 +106,7 @@
   const hasKind=l=>l.world===world.id&&(l.waves.flat().some(t=>t[0]===kind)||(kind==='j'&&l.boss));
   const available=all.filter(l=>hasKind(l)&&(playtest||save.stars[l.id]||save.hiddenCleared[l.id]||l.id===seen?.stage||l.id===level.id));
   let selected=available.find(l=>l.id===options.selected)||available.find(l=>l.id===level.id)||available.find(l=>l.id===seen?.stage)||available[0];if(!selected)return;
-  const title=kind==='K'?'章节首领':kind==='b'?'精英'+world.enemy:world.enemy,{scroll}=shell(title,world.name,()=>this.codex(options));
+  const title=kind==='K'?(selected.hidden?'秘境守卫':'章节首领'):kind==='b'?'精英'+world.enemy:world.enemy,{scroll}=shell(title,world.name,()=>this.codex(options));
   const select=el('select','codex-stage');select.setAttribute('aria-label','查看关卡生命值');for(const l of available){const o=el('option','',l.hidden?l.name:`第 ${l.local+1} 关 · ${l.name}`);o.value=String(l.id);o.selected=l===selected;select.append(o);}select.onchange=()=>this.enemyDetail({...options,selected:available.find(l=>String(l.id)===select.value)?.id});scroll.append(select);
   const hp=new Set(selected.waves.flat().filter(t=>t[0]===kind).map(t=>Number(t.slice(1))*window.CandyProgress.recommendedAttack(selected)));if(kind==='j'&&selected.boss)hp.add(4*window.CandyProgress.recommendedAttack(selected));
   const card=el('section','codex-card');card.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`),el('h3','',title));
