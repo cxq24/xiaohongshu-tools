@@ -1,22 +1,28 @@
-# 早一点 Android 测试版 0.1.0
+# 早一点 Android 测试版 · 0.2.0
 
-支持 Android 8.0 及以上。这里是可安装的原生 APK，无需电脑或开发者账号。
+支持 Android 8.0 及以上。使用与 0.1 相同的包名和签名，可直接覆盖安装，保留现有设置。
 
-- [下载 APK](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-0.1.0.apk)
-- [备用 ZIP：解压后安装 APK](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-android.zip)
-- [SHA-256](little-morning-0.1.0.apk.sha256)
+- **[下载 0.2.0 APK](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-0.2.0.apk)**
+- [备用 ZIP](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-android-0.2.0.zip)
+- **[查看新版原生界面图](0.2.0-previews/README.md)**
+- [设计规范与参考访问记录](../DESIGN.md) · [源代码与说明](../android/README.md) · [验证结果](../android/VALIDATION.md)
 
-## 安装与测试
+## 本版变化
 
-1. 在安卓手机上下载 APK，用文件管理器打开，按提示允许当前来源安装应用。
-2. 打开“早一点”，允许首页的通知、准时响铃和锁屏显示权限；允许后返回 App。
-3. 开启系统闹钟音量，先点“试听我的早晨”。缺少中文语音时，点“中文语音设置”，启用或下载中文语音包。
-4. 点“10 秒后响铃”，响铃后点“我起床了”，检查是否停止铃声并开始播报。
-5. 再试一次并立即锁屏。若没有全屏界面，可点通知进入。还可以测试“再睡 5 分钟”和停止播放。
-6. 编辑时间、城市、日程和提醒，保存后退出重开检查是否保留。
+首页只保留下一次起床、开关和晨间播报摘要。首次进入选择时间及方案；播报内容、顺序、城市、日程、声音和权限逐级进入子页。支持跟随系统/日间/夜间。
 
-天气为固定示例；日程与提醒为手动输入，会持续重复直到修改。未接入真实天气或系统日历。
+响铃页长按约 0.8 秒起床，随后自动进入播放器；底部仅保留暂停/继续、下一条与结束。顺序页支持拖拽，也提供上下移动的可访问替代。空内容、日历未授权和缺少中文语音会记录原因并跳过，继续可用内容。
 
-本包已完成编译、开发签名、APK 签名校验、7 项排程逻辑检查和模拟器安装。尚未完成完整运行及真机锁屏、中文语音和各品牌后台兼容性验证。请先测试，再决定是否用于日常起床。
+## 手机测试
 
-APK SHA-256：`f786eac0877f6a6e0f43935e50f31464f4558a99967dd9444d5a485c891cdd91`
+1. 在安卓手机上下载 APK，用文件管理器打开，按提示允许当前来源安装。
+2. 新用户先选时间和晨间方案；旧用户保留原设置，可到“设置 → 重新选择晨间方案”查看预设。
+3. 点“试听我的早晨”，或从首页“体验”菜单安排 10 秒响铃；需要通知和准时响铃权限时会进入独立引导。
+4. 先保持前台验证长按起床、暂停、继续和结束，再单独安排一次锁屏测试。未允许全屏时可以点通知进入。
+5. 缺少中文语音时，完成页提供语音设置入口。日程可以手动填写，也可显式授权只读今天的系统日历。
+
+天气仍为固定示例，本地音乐为 20 秒原创旋律。Android 15 模拟器检查已通过；真实手机后台策略、锁屏弹出和听感仍需复测。
+
+[详细安装步骤](安装与测试-0.2.0.txt) · [SHA-256](little-morning-0.2.0.apk.sha256)
+
+旧版归档：[0.1.0 APK](little-morning-0.1.0.apk)

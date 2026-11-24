@@ -1,0 +1,4 @@
+INSTRUMENTATION_RESULT: speechOutcome=天气示例缺少可用中文语音，已跳过
+INSTRUMENTATION_RESULT: stream=PASS: 2-step setup, preset selection, home/routine/detail/settings navigation, drag and accessible reorder, 130% font recreation, night recreation, 10-second exact alarm, short-tap prevention, hold-to-broadcast, local music, pause/resume/skip, denied-calendar continuation, empty-content skip, missing-voice or TTS completion, service cleanup. Screenshots: /storage/emulated/0/Android/data/com.littlemorning.alarm/files/redesign-previews
+
+INSTRUMENTATION_CODE: -1
