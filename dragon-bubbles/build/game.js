@@ -230,7 +230,7 @@
       row.forEach((token,col)=>{if(token==='.')return;this.addTarget(token,col,y);});
     }
     addTarget(token,col,y,options={}){
-      const kind=token[0],hp=Number(token.slice(1))*(options.exact?1:this.balanceAttack),texture=`w${this.world.id}-`+{j:'jelly',b:'berry',p:'bomb',r:'pickup',K:'boss'}[kind];
+      const kind=token[0],hp=options.exact?Number(token.slice(1)):Economy.enemyHealth(this.level,kind,Number(token.slice(1))),texture=`w${this.world.id}-`+{j:'jelly',b:'berry',p:'bomb',r:'pickup',K:'boss'}[kind];
       const sprite=this.targets.create(48+col*44,y,texture);
       sprite.setScale(kind==='K'?2.5:kind==='p'?1.4:kind==='r'?1.4:1.2).refreshBody();
       const bw=kind==='K'?72:kind==='p'?27:kind==='r'?22:33,bh=kind==='K'?46:kind==='r'?22:23;

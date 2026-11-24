@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 from PIL import Image
 import os
 import json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.9.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','0.10.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass

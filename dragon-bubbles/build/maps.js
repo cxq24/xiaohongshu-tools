@@ -110,7 +110,7 @@
   let selected=available.find(l=>l.id===options.selected)||available.find(l=>l.id===level.id)||available.find(l=>l.id===seen?.stage)||available[0];if(!selected)return;
   const title=kind==='K'?(selected.hidden?'秘境守卫':'章节首领'):kind==='b'?'精英'+world.enemy:world.enemy,{scroll}=shell(title,world.name,()=>this.codex(options));
   const select=el('select','codex-stage');select.setAttribute('aria-label','查看关卡生命值');for(const l of available){const o=el('option','',l.hidden?l.name:`第 ${l.local+1} 关 · ${l.name}`);o.value=String(l.id);o.selected=l===selected;select.append(o);}select.onchange=()=>this.enemyDetail({...options,selected:available.find(l=>String(l.id)===select.value)?.id});scroll.append(select);
-  const hp=new Set(selected.waves.flat().filter(t=>t[0]===kind).map(t=>Number(t.slice(1))*window.CandyProgress.healthAttack(selected)));if(kind==='j'&&selected.boss)hp.add(4*window.CandyProgress.healthAttack(selected));
+  const hp=new Set(selected.waves.flat().filter(t=>t[0]===kind).map(t=>window.CandyProgress.enemyHealth(selected,kind,Number(t.slice(1)))));if(kind==='j'&&selected.boss)hp.add(window.CandyProgress.enemyHealth(selected,'j',4));
   const card=el('section','codex-card');card.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`),el('h3','',title));
   [...hp].sort((a,b)=>a-b).forEach((value,i)=>{const armor=kind==='K'?0:selected.armor||0;const row=el('p','codex-variant',`${hp.size>1?'形态 '+(i+1)+' · ':''}生命 ${value} · 普通泡泡 ${Math.ceil(value/attack)+armor} 次命中`);card.append(row);});
   if(selected.armor&&kind!=='K')card.append(el('p','','冰壳额外抵挡一次命中。'));card.append(el('p','','每只怪怪的生命值固定；不同关卡或强化形态会不同。'));scroll.append(card);

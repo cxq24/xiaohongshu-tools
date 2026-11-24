@@ -1,0 +1,303 @@
+{
+  "version": "0.10.0",
+  "formula": "oldHp * max(1,affordableFire/legacyFire)^0.70 * (1.05 + world*0.008 + local/29*0.035); elite *1.06; round mobs upward to 10; boss table",
+  "upgradeCost": 13550,
+  "rewardsUnchanged": true,
+  "allCUpgradesAffordable": true,
+  "twentyPercentSpendKeepsUpgrades": true,
+  "stageHpIsFixed": true,
+  "bombsAndPickupsUnchanged": true,
+  "waveHash": "1f721197feb9eb3cd5b7b7e67563c29671285de35e41b466c5f0fcf77a8a0967",
+  "chapters": [
+    {
+      "world": 1,
+      "name": "糖果森林",
+      "preBossRank": 4,
+      "preBossAttack": 140,
+      "cOnlyWallet": 470,
+      "aGradeWallet": 760,
+      "sGradeWallet": 1110,
+      "cWith20PercentSpendWallet": 288,
+      "bossOld": 12600,
+      "bossNew": 13700,
+      "bossIncreasePercent": 8.73,
+      "ordinary": {
+        "increasePercent": [
+          5,
+          14.29
+        ],
+        "medianHits": 3,
+        "p90Hits": 4
+      },
+      "elite": {
+        "increasePercent": [
+          12.12,
+          17.86
+        ],
+        "medianHits": 3,
+        "p90Hits": 4
+      }
+    },
+    {
+      "world": 2,
+      "name": "泡泡海湾",
+      "preBossRank": 9,
+      "preBossAttack": 190,
+      "cOnlyWallet": 1115,
+      "aGradeWallet": 1705,
+      "sGradeWallet": 2415,
+      "cWith20PercentSpendWallet": 676,
+      "bossOld": 20900,
+      "bossNew": 22600,
+      "bossIncreasePercent": 8.13,
+      "ordinary": {
+        "increasePercent": [
+          6.67,
+          11.11
+        ],
+        "medianHits": 4,
+        "p90Hits": 5
+      },
+      "elite": {
+        "increasePercent": [
+          13.33,
+          18.42
+        ],
+        "medianHits": 4,
+        "p90Hits": 5
+      }
+    },
+    {
+      "world": 3,
+      "name": "冰晶雪原",
+      "preBossRank": 14,
+      "preBossAttack": 248,
+      "cOnlyWallet": 1880,
+      "aGradeWallet": 2770,
+      "sGradeWallet": 3840,
+      "cWith20PercentSpendWallet": 1150,
+      "bossOld": 34720,
+      "bossNew": 37500,
+      "bossIncreasePercent": 8.01,
+      "ordinary": {
+        "increasePercent": [
+          7,
+          10.89
+        ],
+        "medianHits": 5,
+        "p90Hits": 6
+      },
+      "elite": {
+        "increasePercent": [
+          13,
+          16.94
+        ],
+        "medianHits": 5,
+        "p90Hits": 6
+      }
+    },
+    {
+      "world": 4,
+      "name": "蘑菇秘境",
+      "preBossRank": 19,
+      "preBossAttack": 316,
+      "cOnlyWallet": 2765,
+      "aGradeWallet": 3955,
+      "sGradeWallet": 5385,
+      "cWith20PercentSpendWallet": 1710,
+      "bossOld": 75840,
+      "bossNew": 80400,
+      "bossIncreasePercent": 6.01,
+      "ordinary": {
+        "increasePercent": [
+          7.69,
+          11.55
+        ],
+        "medianHits": 6,
+        "p90Hits": 7
+      },
+      "elite": {
+        "increasePercent": [
+          13.85,
+          17.88
+        ],
+        "medianHits": 6,
+        "p90Hits": 9
+      }
+    },
+    {
+      "world": 5,
+      "name": "齿轮工厂",
+      "preBossRank": 24,
+      "preBossAttack": 394,
+      "cOnlyWallet": 3770,
+      "aGradeWallet": 5260,
+      "sGradeWallet": 7050,
+      "cWith20PercentSpendWallet": 2356,
+      "bossOld": 86680,
+      "bossNew": 91900,
+      "bossIncreasePercent": 6.02,
+      "ordinary": {
+        "increasePercent": [
+          8.23,
+          12.31
+        ],
+        "medianHits": 7,
+        "p90Hits": 9
+      },
+      "elite": {
+        "increasePercent": [
+          14.72,
+          18.78
+        ],
+        "medianHits": 8,
+        "p90Hits": 10
+      }
+    },
+    {
+      "world": 6,
+      "name": "沙漠遗迹",
+      "preBossRank": 29,
+      "preBossAttack": 482,
+      "cOnlyWallet": 4895,
+      "aGradeWallet": 6685,
+      "sGradeWallet": 8835,
+      "cWith20PercentSpendWallet": 3088,
+      "bossOld": 130140,
+      "bossNew": 138000,
+      "bossIncreasePercent": 6.04,
+      "ordinary": {
+        "increasePercent": [
+          9.06,
+          12.86
+        ],
+        "medianHits": 7,
+        "p90Hits": 8
+      },
+      "elite": {
+        "increasePercent": [
+          15.55,
+          19.5
+        ],
+        "medianHits": 8,
+        "p90Hits": 9
+      }
+    },
+    {
+      "world": 7,
+      "name": "星光天文台",
+      "preBossRank": 39,
+      "preBossAttack": 732,
+      "cOnlyWallet": 5200,
+      "aGradeWallet": 7290,
+      "sGradeWallet": 9800,
+      "cWith20PercentSpendWallet": 2966,
+      "bossOld": 160920,
+      "bossNew": 178000,
+      "bossIncreasePercent": 10.61,
+      "ordinary": {
+        "increasePercent": [
+          10,
+          30.87
+        ],
+        "medianHits": 8,
+        "p90Hits": 10
+      },
+      "elite": {
+        "increasePercent": [
+          16.57,
+          38.93
+        ],
+        "medianHits": 9,
+        "p90Hits": 11
+      }
+    },
+    {
+      "world": 8,
+      "name": "霓虹都市",
+      "preBossRank": 54,
+      "preBossAttack": 1173,
+      "cOnlyWallet": 4905,
+      "aGradeWallet": 7295,
+      "sGradeWallet": 10165,
+      "cWith20PercentSpendWallet": 2210,
+      "bossOld": 234240,
+      "bossNew": 300000,
+      "bossIncreasePercent": 28.07,
+      "ordinary": {
+        "increasePercent": [
+          27.57,
+          58.93
+        ],
+        "medianHits": 8,
+        "p90Hits": 10
+      },
+      "elite": {
+        "increasePercent": [
+          35.32,
+          68.26
+        ],
+        "medianHits": 9,
+        "p90Hits": 11
+      }
+    },
+    {
+      "world": 9,
+      "name": "云端群岛",
+      "preBossRank": 74,
+      "preBossAttack": 1541,
+      "cOnlyWallet": 5480,
+      "aGradeWallet": 8170,
+      "sGradeWallet": 11400,
+      "cWith20PercentSpendWallet": 2290,
+      "bossOld": 417360,
+      "bossNew": 564000,
+      "bossIncreasePercent": 35.14,
+      "ordinary": {
+        "increasePercent": [
+          52.76,
+          69.06
+        ],
+        "medianHits": 9,
+        "p90Hits": 11
+      },
+      "elite": {
+        "increasePercent": [
+          61.84,
+          79.18
+        ],
+        "medianHits": 10,
+        "p90Hits": 13
+      }
+    },
+    {
+      "world": 10,
+      "name": "梦境城堡",
+      "preBossRank": 99,
+      "preBossAttack": 2000,
+      "cOnlyWallet": 5045,
+      "aGradeWallet": 8035,
+      "sGradeWallet": 11625,
+      "cWith20PercentSpendWallet": 1326,
+      "bossOld": 436240,
+      "bossNew": 698000,
+      "bossIncreasePercent": 60,
+      "ordinary": {
+        "increasePercent": [
+          62.32,
+          80.93
+        ],
+        "medianHits": 10,
+        "p90Hits": 12
+      },
+      "elite": {
+        "increasePercent": [
+          72.13,
+          91.76
+        ],
+        "medianHits": 11,
+        "p90Hits": 14
+      }
+    }
+  ]
+}

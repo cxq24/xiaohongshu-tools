@@ -1,8 +1,8 @@
-# 阿噗的像素弹弹冒险 · 0.9.0
+# 阿噗的像素弹弹冒险 · 0.10.0
 
 Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 个主线关卡，共 300 关，另有 30 个隐藏挑战**，保留双层地图，加入战斗内快捷道具栏、退出确认、图鉴、分类营地与进度限制的炮台成长。
 
-[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.9.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.9.0-test.zip)
+[下载普通版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.10.0.zip) · [下载全关开放测试版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-0.10.0-test.zip)
 
 测试版直接开放 10 个世界、300 个主线、30 个隐藏挑战和全部 75 款外观、3 件功能装备，切换装备不扣星糖。默认跟随本关推荐火力，也可在营地“火力升级”里固定 Lv.0—99（100—2000 伤害）；首次升级至本测试版时每种道具至少补到 10 个，按钮可补到 20 个，重载不会反复补给；页脚有测试版标记，存档使用独立键 `apu-candy-playtest-v1`。普通版仍用 `apu-candy-v1` 并保留正常解锁、升级与视频门槛。请勿把测试版当正式版本发布。
 
@@ -12,7 +12,9 @@ Phaser 3.90.0 像素风弹球闯关游戏。本版包含 **10 个主题 × 30 �
 
 0.8.0 取消角色旁重复能量条，仅保留底部大泡泡按钮，以按钮填色显示进度。黑洞、斥力场与传送门使用不同轮廓，新增状态提示与长按说明。通关可继续或返回，整理两层地图与营地的入口。两份包仍各为 **199 个文件**。详见 [0.8 交互与测试说明](GAMEPLAY_0.8.md)。
 
-0.9.0 增加飞行时长按两倍加速、同轮对同一只怪怪每第 10 次有效泡泡命中的双倍暴击，以及 Lv.99／2000 伤害成长。取消道具每局次数限制，准备类效果可叠加；界面统一使用系统清晰字体。怪物生命冻结为旧数值，不随新增火力升级上调；斥力场改为进圈时向外偏转一次，并显示范围。详见 [0.9 玩法和成长说明](GAMEPLAY_0.9.md)。
+0.9.0 增加飞行时长按两倍加速、同轮对同一只怪怪每第 10 次有效泡泡命中的双倍暴击，以及 Lv.99／2000 伤害成长。取消道具每局次数限制，准备类效果可叠加；界面统一使用系统清晰字体。0.9 当时保留旧怪物生命，0.10 已按关卡另行校准；斥力场改为进圈时向外偏转一次，并显示范围。详见 [0.9 玩法和成长说明](GAMEPLAY_0.9.md)。
+
+0.10.0 按实际升级门槛和星糖预算重新校准怪怪生命：普通怪所需普通命中的章内中位数由前期约 3 次逐步增至末章约 10 次，末关 Boss 调至 **698000**。生命按关卡固定，图鉴同步；星糖奖励、升级价格和外观属性不变。详见 [0.10 数值说明](GAMEPLAY_0.10.md)。
 
 ## 运行与上传
 
@@ -110,14 +112,16 @@ python3 tools/v6_cosmetic_checks.py
 python3 tools/v7_browser_checks.py # 历史 0.7 包验收
 python3 tools/v8_browser_checks.py # 历史 0.8 双包验收
 python3 tools/test_v9.cjs
-python3 tools/v9_browser_checks.py # 当前 0.9 双包验收
+python3 tools/v9_browser_checks.py # 历史 0.9 双包验收
+node tools/balance_v10.cjs
+python3 tools/v10_browser_checks.py # 当前双包与 C 级预算实战验收
 python3 tools/audio_recovery_checks.py
 python3 tools/audio_endurance.py
 python3 tools/simulate_campaign.py --end 300
 python3 tools/simulate_campaign.py --hidden --end 30
 ```
 
-300 关来自可复现的关卡设计规则，生成后冻结为固定数据，并非逐关手工绘制。关卡组合敌人分布、波次、机关位置及主题机制；结构签名为 300/300 不同。300 主线和 30 隐藏关均已由实际 Phaser 物理引擎模拟通关，按进度使用推荐火力，0.9 成功路线均未使用库存道具；主线按正常里程碑和收入升级，秘境使用相应推荐火力。自动策略会重试候选角度，没有修改生命或胜负条件。详细范围、限制与证据见 [VALIDATION.md](VALIDATION.md)。
+300 关来自可复现的关卡设计规则，生成后冻结为固定数据，并非逐关手工绘制。关卡组合敌人分布、波次、机关位置及主题机制；结构签名为 300/300 不同。300 主线和 30 隐藏关均已由实际 Phaser 物理引擎模拟通关，按进度使用推荐火力，0.10 成功路线均未使用库存道具；主线按正常里程碑和收入升级，秘境使用相应推荐火力。自动策略会重试候选角度，没有修改生命或胜负条件。详细范围、限制与证据见 [VALIDATION.md](VALIDATION.md)。
 
 手机真机兼容性、小红书本版部署、宣传片托管是否被宿主允许、人类玩家难度与留存尚未验证。自动通关证明可完成，不代表人类体验已经调平。
 

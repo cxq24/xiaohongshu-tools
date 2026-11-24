@@ -12,8 +12,24 @@
  function upgrade(p){const info=powerInfo(p);if(info.maxed)return {ok:false,reason:'火力已满级'};if(!info.eligible)return {ok:false,reason:`通关第 ${info.gate+1} 关后开放下一档`};if(p.candy<info.cost)return {ok:false,reason:`还差 ${info.cost-p.candy} 星糖`};p.candy-=info.cost;p.fireRank++;return {ok:true,reason:`普通泡泡伤害提升至 ${attackAt(p.fireRank)}`};}
  function recommendedRank(level){const before=level.hidden?level.trigger+1:level.id;let rank=0;while(rank<MAX_FIRE_RANK&&fireGate(rank+1)<before)rank++;return rank;}
  function recommendedAttack(level){return attackAt(recommendedRank(level));}
- // Freeze enemy HP at the original Lv.0–49 curve, independently of new player upgrades.
+ // Legacy health scale also keeps bombs and pickups stable; enemyHealth applies stage tuning.
  function healthAttack(level){return attackAt(Math.min(49,level.world*5+Math.floor((level.hidden?(level.trigger%30+1):level.local)/6)));}
+ // Fixed stage tuning, calibrated against the affordable C-grade upgrade route.
+ const BOSS_HEALTH_BOOST=[1.08,1.08,1.08,1.06,1.06,1.06,1.10,1.28,1.35,1.60];
+ function enemyHealth(level,kind,units){
+  const base=units*healthAttack(level);if(!['j','b','K'].includes(kind))return base;
+  const w=level.world,local=level.hidden?level.trigger%30:level.local;
+  if(kind==='K'){
+   const factor=level.hidden?1+(BOSS_HEALTH_BOOST[w]-1)*.75:BOSS_HEALTH_BOOST[w],step=base>=100000?1000:100;
+   const hp=Math.ceil(base*factor/step)*step;
+   if(!level.hidden)return hp;
+   const main=data.levels[w*30+29],token=main.waves.flat().find(t=>t[0]==='K');
+   return Math.min(hp,Math.floor(enemyHealth(main,'K',Number(token.slice(1)))*(level.bossRatioCap||.6)));
+  }
+  const growth=Math.max(1,recommendedAttack(level)/healthAttack(level));
+  const pressure=1.05+w*.008+(local/29)*.035;
+  return Math.ceil(base*Math.pow(growth,.70)*pressure*(kind==='b'?1.06:1)/10)*10;
+ }
  const cosmeticData=typeof module!=='undefined'&&module.exports?require('./cosmetics.js'):root.CANDY_COSMETICS;
  const SHOP=[
   {id:'dragon-mint',slot:'dragon',name:'薄荷阿噗',price:0,texture:'dragon',description:'薄荷小龙，最初的冒险伙伴'},
@@ -101,6 +117,6 @@
  function hiddenEligible(p,id){const h=data.hidden.find(x=>x.id===id);return !!h&&!!p.stars[h.trigger];}
  function unlockHidden(p,id){if(!hiddenEligible(p,id))return false;if(!p.hiddenUnlocked.includes(id))p.hiddenUnlocked.push(id);return true;}
  function winHidden(p,id,stats={}){const h=data.hidden.find(x=>x.id===id);if(!h||!p.hiddenUnlocked.includes(id))return {ok:false};const beforeInventory={...p.inventory},before=p.candy,first=!p.hiddenCleared[id],rewards=[];const bonus=gradeBonus[stats.grade]||0,oldBonus=gradeBonus[p.bestGrades[id]]||0;const amount=first?60+h.world*5+bonus:5+Math.max(0,bonus-oldBonus);p.hiddenCleared[id]=true;if(first){addItem(p,h.rewardItem);rewards.push(ITEMS[h.rewardItem].name+' ×1');}gradeReward(p,id,stats,rewards);discoverLevel(p,h);p.candy=Math.min(999999,p.candy+amount);return {ok:true,first,amount,totalCurrency:p.candy-before,balance:p.candy,rewards,loot:inventoryDiff(p,beforeInventory),medals:[]};}
- const api={buyConsumable,SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,MAX_FIRE_RANK,FIRE_RANK_CAPS,fireGate,discover,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,healthAttack,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
+ const api={buyConsumable,SHOP,ITEMS,COUNT,SIZE,FIRE_CAPS,MAX_FIRE_RANK,FIRE_RANK_CAPS,fireGate,discover,attackAt,attack:p=>attackAt(p.fireRank),powerInfo,upgrade,recommendedRank,recommendedAttack,healthAttack,enemyHealth,BOSS_HEALTH_BOOST,normalize,win,buy,canEnter,firstAvailable,unlockWorld,missions,addItem,spendItem,hiddenEligible,unlockHidden,winHidden,equipped:(p,slot)=>SHOP.find(x=>x.id===p.equipped[slot])};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CandyProgress=api;
 })(typeof window==='undefined'?globalThis:window);
