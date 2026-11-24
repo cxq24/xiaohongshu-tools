@@ -1,0 +1,10 @@
+{
+  "package": "@skillbuilder/miniapp-simulator",
+  "version": "0.2.12",
+  "archive_url": "https://registry.npmjs.org/@skillbuilder/miniapp-simulator/-/miniapp-simulator-0.2.12.tgz",
+  "archive_sha256": "ef8394c74c3c4917ba2c057350d5dbb97360ef4bab4f60b78fffdde2cf25f2fa",
+  "sdk_version": "0.7.1",
+  "sdk_sha256": "0e91f6f73086a5b610a219611897ab213343ecb3b0ce5f07c04d811eccf3e52d",
+  "use": "test/reference only; not bundled into the game",
+  "license": "ISC (upstream package metadata)"
+}

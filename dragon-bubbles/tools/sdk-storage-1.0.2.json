@@ -1,0 +1,17 @@
+{
+  "version": "1.0.2",
+  "sdk": "published JS SDK 0.7.1 from @skillbuilder/miniapp-simulator@0.2.12",
+  "reproduces_1_0_1_blocked_startup": true,
+  "native_host_is_mocked": true,
+  "checks": [
+    "missing version metadata no longer blocks boot",
+    "empty cache: null",
+    "empty cache: omitted",
+    "empty cache: empty-string",
+    "empty cache: not-found",
+    "object values inside data",
+    "SDK flattening of direct object values",
+    "unsupported host automatically uses browser storage",
+    "real I/O errors preserve saves; opt-in preview does not write"
+  ]
+}

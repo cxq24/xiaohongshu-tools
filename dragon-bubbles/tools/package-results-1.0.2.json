@@ -1,0 +1,25 @@
+{
+  "normal": {
+    "files": 199,
+    "source_files": 214,
+    "bundled_scripts": 15,
+    "pngs": 195,
+    "sha256": "55de040989a39b1bfbcf87305902250624afd9bc41088a2b2d1666e4b502a5af"
+  },
+  "test": {
+    "files": 199,
+    "source_files": 214,
+    "bundled_scripts": 15,
+    "pngs": 195,
+    "sha256": "b772357ba21c112503d4482f13aa7ad55f0c1a11f34515550ba8019020964a75"
+  },
+  "version": "1.0.2",
+  "all_images_and_font_unchanged": true,
+  "all_project_scripts_compiled": true,
+  "production_test_code_removed": true,
+  "vendored_engine_unchanged": true,
+  "normal_test_difference": "app.js",
+  "boundary_200_accepted": true,
+  "overflow_201_refused": true,
+  "previous_archive_preserved_on_error": true
+}

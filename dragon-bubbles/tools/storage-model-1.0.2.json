@@ -1,0 +1,26 @@
+{
+  "version": "1.0.2",
+  "checks": [
+    "browser compatibility and immutable snapshots",
+    "native authority, no reward/balance merge",
+    "legacy profile and sound migrated as JSON strings",
+    "capability detection independent of version metadata",
+    "async read gate prevents empty overwrite",
+    "read failure/corruption protection and retry",
+    "fresh-start consent rechecks native authority",
+    "one writer per key, coalescing and ordered acknowledgements",
+    "write failure backup and reload replay without item refund",
+    "ack-loss recovery and conflicting backup never merged",
+    "native/browser/native version transition",
+    "slow bridge acknowledgement keeps serialization lock",
+    "native operation with unavailable browser storage",
+    "quota and bridge result failures exposed",
+    "callback-only void bridge and missing version",
+    "empty cache and object-value response compatibility",
+    "unsupported native capability falls back to browser",
+    "cache-miss and storage-info absence confirmation",
+    "optional audio cache cannot block game startup",
+    "non-writing preview escape preserves both existing saves"
+  ],
+  "passed": 20
+}

@@ -1,0 +1,15 @@
+{
+  "version": "1.0.2",
+  "actual_zips": true,
+  "published_sdk": "0.7.1",
+  "native_responses_mocked": true,
+  "old_boot_failures_reproduced": 2,
+  "missing_version_metadata_fixed": true,
+  "first_use_cache_variants_fixed": true,
+  "callback_native_write_and_reload": true,
+  "object_storage_responses_fixed": true,
+  "unsupported_host_auto_fallback": true,
+  "optional_audio_failure_nonblocking": true,
+  "true_io_preserves_data_and_preview_never_writes": true,
+  "errors": []
+}

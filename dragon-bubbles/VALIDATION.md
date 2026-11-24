@@ -297,3 +297,17 @@ iPhone 小红书预览的真实声音表现尚需用户复测。桌面 Chromium 
 - 300 主线与 30 秘境从实际生产 ZIP 重新通关，模拟结果记录实际 ZIP SHA-256。数值与奖励规则保持 0.10.0，依据 frozen-balance-1.0.1.json。
 
 证据：storage-model-1.0.1.json、native-storage-browser-1.0.1.json、features-1.0.1.json、production-profile-1.0.1.json、三份 *-results-1.0.1.json、package-results-1.0.1.json、两份 simulation-1.0.1-*.json、release-1.0.1.json。节点／提示截图：secret-map-1.0.1.png、secret-status-1.0.1.png、save-retry-1.0.1.png。存档为设备缓存，不承诺卸载／清缓存／换机恢复或云同步。
+
+
+## 1.0.2：扫码启动与存储能力兼容
+
+- 去掉客户端版本信息这个读档前置条件；不调用 getLaunchOptions 阻塞启动。根据实际存储方法与明确不支持的调用结果自动兼容；真实 I/O 错误不会被当作空档覆盖。
+- 真实发布 JS SDK 0.7.1 的转换路径可复现旧 1.0.1 两类阻塞：缺少 buildVersion、首次读取成功但没有 data。使用同一 SDK、模拟原生响应加载两个实际 ZIP，验证新包正常启动。新增回归覆盖 JSON 字符串、对象与展开对象、空串、明确无 key、购买后原生写入并重载、旧宿主不支持时浏览器兼容，以及音量读取失败不阻塞主进度。
+- test_storage.cjs 通过 20 组模型检查，test_sdk_storage.cjs 通过 9 个发布 SDK 场景。原串行写入、快照合并、失败／配额、日志恢复及冲突保护继续通过。新增“先试玩”实际启动游戏，只在内存变化；测试确认原生、浏览器存档和写入调用均未改变。错误信息不包含玩家进度内容。
+- native_storage_browser_checks、production_profile_checks、production_browser_checks 与三个 v6 浏览器套件通过实际 ZIP 验证：延迟读取前不启动游戏或写空进度、迁移、真实购买与重试、声音设置、秘境节点和条件、已有解锁、正式／测试隔离、输入／退出／道具／外观、真实临时视频以及手机窄屏布局。浏览器运行错误为空。
+- test_package.py 通过 199 文件、195 PNG、唯一根入口、编译剔除测试代码、图片／引擎／许可保留、200／201 边界和失败保留上一有效包。214 个源文件中的 15 个脚本编入 app.js。发布包 SHA-256 为 55de040989a39b1bfbcf87305902250624afd9bc41088a2b2d1666e4b502a5af；仅发布生产 ZIP。
+- progress、levels、score、cosmetics、guides 的哈希与 1.0.1 一致，伤害／关卡／星糖奖励未变；本次未重复全量 330 关物理通关，沿用 1.0.1 的全量证据。音频合成代码未改，未重复六分钟耐久。
+
+证据：storage-model-1.0.2.json、sdk-storage-1.0.2.json、sdk-browser-1.0.2.json、native-storage-browser-1.0.2.json、production-profile-1.0.2.json、features-1.0.2.json、三份 *-results-1.0.2.json、package-results-1.0.2.json、frozen-balance-1.0.2.json、release-1.0.2.json。SDK 来源与双重哈希见 xhs-sdk-provenance.json，仅用于测试，不随游戏部署。截图 startup-failure-reproduced.png 与 startup-fixed-1.0.2.png 为同一发布 SDK 路径的旧／新包对照。
+
+宿主响应仍为模拟，不能据此确认用户扫码手机的具体失败分支，也没有声称完成 iPhone 小红书真机验收。用户可直接重新上传新版扫码，保留旧缓存；若仍异常，可在错误提示中复制定位信息，无须逐个查询客户端版本。

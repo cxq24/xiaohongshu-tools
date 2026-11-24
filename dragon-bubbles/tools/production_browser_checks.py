@@ -7,7 +7,7 @@ from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
 import ast, json, shutil, subprocess
-ROOT=Path(__file__).resolve().parents[1]; VERSION='1.0.1'; S='candyGame.scene.getScene("Adventure")'
+ROOT=Path(__file__).resolve().parents[1]; VERSION='1.0.2'; S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text())
 INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):
