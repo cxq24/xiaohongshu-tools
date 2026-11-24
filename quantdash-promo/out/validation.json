@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "artifacts": [
+    {
+      "file": "quantdash-30s-v1.mp4",
+      "bytes": 2295142,
+      "sha256": "9b399ac3b7b997b8dda4b77ed25752e48e61ee07a3085dd29254053915993acb",
+      "duration_seconds": 30.058667,
+      "frames": 900,
+      "size": [
+        1080,
+        1920
+      ],
+      "fps": "30/1",
+      "video_codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_codec": "aac",
+      "sample_rate": "48000",
+      "loudness_lufs": -19.47,
+      "true_peak_dbtp": -5.97,
+      "black_frames_detected": false
+    },
+    {
+      "file": "quantdash-30s-v1-nobgm.mp4",
+      "bytes": 2295142,
+      "sha256": "4cdf5e7bccfefc20528ac82fe47f0abe5053a867311618d96a92cacfbd306381",
+      "duration_seconds": 30.058667,
+      "frames": 900,
+      "size": [
+        1080,
+        1920
+      ],
+      "fps": "30/1",
+      "video_codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_codec": "aac",
+      "sample_rate": "48000",
+      "loudness_lufs": -27.64,
+      "true_peak_dbtp": -12.14,
+      "black_frames_detected": false
+    }
+  ],
+  "music_and_nobgm_video_frame_identical": true,
+  "music_and_nobgm_files_differ": true,
+  "nobgm_vs_sfx_reference_correlation": 0.9984921963024165,
+  "nobgm_silent_window_rms_dbfs": -240.0,
+  "qr_decoded_from_compressed_video": "https://quantdash.net/",
+  "sfx_audio_offset_probes": [
+    {
+      "cue_seconds": 0.1,
+      "offset_vs_prepared_source_samples": 2048,
+      "net_offset_vs_unadvanced_reference_samples": 0,
+      "net_offset_vs_unadvanced_reference_frames": 0.0
+    },
+    {
+      "cue_seconds": 10.4,
+      "offset_vs_prepared_source_samples": 2048,
+      "net_offset_vs_unadvanced_reference_samples": 0,
+      "net_offset_vs_unadvanced_reference_frames": 0.0
+    },
+    {
+      "cue_seconds": 23.05,
+      "offset_vs_prepared_source_samples": 2048,
+      "net_offset_vs_unadvanced_reference_samples": 0,
+      "net_offset_vs_unadvanced_reference_frames": 0.0
+    }
+  ],
+  "unadvanced_sfx_reference_sha256": "56d5544a0955a93f2c45c15855298f095fbe77d029a68c1dcbee213e250acbb4",
+  "shot_cuts_seconds": [
+    0,
+    4,
+    10,
+    17,
+    23,
+    30
+  ],
+  "music_bpm": 120,
+  "cuts_on_half_second_beat_grid": true,
+  "soundtrack_is_original_procedural": true,
+  "human_listening": "not verified",
+  "game_integration": "not performed; waiting for user approval",
+  "website_brand_match": "not verified; network access pending"
+}

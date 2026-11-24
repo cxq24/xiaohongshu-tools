@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>QuantDash · Direction frames</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#152231;display:flex;gap:24px;font-family:'Noto Sans CJK SC',sans-serif;color:#f0f6fc}.frame{position:relative;flex:none;width:360px;height:640px;overflow:hidden;background:radial-gradient(ellipse at 80% 50%,#16363e 0,transparent 60%),#07121e;padding:52px 28px}.brand{font:700 22px Arial;letter-spacing:-1px}.brand span{color:#66e2d1}.eyebrow{font-size:10px;letter-spacing:3px;color:#94a9be}.frame h1{font-size:34px;line-height:1.35;letter-spacing:-1px;margin:86px 0 20px}.frame h1 span{color:#66e2d1}.sub{font-size:14px;color:#94a9be;line-height:1.7}.foot{position:absolute;bottom:48px;left:28px;font:11px Arial;color:#94a9be}.code{background:#0c1e2f;border:1px solid #2b4555;border-radius:12px;padding:20px 14px;margin-top:30px;font:11px/1.8 monospace;white-space:pre;color:#c3dcdf}.tag{margin-top:22px;display:inline-block;padding:7px 12px;border:1px solid #32635f;border-radius:30px;color:#66e2d1;font-size:11px}.cta{text-align:center}.cta h1{margin-top:174px;font:700 43px Arial;letter-spacing:-2px}.url{font:700 27px Arial;color:#66e2d1;margin:50px 0 15px}
+</style>
+<section class="frame"><div class="brand">Quant<span>Dash</span></div><h1>把时间<br>留给<span>研究。</span></h1><p class="sub">多市场金融数据服务<br>让数据接入，成为研究的起点。</p><div class="tag">A 股 · ETF · 港股 · 美股</div><div class="foot">DATA FOR YOUR NEXT IDEA.</div></section>
+<section class="frame"><div class="brand">Quant<span>Dash</span></div><h1 style="margin-top:72px">用熟悉的 Python，<br><span>连接数据。</span></h1><div class="code">from quantdash import QuantDash
+
+qd = QuantDash()
+df = qd.klines.get(
+    "600519.SH",
+    period="1d",
+    count=5,
+    to_dataframe=True,
+)</div><div class="tag">配置 API Key 后调用</div><div class="foot">PYTHON SDK / OFFICIAL EXAMPLE</div></section>
+<section class="frame cta"><div class="eyebrow">MULTI-MARKET FINANCIAL DATA</div><h1>Quant<span style="color:#66e2d1">Dash</span></h1><p class="sub">为研究连接数据</p><div class="url">quantdash.net</div><p class="sub">获取 API Key，开始接入<br><span style="font:11px Arial">docs.quantdash.net</span></p></section>
+</html>

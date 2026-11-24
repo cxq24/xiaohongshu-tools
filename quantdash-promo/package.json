@@ -1,0 +1,21 @@
+{
+  "name": "quantdash-promo",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts QuantDashPromo out/quantdash-30s-v1.mp4 --browser-executable=/usr/bin/chromium --chrome-mode=chrome-for-testing --concurrency=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remotion": "4.0.484"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "jsqr": "1.4.0",
+    "qrcode": "^1.5.4",
+    "typescript": "6.0.3"
+  }
+}

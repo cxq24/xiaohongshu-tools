@@ -1,0 +1,13 @@
+{
+  "node": "24.22.3",
+  "remotion": "4.0.484",
+  "react": "19.2.7",
+  "python": {
+    "numpy": "2.3.5",
+    "Pillow": "13.0.0",
+    "fonttools": "4.61.1",
+    "scipy": "1.17.0"
+  },
+  "renderer": "/usr/bin/chromium; chrome-for-testing mode",
+  "render_note": "selectComposition is resolved separately for music/no-music to avoid frozen defaultProps"
+}

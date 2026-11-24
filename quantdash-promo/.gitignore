@@ -1,0 +1,8 @@
+node_modules/
+.remotion/
+out/qa/frames/
+__pycache__/
+out/qa/*.wav
+out/qa/rendered-*.png
+out/qa/reviewer/*
+!out/qa/reviewer/final-*.png

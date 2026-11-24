@@ -1,0 +1,29 @@
+{
+  "browser": "Desktop Chromium; not an iPhone/XHS-device test",
+  "results": [
+    {
+      "file": "quantdash-30s-v1.mp4",
+      "sha256": "9b399ac3b7b997b8dda4b77ed25752e48e61ee07a3085dd29254053915993acb",
+      "chromium_actual_playback": true,
+      "seek_end_decoded": true,
+      "duration": 30.058667,
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "error": null,
+      "audioDecodedBytes": 19373
+    },
+    {
+      "file": "quantdash-30s-v1-nobgm.mp4",
+      "sha256": "4cdf5e7bccfefc20528ac82fe47f0abe5053a867311618d96a92cacfbd306381",
+      "chromium_actual_playback": true,
+      "seek_end_decoded": true,
+      "duration": 30.058667,
+      "width": 1080,
+      "height": 1920,
+      "muted": false,
+      "error": null,
+      "audioDecodedBytes": 19360
+    }
+  ]
+}

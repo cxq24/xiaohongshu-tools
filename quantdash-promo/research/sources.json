@@ -1,0 +1,27 @@
+{
+  "product": {
+    "repository": "https://github.com/quantdash-net/QuantDash",
+    "commit": "053ab30d0f7f43b5e33f033d3ee96a1df5f6048f",
+    "facts": [
+      "A股、ETF、港股、美股",
+      "Python SDK",
+      "统一 K 线调用",
+      "A股全市场行情快照",
+      "DataFrame 输出",
+      "前复权、后复权、不复权等参数"
+    ],
+    "website": "https://quantdash.net/",
+    "docs": "https://docs.quantdash.net/",
+    "website_capture": "blocked by environment outbound allowlist; no website UI reproduced"
+  },
+  "motion_reference": {
+    "repository": "https://github.com/Vincentwei1021/video-shotcraft",
+    "commit": "59f3e9b9e936ff2bce0e18446226d770a3f2f61f",
+    "cards": [
+      "bezier-source-converge-merge",
+      "logo-shrink-wordmark-lockup"
+    ],
+    "adaptation": "portrait geometry and typography, QuantDash text wordmark; terminal close-up is custom, not the full terminal-3d recipe"
+  },
+  "status": "review draft only; not integrated into game"
+}

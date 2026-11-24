@@ -1,0 +1,181 @@
+{
+  "origin": "Original procedural music and abstract data SFX created for this project. No stock music, samples or voice cloning.",
+  "bpm": 120,
+  "output_priming_advance_samples": 2048,
+  "output_priming_pipeline": "Remotion 4.0.484, AAC 48kHz, H264 MP4, measured 2026-11-24 against three decoded SFX probes",
+  "seed": 20261124,
+  "freesound_attempt": "Blocked by environment destination policy (403); no downloaded sound claimed. Abstract data-flow tones are an intentional visual metaphor.",
+  "listening": "No human listening verification; numerical checks and soundtrack files supplied for review.",
+  "files": [
+    {
+      "file": "music.wav",
+      "seconds": 30,
+      "sha256": "4ac9c74d1c074a3f31d39f6f01cdf97fec455dfbbf638b9384fb943b5e37d187",
+      "sample_peak_dbfs": -6.5447584840328545,
+      "rms_dbfs": -21.3886088891553
+    },
+    {
+      "file": "sfx.wav",
+      "seconds": 30,
+      "sha256": "13d04d41241cd126aab1271f0ded68d5f38d3b6e6c6f1d9fdf02045a4be3f3ee",
+      "sample_peak_dbfs": -12.141916086345745,
+      "rms_dbfs": -36.09931076972917
+    }
+  ],
+  "cues": [
+    {
+      "name": "opening-reveal",
+      "at_seconds": 0.1,
+      "frame": 3,
+      "kind": "air",
+      "gain": 0.15
+    },
+    {
+      "name": "market-connect-0",
+      "at_seconds": 4.615,
+      "frame": 138,
+      "kind": "data",
+      "gain": 0.07
+    },
+    {
+      "name": "market-connect-1",
+      "at_seconds": 4.828333333333333,
+      "frame": 145,
+      "kind": "data",
+      "gain": 0.064
+    },
+    {
+      "name": "market-connect-2",
+      "at_seconds": 5.041666666666667,
+      "frame": 151,
+      "kind": "data",
+      "gain": 0.05800000000000001
+    },
+    {
+      "name": "market-connect-3",
+      "at_seconds": 5.255,
+      "frame": 158,
+      "kind": "data",
+      "gain": 0.052000000000000005
+    },
+    {
+      "name": "data-converge",
+      "at_seconds": 7.55,
+      "frame": 226,
+      "kind": "air",
+      "gain": 0.18
+    },
+    {
+      "name": "converge-land",
+      "at_seconds": 7.93,
+      "frame": 238,
+      "kind": "settle",
+      "gain": 0.13
+    },
+    {
+      "name": "python-window",
+      "at_seconds": 10.4,
+      "frame": 312,
+      "kind": "air",
+      "gain": 0.12
+    },
+    {
+      "name": "code-row-0",
+      "at_seconds": 11.166666666666666,
+      "frame": 335,
+      "kind": "tick",
+      "gain": 0.08
+    },
+    {
+      "name": "code-row-2",
+      "at_seconds": 11.633333333333333,
+      "frame": 349,
+      "kind": "tick",
+      "gain": 0.062
+    },
+    {
+      "name": "code-row-3",
+      "at_seconds": 11.866666666666667,
+      "frame": 356,
+      "kind": "tick",
+      "gain": 0.08
+    },
+    {
+      "name": "code-row-4",
+      "at_seconds": 12.1,
+      "frame": 363,
+      "kind": "tick",
+      "gain": 0.07100000000000001
+    },
+    {
+      "name": "code-row-5",
+      "at_seconds": 12.333333333333334,
+      "frame": 370,
+      "kind": "tick",
+      "gain": 0.062
+    },
+    {
+      "name": "code-row-6",
+      "at_seconds": 12.566666666666666,
+      "frame": 377,
+      "kind": "tick",
+      "gain": 0.08
+    },
+    {
+      "name": "code-row-7",
+      "at_seconds": 12.8,
+      "frame": 384,
+      "kind": "tick",
+      "gain": 0.07100000000000001
+    },
+    {
+      "name": "code-row-8",
+      "at_seconds": 13.033333333333333,
+      "frame": 391,
+      "kind": "tick",
+      "gain": 0.062
+    },
+    {
+      "name": "feature-card-0",
+      "at_seconds": 18.275000000000002,
+      "frame": 548,
+      "kind": "settle",
+      "gain": 0.07
+    },
+    {
+      "name": "feature-card-1",
+      "at_seconds": 18.908333333333335,
+      "frame": 567,
+      "kind": "settle",
+      "gain": 0.07
+    },
+    {
+      "name": "feature-card-2",
+      "at_seconds": 19.541666666666668,
+      "frame": 586,
+      "kind": "settle",
+      "gain": 0.07
+    },
+    {
+      "name": "brand-contract",
+      "at_seconds": 23.05,
+      "frame": 692,
+      "kind": "air",
+      "gain": 0.15
+    },
+    {
+      "name": "brand-land",
+      "at_seconds": 24.22,
+      "frame": 727,
+      "kind": "settle",
+      "gain": 0.2
+    },
+    {
+      "name": "wordmark-finish",
+      "at_seconds": 26.3,
+      "frame": 789,
+      "kind": "finish",
+      "gain": 0.14
+    }
+  ]
+}
