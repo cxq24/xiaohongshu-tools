@@ -13,7 +13,7 @@ class Quiet(SimpleHTTPRequestHandler):
 def f(page,body):return page.evaluate('()=>{const s='+S+';'+body+'}')
 def ready(page):page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"')
 with TemporaryDirectory() as temp:
- with ZipFile(R/'dragon-bubbles-1.0.0.zip') as z:
+ with ZipFile(R/'dragon-bubbles-1.0.1.zip') as z:
   z.extractall(temp);app=z.read('app.js').decode()
   for marker in ['测试火力','测试版','补满测试道具','testFireRank','testStockVersion','apu-candy-playtest-v1','无平台广告收益','宣传视频待配置']:
    assert marker not in app,marker
@@ -25,9 +25,9 @@ with TemporaryDirectory() as temp:
   profile=page.evaluate('JSON.parse(localStorage.getItem("apu-candy-v1"))');assert profile['fireRank']==0 and profile['candy']==0 and len(profile['owned'])==4 and profile['worlds']==[0]
   page.screenshot(path=str(R/'previews/production-title.png'),full_page=True)
   f(page,'s.showLevels()');assert page.locator('.world-island.blocked').count()==9
-  f(page,'s.showChapter(0)');assert page.locator('.level-node:not([disabled])').count()==1;assert page.locator('.secret-node').count()==0;page.screenshot(path=str(R/'previews/production-chapter.png'),full_page=True)
+  f(page,'s.showChapter(0)');assert page.locator('.level-node:not([disabled])').count()==1;assert page.locator('.secret-node').count()==3;page.screenshot(path=str(R/'previews/production-chapter.png'),full_page=True)
   # Even an accidental runtime profile flag cannot restore compiled-out test controls.
-  f(page,'window.CandyRelease={version:"1.0.0",playtest:true};s.showWorkshop("power")');assert page.locator('.test-fire-select').count()==0;assert page.get_by_role('button',name='补满测试道具',exact=True).count()==0
+  f(page,'window.CandyRelease={version:"1.0.1",playtest:true};s.showWorkshop("power")');assert page.locator('.test-fire-select').count()==0;assert page.get_by_role('button',name='补满测试道具',exact=True).count()==0
   assert page.get_by_role('button',name='升级火力',exact=True).is_disabled()
   for text in ['测试版','测试火力','待配置','无平台广告收益','诊断','调试']:assert text not in page.locator('body').inner_text()
   page.locator('#help').click();page.get_by_text('成长与奖励',exact=True).click();assert 'Lv.99' in page.locator('#help-dialog').inner_text();page.screenshot(path=str(R/'previews/production-help.png'),full_page=True);page.locator('#close-help').click()
@@ -39,8 +39,8 @@ with TemporaryDirectory() as temp:
   oc=b.new_context(viewport={'width':390,'height':844});oc.add_init_script('if(!localStorage.getItem("apu-candy-v1"))localStorage.setItem("apu-candy-v1",'+json.dumps(json.dumps(old))+');');op=oc.new_page();op.on('pageerror',lambda e:errors.append(str(e)));op.goto(url);ready(op);actual=op.evaluate('JSON.parse(localStorage.getItem("apu-candy-v1"))')
   for key in ['fireRank','candy','stars','owned','equipped','inventory','worlds','hiddenUnlocked','bossClaims','claimed']:assert actual[key]==old[key],key
   assert 'testFireRank' not in actual
-  f(op,'s.showChapter(0)');assert op.locator('.secret-node').count()==1;assert op.locator('.secret-node').is_enabled();op.locator('.secret-node').click();assert '待配置' not in op.locator('body').inner_text();op.get_by_role('button',name='进入隐藏关',exact=True).click();assert f(op,'return s.isHidden');f(op,'s.beginLevel()');assert f(op,'return s.attackDamage')==150
+  f(op,'s.showChapter(0)');assert op.locator('.secret-node').count()==3;assert op.locator('.secret-node').first.is_enabled();op.locator('.secret-node').first.click();assert '待配置' not in op.locator('body').inner_text();op.get_by_role('button',name='进入隐藏关',exact=True).click();assert f(op,'return s.isHidden');f(op,'s.beginLevel()');assert f(op,'return s.attackDamage')==150
   assert not errors,errors
-  (R/'tools/production-profile-1.0.0.json').write_text(json.dumps({'version':'1.0.0','actual_production_zip':True,'test_code_absent':True,'fresh_save_gated':True,'test_save_does_not_leak':True,'runtime_flag_cannot_restore_test_ui':True,'old_profile_purchases_currency_and_unlocks_preserved':True,'unconfigured_secret_entries_hidden':True,'previously_unlocked_secrets_preserved':True,'no_external_asset_requests':True,'no_failed_resources':True,'errors':errors},indent=2)+'\n');b.close()
+  (R/'tools/production-profile-1.0.1.json').write_text(json.dumps({'version':'1.0.1','actual_production_zip':True,'test_code_absent':True,'fresh_save_gated':True,'test_save_does_not_leak':True,'runtime_flag_cannot_restore_test_ui':True,'old_profile_purchases_currency_and_unlocks_preserved':True,'secret_entries_visible_with_conditions':True,'previously_unlocked_secrets_preserved':True,'no_external_asset_requests':True,'no_failed_resources':True,'errors':errors},indent=2)+'\n');b.close()
  server.shutdown()
 print('PASS: production-only controls, fresh/old profiles, hidden unavailable video, existing secret access and local assets.')

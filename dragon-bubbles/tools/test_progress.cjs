@@ -30,6 +30,7 @@ const ids=new Set();for(const level of [...campaign.levels,...campaign.hidden]){
 console.log('PASS: all 300 sequential unlocks, paid adjacent worlds, inventory conservation, 30 hidden gates, rare first-clear rewards and themed cosmetics.');
 const vm=require('node:vm'),fs=require('node:fs');
 const box={setInterval(){},window:{addEventListener(){},dispatchEvent(){}},document:{hidden:false,addEventListener(){}},navigator:{},localStorage:{getItem(){return null;}},Event:class {}};
+box.window.CandyStore={ready:{then(fn){fn();}},read(){return null;},write(){return Promise.resolve(true);}};
 vm.runInNewContext(fs.readFileSync(require.resolve('../build/audio.js'),'utf8'),box);
 for(let world=0;world<10;world++){
  const samples=box.window.CandyAudio.renderMusic(8000,world);let energy=0;

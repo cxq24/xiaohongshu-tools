@@ -1,0 +1,17 @@
+{
+  "version": "1.0.1",
+  "actual_zip": true,
+  "documented_bridge_mocks": true,
+  "native_read_before_game": true,
+  "native_sound_preferences_before_audio": true,
+  "legacy_profile_migration": true,
+  "write_serialization_via_real_shop_ui": true,
+  "write_failure_and_retry": true,
+  "sound_native_save_reload": true,
+  "read_error_blocks_empty_overwrite": true,
+  "corrupt_native_blocks_overwrite": true,
+  "three_secret_nodes_visible": true,
+  "milestone_and_video_gates_preserved": true,
+  "already_unlocked_secret_access": true,
+  "errors": []
+}

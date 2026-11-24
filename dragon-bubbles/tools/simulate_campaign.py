@@ -7,7 +7,8 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
-import argparse,json,shutil
+import argparse,json,shutil,hashlib
+from io import BytesIO
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
 ROOT=Path(__file__).resolve().parents[1]
@@ -58,9 +59,10 @@ INSTALL=r'''()=>{
  };
 }'''
 folder=TemporaryDirectory()
-serve=ROOT/'build'
+serve=ROOT/'build';archive_sha256=None
 if args.archive:
- with ZipFile(args.archive) as z:z.extractall(folder.name)
+ archive_bytes=args.archive.read_bytes();archive_sha256=hashlib.sha256(archive_bytes).hexdigest()
+ with ZipFile(BytesIO(archive_bytes)) as z:z.extractall(folder.name)
  serve=Path(folder.name)
 with sync_playwright() as p:
  server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(serve)));Thread(target=server.serve_forever,daemon=True).start()
@@ -81,7 +83,7 @@ with sync_playwright() as p:
     if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-1.0.0-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'1.0.0','actual_zip':bool(args.archive),'results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-1.0.1-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'1.0.1','actual_zip':bool(args.archive),'archive_sha256':archive_sha256,'results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

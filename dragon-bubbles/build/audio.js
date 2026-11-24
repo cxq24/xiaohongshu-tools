@@ -1,9 +1,9 @@
 /* Original chip music and sound design. No network, recorded voices or audio files. */
-(() => {
+window.CandyStore.ready.then(() => {
   'use strict';
   const STORE='apu-audio-v2', DEFAULTS={enabled:true,music:.28,effects:.65,voice:.65};
   let settings={...DEFAULTS};
-  try{const raw=JSON.parse(localStorage.getItem(STORE));if(raw){for(const k of ['enabled'])if(typeof raw[k]==='boolean')settings[k]=raw[k];for(const k of ['music','effects','voice'])if(typeof raw[k]==='number'&&Number.isFinite(raw[k]))settings[k]=Math.max(0,Math.min(1,raw[k]));}}catch(_){}
+  const raw=window.CandyStore.read(STORE);if(raw){for(const k of ['enabled'])if(typeof raw[k]==='boolean')settings[k]=raw[k];for(const k of ['music','effects','voice'])if(typeof raw[k]==='number'&&Number.isFinite(raw[k]))settings[k]=Math.max(0,Math.min(1,raw[k]));}
   let ctx,master,compressor,musicGain,effectGain,voiceGain,musicBuffer,musicSource=null,musicOffset=0,musicStart=0,paused=false,hidden=document.hidden,unlockedOnce=false,resuming=null,theme=0,lastError="",recoveryAttempts=0,needsGesture=true;
   const active=new Set(),last={},stats={events:{},musicStarts:0,musicRestarts:0,prunedEffects:0,voiceMode:'拟声'};
   const midi=n=>440*2**((n-69)/12);
@@ -52,7 +52,7 @@
     return output;
   }
   function notify(){window.dispatchEvent(new Event('candy-audio-change'));}
-  function save(){try{localStorage.setItem(STORE,JSON.stringify(settings));}catch(_){}notify();}
+  function save(){window.CandyStore.write(STORE,settings);notify();}
   function setup(){
     if(ctx&&ctx.state!=='closed')return true;
     if(ctx)stopEffects();
@@ -111,4 +111,4 @@
   window.addEventListener('pageshow',()=>{hidden=document.hidden;recover();});window.addEventListener('pagehide',()=>{hidden=true;stopMusic();stopEffects();});window.addEventListener('focus',visibility);
   setInterval(()=>{pruneEffects();if(unlockedOnce&&settings.enabled&&!hidden&&!paused)recover();},4000);
   window.CandyAudio={unlock,play,voice,set,pause,setTheme(id){if(theme===id)return;stopMusic();theme=id;musicBuffer=null;musicOffset=0;startMusic();},preview:name=>play(name,0,true),get settings(){return {...settings};},get status(){return {available:Boolean(window.AudioContext||window.webkitAudioContext),running:ctx?.state==='running',musicPlaying:Boolean(musicSource),theme,unlockedOnce,contextTime:ctx?.currentTime||0,paused,active:active.size,contextState:ctx?.state||'not-started',needsGesture,recoveryAttempts,lastError,audioSession:navigator.audioSession?.type||'unsupported',...stats,events:{...stats.events}};},render,renderMusic};
-})();
+});

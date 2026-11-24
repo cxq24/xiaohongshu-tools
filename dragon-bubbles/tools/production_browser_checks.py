@@ -7,7 +7,7 @@ from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
 import ast, json, shutil, subprocess
-ROOT=Path(__file__).resolve().parents[1]; VERSION='1.0.0'; S='candyGame.scene.getScene("Adventure")'
+ROOT=Path(__file__).resolve().parents[1]; VERSION='1.0.1'; S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text())
 INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):
@@ -30,7 +30,7 @@ with TemporaryDirectory() as folder:
   page.goto(base+'/normal/');page.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"')
   assert len(saved(page,'apu-candy-v1')['owned'])==4
   assert page.evaluate('CandyRelease.version')==VERSION
-  f(page,'s.showChapter(0)');assert page.locator('.secret-node').count()==0
+  f(page,'s.showChapter(0)');assert page.locator('.secret-node').count()==3
   f(page,'s.showWorkshop("power")');assert page.locator('.test-fire-select').count()==0;assert page.get_by_role('button',name='升级火力',exact=True).is_disabled()
   assert page.get_by_text('测试火力',exact=True).count()==0
   # An operator can enable a real video later without rebuilding the main bundle.
@@ -138,6 +138,6 @@ with TemporaryDirectory() as folder:
   budget_result['bossDefeatedVolley']=f(bp,'return s.bossDefeatedVolley');budget_result['startingCurrency']=profile['candy'];assert profile['candy']==5045;assert f(bp,'return s.remaining()')==0
   bp.evaluate('candyGame.loop.wake()');bp.wait_for_timeout(80);bp.screenshot(path=str(ROOT/'previews/normal-budget-victory-production.png'),full_page=True)
   assert not errors,errors
-  (ROOT/f'tools/features-{VERSION}.json').write_text(json.dumps({'version':VERSION,'both_actual_zips':True,'single_energy_control':True,'real_physics_first_level_receipt':True,'reward_next_and_map_returns':True,'field_absorption_real_flight':True,'sleep_and_quota_visible':True,'repulsion_real_flight':True,'long_press_field_and_portal_inspection':True,'sensor_aim_preview':True,'two_level_navigation_and_context_return':True,'all_78_goods_owned_in_test':True,'all_72_paid_looks_equippable_free':True,'test_fire_0_to_99_and_recommended':True,'test_inventory_persists_and_refills':True,'normal_save_isolated':True,'hold_speed_flight_ratio':ratio,'speed_release_and_pause_reset':True,'timed_challenge_scales_with_speed':True,'production_test_controls_removed':True,'unconfigured_secret_entries_hidden':True,'player_copy_clean':True,'fixed_final_boss_hp':698000,'ordinary_elite_hp_examples':[320,340,15320],'codex_matches_scene_hp':True,'test_fire_does_not_change_hp':True,'per_monster_tenth_hit_critical':True,'stackable_inventory_and_repeat_retreat':True,'multiple_rewind_no_refunds':True,'readable_canvas_and_dom_fonts':True,'mobile_widths':[320,390,430],'normal_c_grade_budget_final_boss':budget_result,'errors':errors},indent=2)+'\n');browser.close()
+  (ROOT/f'tools/features-{VERSION}.json').write_text(json.dumps({'version':VERSION,'both_actual_zips':True,'single_energy_control':True,'real_physics_first_level_receipt':True,'reward_next_and_map_returns':True,'field_absorption_real_flight':True,'sleep_and_quota_visible':True,'repulsion_real_flight':True,'long_press_field_and_portal_inspection':True,'sensor_aim_preview':True,'two_level_navigation_and_context_return':True,'all_78_goods_owned_in_test':True,'all_72_paid_looks_equippable_free':True,'test_fire_0_to_99_and_recommended':True,'test_inventory_persists_and_refills':True,'normal_save_isolated':True,'hold_speed_flight_ratio':ratio,'speed_release_and_pause_reset':True,'timed_challenge_scales_with_speed':True,'production_test_controls_removed':True,'secret_entries_visible_with_conditions':True,'player_copy_clean':True,'fixed_final_boss_hp':698000,'ordinary_elite_hp_examples':[320,340,15320],'codex_matches_scene_hp':True,'test_fire_does_not_change_hp':True,'per_monster_tenth_hit_critical':True,'stackable_inventory_and_repeat_retreat':True,'multiple_rewind_no_refunds':True,'readable_canvas_and_dom_fonts':True,'mobile_widths':[320,390,430],'normal_c_grade_budget_final_boss':budget_result,'errors':errors},indent=2)+'\n');browser.close()
  server.shutdown()
 print('PASS: production ZIP energy, physics fields, routing, all test goods, fire control and isolated saves.')

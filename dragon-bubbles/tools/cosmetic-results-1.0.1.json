@@ -1,0 +1,19 @@
+{
+  "version": "1.0.1",
+  "real_zip": true,
+  "readable_system_font": true,
+  "preview_does_not_spend": true,
+  "purchase_and_equip": true,
+  "four_frame_animation": true,
+  "cosmetics_no_damage_bonus": true,
+  "collision_centred_and_equal_radius": true,
+  "all_sheet_dimensions": true,
+  "72_distinct_paid_designs": true,
+  "eight_price_bands_three_each": true,
+  "mobile_widths": [
+    320,
+    390,
+    430
+  ],
+  "errors": []
+}

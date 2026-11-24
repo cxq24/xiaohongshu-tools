@@ -46,7 +46,7 @@
    b.append(el('b','',level.boss?'♛':String(i+1)),el('span','node-stars',stars?'★'.repeat(stars):level.elite?'精英':''),el('span','node-name',level.name));trail.append(b);
    if(open&&!stars&&!next){next=b;b.classList.add('next');const avatar=image('assets/dragon.png','阿噗所在位置');avatar.className='route-avatar';b.append(avatar);}
   });
-  hidden.filter(x=>x.world===world.id&&(window.CandyRelease.playtest||window.CandyAds.available||save.hiddenUnlocked.includes(x.id))).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible&&!open;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'秘境挑战':'隐藏挑战'));trail.append(b);});
+  hidden.filter(x=>x.world===world.id).forEach(level=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id),local=level.trigger-start+1;const b=action('',()=>secret(level),'secret-node'+(!eligible&&!open?' locked':''));b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.setAttribute('aria-label',`${level.name}，${open?'已开启':eligible?'可查看挑战':'通关第'+local+'关后开启'}`);b.append(el('b','','✦'),el('span','',open?'秘境已开启':!eligible?'秘境 · 第'+local+'关后':window.CandyAds.available?'秘境 · 观看开启':'秘境 · 暂未开放'));trail.append(b);});
   const bottom=el('nav','map-bottom');bottom.append(action('战前准备',prepare),action('章节任务',tasks));h.append(bottom);
   if(next)requestAnimationFrame(()=>{scroll.scrollTop=Math.max(0,next.offsetTop-scroll.clientHeight/2);});
  },
@@ -117,8 +117,9 @@
  },
  secret({save,level,available,unlock,play,back}){
   const {scroll}=shell(level.name,'可跳过，不影响 300 关主线进度',back);const card=el('section','secret-card');card.append(image('assets/portal.png'),el('h2','',({timed:'限时清屏',defense:'守护工程师',obstacle:'机关试炼',raid:'首领讨伐'})[level.mode]||'秘境挑战'),el('p','',`首通奖励：${window.CandyProgress.ITEMS[level.rewardItem].name} ×1，以及星糖。`),el('p','','首次完整观看视频后开启；失败可免费重试。'));
-  const open=save.hiddenUnlocked.includes(level.id);const status=el('p','secret-status',open?'挑战已开启':available?'完整观看视频即可开启':'秘境暂未开放，可继续主线');
-  const b=action(open?'进入隐藏关':available?'观看视频并开启':'秘境暂未开放',async()=>{if(open){play(level);return;}b.disabled=true;status.textContent='正在打开视频…';const result=await unlock(level.id);b.disabled=false;if(result.completed){play(level);}else status.textContent=result.reason;});b.disabled=!open&&!available;card.append(status,b,action('跳过，继续主线',back));scroll.append(card);
+  const open=save.hiddenUnlocked.includes(level.id),eligible=open||Boolean(save.stars[level.trigger]),local=level.trigger-level.world*30+1;
+  const status=el('p','secret-status',open?'挑战已开启':!eligible?`通关本章第 ${local} 关后开启`:available?'完整观看视频即可开启':'秘境暂未开放，可继续主线');
+  const b=action(open?'进入隐藏关':!eligible?`通关第 ${local} 关后开启`:available?'观看视频并开启':'秘境暂未开放',async()=>{if(open){play(level);return;}if(!eligible)return;b.disabled=true;status.textContent='正在打开视频…';const result=await unlock(level.id);b.disabled=false;if(result.completed){play(level);}else status.textContent=result.reason;});b.disabled=!open&&(!eligible||!available);card.append(status,b,action('返回章节地图',back));scroll.append(card);
  }
  };
 })();

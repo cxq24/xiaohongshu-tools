@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import ast,json,shutil
-VERSION=os.environ.get('CANDY_TEST_VERSION','1.0.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','1.0.1')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 source=ast.parse((ROOT/'tools/simulate_campaign.py').read_text());INSTALL=next(ast.literal_eval(n.value) for n in source.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='INSTALL' for t in n.targets))
 class Quiet(SimpleHTTPRequestHandler):

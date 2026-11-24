@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import json,shutil,subprocess
-VERSION=os.environ.get('CANDY_TEST_VERSION','1.0.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','1.0.1')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass

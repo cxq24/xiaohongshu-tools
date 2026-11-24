@@ -1,0 +1,16 @@
+{
+  "version": "1.0.1",
+  "frozen_from": "0.10.0",
+  "source_sha256": {
+    "progress.js": "953e4082e708073ece2f6a895415540a1d4af3c09a87f041d43e14dcacd104f2",
+    "levels.js": "2cb8f27c5586e618230274cc47c8ca4aa15a7ab1e6d8b93e457d59a45f9f8041",
+    "score.js": "c609e0f01aac440aeda62354f8181b4fb7a45904764fec6b38d722e30ad737ee",
+    "cosmetics.js": "8cde955961d06da1e8626b30eec32ad6e5764963dcf0cde1c6c99b26bf975825",
+    "guides.js": "a0e89a78350373eede49838576218956d90fff429409dabe8ea1d8827e071e96"
+  },
+  "final_boss_hp": 698000,
+  "max_fire_rank": 99,
+  "max_attack": 2000,
+  "economy_unchanged": true,
+  "audio_change": "storage adapter only; audio rendering verified separately"
+}

@@ -1,0 +1,27 @@
+{
+  "version": "1.0.1",
+  "profile": "production",
+  "frozen_balance": "0.10.0",
+  "source_files": 214,
+  "upload_files": 199,
+  "platform_file_limit": 200,
+  "png_files": 195,
+  "artifacts": [
+    {
+      "file": "dragon-bubbles-1.0.1.zip",
+      "bytes": 1220192,
+      "sha256": "58092cb19a2e04fa4e0e3e1b3bcf61e037cdf14690e8dc34fd1610e3aae63f28",
+      "playtest": false
+    }
+  ],
+  "test_build_published": false,
+  "native_cache_min_client": "9.46",
+  "native_cache_keys": [
+    "apu-candy-v1",
+    "apu-audio-v2"
+  ],
+  "cloud_save": false,
+  "promo_configured": false,
+  "secret_nodes_visible": true,
+  "native_bridge_tests": "documented API mocks; real-device verification pending"
+}

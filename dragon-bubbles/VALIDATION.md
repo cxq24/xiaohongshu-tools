@@ -285,3 +285,15 @@ iPhone 小红书预览的真实声音表现尚需用户复测。桌面 Chromium 
 - `test_package.py` 验证可复现内容、项目脚本编译、引擎／图片／字体／样式保留、两配置仅 app.js 不同、各 199 文件、200 接受／201 拒绝且不覆盖有效包。内部测试 ZIP 不发布。
 
 证据：`production-profile-1.0.0.json`、`features-1.0.0.json`、`frozen-balance-1.0.0.json`、两份 `simulation-1.0.0-*.json`（actual_zip 为 true）、三份 `*-results-1.0.0.json`、`package-results-1.0.0.json`、`release-1.0.0.json`。生产界面截图：`production-title.png`、`production-chapter.png`、`production-help.png`。尚未代上传小红书或完成 iPhone 真机体验。
+
+
+## 1.0.1：原生缓存、迁移与秘境节点恢复
+
+- 按小红书随包 API 参考接入 window.xhs.miniTool.getStorage/setStorage，检查 9.46+ 与具体能力，数据按 JSON 字符串读写；普通浏览器／旧客户端使用原 key。游戏、声音和 UI 等待读取完成，读取失败不先写默认进度。
+- test_storage.cjs 通过 14 组场景：原生优先、旧数据和音量迁移、版本与异步启动、同 key 单写入／最新快照合并、失败与配额、延迟确认、重开日志恢复、冲突不合并经济状态、浏览器降级往返和不可用存储。新进度恢复需明确确认且重新检查原生值。
+- native_storage_browser_checks.py 从实际生产 ZIP，模拟文档中的原生 Promise 桥接，验证延迟读取前无 Phaser／空写入、真实连续购买串行扣星糖、失败提示与重试、音量保存重载、原生空值迁移、原生读取错误／损坏保护、已解锁秘境直接进入。此验证不是小红书真机执行，原生行为仍需预览确认。
+- 每章三个秘境节点始终可见，点击可查看第 5／15／25 关条件；未达条件不能观看或进入。达到条件但无视频显示暂未开放；解锁请求也会检查主线前置，避免仅凭视频完成绕过关卡。已有解锁可直接重试。未配置素材没有伪造观看完成。
+- 正式版／内部测试、旧正常存档、外观／火力、道具／快照、暴击／长按加速、声音恢复、真实临时 31 秒宣传片、320／390／430 布局回归通过。新增源码 storage.js 被编译进 app.js：214 源文件、15 合并脚本，生产 ZIP 仍为 199 文件且唯一根 index.html。
+- 300 主线与 30 秘境从实际生产 ZIP 重新通关，模拟结果记录实际 ZIP SHA-256。数值与奖励规则保持 0.10.0，依据 frozen-balance-1.0.1.json。
+
+证据：storage-model-1.0.1.json、native-storage-browser-1.0.1.json、features-1.0.1.json、production-profile-1.0.1.json、三份 *-results-1.0.1.json、package-results-1.0.1.json、两份 simulation-1.0.1-*.json、release-1.0.1.json。节点／提示截图：secret-map-1.0.1.png、secret-status-1.0.1.png、save-retry-1.0.1.png。存档为设备缓存，不承诺卸载／清缓存／换机恢复或云同步。

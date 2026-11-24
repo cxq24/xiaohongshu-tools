@@ -1,5 +1,5 @@
 /* Original game logic. Phaser 3.90.0 supplies rendering, input and Arcade Physics. */
-(() => {
+window.CandyStore.ready.then(() => {
   'use strict';
   const W=360,H=640,LAUNCH={x:180,y:540},SPEED=410,ENERGY_MAX=100;
   const COLORS={ink:0x253449,cream:0xffefc2,green:0x477d60,light:0xb8d39e,gold:0xf0c77c};
@@ -7,9 +7,9 @@
   const levels=window.CANDY_LEVELS;
   const Economy=window.CandyProgress;
   const playtest=window.CandyRelease.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
-  let rawSave={};try{rawSave=JSON.parse(localStorage.getItem(storageKey))||{};}catch(_){}
+  const rawSave=window.CandyStore.read(storageKey)||{};
   const save=Economy.normalize(rawSave);
-  function persist(){try{localStorage.setItem(storageKey,JSON.stringify(save));}catch(_){}}
+  function persist(){return window.CandyStore.write(storageKey,save);}
   function testFooter(){if(playtest)document.querySelector('footer span')?.replaceChildren(document.createTextNode('测试版 · 全外观 · '+(save.testFireRank===null?'推荐火力':'固定火力 '+Economy.attackAt(save.testFireRank))));}
   if(playtest){
     save.worlds=Array.from({length:10},(_,i)=>i);save.hiddenUnlocked=window.CANDY_HIDDEN.map(h=>h.id);
@@ -112,7 +112,7 @@
     }
     showSecret(level){
       this.clearScreen();this.state='secret';this.input.enabled=false;
-      window.CandyMapView.secret({save,level,available:window.CandyAds.available,back:()=>this.showChapter(level.world),play:h=>this.startLevel(h),unlock:async id=>{const result=await window.CandyAds.request(id);if(result.completed&&Economy.unlockHidden(save,id))persist();return result;}});
+      window.CandyMapView.secret({save,level,available:window.CandyAds.available,back:()=>this.showChapter(level.world),play:h=>this.startLevel(h),unlock:async id=>{if(!Economy.hiddenEligible(save,id))return {completed:false,reason:'先完成对应主线关卡，再来挑战秘境'};const result=await window.CandyAds.request(id);if(result.completed){if(!Economy.unlockHidden(save,id))return {completed:false,reason:'尚未达到开启条件'};persist();}return result;}});
     }
     showWorkshop(tab='dragon',returnTo=null){
       const origin=this.state,world=origin==='won'?this.world.id:(this.mapWorld??this.world?.id??0);
@@ -501,4 +501,4 @@
     physics:{default:'arcade',arcade:{gravity:{x:0,y:0},fps:120,fixedStep:true,debug:false}},
     scene:[Adventure],audio:{noAudio:true},banner:false};
   window.candyGame=new Phaser.Game(config);
-})();
+});
