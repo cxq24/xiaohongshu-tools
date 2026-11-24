@@ -31,6 +31,6 @@ with zipfile.ZipFile(out/'base.apk') as src, zipfile.ZipFile(out/'unsigned.apk',
     dst.write(out/'dex/classes.dex','classes.dex')
 PY
 "$BT/zipalign" -f -p 4 "$OUT/unsigned.apk" "$OUT/aligned.apk"
-java -jar "$BT/lib/apksigner.jar" sign --ks "$TOOLS/signing/debug.p12" --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out "$OUT/little-morning-0.2.0.apk" "$OUT/aligned.apk"
-java -jar "$BT/lib/apksigner.jar" verify --verbose "$OUT/little-morning-0.2.0.apk"
-"$BT/aapt2" dump badging "$OUT/little-morning-0.2.0.apk"
+java -jar "$BT/lib/apksigner.jar" sign --ks "$TOOLS/signing/debug.p12" --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out "$OUT/little-morning-0.2.1.apk" "$OUT/aligned.apk"
+java -jar "$BT/lib/apksigner.jar" verify --verbose "$OUT/little-morning-0.2.1.apk"
+"$BT/aapt2" dump badging "$OUT/little-morning-0.2.1.apk"

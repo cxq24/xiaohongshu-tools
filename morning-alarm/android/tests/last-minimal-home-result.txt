@@ -1,0 +1,3 @@
+INSTRUMENTATION_RESULT: stream=PASS: 0.2-to-0.2.1 preferences retained, minimal home, single-line summary, clock editing, real alarm switch scheduling/cancellation, preview moved to editor and playable, test/cancel moved to settings, day/night and 130% font layout
+
+INSTRUMENTATION_CODE: -1

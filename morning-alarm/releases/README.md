@@ -1,28 +1,23 @@
-# 早一点 Android 测试版 · 0.2.0
+# 早一点 Android 测试版 · 0.2.1
 
-支持 Android 8.0 及以上。使用与 0.1 相同的包名和签名，可直接覆盖安装，保留现有设置。
+支持 Android 8.0 及以上，可覆盖安装 0.2.0 并保留原有设置。
 
-- **[下载 0.2.0 APK](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-0.2.0.apk)**
-- [备用 ZIP](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-android-0.2.0.zip)
-- **[查看新版原生界面图](0.2.0-previews/README.md)**
-- [设计规范与参考访问记录](../DESIGN.md) · [源代码与说明](../android/README.md) · [验证结果](../android/VALIDATION.md)
+- **[下载 0.2.1 APK](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-0.2.1.apk)**
+- [备用 ZIP](https://github.com/cxq24/xiaohongshu-tools/raw/refs/heads/main/morning-alarm/releases/little-morning-android-0.2.1.zip)
+- **[查看极简首页截图](0.2.1-previews/README.md)**
+- [设计规范](../DESIGN.md) · [源代码与说明](../android/README.md) · [验证记录](../android/VALIDATION.md)
 
-## 本版变化
+## 本版调整
 
-首页只保留下一次起床、开关和晨间播报摘要。首次进入选择时间及方案；播报内容、顺序、城市、日程、声音和权限逐级进入子页。支持跟随系统/日间/夜间。
+首页只保留大时间、重复星期、闹钟开关和一行“起床后”播报摘要，右上角只有设置入口。
 
-响铃页长按约 0.8 秒起床，随后自动进入播放器；底部仅保留暂停/继续、下一条与结束。顺序页支持拖拽，也提供上下移动的可访问替代。空内容、日历未授权和缺少中文语音会记录原因并跳过，继续可用内容。
+- 点时间直接修改。
+- 点摘要进入播报编辑页，试听移至该页底部。
+- 响铃测试与取消体验/贪睡移到“设置 → 体验响铃”。
+- 移除首页的试听大按钮、体验入口、额外标题和说明文字。
 
-## 手机测试
+已通过模拟器检查：覆盖安装偏好保留、时间修改、真实闹钟开关、迁移后的试听/测试/取消入口，以及昼夜和 130% 字体布局。未重复运行所有 0.2.0 播放场景；真实手机后台与中文听感仍需复测。天气仍为示例。
 
-1. 在安卓手机上下载 APK，用文件管理器打开，按提示允许当前来源安装。
-2. 新用户先选时间和晨间方案；旧用户保留原设置，可到“设置 → 重新选择晨间方案”查看预设。
-3. 点“试听我的早晨”，或从首页“体验”菜单安排 10 秒响铃；需要通知和准时响铃权限时会进入独立引导。
-4. 先保持前台验证长按起床、暂停、继续和结束，再单独安排一次锁屏测试。未允许全屏时可以点通知进入。
-5. 缺少中文语音时，完成页提供语音设置入口。日程可以手动填写，也可显式授权只读今天的系统日历。
+[安装步骤](安装与测试-0.2.1.txt) · [SHA-256](little-morning-0.2.1.apk.sha256)
 
-天气仍为固定示例，本地音乐为 20 秒原创旋律。Android 15 模拟器检查已通过；真实手机后台策略、锁屏弹出和听感仍需复测。
-
-[详细安装步骤](安装与测试-0.2.0.txt) · [SHA-256](little-morning-0.2.0.apk.sha256)
-
-旧版归档：[0.1.0 APK](little-morning-0.1.0.apk)
+旧版：[0.2.0 APK](little-morning-0.2.0.apk) · [0.2.0 界面](0.2.0-previews/README.md) · [0.1.0 APK](little-morning-0.1.0.apk)
