@@ -8,7 +8,7 @@ from functools import partial
 from playwright.sync_api import sync_playwright
 import os
 import json,shutil,subprocess
-VERSION=os.environ.get('CANDY_TEST_VERSION','0.10.0')
+VERSION=os.environ.get('CANDY_TEST_VERSION','1.0.0')
 ROOT=Path(__file__).resolve().parents[1];S='candyGame.scene.getScene("Adventure")'
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -71,8 +71,8 @@ with TemporaryDirectory() as folder:
   # Promo integration uses an actual local 31-second TEST FIXTURE, not a countdown.
   videoctx=browser.new_context(viewport={'width':390,'height':844});videoctx.add_init_script('if(!localStorage.getItem("apu-candy-v1"))localStorage.setItem("apu-candy-v1",JSON.stringify({version:4,economyVersion:1,stars:{0:3,1:3,2:3,3:3,4:3},claimed:{0:true,1:true,2:true,3:true,4:true}}));')
   videoctx.route('**/video-config.js',lambda route:route.fulfill(status=200,content_type='application/javascript',body=f'window.CANDY_PROMO={{src:{json.dumps(url+"fixture.mp4")},minimumSeconds:30}};'))
-  v=videoctx.new_page();v.on('pageerror',lambda e:errors.append(str(e)));v.goto(url);v.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"');f(v,'s.showChapter(0)');v.locator('.secret-node').first.click();v.get_by_role('button',name='观看宣传视频并开启').click();v.wait_for_function('document.getElementById("promo-video").readyState>=2');v.locator('#skip-promo').click();assert saved(v)['hiddenUnlocked']==[]
-  v.get_by_role('button',name='观看宣传视频并开启').click();v.wait_for_function(S+'.isHidden && '+S+'.state==="intro"',timeout=45000);assert 'h-0-0' in saved(v)['hiddenUnlocked']
+  v=videoctx.new_page();v.on('pageerror',lambda e:errors.append(str(e)));v.goto(url);v.wait_for_function('window.candyGame?.scene.getScene("Adventure")?.state==="title"');f(v,'s.showChapter(0)');v.locator('.secret-node').first.click();v.get_by_role('button',name='观看视频并开启').click();v.wait_for_function('document.getElementById("promo-video").readyState>=2');v.locator('#skip-promo').click();assert saved(v)['hiddenUnlocked']==[]
+  v.get_by_role('button',name='观看视频并开启').click();v.wait_for_function(S+'.isHidden && '+S+'.state==="intro"',timeout=45000);assert 'h-0-0' in saved(v)['hiddenUnlocked']
   assert not errors,errors;assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   (ROOT/f'tools/browser-results-{VERSION}.json').write_text(json.dumps({'version':VERSION,'inline_item_tray':True,'exit_cancel_confirm':True,'progress_gated_upgrades':True,'cosmetics_independent':True,'codex_and_enemy_inspect':True,'audio_clean_and_recovers':True,'timed_pause_timeout':True,'defense_lives':True,'real_promo_completion':True,'errors':errors},indent=2)+'\n')
   browser.close()

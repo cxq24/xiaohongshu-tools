@@ -272,3 +272,16 @@ iPhone 小红书预览的真实声音表现尚需用户复测。桌面 Chromium 
 - 打包验证两 ZIP 各 199 文件、195 PNG、唯一根入口，保留全部运行素材，200 可打包／201 预先拒绝且不覆盖上个有效包。用户文档不进入部署包。
 
 证据：`balance-0.10.0.json`、`features-0.10.0.json`、两份 `simulation-0.10.0-*.json`、三份 `*-results-0.10.0.json`、`package-results-0.10.0.json`、`release-0.10.0.json`。新截图见 `previews/*-v10.png`。未代上传小红书；真人难度和 iPhone 宿主表现仍需试玩确认。
+
+
+## 1.0.0：生产定稿与页面清理
+
+- 采用 0.10.0 数值，不再改动难度。`frozen-balance-1.0.0.json` 记录 progress、levels、score、cosmetics、audio、guides 的原始 SHA-256，源文件与 0.10.0 一致。最终 Boss 698000，最高火力 Lv.99／2000。
+- 构建固定生产开关并由锁定的 Terser 5.44.1 剔除测试分支。实际生产 app.js 不包含测试火力、补库存、测试存档键、testFireRank 或 testStockVersion；源码保留独立内部测试构建。Phaser 引擎原字节和完整 MIT／字体许可保留。
+- `production_profile_checks.py` 从唯一发布 ZIP 验证：新存档 0 星糖、基础装备、仅首关可选，测试进度不会导入；即使运行时误改 profile 标志也不会恢复已编译掉的测试 UI。旧正常存档的星糖、升级、外观、库存、已通关／已领取记录与秘境解锁保留，旧调试字段忽略。
+- 未配置视频时隐藏未开放秘境入口；已解锁秘境在没有当前视频供应器时仍可重试。无“待配置”“无广告收益”等开发备注。真实 31 秒临时视频另由浏览器回归确认完整观看／跳过语义，测试素材不随包发出。
+- 全部 300 主线和 30 秘境从压缩后的生产 ZIP 重新运行实际 Phaser 模拟，全部通关。秘境直接检查战斗可完成性，视频和奖励由独立流程验收，不代表跳过实际发布视频门槛。
+- production_browser_checks 及 v6 套件从实际压缩 ZIP 检查技能、暴击、道具叠加、快照、长按加速、暂停、退出、火力上限、图鉴、72 款外观、声音恢复、320/390/430 布局与正式／内部测试存档隔离。正式版全 C 星糖预算末关再次通关；数值及支付规则未变。
+- `test_package.py` 验证可复现内容、项目脚本编译、引擎／图片／字体／样式保留、两配置仅 app.js 不同、各 199 文件、200 接受／201 拒绝且不覆盖有效包。内部测试 ZIP 不发布。
+
+证据：`production-profile-1.0.0.json`、`features-1.0.0.json`、`frozen-balance-1.0.0.json`、两份 `simulation-1.0.0-*.json`（actual_zip 为 true）、三份 `*-results-1.0.0.json`、`package-results-1.0.0.json`、`release-1.0.0.json`。生产界面截图：`production-title.png`、`production-chapter.png`、`production-help.png`。尚未代上传小红书或完成 iPhone 真机体验。

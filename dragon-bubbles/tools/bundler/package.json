@@ -1,0 +1,7 @@
+{
+  "name": "apu-release-bundler",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build-time JavaScript minification; never shipped in the mini-tool ZIP",
+  "dependencies": {"terser": "5.44.1"}
+}

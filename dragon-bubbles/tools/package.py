@@ -3,9 +3,9 @@ Authoring sources stay split in build/. Only the deployment representation is bu
 """
 from pathlib import Path
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
-import json, hashlib, argparse, re
+import json, hashlib, argparse, re, subprocess
 
-VERSION = '0.10.0'
+VERSION = '1.0.0'
 MAX_FILES = 200
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / 'build'
@@ -44,16 +44,26 @@ def compile_runtime(playtest=False):
         raise ValueError('Missing required configuration or engine script')
     # The plain settings file remains editable, and runs before promo initialization.
     bundled = [name for name in scripts if name != 'video-config.js']
+    sources = {name:entries[name].decode('utf-8') for name in bundled if name != engine}
+    sources['release-config.js'] = f"window.CandyRelease=Object.freeze({{version:'{VERSION}',playtest:{str(playtest).lower()}}});"
+    try:
+        result = subprocess.run(['node', str(ROOT/'tools/bundler/minify.cjs')], input=json.dumps({'sources':sources,'playtest':playtest}), text=True, capture_output=True, check=True)
+        compiled = json.loads(result.stdout)
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as error:
+        raise ValueError('Release compiler failed; run npm ci --prefix tools/bundler --ignore-scripts. '+str(getattr(error,'stderr',''))) from error
     pieces = []
     for name in bundled:
         source = entries.pop(name)
-        if name == 'release-config.js' and playtest:
-            source = f"window.CandyRelease=Object.freeze({{version:'{VERSION}',playtest:true}});\n".encode()
-        # Explicit separators preserve independent script boundaries and all source notices.
-        pieces.append(b';\n/* Bundled source: ' + name.encode() + b' */\n' + source + b'\n;\n')
+        if name != engine:
+            source = compiled[name].encode('utf-8')
+        pieces.append(b';\n' + source + b'\n;\n')
     if 'app.js' in entries:
         raise ValueError('app.js is reserved for the deployment bundle')
     entries['app.js'] = b''.join(pieces)
+    if not playtest:
+        forbidden = ['测试火力','测试版','补满测试道具','apu-candy-playtest-v1','testFireRank','testStockVersion']
+        if any(marker.encode() in entries['app.js'] for marker in forbidden):
+            raise ValueError('Production bundle still contains test code; no ZIP written')
     inserted = False
 
     def replace_script(match):
@@ -100,7 +110,7 @@ def package(playtest=False):
         assert [n for n in archive.namelist() if Path(n).suffix.lower() in {'.html', '.htm'}] == ['index.html']
         assert all(archive.read(n) == data for n, data in entries.items())
     print(f'{output.name}: {source_count} sources → {len(entries)}/{MAX_FILES} upload files; '
-          f'{bundled_count} scripts bundled, CSS inlined; {output.stat().st_size} bytes. '
+          f'{bundled_count} scripts compiled, CSS inlined; {output.stat().st_size} bytes. '
           'File count, types, licenses, checksums and ZIP contents verified.')
     return output
 

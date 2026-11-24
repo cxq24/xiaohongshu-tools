@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "actual_production_zip": true,
+  "test_code_absent": true,
+  "fresh_save_gated": true,
+  "test_save_does_not_leak": true,
+  "runtime_flag_cannot_restore_test_ui": true,
+  "old_profile_purchases_currency_and_unlocks_preserved": true,
+  "unconfigured_secret_entries_hidden": true,
+  "previously_unlocked_secrets_preserved": true,
+  "no_external_asset_requests": true,
+  "no_failed_resources": true,
+  "errors": []
+}

@@ -46,7 +46,7 @@
    b.append(el('b','',level.boss?'♛':String(i+1)),el('span','node-stars',stars?'★'.repeat(stars):level.elite?'精英':''),el('span','node-name',level.name));trail.append(b);
    if(open&&!stars&&!next){next=b;b.classList.add('next');const avatar=image('assets/dragon.png','阿噗所在位置');avatar.className='route-avatar';b.append(avatar);}
   });
-  hidden.filter(x=>x.world===world.id).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible&&!open;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'宣传视频秘境':'隐藏挑战'));trail.append(b);});
+  hidden.filter(x=>x.world===world.id&&(window.CandyRelease.playtest||window.CandyAds.available||save.hiddenUnlocked.includes(x.id))).forEach((level,i)=>{const eligible=Boolean(save.stars[level.trigger]),open=save.hiddenUnlocked.includes(level.id);const b=action('',()=>secret(level),'secret-node');b.disabled=!eligible&&!open;b.style.left='80%';b.style.top=((level.trigger-start)*66+90)+'px';b.append(el('b','','✦'),el('span','',open?'秘境已开启':eligible?'秘境挑战':'隐藏挑战'));trail.append(b);});
   const bottom=el('nav','map-bottom');bottom.append(action('战前准备',prepare),action('章节任务',tasks));h.append(bottom);
   if(next)requestAnimationFrame(()=>{scroll.scrollTop=Math.max(0,next.offsetTop-scroll.clientHeight/2);});
  },
@@ -55,12 +55,12 @@
   const args={save,items,buy,back,power,upgrade,warehouse,testPower};
   h.querySelector('.map-back').setAttribute('aria-label','返回');if(warehouse){const bag=action('',()=>warehouse(tab),'camp-warehouse');bag.setAttribute('aria-label','道具仓库');bag.title='道具仓库';bag.append(glyph('bag'));h.querySelector('.map-heading').append(bag);}
   tabs(scroll,[['dragon','角色装扮'],['bubble','泡泡皮肤'],['turret','炮台外观'],['power','火力升级'],['gear','功能装备']],tab,t=>this.shop({...args,tab:t}));
-  if(tab==='power'&&testPower){const card=el('section','power-card test-power-card');card.append(glyph('fire'),el('h2','','测试火力'),el('p','','默认跟随关卡推荐；也可固定等级测试。'));const select=el('select','test-fire-select');select.setAttribute('aria-label','测试火力');const recommended=el('option','','跟随关卡推荐');recommended.value='recommended';recommended.selected=testPower.rank===null;select.append(recommended);for(let rank=0;rank<=window.CandyProgress.MAX_FIRE_RANK;rank++){const o=el('option','',`Lv.${rank} · ${window.CandyProgress.attackAt(rank)} 伤害`);o.value=rank;o.selected=testPower.rank===rank;select.append(o);}select.onchange=()=>testPower.select(select.value==='recommended'?null:+select.value);card.append(select,el('p','','仅测试版有效，不修改正式存档。'),action('补满测试道具',testPower.refill));scroll.append(card);return;}
+  if(window.CandyRelease.playtest&&tab==='power'&&testPower){const card=el('section','power-card test-power-card');card.append(glyph('fire'),el('h2','','测试火力'),el('p','','默认跟随关卡推荐；也可固定等级测试。'));const select=el('select','test-fire-select');select.setAttribute('aria-label','测试火力');const recommended=el('option','','跟随关卡推荐');recommended.value='recommended';recommended.selected=testPower.rank===null;select.append(recommended);for(let rank=0;rank<=window.CandyProgress.MAX_FIRE_RANK;rank++){const o=el('option','',`Lv.${rank} · ${window.CandyProgress.attackAt(rank)} 伤害`);o.value=rank;o.selected=testPower.rank===rank;select.append(o);}select.onchange=()=>testPower.select(select.value==='recommended'?null:+select.value);card.append(select,el('p','','仅测试版有效，不修改正式存档。'),action('补满测试道具',testPower.refill));scroll.append(card);return;}
   if(tab==='power'){
    const info=power(),card=el('section','power-card');card.append(glyph('turret'),el('h2','',`Lv.${info.rank} · ${info.damage} 伤害`),el('p','',`大泡泡 ${info.damage*4} · 当前进度上限 ${info.capDamage}`));
    if(info.maxed)card.append(el('p','','火力已满级'));
    else {card.append(el('p','',`下一档 ${info.nextDamage} 伤害`),el('p','',info.eligible?'升级资格已开放':`通关第 ${info.gate+1} 关后开放下一档`),currency(info.cost));const b=action('升级火力',()=>{const result=upgrade();this.shop({...args,tab,message:result.reason});});b.disabled=!info.eligible||save.candy<info.cost;card.append(b);}
-   card.append(el('p','',message||'购买地图不开放火力等级，实际通关才能提高上限。'));scroll.append(card);return;
+   card.append(el('p','',message||'完成闯关里程碑，解锁更高火力。'));scroll.append(card);return;
   }
   const collection=items.filter(i=>i.slot===tab).sort((a,b)=>a.price-b.price),desired=collection.find(i=>i.id===selected)||collection.find(i=>i.id===save.equipped[tab]);
   const tier=Number.isInteger(priceTier)?Math.max(0,Math.min(7,priceTier)):(desired?.collectionTier??0),goods=tab==='gear'?collection:collection.filter(i=>i.collectionTier===tier);
@@ -113,12 +113,12 @@
   const hp=new Set(selected.waves.flat().filter(t=>t[0]===kind).map(t=>window.CandyProgress.enemyHealth(selected,kind,Number(t.slice(1)))));if(kind==='j'&&selected.boss)hp.add(window.CandyProgress.enemyHealth(selected,'j',4));
   const card=el('section','codex-card');card.append(image(`assets/w${world.id}-${{j:'jelly',b:'berry',K:'boss'}[kind]}.png`),el('h3','',title));
   [...hp].sort((a,b)=>a-b).forEach((value,i)=>{const armor=kind==='K'?0:selected.armor||0;const row=el('p','codex-variant',`${hp.size>1?'形态 '+(i+1)+' · ':''}生命 ${value} · 普通泡泡 ${Math.ceil(value/attack)+armor} 次命中`);card.append(row);});
-  if(selected.armor&&kind!=='K')card.append(el('p','','冰壳额外抵挡一次命中。'));card.append(el('p','','每只怪怪的生命值固定；不同关卡或强化形态会不同。'));scroll.append(card);
+  if(selected.armor&&kind!=='K')card.append(el('p','','冰壳额外抵挡一次命中。'));scroll.append(card);
  },
  secret({save,level,available,unlock,play,back}){
-  const {scroll}=shell(level.name,'可跳过，不影响 300 关主线进度',back);const card=el('section','secret-card');card.append(image('assets/portal.png'),el('h2','',({timed:'限时清屏',defense:'守护工程师',obstacle:'机关试炼',raid:'首领讨伐'})[level.mode]||'秘境挑战'),el('p','',`首通奖励：${window.CandyProgress.ITEMS[level.rewardItem].name} ×1，以及星糖。不会直接赠送皮肤。`),el('p','','首次完整观看视频后开启；失败可免费重试。'));
-  const open=save.hiddenUnlocked.includes(level.id);const status=el('p','secret-status',open?'已开启，可以进入':available?'自有宣传视频，无平台广告收益':'宣传视频待配置，请先继续主线');
-  const b=action(open?'进入隐藏关':available?'观看宣传视频并开启':'视频待配置',async()=>{if(open){play(level);return;}b.disabled=true;status.textContent='正在打开视频…';const result=await unlock(level.id);b.disabled=false;if(result.completed){play(level);}else status.textContent=result.reason;});b.disabled=!open&&!available;card.append(status,b,action('跳过，继续主线',back));scroll.append(card);
+  const {scroll}=shell(level.name,'可跳过，不影响 300 关主线进度',back);const card=el('section','secret-card');card.append(image('assets/portal.png'),el('h2','',({timed:'限时清屏',defense:'守护工程师',obstacle:'机关试炼',raid:'首领讨伐'})[level.mode]||'秘境挑战'),el('p','',`首通奖励：${window.CandyProgress.ITEMS[level.rewardItem].name} ×1，以及星糖。`),el('p','','首次完整观看视频后开启；失败可免费重试。'));
+  const open=save.hiddenUnlocked.includes(level.id);const status=el('p','secret-status',open?'挑战已开启':available?'完整观看视频即可开启':'秘境暂未开放，可继续主线');
+  const b=action(open?'进入隐藏关':available?'观看视频并开启':'秘境暂未开放',async()=>{if(open){play(level);return;}b.disabled=true;status.textContent='正在打开视频…';const result=await unlock(level.id);b.disabled=false;if(result.completed){play(level);}else status.textContent=result.reason;});b.disabled=!open&&!available;card.append(status,b,action('跳过，继续主线',back));scroll.append(card);
  }
  };
 })();

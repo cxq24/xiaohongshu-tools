@@ -8,8 +8,10 @@ from threading import Thread
 from functools import partial
 from playwright.sync_api import sync_playwright
 import argparse,json,shutil
+from tempfile import TemporaryDirectory
+from zipfile import ZipFile
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--start',type=int,default=0);parser.add_argument('--end',type=int,default=None);parser.add_argument('--hidden',action='store_true');args=parser.parse_args();args.end=args.end or (30 if args.hidden else 300)
+parser=argparse.ArgumentParser();parser.add_argument('--start',type=int,default=0);parser.add_argument('--end',type=int,default=None);parser.add_argument('--hidden',action='store_true');parser.add_argument('--archive',type=Path);args=parser.parse_args();args.end=args.end or (30 if args.hidden else 300)
 if not 0<=args.start<args.end<=(30 if args.hidden else 300):parser.error("Invalid level range")
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
@@ -55,8 +57,13 @@ INSTALL=r'''()=>{
   return {id:level.id,world:level.world,state:s.state,shots:s.shotsFired,hits:s.hitCount,remaining:s.remaining(),defeated:s.defeated,total:s.totalMonsters,escaped:s.escaped,attack:s.attackDamage,initialBossHp,criticalHits:s.criticalHits,itemsUsed:used,mode:s.level.mode||'normal',grade:s.rating?.grade,score:s.rating?.score,productive:s.productiveShots,reward:s.reward?.totalCurrency,angles,ticks,variant};
  };
 }'''
+folder=TemporaryDirectory()
+serve=ROOT/'build'
+if args.archive:
+ with ZipFile(args.archive) as z:z.extractall(folder.name)
+ serve=Path(folder.name)
 with sync_playwright() as p:
- server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(ROOT/'build')));Thread(target=server.serve_forever,daemon=True).start()
+ server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(serve)));Thread(target=server.serve_forever,daemon=True).start()
  options={'headless':True}
  if shutil.which('chromium'):options.update(executable_path=shutil.which('chromium'),args=['--no-sandbox'])
  browser=p.chromium.launch(**options);page=browser.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
@@ -74,7 +81,7 @@ with sync_playwright() as p:
     if result['state']=='won':break
   results.append(result)
   if (i+1)%10==0 or result['state']!='won':print('Progress',i+1,'/',args.end,'latest',result['state'],'shots',result['shots'],flush=True)
-  (ROOT/f'tools/simulation-0.10.0-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'0.10.0','results':results,'errors':errors},indent=2)+'\n')
+  (ROOT/f'tools/simulation-1.0.0-{args.start}-{args.end}{"-hidden" if args.hidden else ""}.json').write_text(json.dumps({'version':'1.0.0','actual_zip':bool(args.archive),'results':results,'errors':errors},indent=2)+'\n')
  failed=[r['id'] for r in results if r['state']!='won'];print('Finished',len(results),'passed',len(results)-len(failed),'failed',failed,'JS errors',errors,flush=True)
  browser.close();server.shutdown()
  if failed or errors:raise SystemExit(1)

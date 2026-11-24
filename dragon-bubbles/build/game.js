@@ -6,7 +6,7 @@
   const FONT='system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif';
   const levels=window.CANDY_LEVELS;
   const Economy=window.CandyProgress;
-  const playtest=window.CandyRelease?.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
+  const playtest=window.CandyRelease.playtest===true,storageKey=playtest?'apu-candy-playtest-v1':'apu-candy-v1';
   let rawSave={};try{rawSave=JSON.parse(localStorage.getItem(storageKey))||{};}catch(_){}
   const save=Economy.normalize(rawSave);
   function persist(){try{localStorage.setItem(storageKey,JSON.stringify(save));}catch(_){}}

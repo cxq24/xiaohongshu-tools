@@ -18,9 +18,9 @@
    lastMedia=video.currentTime;lastWall=now;
    status.textContent=`已观看 ${Math.floor(watched)} 秒 · 完整播放后开启隐藏关`;
   };
-  video.onended=()=>{const minimum=Math.max(30,Number(config.minimumSeconds)||30);const complete=Number.isFinite(video.duration)&&video.duration>=minimum&&watched>=video.duration-1.5;if(complete)finish(true);else{status.textContent='尚未完整观看，或素材不足 30 秒。可重新播放，也可跳过。';}};
+  video.onended=()=>{const minimum=Math.max(30,Number(config.minimumSeconds)||30);const complete=Number.isFinite(video.duration)&&video.duration>=minimum&&watched>=video.duration-1.5;if(complete)finish(true);else{status.textContent='未完成观看，可重新播放或跳过。';}};
   video.onerror=()=>{status.textContent='视频加载失败，可跳过继续主线。';};
-  video.src=url.href;video.currentTime=0;video.playbackRate=1;dialog.showModal();status.textContent='这是自有宣传视频，完整观看后开启隐藏关。';
+  video.src=url.href;video.currentTime=0;video.playbackRate=1;dialog.showModal();status.textContent='完整观看后开启秘境，也可跳过继续主线。';
   video.play().catch(()=>{status.textContent='请点视频播放按钮继续观看。';});
  })});
  document.getElementById('skip-promo').onclick=()=>dialog.close();
