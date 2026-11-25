@@ -10,6 +10,8 @@
 
 ## 上传
 
+首页推荐复审的“宣传片”改用 [30 秒全屏游戏画面](storefront/gameplay-fullscreen-30s-1920x1080.mp4)，已移除外部背景、侧栏文案和画中画。通过原始实录取景、切镜与等比放大制作横版，附带原游戏声音；原 60 秒竖屏“游戏实机录屏”继续使用。完整素材 ZIP 已更新，游戏发布包未改动。
+
 宣传图分为两个必填位置：16:9 使用 `banner-title-only-1920x1080.png`；1:1 使用 [1440×1440 方形宣传图](storefront/banner-title-only-1440x1440.png)。完整素材 ZIP 已包含两种比例。
 
 1. 下载本目录的 `dragon-bubbles-taptap-h5-1.0.0-upload.zip`，用于 TapTap **小游戏／H5** 入口。旧的不带 `-upload` 文件名是已被后台拒绝的平铺格式，不再使用。

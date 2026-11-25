@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-25",
+  "requirements_source": "User relayed TapTap home recommendation review: full-frame game footage; no non-game picture-in-picture layout",
+  "file": "gameplay-fullscreen-30s-1920x1080.mp4",
+  "sha256": "4e648e2131d02db821b87f01bb99166e803db484bd5db0ac43b3c3bce22e5483",
+  "source": "gameplay-recording-60s-720x1280.mp4",
+  "source_sha256": "69e4827930b965199732af65cf8b7ca4be6e6578fab9922c63a24cbc2898b921",
+  "shots": [
+    {
+      "name": "游戏首页",
+      "start": 0,
+      "duration": 1.5,
+      "y_start": 152,
+      "y_end": 152
+    },
+    {
+      "name": "瞄准与发射",
+      "start": 4,
+      "duration": 2.5,
+      "y_start": 740,
+      "y_end": 740
+    },
+    {
+      "name": "泡泡命中与连锁",
+      "start": 6.5,
+      "duration": 7,
+      "y_start": 240,
+      "y_end": 430
+    },
+    {
+      "name": "软糖溪谷战斗",
+      "start": 20,
+      "duration": 8.5,
+      "y_start": 250,
+      "y_end": 470
+    },
+    {
+      "name": "爆米花营地战斗",
+      "start": 51.5,
+      "duration": 7.7,
+      "y_start": 250,
+      "y_end": 440
+    },
+    {
+      "name": "实际通关结算",
+      "start": 15.7,
+      "duration": 2.8,
+      "y_start": 340,
+      "y_end": 340
+    }
+  ],
+  "frame_selection": {
+    "width": 608,
+    "height": 342,
+    "x": 56,
+    "aspect_ratio": "16:9",
+    "uniform_scale": true
+  },
+  "only_original_game_pixels": true,
+  "external_visual_inputs": 0,
+  "picture_in_picture": false,
+  "external_background": false,
+  "marketing_text_overlay": false,
+  "original_portrait_gameplay_recording_unchanged": true,
+  "audio": "Original live game music and effects from matching source intervals; short fades at shot cuts",
+  "full_decode": "passed",
+  "video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "30.000000",
+      "size": "6061139"
+    }
+  },
+  "platform_recommendation_review_performed": false
+}
