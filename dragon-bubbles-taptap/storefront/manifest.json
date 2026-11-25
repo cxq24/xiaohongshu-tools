@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-25",
+  "game_version": "1.0.0",
+  "game_zip_unchanged_sha256": "e96ff38f8ecdd3165bc55b1ae9384a6175a927180b8314642015a885c952f233",
+  "source_runtime": "dragon-bubbles-taptap/dist",
+  "official_document_fetch": "Proxy 403; requirements from user console screenshots only",
+  "video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 720,
+        "height": 1280,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "30.000000"
+    }
+  },
+  "original_xhs_files_unchanged": true,
+  "files": {
+    "icon-1024.png": {
+      "bytes": 6446,
+      "sha256": "f5e9e3c195f578771ffa702eb43156f61298cb80adc4121f6031343481d5e751",
+      "width": 1024,
+      "height": 1024
+    },
+    "banner-1920x1080.png": {
+      "bytes": 269021,
+      "sha256": "4532b18eb8d121fa7be290acf1c03af0733b7851e364dc53b5d29a51251a6417",
+      "width": 1920,
+      "height": 1080
+    },
+    "screenshot-01-title.png": {
+      "bytes": 54558,
+      "sha256": "339c63d505f4e9f327342bf3e53fcec1203f12df498265229efb15db82be3455",
+      "width": 720,
+      "height": 1280
+    },
+    "screenshot-02-worlds.png": {
+      "bytes": 93878,
+      "sha256": "1e65ba81e6d2e29d25bcb6666824f02fb70ef5f71b0276fa241c32966ce62e32",
+      "width": 720,
+      "height": 1280
+    },
+    "screenshot-03-chapter.png": {
+      "bytes": 98409,
+      "sha256": "41848cac2a9ccec81c734e806e3c1fc056350448ba457631bbad2fbff350b8cf",
+      "width": 720,
+      "height": 1280
+    },
+    "screenshot-04-battle.png": {
+      "bytes": 59598,
+      "sha256": "20985c1335b101ad88b59a2bac0bb28d59da34bedb2b4cdd1b003c4020446344",
+      "width": 720,
+      "height": 1280
+    },
+    "screenshot-05-outfits.png": {
+      "bytes": 88531,
+      "sha256": "cf3f47a2bf124d65ac6f69246e051961919a1479dfa67b3c82588facd715cc8a",
+      "width": 720,
+      "height": 1280
+    },
+    "gameplay-30s-720x1280.mp4": {
+      "bytes": 1298527,
+      "sha256": "2d0af209cb09b6c478ac867a4ad4ee2c593c2da2aed07f194485a00b7a2f5a48"
+    },
+    "上架填写说明.md": {
+      "bytes": 5386,
+      "sha256": "0399cdbd730f5bb63141616e03c343d1313730fe29c682b9bfa5e7b6fb45d6ab"
+    }
+  }
+}
