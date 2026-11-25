@@ -5,9 +5,10 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from threading import Thread
 from tempfile import TemporaryDirectory
 from playwright.sync_api import sync_playwright
-import subprocess,json,time
+import subprocess,time
 
 ROOT=Path(__file__).resolve().parent
+(ROOT/'source').mkdir(exist_ok=True)
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(ROOT.parent)))
@@ -40,7 +41,7 @@ try:
     scene(p,f's.angle={[-1.16,-1.9,-1.45][turn%3]};s.fire()');turn+=1
    p.wait_for_timeout(150)
   video=p.video;c.close();source=video.path()
-  subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(source),'-t','30','-an','-vf','scale=720:1280:flags=neighbor,fps=30,format=yuv420p','-c:v','libx264','-preset','fast','-crf','22','-movflags','+faststart',str(ROOT/'gameplay-30s-720x1280.mp4')],check=True)
+  subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(source),'-t','30','-an','-vf','scale=720:1280:flags=neighbor,fps=30,format=yuv420p','-c:v','libx264','-preset','fast','-crf','22','-movflags','+faststart',str(ROOT/'source/gameplay-portrait.mp4')],check=True)
   b.close()
 finally:server.shutdown()
-print('Rendered 2 store artworks, 5 actual screenshots, and 30 seconds of gameplay (silent).')
+print('Rendered 2 store artworks, 5 screenshots, and internal portrait source. Run build_materials.py for the landscape upload trailer.')

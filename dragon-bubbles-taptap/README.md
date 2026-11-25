@@ -6,7 +6,7 @@
 
 本目录与现有小红书工程独立。原小红书代码、原 ZIP、运行快照及文档不因本次适配改变。基于用户最新 `1.0.2-xhs-secret-prompt` 包生成，保留 300 主线、30 秘境、全部玩法／数值／外观，以及已处理的 QuantDash 本地推广片。
 
-上架文案、Apple ID 填写说明和素材见 [上架填写说明](storefront/上架填写说明.md)。[单独下载商店物料 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-store-materials-1.0.0.zip)，解压后按类型上传，不能代替 H5 游戏包。
+上架文案、Apple ID 填写说明和素材见 [上架填写说明](storefront/上架填写说明.md)。[单独下载商店物料 ZIP（横版宣传片修正版）](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-store-materials-1.0.0-landscape.zip)，解压后按类型上传，不能代替 H5 游戏包。宣传片为 1920×1080 横屏 16:9、30 秒 H.264 MP4；游戏本身仍为竖屏。
 
 ## 上传
 
