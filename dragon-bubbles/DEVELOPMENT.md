@@ -1,5 +1,23 @@
 # 开发与构建
 
+## 当前基准先读
+
+2026-11-25 用户提交了 `dragon-bubbles-1.0.2-xhs-secret-prompt.zip`。当前权威运行代码是 `releases/1.0.2-xhs-secret-prompt/runtime/`，详见 [CURRENT_PACKAGE.md](CURRENT_PACKAGE.md)。该 ZIP 只有编译产物，尚未把外部修改回合到旧 `build/` 作者源码。下面原生产构建命令是历史作者工程的流程，**不要用其输出覆盖或冒充用户最新版**。
+
+本地查看用户最新版：
+
+```sh
+python3 -m http.server 8765 --directory releases/1.0.2-xhs-secret-prompt/runtime
+```
+
+只读核对原包及播放流程：
+
+```sh
+python3 tools/inspect_imported_release.py
+```
+
+该脚本验证原包／解包逐文件一致与严格 CSP 下的实际 30 秒播放，不重打包或改运行代码。继续源级开发时，先确定外部修改回合方式。
+
 ## 本地运行
 
 在 `dragon-bubbles` 目录执行：

@@ -1,8 +1,10 @@
-# 阿噗的糖果弹弹冒险 · 1.0.2
+# 阿噗的糖果弹弹冒险 · 1.0.2 用户同步版
 
-小红书小工具生产版，玩法和数值采用 0.10.0 定稿。
+当前基准为 2026-11-25 用户提供的 `1.0.2-xhs-secret-prompt` 包，已接入本地 QuantDash 推广短片和通关后的秘境入口提醒。玩法和数值沿用 0.10.0 定稿。
 
-**[下载生产 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-1.0.2.zip)**
+**[下载用户提供的最新 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles/dragon-bubbles-1.0.2-xhs-secret-prompt.zip)**
+
+当前上下文、与旧包的差异和维护边界见 [CURRENT_PACKAGE.md](CURRENT_PACKAGE.md)。原包和解包运行代码均原样保存，本次未另发 1.0.3。
 
 ## 上传
 
@@ -10,7 +12,7 @@
 2. 版本号填写 `1.0.2`。
 3. 本游戏无需相机、麦克风或定位权限。
 
-包内 **199 个文件**，只有一个根目录 `index.html`，不含文档、测试工具、测试视频或构建依赖。不要重新压缩整个仓库或 `build/` 目录。详细交付信息见 [生产说明](PRODUCTION_RELEASE.md)。
+最新包内 **196 个文件**，只有一个根目录 `index.html`，不含 Markdown 或构建依赖；内含已配置的推广画面与音轨。不要重新压缩整个仓库或旧 `build/` 目录。详细信息见 [生产说明](PRODUCTION_RELEASE.md)。
 
 ## 游戏内容
 
@@ -26,13 +28,13 @@
 
 ## 秘境视频
 
-每章在第 5、15、25 关附近显示三个秘境节点，未达到条件时也可点开查看要求。通关对应主线后观看视频解锁，已解锁的可直接进入。当前尚未配置视频素材，符合主线条件的未解锁秘境显示“暂未开放”；主线照常可玩。
+每章第 5、15、25 小关是秘境触发点。通关对应小关后，结算页出现“秘境入口出现了！”提醒，可选择进入秘境或继续下一关；以后也可从章节地图进入。完整观看 30 秒后，只解锁本次对应的秘境；已解锁秘境可直接重试。
 
-视频使用用户自有素材，接入步骤见 [生产说明](PRODUCTION_RELEASE.md)。
+当前短片已采用本地 Canvas 图集与 Web Audio 音轨方案：360×640、10 fps、300 帧，75 张 WebP 图集、14 个音轨脚本。加载等待、暂停、切后台、退出确认期间不累计观看时间；退出需确认。它是自有产品宣传，不是平台商业广告 SDK，不产生平台广告分成。
 
 ## 开发与验证
 
-源码位于 `build/`，构建与验收方法见 [开发说明](DEVELOPMENT.md)。数值规则见 [BALANCE.md](BALANCE.md)，验证记录见 [VALIDATION.md](VALIDATION.md)。
+**当前可运行代码**位于 [releases/1.0.2-xhs-secret-prompt/runtime/](releases/1.0.2-xhs-secret-prompt/runtime/)，逐文件与用户 ZIP 一致。旧 `build/` 是此前 1.0.2 的分模块开发源文件，尚未回合本次外部改动，不能用旧打包器重建并冒充最新包。维护和验收方法见 [开发说明](DEVELOPMENT.md)，数值规则见 [BALANCE.md](BALANCE.md)，验证记录见 [VALIDATION.md](VALIDATION.md)。
 
 Phaser MIT 与所保留字体的完整许可见 `PHASER-LICENSE.txt`、`FONT-LICENSE.txt`，也保留在生产入口注释中。
 

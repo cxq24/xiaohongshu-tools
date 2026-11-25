@@ -1,5 +1,7 @@
 # 1.0.2 原生缓存与启动兼容
 
+2026-11-25 同步说明：用户 `1.0.2-xhs-secret-prompt` 包中的存档适配模块与此前仓库1.0.2逐段一致，下述存档机制仍适用。当前权威运行代码位于 `releases/1.0.2-xhs-secret-prompt/runtime/`；推广播放器使用图片和Web Audio，未将视频写入原生Storage，也未另接临时文件API。详见 [当前基准](CURRENT_PACKAGE.md)。
+
 ## 能力检测
 
 使用容器自动注入的 `window.xhs.miniTool`，生产不下载或另行注入 SDK。检测 `getStorage`、`setStorage` 是否存在，并处理实际调用结果；不再要求启动信息带有客户端版本号，也不调用 `getLaunchOptions` 来阻塞读档。明确不支持原生能力时自动使用浏览器存储，无须用户查询版本或清除缓存。

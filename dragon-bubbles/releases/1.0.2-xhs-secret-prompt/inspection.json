@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-25",
+  "archive_sha256": "2683f5bc4230f44f8bf863dcd12b36db0bd7ac67a38fa010eca8b2dc873dcf62",
+  "runtime_unchanged": true,
+  "zip_files": 196,
+  "canvas_video": {
+    "frames": 300,
+    "fps": 10,
+    "duration_seconds": 30
+  },
+  "checks": {
+    "fresh_profile_and_lazy_media": true,
+    "milestone_reward_prompt_and_entry": true,
+    "tap_pause_no_time_credit": true,
+    "confirmed_exit_no_unlock_and_audio_restored": true,
+    "mobile_sizes": [
+      320,
+      390,
+      430
+    ],
+    "initial_frame_failure_blocks_time_and_retries": true,
+    "real_30s_foreground_completion_unlocks_only_target": true,
+    "background_time_not_counted": true,
+    "unlock_persists_and_reentry_without_rewatch": true,
+    "no_external_asset_requests_under_strict_csp": true,
+    "errors": []
+  },
+  "limits": [
+    "Desktop Chromium only; no new iPhone/XHS-device certification",
+    "Reward prompt verified with explicit UI fixture, not a fresh five-level playthrough",
+    "No changes to imported gameplay or media implementation"
+  ]
+}

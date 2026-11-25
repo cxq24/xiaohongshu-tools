@@ -311,3 +311,15 @@ iPhone 小红书预览的真实声音表现尚需用户复测。桌面 Chromium 
 证据：storage-model-1.0.2.json、sdk-storage-1.0.2.json、sdk-browser-1.0.2.json、native-storage-browser-1.0.2.json、production-profile-1.0.2.json、features-1.0.2.json、三份 *-results-1.0.2.json、package-results-1.0.2.json、frozen-balance-1.0.2.json、release-1.0.2.json。SDK 来源与双重哈希见 xhs-sdk-provenance.json，仅用于测试，不随游戏部署。截图 startup-failure-reproduced.png 与 startup-fixed-1.0.2.png 为同一发布 SDK 路径的旧／新包对照。
 
 宿主响应仍为模拟，不能据此确认用户扫码手机的具体失败分支，也没有声称完成 iPhone 小红书真机验收。用户可直接重新上传新版扫码，保留旧缓存；若仍异常，可在错误提示中复制定位信息，无须逐个查询客户端版本。
+
+
+## 2026-11-25：用户1.0.2-xhs-secret-prompt同步核对
+
+- 原始上传ZIP：4,389,664字节，SHA-256 `2683f5bc4230f44f8bf863dcd12b36db0bd7ac67a38fa010eca8b2dc873dcf62`。CRC通过，196运行文件、一个根HTML，逐文件解包SHA与原包一致；未重新编译或更改用户运行逻辑。
+- 相比此前仓库1.0.2，新增75张WebP图集、14个音轨JS；92张原PNG移入小图解析表，逐一解码与原图字节一致，合计30,605字节、最大731字节。核心10模块逐段不变，包括关卡／评分／经济／存档／声音／引擎；没有重复宣称本次重新通关330关。
+- 实际代码结构为Canvas300帧／10fps／360×640，75张720×1280图集，14个分片解码为360,996字节MP3，约30.041秒。图集尺寸与图片完整性、音轨可解码、全部16份脚本语法均已核对。
+- `inspect_imported_release.py` 从确切导入运行文件，在禁止unsafe-eval、外部脚本、外部媒体和外部连接的CSP下运行。验证新档仍为0星糖／基础火力／首世界；进入播放前不加载推广媒体；通关触发关的受控结算出现秘境提醒，点击仍进入视频门槛。
+- 真正经过30秒前台Canvas播放、没有快进测试时钟或伪造完成，验证最终画面帧299、有效观看30000ms，只解锁h-0-0，重载后仍保留并可免重看。点击暂停、模拟页面隐藏、退出确认期间不计时；确认离开不解锁且恢复游戏声音。首图请求失败时进度为0，重试后可以正常播放。320／390／430三种窗口下播放卡片在可视区内，脚本运行错误为空，无外部资源请求。
+- 结算提醒测试用了正常模型构造的已通关存档，并受控调用胜利UI，不代表重新实打五关。声音进行了实际WebAudio解码／开关状态检查，没有将其称为人工听感验收；没有新增iPhone小红书真机认证或代发布。
+
+证据：`releases/1.0.2-xhs-secret-prompt/manifest.json`、`inspection.json`、`secret-prompt.png`、`promo-paused.png`。本次维护入口为 `CURRENT_PACKAGE.md`；旧build/作者源码尚未回合外部修改，原1.0.3未发布草稿已另行备份并停止推进。

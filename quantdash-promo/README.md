@@ -1,6 +1,6 @@
 # QuantDash · 30 秒推广片 V1
 
-**独立审核样片。尚未接入游戏，确认后再处理广告视频接入。**
+**V1 已获用户确认。2026-11-25 的最新用户游戏包已用本地图集＋音轨方式接入。** 本目录保留原始 MP4 和可编辑制作工程；游戏内当前实现见 [游戏基准说明](../dragon-bubbles/CURRENT_PACKAGE.md)，不是直接播放本目录的外网 MP4。
 
 - [观看／下载 MP4（音乐＋音效）](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/quantdash-promo/out/quantdash-30s-v1.mp4)
 - [下载无配乐版（保留音效）](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/quantdash-promo/out/quantdash-30s-v1-nobgm.mp4)
