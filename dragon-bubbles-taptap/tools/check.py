@@ -7,6 +7,7 @@ from functools import partial
 from threading import Thread
 from playwright.sync_api import sync_playwright
 import json,hashlib,subprocess
+from build import validate_upload_archive
 
 R=Path(__file__).resolve().parents[1];REPO=R.parent;G='apu-taptap-h5-v1';A='apu-taptap-audio-v1';S='candyGame.scene.getScene("Adventure")';manifest=json.loads((R/'release.json').read_text());result={}
 report=R/'validation/results.json'
@@ -27,13 +28,14 @@ def ready(p):
 def save(p):return p.evaluate('(k)=>JSON.parse(localStorage.getItem(k))',G)
 def watching(p):wait(p,'document.querySelector("#promo-canvas").dataset.state==="playing"',timeout=15000)
 with TemporaryDirectory() as temp:
- root=Path(temp);runtime=root/'nested/game';runtime.mkdir(parents=True)
+ root=Path(temp);parent=root/'nested';parent.mkdir();runtime=parent/manifest['archive_root']
  with ZipFile(archive) as z:
-  assert z.testzip() is None and len(z.namelist())==197
-  for name in z.namelist():assert hashlib.sha256(z.read(name)).hexdigest()==manifest['file_sha256'][name]
-  assert [n for n in z.namelist() if n.endswith('.html')]==['index.html'];z.extractall(runtime)
+  folder,files=validate_upload_archive(z)
+  assert folder==manifest['archive_root'] and z.testzip() is None and len(files)==197 and len(z.infolist())==198
+  for name,expected in manifest['file_sha256'].items():assert hashlib.sha256(z.read(folder+'/'+name)).hexdigest()==expected
+  z.extractall(parent);result['single_root_directory_upload_contract']=True
  source=REPO/'dragon-bubbles/releases/1.0.2-xhs-secret-prompt/runtime/app.js';modules=json.loads(subprocess.check_output(['node',str(R/'tools/verify_modules.cjs'),str(source),str(runtime/'app.js')],text=True));result.update(modules)
- server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=temp));Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}/';url=base+'nested/game/';errors=[];requests=[]
+ server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=temp));Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}/';url=base+'nested/'+manifest['archive_root']+'/';errors=[];requests=[]
  try:
   with sync_playwright() as p:
    b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])

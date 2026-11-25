@@ -2,17 +2,27 @@
 
 **目标入口：TapTap 小游戏／H5，上传 ZIP。**
 
-**[下载 TapTap H5 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-h5-1.0.0.zip)**
+**[下载 TapTap H5 上传修正版 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-h5-1.0.0-upload.zip)**
 
 本目录与现有小红书工程独立。原小红书代码、原 ZIP、运行快照及文档不因本次适配改变。基于用户最新 `1.0.2-xhs-secret-prompt` 包生成，保留 300 主线、30 秘境、全部玩法／数值／外观，以及已处理的 QuantDash 本地推广片。
 
 ## 上传
 
-1. 下载本目录的 `dragon-bubbles-taptap-h5-1.0.0.zip`，用于 TapTap **小游戏／H5** 入口。
-2. 游戏方向选**竖屏**，版本填本平台独立版本 `1.0.0`。压缩包根目录直接是 `index.html`，不要再给 ZIP 套外层文件夹，也不要压缩整个开发目录。
+1. 下载本目录的 `dragon-bubbles-taptap-h5-1.0.0-upload.zip`，用于 TapTap **小游戏／H5** 入口。旧的不带 `-upload` 文件名是已被后台拒绝的平铺格式，不再使用。
+2. 游戏方向选**竖屏**，版本仍填 `1.0.0`。ZIP 顶层**只有一个 `dragon-bubbles/` 文件夹**，打开该文件夹直接看到 `index.html`；不要再改动 ZIP 的目录层级，也不要压缩整个开发目录。
 3. 在你的开发者账号中选择对应游戏条目，再按后台流程上传、预览和提交审核。本次没有代操作账号、上传或宣称审核上线。
 
-包内197个文件，约4.19MiB，无网络CDN或占位SDK。官方公开H5流程以包含index.html的构建目录为输入，开发者身份、应用与横竖屏在上传流程配置；本包不伪造这些账号信息。资料出处与范围见 [TapTap接入依据](research/taptap-references.json)。
+包内197个运行文件，加1个顶层目录记录，共198个ZIP条目，约4.19MiB。后台截图明确要求只接受ZIP、最大300MB、解压后只有一个文件夹且该文件夹直接包含index.html。本修正版按这一上传契约打包；没有更改任何运行文件内容。开发者身份、应用与横竖屏在上传流程配置，资料出处见 [TapTap接入依据](research/taptap-references.json)。
+
+```text
+dragon-bubbles-taptap-h5-1.0.0-upload.zip
+└── dragon-bubbles/
+    ├── index.html
+    ├── app.js
+    ├── platform.js
+    ├── video-config.js
+    └── assets/
+```
 
 ## 独立适配内容
 
@@ -37,6 +47,7 @@ python3 -m http.server 8766 --directory dist
 
 ```sh
 python3 tools/check.py
+python3 tools/check_upload_layout.py
 ```
 
 需要 Node.js、Python、Playwright与Chromium；不需要下载TapTap客户端SDK。压缩包不含这些制作工具。`release.json` 记录包体与每文件SHA，`validation/` 记录实际包验证和原工程文件保护结果。浏览器及模拟宿主检查不等同TapTap真机验收或审核通过。

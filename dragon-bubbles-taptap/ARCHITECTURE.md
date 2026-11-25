@@ -1,5 +1,9 @@
 # TapTap H5 平台分离说明
 
+## 上传封装规则修正
+
+2026-11-25 用户后台截图确认：ZIP顶层必须只有一个文件夹，该文件夹直接包含index.html；最大300MB。此前平铺ZIP被解析器以“根目录包含5个文件或目录”拒绝，已修正为 `dragon-bubbles/index.html`。`dist/` 继续保持普通H5构建目录结构，只有ZIP增加这一层封装。197个运行文件字节均未改变，游戏版本仍为1.0.0，旧平铺ZIP不再作为交付物。
+
 ## 不变的输入
 
 输入固定为 `../dragon-bubbles/dragon-bubbles-1.0.2-xhs-secret-prompt.zip`，SHA-256 `2683f5bc4230f44f8bf863dcd12b36db0bd7ac67a38fa010eca8b2dc873dcf62`。不使用尚未回合外部改动的旧分模块build工程，也不重新实现用户已修好的推广播放器。

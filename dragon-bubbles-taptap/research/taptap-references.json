@@ -7,7 +7,7 @@
   "reference_bundle_sha256": "c5cbe9e358efa13963c567aeea6c67d41a0612f25e3f9469f16cae524165e942",
   "checked_date": "2026-11-25",
   "evidence": {
-    "entry": "H5 游戏根目录必须包含 index.html 文件。",
+    "entry": "H5构建目录包含index.html；上传ZIP须将整个构建目录作为唯一顶层文件夹，不能平铺文件。",
     "upload": "prepare_h5_upload checks output directory; upload_h5_game uses selected app/developer and returns review status.",
     "orientation": "screenOrientation enum: 1 portrait, 2 landscape; selected app metadata is checked by upload workflow.",
     "host_api": "NO npm packages or SDK installation required; tap is a GLOBAL object provided by TapTap runtime environment.",
@@ -18,5 +18,13 @@
   "source_game": {
     "path": "dragon-bubbles/dragon-bubbles-1.0.2-xhs-secret-prompt.zip",
     "sha256": "2683f5bc4230f44f8bf863dcd12b36db0bd7ac67a38fa010eca8b2dc873dcf62"
+  },
+  "console_upload_contract": {
+    "source": "User-provided TapTap upload screenshot, 2026-11-25",
+    "archive_type": "ZIP",
+    "max_size_mb": 300,
+    "top_level": "exactly one directory",
+    "entry": "index.html directly within that directory",
+    "prior_error": "压缩包根目录包含5个文件或目录"
   }
 }

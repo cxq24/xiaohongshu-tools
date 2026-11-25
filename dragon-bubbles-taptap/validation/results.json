@@ -2,9 +2,10 @@
   "status": "passed",
   "target": "taptap-h5",
   "version": "1.0.0",
-  "zip_sha256": "23e49951cf27a06c01d5545267ca9edf6f8bf5bf7a5559c45903a5d6f8b7785f",
+  "zip_sha256": "e96ff38f8ecdd3165bc55b1ae9384a6175a927180b8314642015a885c952f233",
   "actual_zip": true,
   "checks": {
+    "single_root_directory_upload_contract": true,
     "preserved_top_level_statements": 44,
     "replaced_modules": [
       "release",
