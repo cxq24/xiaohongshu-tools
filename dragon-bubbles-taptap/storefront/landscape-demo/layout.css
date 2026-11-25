@@ -1,0 +1,13 @@
+/* Actual horizontal game viewport. No video frame, crop, mask, or presentation panel. */
+html,body{margin:0!important;padding:0!important;width:100vw!important;height:100vh!important;overflow:hidden!important;background:#c9e4d7!important}
+body{display:block!important}main{position:fixed!important;inset:0!important;width:100vw!important;min-width:0!important;height:100vh!important;padding:0!important}
+main>header,main>footer{display:none!important}
+#game{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;aspect-ratio:16/9!important;outline:0!important;box-shadow:none!important;overflow:hidden!important}
+#game canvas{position:absolute!important;inset:0!important;margin:0!important;width:100%!important;height:100%!important}
+#battle-bar{left:24px!important;right:24px!important;bottom:10px!important;grid-template-columns:62px 62px 1fr 62px!important;gap:14px!important;padding:10px!important;border-width:3px!important}
+#battle-bar>button{height:58px!important;font-size:22px!important}#battle-bar img,#power-skill>img{width:30px!important;height:30px!important}
+#battle-modal{padding:24px!important}.battle-dialog{width:740px!important;max-width:90%!important;max-height:90%!important;overflow:auto!important;padding:30px!important;font-size:20px!important}
+.battle-dialog h2{font-size:36px!important;margin:0 0 20px!important}.battle-dialog p{font-size:21px!important;line-height:1.6!important}.battle-dialog>button{min-height:54px!important;font-size:22px!important}
+.victory-grade{font-size:60px!important}.reward-currency{padding:18px!important}.reward-currency strong{font-size:38px!important}.reward-currency img{width:42px!important;height:42px!important}.reward-currency small{font-size:18px!important}
+#item-tray{left:25px!important;right:25px!important;bottom:110px!important}#tray-items{grid-template-columns:repeat(8,minmax(0,1fr))!important}.item-icon{min-height:64px!important}.item-detail p,.item-detail strong,.item-detail button{font-size:20px!important}
+#speed-status{font-size:18px!important;bottom:auto!important;top:26px!important;left:auto!important;right:44px!important;transform:none!important}

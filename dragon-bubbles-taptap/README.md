@@ -6,11 +6,11 @@
 
 本目录与现有小红书工程独立。原小红书代码、原 ZIP、运行快照及文档不因本次适配改变。基于用户最新 `1.0.2-xhs-secret-prompt` 包生成，保留 300 主线、30 秘境、全部玩法／数值／外观，以及已处理的 QuantDash 本地推广片。
 
-上架文案、Apple ID 填写说明和素材见 [上架填写说明](storefront/上架填写说明.md)。[单独下载完整商店物料 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-store-materials-1.0.0-complete.zip)，解压后按类型上传，不能代替 H5 游戏包。“宣传片”用 1920×1080 横屏 16:9、30 秒 MP4；另一个必填的“游戏实机录屏”栏用 [60 秒连续游戏实录](storefront/gameplay-recording-60s-720x1280.mp4)，保留竖屏界面并含游戏原声。游戏本身仍为竖屏。
+上架文案、Apple ID 填写说明和素材见 [上架填写说明](storefront/上架填写说明.md)。[单独下载完整商店物料 ZIP](https://raw.githubusercontent.com/cxq24/xiaohongshu-tools/main/dragon-bubbles-taptap/dragon-bubbles-taptap-store-materials-1.0.0-complete.zip)，解压后按类型上传，不能代替 H5 游戏包。“宣传片”用 1920×1080 横屏 16:9、40 秒 MP4；另一个必填的“游戏实机录屏”栏用 [60 秒连续游戏实录](storefront/gameplay-recording-60s-720x1280.mp4)，保留竖屏界面并含游戏原声。游戏本身仍为竖屏。
 
 ## 上传
 
-首页推荐复审的“宣传片”改用 [30 秒全屏游戏画面](storefront/gameplay-fullscreen-30s-1920x1080.mp4)，已移除外部背景、侧栏文案和画中画。通过原始实录取景、切镜与等比放大制作横版，附带原游戏声音；原 60 秒竖屏“游戏实机录屏”继续使用。完整素材 ZIP 已更新，游戏发布包未改动。
+首页推荐复审的“宣传片”改用 [40 秒完整横屏演示](storefront/gameplay-landscape-complete-40s-1920x1080.mp4)。这是从独立横屏布局直接录制的完整游戏画面，镜头固定，无裁切、黑边或画中画，包含原游戏声音；[完整战斗画面预览](storefront/landscape-demo/preview-battle.png)。当前线上游戏仍为竖屏，原游戏 ZIP 没有改动。原 60 秒竖屏“游戏实机录屏”继续使用。
 
 宣传图分为两个必填位置：16:9 使用 `banner-title-only-1920x1080.png`；1:1 使用 [1440×1440 方形宣传图](storefront/banner-title-only-1440x1440.png)。完整素材 ZIP 已包含两种比例。
 

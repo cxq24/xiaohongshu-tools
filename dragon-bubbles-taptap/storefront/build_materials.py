@@ -3,7 +3,7 @@ from pathlib import Path
 from zipfile import ZipFile,ZIP_DEFLATED
 from PIL import Image
 import hashlib,json,subprocess
-from build_fullscreen_trailer import TARGET,build_trailer
+from build_landscape_trailer import TARGET,build_trailer
 
 ROOT=Path(__file__).resolve().parent
 ARCHIVE=ROOT.parent/'dragon-bubbles-taptap-store-materials-1.0.0-complete.zip'
@@ -24,7 +24,7 @@ def build():
  assert stream['codec_name']=='h264' and stream['width']==1920 and stream['height']==1080
  assert stream['display_aspect_ratio']=='16:9' and stream['sample_aspect_ratio']=='1:1'
  assert stream['r_frame_rate']=='30/1' and stream['pix_fmt']=='yuv420p'
- assert float(probe['format']['duration'])==30 and TARGET.stat().st_size<5*1024**3
+ assert float(probe['format']['duration'])==40 and TARGET.stat().st_size<5*1024**3
  subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(TARGET),'-f','null','-'],check=True)
  protected()
  recording='gameplay-recording-60s-720x1280.mp4'
@@ -50,6 +50,6 @@ def build():
  with ZipFile(ARCHIVE) as archive:
   assert archive.testzip() is None and len(archive.infolist())==12
   assert [n for n in archive.namelist() if n.endswith('.mp4')]==['taptap-store-materials/'+TARGET.name,'taptap-store-materials/'+recording]
- print(f'PASS: {TARGET.name}, 1920x1080 16:9 H.264, 30 seconds, full decode, game packages unchanged.')
+ print(f'PASS: {TARGET.name}, 1920x1080 16:9 H.264, 40 seconds, full decode, game packages unchanged.')
  print(f'{ARCHIVE.name}: {ARCHIVE.stat().st_size} bytes; SHA256 {sha(ARCHIVE)}')
 if __name__=='__main__':build()

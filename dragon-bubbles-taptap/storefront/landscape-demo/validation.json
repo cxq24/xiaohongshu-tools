@@ -1,0 +1,368 @@
+{
+  "date": "2026-11-25",
+  "file": "gameplay-landscape-complete-40s-1920x1080.mp4",
+  "sha256": "77c8fa9c33ff2607855fcdfb9833d217c72bbaae00acf8a922d5c48138312618",
+  "source_release_sha256": "e96ff38f8ecdd3165bc55b1ae9384a6175a927180b8314642015a885c952f233",
+  "layout": "Separate interactive horizontal demo; not deployed to live game",
+  "viewport": [
+    1920,
+    1080
+  ],
+  "logical_game_view": [
+    1152,
+    648
+  ],
+  "direct_game_rendering": true,
+  "camera_fixed": true,
+  "crop": false,
+  "padding": false,
+  "picture_in_picture": false,
+  "postproduction_scale": false,
+  "all_game_actors_and_controls_inside_viewport": true,
+  "title_viewport": {
+    "state": "title",
+    "level": null,
+    "shots": 0,
+    "energy": 0,
+    "hero": true,
+    "turret": true,
+    "nodes": true,
+    "camera": {
+      "x": -384,
+      "y": -216,
+      "zoom": 1.6666666666666667
+    },
+    "canvas": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 1080,
+      "pixels": [
+        1920,
+        1080
+      ]
+    },
+    "bar": true,
+    "badge_clear": true
+  },
+  "states": [
+    {
+      "time": 3.15,
+      "state": "intro",
+      "level": 0
+    },
+    {
+      "time": 3.63,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 4.43,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 6.42,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 7.2,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 8.92,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 9.64,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 11.6,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 12.31,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 14.66,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 15.48,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 17.01,
+      "state": "ready",
+      "level": 0
+    },
+    {
+      "time": 17.72,
+      "state": "shooting",
+      "level": 0
+    },
+    {
+      "time": 19.4,
+      "state": "won",
+      "level": 0
+    },
+    {
+      "time": 23.09,
+      "state": "intro",
+      "level": 1
+    },
+    {
+      "time": 23.41,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 24.1,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 26.02,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 26.72,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 28.67,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 29.4,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 30.88,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 31.57,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 33.29,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 34.0,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 36.09,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 36.78,
+      "state": "shooting",
+      "level": 1
+    },
+    {
+      "time": 40.37,
+      "state": "ready",
+      "level": 1
+    },
+    {
+      "time": 41.15,
+      "state": "shooting",
+      "level": 1
+    }
+  ],
+  "actions": [
+    {
+      "time": 4.22,
+      "action": "aim-release",
+      "target": {
+        "x": 1018.2,
+        "y": 140
+      }
+    },
+    {
+      "time": 7.0,
+      "action": "aim-release",
+      "target": {
+        "x": 281.2,
+        "y": 140
+      }
+    },
+    {
+      "time": 9.42,
+      "action": "aim-release",
+      "target": {
+        "x": 870.8,
+        "y": 214
+      }
+    },
+    {
+      "time": 12.1,
+      "action": "aim-release",
+      "target": {
+        "x": 133.8,
+        "y": 251
+      }
+    },
+    {
+      "time": 14.74,
+      "action": "big-bubble-button"
+    },
+    {
+      "time": 15.28,
+      "action": "aim-release",
+      "target": {
+        "x": 576,
+        "y": 251
+      }
+    },
+    {
+      "time": 17.52,
+      "action": "aim-release",
+      "target": {
+        "x": 428.6,
+        "y": 288
+      }
+    },
+    {
+      "time": 23.9,
+      "action": "aim-release",
+      "target": {
+        "x": 1018.2,
+        "y": 140
+      }
+    },
+    {
+      "time": 26.52,
+      "action": "aim-release",
+      "target": {
+        "x": 870.8,
+        "y": 214
+      }
+    },
+    {
+      "time": 29.2,
+      "action": "aim-release",
+      "target": {
+        "x": 576,
+        "y": 177
+      }
+    },
+    {
+      "time": 31.36,
+      "action": "aim-release",
+      "target": {
+        "x": 428.6,
+        "y": 288
+      }
+    },
+    {
+      "time": 33.8,
+      "action": "aim-release",
+      "target": {
+        "x": 281.2,
+        "y": 288
+      }
+    },
+    {
+      "time": 36.57,
+      "action": "aim-release",
+      "target": {
+        "x": 133.8,
+        "y": 325
+      }
+    },
+    {
+      "time": 40.45,
+      "action": "big-bubble-button"
+    },
+    {
+      "time": 40.95,
+      "action": "aim-release",
+      "target": {
+        "x": 428.6,
+        "y": 325
+      }
+    }
+  ],
+  "audio_status": {
+    "available": true,
+    "running": true,
+    "musicPlaying": true,
+    "theme": 0,
+    "unlockedOnce": true,
+    "contextTime": 42.222585034013605,
+    "paused": false,
+    "active": 0,
+    "contextState": "running",
+    "needsGesture": false,
+    "recoveryAttempts": 3,
+    "lastError": "",
+    "audioSession": "unsupported",
+    "events": {
+      "voiceStart": 2,
+      "shoot": 128,
+      "hit": 21,
+      "explode": 5,
+      "pop": 17,
+      "rainbow": 1,
+      "berry": 13,
+      "ready": 2,
+      "voicePower": 2,
+      "big": 2,
+      "win": 1,
+      "voiceWin": 1
+    },
+    "musicStarts": 2,
+    "musicRestarts": 0,
+    "prunedEffects": 0,
+    "voiceMode": "拟声"
+  },
+  "output": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "40.000000"
+    }
+  },
+  "original_game_zip_unchanged": true,
+  "errors": [],
+  "platform_recommendation_review_performed": false
+}
