@@ -20,8 +20,10 @@ try:
  with TemporaryDirectory() as temp, sync_playwright() as pw:
   b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
   p=b.new_page()
-  for mode,w,h,name in [('icon',1024,1024,'icon-1024.png'),('banner',1920,1080,'banner-1920x1080.png'),('square',1440,1440,'banner-square-1440x1440.png')]:
-   p.set_viewport_size({'width':w,'height':h});p.goto(base+'/storefront/artwork.html?mode='+mode);p.evaluate('document.fonts.ready');p.wait_for_function('Array.from(document.images).every(i=>i.complete && i.naturalWidth>0)');p.screenshot(path=str(ROOT/name))
+  for mode,w,h,name in [('icon',1024,1024,'icon-1024.png'),('banner',1920,1080,'banner-title-only-1920x1080.png'),('square',1440,1440,'banner-title-only-1440x1440.png')]:
+   p.set_viewport_size({'width':w,'height':h});p.goto(base+'/storefront/artwork.html?mode='+mode);p.evaluate('document.fonts.ready');p.wait_for_function('Array.from(document.images).every(i=>i.complete && i.naturalWidth>0)')
+   if mode in ['banner','square']:assert p.locator('main').inner_text().replace('\n','').replace(' ','')=='阿噗的糖果弹弹冒险'
+   p.screenshot(path=str(ROOT/name))
   p.close()
   c=b.new_context(viewport={'width':360,'height':640},device_scale_factor=2)
   p=c.new_page();p.goto(base+'/dist/');ready(p);p.wait_for_timeout(600);p.screenshot(path=str(ROOT/'screenshot-01-title.png'))

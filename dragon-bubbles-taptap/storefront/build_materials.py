@@ -54,16 +54,17 @@ def build():
  assert 15<=float(recording_probe['format']['duration'])<=1800
  assert any(s['codec_type']=='video' and s['codec_name']=='h264' for s in recording_probe['streams'])
  assert any(s['codec_type']=='audio' and s['codec_name']=='aac' for s in recording_probe['streams'])
- names=['icon-1024.png','banner-1920x1080.png','banner-square-1440x1440.png']+sorted(p.name for p in ROOT.glob('screenshot-*.png'))+[TARGET.name,recording,'上架填写说明.md']
+ names=['icon-1024.png','banner-title-only-1920x1080.png','banner-title-only-1440x1440.png']+sorted(p.name for p in ROOT.glob('screenshot-*.png'))+[TARGET.name,recording,'上架填写说明.md']
  files={}
  for name in names:
   path=ROOT/name;entry={'bytes':path.stat().st_size,'sha256':sha(path)}
   if path.suffix=='.png':
    with Image.open(path) as image:entry['width'],entry['height']=image.size
   files[name]=entry
- assert (files['banner-square-1440x1440.png']['width'],files['banner-square-1440x1440.png']['height'])==(1440,1440)
+ assert (files['banner-title-only-1440x1440.png']['width'],files['banner-title-only-1440x1440.png']['height'])==(1440,1440)
  metadata={'date':'2026-11-25','game_version':'1.0.0','game_zip_unchanged_sha256':game_sha,'source_runtime':'dragon-bubbles-taptap/dist','requirements_source':'User TapTap material-library screenshots: promotional trailer landscape 16:9, at least 1280x720, MP4/MOV, <=5GB, >=15 seconds, H.264/HEVC; separate gameplay recording 15 seconds to 30 minutes','video':probe,'video_full_decode':'passed','gameplay_recording':recording_probe,'original_xhs_files_unchanged':True,'files':files}
  metadata['square_banner_requirement']={'source':'User TapTap release screenshot, square promotion field','width':1440,'height':1440,'aspect_ratio':'1:1'}
+ metadata['promotion_image_text_policy']={'source':'User-provided TapTap risk review screenshot','allowed_text':'阿噗的糖果弹弹冒险','removed':'English decorative title, slogan, gameplay descriptions, feature labels and stage counts'}
  (ROOT/'manifest.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n')
  with ZipFile(ARCHIVE,'w',ZIP_DEFLATED) as archive:
   for name in names+['manifest.json']:archive.write(ROOT/name,'taptap-store-materials/'+name)

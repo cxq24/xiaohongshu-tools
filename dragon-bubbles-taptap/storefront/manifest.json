@@ -52,15 +52,15 @@
       "width": 1024,
       "height": 1024
     },
-    "banner-1920x1080.png": {
-      "bytes": 269021,
-      "sha256": "4532b18eb8d121fa7be290acf1c03af0733b7851e364dc53b5d29a51251a6417",
+    "banner-title-only-1920x1080.png": {
+      "bytes": 391600,
+      "sha256": "13a09f4bc9148f37cae32d3417779c626a061d1f79a907bf4fe73b1ac4aca5e0",
       "width": 1920,
       "height": 1080
     },
-    "banner-square-1440x1440.png": {
-      "bytes": 564373,
-      "sha256": "e5428dfe9f231c2eb52e42d509730f9c7cfafcee3fccf014a0de74ef2f5419a8",
+    "banner-title-only-1440x1440.png": {
+      "bytes": 133399,
+      "sha256": "26fbaa3673d9e4b578da6a8da66a3502b2b7564be2f74044c8e52f7929e90fd3",
       "width": 1440,
       "height": 1440
     },
@@ -103,8 +103,8 @@
       "sha256": "69e4827930b965199732af65cf8b7ca4be6e6578fab9922c63a24cbc2898b921"
     },
     "上架填写说明.md": {
-      "bytes": 7508,
-      "sha256": "07febd655d206ef02109ff98f62d84bfdd510df27667b348799d01f224500e63"
+      "bytes": 7973,
+      "sha256": "fba00bae1a2372d05d10f7c841c6af635634f1e5c6105bb747938ad2e43235d2"
     }
   },
   "square_banner_requirement": {
@@ -112,5 +112,10 @@
     "width": 1440,
     "height": 1440,
     "aspect_ratio": "1:1"
+  },
+  "promotion_image_text_policy": {
+    "source": "User-provided TapTap risk review screenshot",
+    "allowed_text": "阿噗的糖果弹弹冒险",
+    "removed": "English decorative title, slogan, gameplay descriptions, feature labels and stage counts"
   }
 }
