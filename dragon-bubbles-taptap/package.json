@@ -1,0 +1,13 @@
+{
+  "name": "dragon-bubbles-taptap-build",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 tools/build.py",
+    "check": "python3 tools/check.py"
+  },
+  "devDependencies": {
+    "terser": "5.44.1",
+    "acorn": "8.15.0"
+  }
+}

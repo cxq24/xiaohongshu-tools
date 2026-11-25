@@ -1,0 +1,22 @@
+{
+  "publisher": "TapTap official npm package",
+  "package": "@taptap/instant-games-open-mcp",
+  "version": "1.24.14",
+  "package_url": "https://www.npmjs.com/package/@taptap/instant-games-open-mcp",
+  "repository": "https://github.com/taptap/instant-games-open-mcp",
+  "reference_bundle_sha256": "c5cbe9e358efa13963c567aeea6c67d41a0612f25e3f9469f16cae524165e942",
+  "checked_date": "2026-11-25",
+  "evidence": {
+    "entry": "H5 游戏根目录必须包含 index.html 文件。",
+    "upload": "prepare_h5_upload checks output directory; upload_h5_game uses selected app/developer and returns review status.",
+    "orientation": "screenOrientation enum: 1 portrait, 2 landscape; selected app metadata is checked by upload workflow.",
+    "host_api": "NO npm packages or SDK installation required; tap is a GLOBAL object provided by TapTap runtime environment.",
+    "optional_services": "Leaderboard, cloud save, share and ad APIs are separate services; this offline single-player build does not enable them."
+  },
+  "scope": "User explicitly confirmed TapTap H5/mini-game ZIP; standalone web runtime. No account-side app selected, no platform upload or review performed.",
+  "limitations": "Developer website blocked by environment egress policy. Requirements verified using official published package; no claim of checking private account settings or all current server-side review rules.",
+  "source_game": {
+    "path": "dragon-bubbles/dragon-bubbles-1.0.2-xhs-secret-prompt.zip",
+    "sha256": "2683f5bc4230f44f8bf863dcd12b36db0bd7ac67a38fa010eca8b2dc873dcf62"
+  }
+}

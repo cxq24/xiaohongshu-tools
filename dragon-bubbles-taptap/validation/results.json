@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "target": "taptap-h5",
+  "version": "1.0.0",
+  "zip_sha256": "23e49951cf27a06c01d5545267ca9edf6f8bf5bf7a5559c45903a5d6f8b7785f",
+  "actual_zip": true,
+  "checks": {
+    "preserved_top_level_statements": 44,
+    "replaced_modules": [
+      "release",
+      "storage"
+    ],
+    "gameplay_unchanged_except_save_key_namespace": true,
+    "cold_boot_without_platform_sdk_and_lazy_media": true,
+    "essential_game_textures_loaded": true,
+    "isolated_currency_inventory_and_audio_persist": true,
+    "optional_host_lifecycle_preserves_user_menu_pause": true,
+    "host_lifecycle_restores_engine_focus": true,
+    "quota_failure_preserves_data_and_retry": true,
+    "corrupt_save_protection_and_readonly_preview": true,
+    "real_promo_unlock_save_and_no_exit_reward": true,
+    "host_background_not_counted_in_promo": true,
+    "errors": [],
+    "no_external_asset_requests": true,
+    "all_original_xhs_files_unchanged": true
+  },
+  "limits": [
+    "Desktop Chromium and simulated optional tap lifecycle only; not a TapTap-client certification",
+    "No TapTap account upload, app review, cloud save, login or commercial ad monetization enabled"
+  ]
+}
