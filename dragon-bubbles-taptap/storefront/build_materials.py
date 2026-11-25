@@ -11,7 +11,7 @@ import hashlib,json,subprocess
 
 ROOT=Path(__file__).resolve().parent
 TARGET=ROOT/'gameplay-30s-1920x1080.mp4'
-ARCHIVE=ROOT.parent/'dragon-bubbles-taptap-store-materials-1.0.0-landscape.zip'
+ARCHIVE=ROOT.parent/'dragon-bubbles-taptap-store-materials-1.0.0-complete.zip'
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def protected():
  repo=ROOT.parents[1]
@@ -49,20 +49,25 @@ def build():
  assert float(probe['format']['duration'])==30 and TARGET.stat().st_size<5*1024**3
  subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-i',str(TARGET),'-f','null','-'],check=True)
  protected()
- names=['icon-1024.png','banner-1920x1080.png']+sorted(p.name for p in ROOT.glob('screenshot-*.png'))+[TARGET.name,'上架填写说明.md']
+ recording='gameplay-recording-60s-720x1280.mp4'
+ recording_probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type,codec_name,width,height','-of','json',str(ROOT/recording)],text=True))
+ assert 15<=float(recording_probe['format']['duration'])<=1800
+ assert any(s['codec_type']=='video' and s['codec_name']=='h264' for s in recording_probe['streams'])
+ assert any(s['codec_type']=='audio' and s['codec_name']=='aac' for s in recording_probe['streams'])
+ names=['icon-1024.png','banner-1920x1080.png']+sorted(p.name for p in ROOT.glob('screenshot-*.png'))+[TARGET.name,recording,'上架填写说明.md']
  files={}
  for name in names:
   path=ROOT/name;entry={'bytes':path.stat().st_size,'sha256':sha(path)}
   if path.suffix=='.png':
    with Image.open(path) as image:entry['width'],entry['height']=image.size
   files[name]=entry
- metadata={'date':'2026-11-25','game_version':'1.0.0','game_zip_unchanged_sha256':game_sha,'source_runtime':'dragon-bubbles-taptap/dist','requirements_source':'User TapTap material-library screenshot: landscape 16:9, at least 1280x720, MP4/MOV, <=5GB, >=15 seconds, H.264/HEVC','video':probe,'video_full_decode':'passed','original_xhs_files_unchanged':True,'files':files}
+ metadata={'date':'2026-11-25','game_version':'1.0.0','game_zip_unchanged_sha256':game_sha,'source_runtime':'dragon-bubbles-taptap/dist','requirements_source':'User TapTap material-library screenshots: promotional trailer landscape 16:9, at least 1280x720, MP4/MOV, <=5GB, >=15 seconds, H.264/HEVC; separate gameplay recording 15 seconds to 30 minutes','video':probe,'video_full_decode':'passed','gameplay_recording':recording_probe,'original_xhs_files_unchanged':True,'files':files}
  (ROOT/'manifest.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n')
  with ZipFile(ARCHIVE,'w',ZIP_DEFLATED) as archive:
   for name in names+['manifest.json']:archive.write(ROOT/name,'taptap-store-materials/'+name)
  with ZipFile(ARCHIVE) as archive:
-  assert archive.testzip() is None and len(archive.infolist())==10
-  assert [n for n in archive.namelist() if n.endswith('.mp4')]==['taptap-store-materials/'+TARGET.name]
+  assert archive.testzip() is None and len(archive.infolist())==11
+  assert [n for n in archive.namelist() if n.endswith('.mp4')]==['taptap-store-materials/'+TARGET.name,'taptap-store-materials/'+recording]
  print(f'PASS: {TARGET.name}, 1920x1080 16:9 H.264, 30 seconds, full decode, game packages unchanged.')
  print(f'{ARCHIVE.name}: {ARCHIVE.stat().st_size} bytes; SHA256 {sha(ARCHIVE)}')
 if __name__=='__main__':build()

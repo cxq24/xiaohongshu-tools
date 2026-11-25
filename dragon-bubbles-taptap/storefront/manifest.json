@@ -3,7 +3,7 @@
   "game_version": "1.0.0",
   "game_zip_unchanged_sha256": "e96ff38f8ecdd3165bc55b1ae9384a6175a927180b8314642015a885c952f233",
   "source_runtime": "dragon-bubbles-taptap/dist",
-  "requirements_source": "User TapTap material-library screenshot: landscape 16:9, at least 1280x720, MP4/MOV, <=5GB, >=15 seconds, H.264/HEVC",
+  "requirements_source": "User TapTap material-library screenshots: promotional trailer landscape 16:9, at least 1280x720, MP4/MOV, <=5GB, >=15 seconds, H.264/HEVC; separate gameplay recording 15 seconds to 30 minutes",
   "video": {
     "programs": [],
     "stream_groups": [],
@@ -25,6 +25,25 @@
     }
   },
   "video_full_decode": "passed",
+  "gameplay_recording": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 720,
+        "height": 1280
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "format": {
+      "duration": "60.000000"
+    }
+  },
   "original_xhs_files_unchanged": true,
   "files": {
     "icon-1024.png": {
@@ -73,9 +92,13 @@
       "bytes": 1523896,
       "sha256": "50a245b57ad6310a4a67a24bda4b3a5f1da22fba58f194ab3a500d4558cf00db"
     },
+    "gameplay-recording-60s-720x1280.mp4": {
+      "bytes": 4181710,
+      "sha256": "69e4827930b965199732af65cf8b7ca4be6e6578fab9922c63a24cbc2898b921"
+    },
     "上架填写说明.md": {
-      "bytes": 5940,
-      "sha256": "1e28f0cff4ec6b04b11d9bbbf746c950bfcb291f9dba1c830ef939545915ba70"
+      "bytes": 7319,
+      "sha256": "50c35d9449ae73cef0be3dad742fd87dc67a6f84b41f57b903fe2bf5070ef495"
     }
   }
 }
