@@ -20,7 +20,7 @@ try:
  with TemporaryDirectory() as temp, sync_playwright() as pw:
   b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
   p=b.new_page()
-  for mode,w,h,name in [('icon',1024,1024,'icon-1024.png'),('banner',1920,1080,'banner-1920x1080.png')]:
+  for mode,w,h,name in [('icon',1024,1024,'icon-1024.png'),('banner',1920,1080,'banner-1920x1080.png'),('square',1440,1440,'banner-square-1440x1440.png')]:
    p.set_viewport_size({'width':w,'height':h});p.goto(base+'/storefront/artwork.html?mode='+mode);p.evaluate('document.fonts.ready');p.wait_for_function('Array.from(document.images).every(i=>i.complete && i.naturalWidth>0)');p.screenshot(path=str(ROOT/name))
   p.close()
   c=b.new_context(viewport={'width':360,'height':640},device_scale_factor=2)
@@ -44,4 +44,4 @@ try:
   subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(source),'-t','30','-an','-vf','scale=720:1280:flags=neighbor,fps=30,format=yuv420p','-c:v','libx264','-preset','fast','-crf','22','-movflags','+faststart',str(ROOT/'source/gameplay-portrait.mp4')],check=True)
   b.close()
 finally:server.shutdown()
-print('Rendered 2 store artworks, 5 screenshots, and internal portrait source. Run build_materials.py for the landscape upload trailer.')
+print('Rendered 3 store artworks, 5 screenshots, and internal portrait source. Run build_materials.py for the landscape upload trailer.')
